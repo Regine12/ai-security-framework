@@ -1,4 +1,49 @@
 
+        // Mobile Navigation Toggle
+        function toggleMobileNav() {
+            const navLinks = document.getElementById('nav-links');
+            const navToggle = document.querySelector('.nav-toggle');
+            
+            navLinks.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        }
+
+        // Close mobile nav when clicking on a link
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    const navLinksContainer = document.getElementById('nav-links');
+                    const navToggle = document.querySelector('.nav-toggle');
+                    
+                    navLinksContainer.classList.remove('active');
+                    navToggle.classList.remove('active');
+                });
+            });
+
+            // Close mobile nav when clicking outside
+            document.addEventListener('click', function(e) {
+                const nav = document.querySelector('.nav');
+                const navLinks = document.getElementById('nav-links');
+                const navToggle = document.querySelector('.nav-toggle');
+                
+                if (!nav.contains(e.target) && navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    navToggle.classList.remove('active');
+                }
+            });
+
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    const navLinks = document.getElementById('nav-links');
+                    const navToggle = document.querySelector('.nav-toggle');
+                    navLinks.classList.remove('active');
+                    navToggle.classList.remove('active');
+                }
+            });
+        });
+
         // Modal functionality
         function openModal(contentId) {
             const modal = document.getElementById('modal');
