@@ -96,10 +96,10 @@ window.toggleMobileNav = toggleMobileNav;
                     </div>
                     <h3>Assessment Checklist:</h3>
                     <ul>
-                        <li>✓ Data source authentication</li>
-                        <li>✓ Input sanitization mechanisms</li>
-                        <li>✓ Output content filtering</li>
-                        <li>✓ Data encryption at rest and in transit</li>
+                        <li> Data source authentication</li>
+                        <li> Input sanitization mechanisms</li>
+                        <li> Output content filtering</li>
+                        <li> Data encryption at rest and in transit</li>
                     </ul>
                 `,
                 'model-security': `
@@ -113,10 +113,10 @@ window.toggleMobileNav = toggleMobileNav;
                     </div>
                     <h3>Assessment Checklist:</h3>
                     <ul>
-                        <li>✓ Model access controls</li>
-                        <li>✓ Adversarial example detection</li>
-                        <li>✓ Model watermarking</li>
-                        <li>✓ Rate limiting and query monitoring</li>
+                        <li> Model access controls</li>
+                        <li> Adversarial example detection</li>
+                        <li> Model watermarking</li>
+                        <li> Rate limiting and query monitoring</li>
                     </ul>
                 `,
                 'deployment-security': `
@@ -130,10 +130,10 @@ window.toggleMobileNav = toggleMobileNav;
                     </div>
                     <h3>Assessment Checklist:</h3>
                     <ul>
-                        <li>✓ API authentication and authorization</li>
-                        <li>✓ Container security configuration</li>
-                        <li>✓ Network segmentation</li>
-                        <li>✓ Runtime monitoring and alerting</li>
+                        <li> API authentication and authorization</li>
+                        <li> Container security configuration</li>
+                        <li> Network segmentation</li>
+                        <li> Runtime monitoring and alerting</li>
                     </ul>
                 `,
                 'step-1': `
@@ -222,10 +222,10 @@ window.toggleMobileNav = toggleMobileNav;
                     </div>
                     <h3>Assessment Checklist:</h3>
                     <ul>
-                        <li>✓ Model signature verification</li>
-                        <li>✓ Dependency vulnerability scanning</li>
-                        <li>✓ Pickle file static analysis</li>
-                        <li>✓ Provenance documentation review</li>
+                        <li> Model signature verification</li>
+                        <li> Dependency vulnerability scanning</li>
+                        <li> Pickle file static analysis</li>
+                        <li> Provenance documentation review</li>
                     </ul>
                 `,
                 'governance': `
@@ -239,10 +239,10 @@ window.toggleMobileNav = toggleMobileNav;
                     </div>
                     <h3>Assessment Checklist:</h3>
                     <ul>
-                        <li>✓ AI security policy documentation</li>
-                        <li>✓ Compliance framework mapping</li>
-                        <li>✓ Risk register and mitigation plans</li>
-                        <li>✓ Ethics review process</li>
+                        <li> AI security policy documentation</li>
+                        <li> Compliance framework mapping</li>
+                        <li> Risk register and mitigation plans</li>
+                        <li> Ethics review process</li>
                     </ul>
                 `,
                 'incident-response': `
@@ -256,10 +256,10 @@ window.toggleMobileNav = toggleMobileNav;
                     </div>
                     <h3>Assessment Checklist:</h3>
                     <ul>
-                        <li>✓ AI incident playbooks</li>
-                        <li>✓ Detection and alerting systems</li>
-                        <li>✓ Response team training</li>
-                        <li>✓ Recovery and continuity plans</li>
+                        <li> AI incident playbooks</li>
+                        <li> Detection and alerting systems</li>
+                        <li> Response team training</li>
+                        <li> Recovery and continuity plans</li>
                     </ul>
                 `,
                 'data-attacks': `
