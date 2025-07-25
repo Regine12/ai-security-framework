@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Security Framework - Interactive Guide</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo">AI Security Framework</div>
+            <div class="nav-links">
+                <a href="#overview">Overview</a>
+                <a href="#attack-surface">Attack Surface</a>
+                <a href="#controls">Controls</a>
+                <a href="#tour">Interactive Tour</a>
+                <a href="#risk-matrix">Risk Matrix</a>
+                <a href="#architecture">Architecture</a>
+                <a href="#checklist">Checklist</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>AI Security Framework</h1>
+            <p>Comprehensive AI Penetration Testing & Security Assessment</p>
+            <a href="#overview" class="cta-button" onclick="document.getElementById('overview').scrollIntoView({behavior: 'smooth'}); return false;">Explore Framework</a>
+        </div>
+    </section>
+
+    <!-- Framework Overview -->
+    <section id="overview" class="framework-overview">
+        <div class="container">
+            <h2 class="section-title">Framework Overview</h2>
+            <p style="text-align: center; font-size: 1.2rem; opacity: 0.9; margin-bottom: 50px;">
+                A comprehensive methodology for assessing AI system security across the entire lifecycle
+            </p>
+            
+            <div class="framework-grid">
+    <div class="framework-card" onclick="openModal('data-security')">
+        <h3><i class="fa-solid fa-database"></i> Data Security</h3>
+        <p>Protect training data, inference inputs, and model outputs from poisoning, manipulation, and unauthorized access.</p>
+    </div>
+    <div class="framework-card" onclick="openModal('model-security')">
+        <h3><i class="fa-solid fa-brain"></i> Model Security</h3>
+        <p>Secure model architecture, prevent extraction, and defend against adversarial attacks and model inversion.</p>
+    </div>
+    <div class="framework-card" onclick="openModal('deployment-security')">
+        <h3><i class="fa-solid fa-rocket"></i> Deployment Security</h3>
+        <p>Ensure secure deployment practices, API protection, and runtime monitoring for AI systems.</p>
+    </div>
+    <div class="framework-card" onclick="openModal('supply-chain')">
+        <h3><i class="fa-solid fa-link"></i> Supply Chain Security</h3>
+        <p>Audit AI dependencies, model repositories, and third-party components for vulnerabilities.</p>
+    </div>
+    <div class="framework-card" onclick="openModal('governance')">
+        <h3><i class="fa-solid fa-scale-balanced"></i> AI Governance</h3>
+        <p>Establish policies, compliance frameworks, and ethical guidelines for AI system security.</p>
+    </div>
+    <div class="framework-card" onclick="openModal('incident-response')">
+        <h3><i class="fa-solid fa-triangle-exclamation"></i> Incident Response</h3>
+        <p>Develop response procedures for AI security incidents, model failures, and data breaches.</p>
+    </div>
+</div>
+    </section>
+
+    <!-- Attack Surface Visualization -->
+    <section id="attack-surface" class="attack-surface">
+        <div class="container">
+            <h2 class="section-title">Attack Surface Mapping</h2>
+            <p style="text-align: center; font-size: 1.2rem; opacity: 0.9; margin-bottom: 50px;">
+                Interactive visualization of AI system attack vectors and entry points
+            </p>
+            
+            <div class="attack-diagram">
+                <div class="attack-layer" onclick="openModal('data-attacks')">
+                    <h4>Data Layer<br>Attacks</h4>
+                </div>
+                <div class="attack-layer" onclick="openModal('model-attacks')">
+                    <h4>Model Layer<br>Attacks</h4>
+                </div>
+                <div class="attack-layer" onclick="openModal('deployment-attacks')">
+                    <h4>Deployment<br>Attacks</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Control Matrix -->
+    <section id="controls" class="control-matrix">
+        <div class="container">
+            <h2 class="section-title">Security Controls Matrix</h2>
+            <p style="text-align: center; font-size: 1.2rem; opacity: 0.9; margin-bottom: 50px;">
+                Comprehensive security controls mapped to MITRE ATLAS and OWASP LLM Top 10
+            </p>
+            
+            <div class="matrix-grid">
+                <div class="matrix-item" onclick="openModal('preventive-controls')">
+                    <h4>Preventive Controls</h4>
+                    <p>Input validation, access controls, secure coding practices</p>
+                </div>
+                <div class="matrix-item" onclick="openModal('detective-controls')">
+                    <h4>Detective Controls</h4>
+                    <p>Monitoring, logging, anomaly detection, behavioral analysis</p>
+                </div>
+                <div class="matrix-item" onclick="openModal('corrective-controls')">
+                    <h4>Corrective Controls</h4>
+                    <p>Incident response, model retraining, security patches</p>
+                </div>
+                <div class="matrix-item" onclick="openModal('owasp-llm01')">
+                    <h4>OWASP LLM01</h4>
+                    <p>Prompt Injection Prevention</p>
+                </div>
+                <div class="matrix-item" onclick="openModal('owasp-llm06')">
+                    <h4>OWASP LLM06</h4>
+                    <p>Sensitive Information Disclosure</p>
+                </div>
+                <div class="matrix-item" onclick="openModal('mitre-atlas')">
+                    <h4>MITRE ATLAS</h4>
+                    <p>Adversarial Threat Landscape</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Tour -->
+    <section id="tour" class="interactive-tour">
+        <div class="container">
+            <h2 class="section-title">Interactive Security Assessment Tour</h2>
+            <p style="text-align: center; font-size: 1.3rem; opacity: 0.95; margin-bottom: 20px; color: #17a2b8;">
+                <strong>Take a guided journey through AI security assessment methodology</strong>
+            </p>
+            <p style="text-align: center; font-size: 1rem; opacity: 0.8; margin-bottom: 50px;">
+                Click on each step to explore detailed procedures, tools, and best practices
+            </p>
+            
+            <div class="tour-progress-bar">
+                <div class="progress-fill" id="tour-progress"></div>
+            </div>
+            
+            <div class="tour-steps">
+                <div class="tour-step animated-step" data-step="1" onclick="startTourStep(1)">
+                    <div class="step-icon">
+                        <i class="fa-solid fa-crosshairs"></i>
+                    </div>
+                    <div class="tour-step-number">1</div>
+                    <div class="tour-step-title">Scope Definition</div>
+                    <div class="step-description">Define assessment boundaries and objectives</div>
+                    <div class="step-status" id="step-1-status">
+                        <i class="fa-solid fa-play-circle"></i> Start
+                    </div>
+                </div>
+                
+                <div class="tour-step animated-step" data-step="2" onclick="startTourStep(2)">
+                    <div class="step-icon">
+                        <i class="fa-solid fa-search"></i>
+                    </div>
+                    <div class="tour-step-number">2</div>
+                    <div class="tour-step-title">Asset Discovery</div>
+                    <div class="step-description">Identify and catalog AI system components</div>
+                    <div class="step-status" id="step-2-status">
+                        <i class="fa-solid fa-lock"></i> Locked
+                    </div>
+                </div>
+                
+                <div class="tour-step animated-step" data-step="3" onclick="startTourStep(3)">
+                    <div class="step-icon">
+                        <i class="fa-solid fa-shield-virus"></i>
+                    </div>
+                    <div class="tour-step-number">3</div>
+                    <div class="tour-step-title">Threat Modeling</div>
+                    <div class="step-description">Map potential attack vectors and threats</div>
+                    <div class="step-status" id="step-3-status">
+                        <i class="fa-solid fa-lock"></i> Locked
+                    </div>
+                </div>
+                
+                <div class="tour-step animated-step" data-step="4" onclick="startTourStep(4)">
+                    <div class="step-icon">
+                        <i class="fa-solid fa-bug"></i>
+                    </div>
+                    <div class="tour-step-number">4</div>
+                    <div class="tour-step-title">Vulnerability Assessment</div>
+                    <div class="step-description">Scan for security weaknesses and misconfigurations</div>
+                    <div class="step-status" id="step-4-status">
+                        <i class="fa-solid fa-lock"></i> Locked
+                    </div>
+                </div>
+                
+                <div class="tour-step animated-step" data-step="5" onclick="startTourStep(5)">
+                    <div class="step-icon">
+                        <i class="fa-solid fa-user-secret"></i>
+                    </div>
+                    <div class="tour-step-number">5</div>
+                    <div class="tour-step-title">Penetration Testing</div>
+                    <div class="step-description">Simulate real-world attacks and exploits</div>
+                    <div class="step-status" id="step-5-status">
+                        <i class="fa-solid fa-lock"></i> Locked
+                    </div>
+                </div>
+                
+                <div class="tour-step animated-step" data-step="6" onclick="startTourStep(6)">
+                    <div class="step-icon">
+                        <i class="fa-solid fa-file-contract"></i>
+                    </div>
+                    <div class="tour-step-number">6</div>
+                    <div class="tour-step-title">Reporting</div>
+                    <div class="step-description">Document findings and provide recommendations</div>
+                    <div class="step-status" id="step-6-status">
+                        <i class="fa-solid fa-lock"></i> Locked
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tour-controls">
+                <button class="tour-control-btn" onclick="resetTour()">
+                    <i class="fa-solid fa-refresh"></i> Reset Tour
+                </button>
+                <button class="tour-control-btn" onclick="startGuidedTour()">
+                    <i class="fa-solid fa-route"></i> Start Guided Tour
+                </button>
+                <button class="tour-control-btn" onclick="skipToStep(6)">
+                    <i class="fa-solid fa-forward"></i> Skip to End
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Risk Matrix -->
+    <section id="risk-matrix" class="risk-matrix-section">
+        <div class="container">
+            <h2 class="section-title">AI Security Risk Matrix</h2>
+            <p style="text-align: center; font-size: 1.2rem; opacity: 0.9; margin-bottom: 50px;">
+                Interactive risk assessment tool for AI systems with advanced scoring capabilities
+            </p>
+            
+            <div class="risk-matrix-container">
+                <div class="risk-controls">
+                    <button class="risk-control-btn active" onclick="setRiskView('matrix')">Risk Matrix</button>
+                    <button class="risk-control-btn" onclick="setRiskView('calculator')">Risk Calculator</button>
+                    <button class="risk-control-btn" onclick="setRiskView('scenarios')">Risk Scenarios</button>
+                </div>
+
+                <div id="risk-matrix-view">
+                    <div class="risk-grid">
+                        <div class="risk-header">Impact →<br>Likelihood ↓</div>
+                        <div class="risk-header">Very Low<br>(1)</div>
+                        <div class="risk-header">Low<br>(2)</div>
+                        <div class="risk-header">Medium<br>(3)</div>
+                        <div class="risk-header">High<br>(4)</div>
+                        <div class="risk-header">Very High<br>(5)</div>
+                        
+                        <div class="risk-header">Very High (5)</div>
+                        <div class="risk-cell medium" onclick="showRiskDetails(5, 1, 'medium')" data-score="5">5</div>
+                        <div class="risk-cell high" onclick="showRiskDetails(5, 2, 'high')" data-score="10">10</div>
+                        <div class="risk-cell high" onclick="showRiskDetails(5, 3, 'high')" data-score="15">15</div>
+                        <div class="risk-cell critical" onclick="showRiskDetails(5, 4, 'critical')" data-score="20">20</div>
+                        <div class="risk-cell critical" onclick="showRiskDetails(5, 5, 'critical')" data-score="25">25</div>
+                        
+                        <div class="risk-header">High (4)</div>
+                        <div class="risk-cell low" onclick="showRiskDetails(4, 1, 'low')" data-score="4">4</div>
+                        <div class="risk-cell medium" onclick="showRiskDetails(4, 2, 'medium')" data-score="8">8</div>
+                        <div class="risk-cell high" onclick="showRiskDetails(4, 3, 'high')" data-score="12">12</div>
+                        <div class="risk-cell high" onclick="showRiskDetails(4, 4, 'high')" data-score="16">16</div>
+                        <div class="risk-cell critical" onclick="showRiskDetails(4, 5, 'critical')" data-score="20">20</div>
+                        
+                        <div class="risk-header">Medium (3)</div>
+                        <div class="risk-cell very-low" onclick="showRiskDetails(3, 1, 'very-low')" data-score="3">3</div>
+                        <div class="risk-cell low" onclick="showRiskDetails(3, 2, 'low')" data-score="6">6</div>
+                        <div class="risk-cell medium" onclick="showRiskDetails(3, 3, 'medium')" data-score="9">9</div>
+                        <div class="risk-cell high" onclick="showRiskDetails(3, 4, 'high')" data-score="12">12</div>
+                        <div class="risk-cell high" onclick="showRiskDetails(3, 5, 'high')" data-score="15">15</div>
+                        
+                        <div class="risk-header">Low (2)</div>
+                        <div class="risk-cell very-low" onclick="showRiskDetails(2, 1, 'very-low')" data-score="2">2</div>
+                        <div class="risk-cell very-low" onclick="showRiskDetails(2, 2, 'very-low')" data-score="4">4</div>
+                        <div class="risk-cell low" onclick="showRiskDetails(2, 3, 'low')" data-score="6">6</div>
+                        <div class="risk-cell medium" onclick="showRiskDetails(2, 4, 'medium')" data-score="8">8</div>
+                        <div class="risk-cell high" onclick="showRiskDetails(2, 5, 'high')" data-score="10">10</div>
+                        
+                        <div class="risk-header">Very Low (1)</div>
+                        <div class="risk-cell very-low" onclick="showRiskDetails(1, 1, 'very-low')" data-score="1">1</div>
+                        <div class="risk-cell very-low" onclick="showRiskDetails(1, 2, 'very-low')" data-score="2">2</div>
+                        <div class="risk-cell very-low" onclick="showRiskDetails(1, 3, 'very-low')" data-score="3">3</div>
+                        <div class="risk-cell low" onclick="showRiskDetails(1, 4, 'low')" data-score="4">4</div>
+                        <div class="risk-cell medium" onclick="showRiskDetails(1, 5, 'medium')" data-score="5">5</div>
+                    </div>
+                </div>
+
+                <div id="risk-calculator-view" style="display: none;">
+                    <div class="risk-calculator">
+                        <h3 style="text-align: center; margin-bottom: 30px; color: #8936de;">AI Risk Calculator</h3>
+                        
+                        <div class="calculator-row">
+                            <div class="calculator-input">
+                                <label for="threat-type">Threat Type:</label>
+                                <select id="threat-type" onchange="calculateRisk()">
+                                    <option value="">Select Threat Type</option>
+                                    <option value="adversarial">Adversarial Attack</option>
+                                    <option value="poisoning">Data Poisoning</option>
+                                    <option value="extraction">Model Extraction</option>
+                                    <option value="prompt-injection">Prompt Injection</option>
+                                    <option value="bias">Bias Exploitation</option>
+                                </select>
+                            </div>
+                            
+                            <div class="calculator-input">
+                                <label for="asset-criticality">Asset Criticality:</label>
+                                <select id="asset-criticality" onchange="calculateRisk()">
+                                    <option value="">Select Criticality</option>
+                                    <option value="1">Very Low</option>
+                                    <option value="2">Low</option>
+                                    <option value="3">Medium</option>
+                                    <option value="4">High</option>
+                                    <option value="5">Very High</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="calculator-row">
+                            <div class="calculator-input">
+                                <label for="likelihood-score">Likelihood:</label>
+                                <select id="likelihood-score" onchange="calculateRisk()">
+                                    <option value="">Select Likelihood</option>
+                                    <option value="1">Very Low (< 10%)</option>
+                                    <option value="2">Low (10-25%)</option>
+                                    <option value="3">Medium (25-50%)</option>
+                                    <option value="4">High (50-75%)</option>
+                                    <option value="5">Very High (> 75%)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="calculator-input">
+                                <label for="impact-score">Impact:</label>
+                                <select id="impact-score" onchange="calculateRisk()">
+                                    <option value="">Select Impact</option>
+                                    <option value="1">Very Low (< $10K)</option>
+                                    <option value="2">Low ($10K-$100K)</option>
+                                    <option value="3">Medium ($100K-$1M)</option>
+                                    <option value="4">High ($1M-$10M)</option>
+                                    <option value="5">Very High (> $10M)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div id="risk-result" class="risk-result" style="display: none;">
+                            <div class="risk-score" id="calculated-score">-</div>
+                            <div id="risk-level">Risk Level</div>
+                            <div id="risk-recommendations" style="margin-top: 15px; text-align: left;">
+                                <h4>Recommended Actions:</h4>
+                                <ul id="recommendations-list"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="risk-scenarios-view" style="display: none;">
+                    <div class="risk-scenarios">
+                        <h3 style="text-align: center; margin-bottom: 30px; color: #8936de;">AI Security Risk Scenarios</h3>
+                        
+                        <div class="scenario-grid">
+                            <div class="scenario-card" onclick="showScenarioDetails('adversarial')">
+                                <div class="scenario-icon">
+                                    <i class="fa-solid fa-shield-halved"></i>
+                                </div>
+                                <h4>Adversarial Attacks</h4>
+                                <p>Carefully crafted inputs designed to fool AI models</p>
+                                <div class="scenario-risk-level critical">Critical Risk</div>
+                            </div>
+                            
+                            <div class="scenario-card" onclick="showScenarioDetails('poisoning')">
+                                <div class="scenario-icon">
+                                    <i class="fa-solid fa-biohazard"></i>
+                                </div>
+                                <h4>Data Poisoning</h4>
+                                <p>Malicious data injection during training or inference</p>
+                                <div class="scenario-risk-level high">High Risk</div>
+                            </div>
+                            
+                            <div class="scenario-card" onclick="showScenarioDetails('extraction')">
+                                <div class="scenario-icon">
+                                    <i class="fa-solid fa-download"></i>
+                                </div>
+                                <h4>Model Extraction</h4>
+                                <p>Unauthorized copying or reverse engineering of AI models</p>
+                                <div class="scenario-risk-level high">High Risk</div>
+                            </div>
+                            
+                            <div class="scenario-card" onclick="showScenarioDetails('prompt')">
+                                <div class="scenario-icon">
+                                    <i class="fa-solid fa-terminal"></i>
+                                </div>
+                                <h4>Prompt Injection</h4>
+                                <p>Manipulating LLM behavior through crafted prompts</p>
+                                <div class="scenario-risk-level medium">Medium Risk</div>
+                            </div>
+                            
+                            <div class="scenario-card" onclick="showScenarioDetails('privacy')">
+                                <div class="scenario-icon">
+                                    <i class="fa-solid fa-eye-slash"></i>
+                                </div>
+                                <h4>Privacy Leakage</h4>
+                                <p>Unintended exposure of sensitive training data</p>
+                                <div class="scenario-risk-level high">High Risk</div>
+                            </div>
+                            
+                            <div class="scenario-card" onclick="showScenarioDetails('bias')">
+                                <div class="scenario-icon">
+                                    <i class="fa-solid fa-balance-scale"></i>
+                                </div>
+                                <h4>Bias Exploitation</h4>
+                                <p>Leveraging algorithmic bias for malicious purposes</p>
+                                <div class="scenario-risk-level medium">Medium Risk</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Security Architecture -->
+    <section id="architecture" class="architecture-section">
+    <div class="container">
+        <h2 class="section-title">AI Security Architecture</h2>
+        <p style="text-align: center; font-size: 1.2rem; opacity: 0.9; margin-bottom: 30px;">
+            Interactive visual representation of AI security framework architecture with component details
+        </p>
+        
+        <!-- Move Interactive Component Analysis before the diagram -->
+        <div class="architecture-info">
+            <h3><i class="fa-solid fa-diagram-project"></i> Interactive Component Analysis</h3>
+            <p>Click on any architectural component to explore detailed security considerations and potential vulnerabilities. Each layer represents critical security checkpoints in the AI system architecture.</p>
+            
+            <div class="architecture-instructions">
+                <div class="instruction-item">
+                    <i class="fa-solid fa-mouse"></i>
+                    <span><strong>Click Components:</strong> View detailed security analysis for each component</span>
+                </div>
+                <div class="instruction-item">
+                    <i class="fa-solid fa-eye"></i>
+                    <span><strong>Hover Layers:</strong> Highlight related architectural elements</span>
+                </div>
+                <div class="instruction-item">
+                    <i class="fa-solid fa-shield-alt"></i>
+                    <span><strong>Security Focus:</strong> Each component represents potential attack surfaces</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="architecture-container">
+            <!-- Architecture Diagram with Frame -->
+            <div class="architecture-diagram-frame">
+                <div class="custom-architecture-diagram">
+                    <!-- User Interface Layer -->
+                    <div class="architecture-layer user-layer" data-layer="user">
+                        <div class="layer-header">
+                            <div class="layer-title">User Interface Layer</div>
+                            <div class="layer-description">External access points and client applications</div>
+                        </div>
+                        <div class="layer-components">
+                            <div class="component-box" data-component="web-app">
+                                <i class="fa-solid fa-globe"></i>
+                                <span>Web Application</span>
+                            </div>
+                            <div class="component-box" data-component="mobile-app">
+                                <i class="fa-solid fa-mobile-screen"></i>
+                                <span>Mobile App</span>
+                            </div>
+                            <div class="component-box" data-component="api-client">
+                                <i class="fa-solid fa-code"></i>
+                                <span>API Client</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Horizontal Flow Arrow -->
+                    <div class="flow-arrows horizontal">
+                        <div class="arrow-right">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                    </div>
+
+                    <!-- Application Layer -->
+                    <div class="architecture-layer app-layer" data-layer="application">
+                        <div class="layer-header">
+                            <div class="layer-title">Application Layer</div>
+                            <div class="layer-description">Business logic, input/output handling, and plugin management</div>
+                        </div>
+                        <div class="layer-components">
+                            <div class="component-box" data-component="agent-mgmt">
+                                <i class="fa-solid fa-puzzle-piece"></i>
+                                <span>Agent/Plugin Management</span>
+                            </div>
+                            <div class="component-box" data-component="input-handling">
+                                <i class="fa-solid fa-arrow-down"></i>
+                                <span>Input Handling</span>
+                            </div>
+                            <div class="component-box" data-component="output-handling">
+                                <i class="fa-solid fa-arrow-up"></i>
+                                <span>Output Handling</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Horizontal Flow Arrow -->
+                    <div class="flow-arrows horizontal">
+                        <div class="arrow-right">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                    </div>
+
+                    <!-- Model Layer -->
+                    <div class="architecture-layer model-layer" data-layer="model">
+                        <div class="layer-header">
+                            <div class="layer-title">Model Layer</div>
+                            <div class="layer-description">AI model storage, serving, training, and evaluation infrastructure</div>
+                        </div>
+                        <div class="layer-components">
+                            <div class="component-box" data-component="model-storage">
+                                <i class="fa-solid fa-database"></i>
+                                <span>Model Storage Infrastructure</span>
+                            </div>
+                            <div class="component-box" data-component="model-serving">
+                                <i class="fa-solid fa-server"></i>
+                                <span>Model Serving Infrastructure</span>
+                            </div>
+                            <div class="component-box" data-component="training">
+                                <i class="fa-solid fa-brain"></i>
+                                <span>Training & Tuning</span>
+                            </div>
+                            <div class="component-box" data-component="frameworks">
+                                <i class="fa-solid fa-layer-group"></i>
+                                <span>Model Frameworks & Code</span>
+                            </div>
+                            <div class="component-box" data-component="evaluation">
+                                <i class="fa-solid fa-chart-line"></i>
+                                <span>Evaluation</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Horizontal Flow Arrow -->
+                    <div class="flow-arrows horizontal">
+                        <div class="arrow-right">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                    </div>
+
+                    <!-- Infrastructure Layer -->
+                    <div class="architecture-layer infra-layer" data-layer="infrastructure">
+                        <div class="layer-header">
+                            <div class="layer-title">Infrastructure Layer</div>
+                            <div class="layer-description">Data storage, processing, and filtering systems</div>
+                        </div>
+                        <div class="layer-components">
+                            <div class="component-box" data-component="data-storage">
+                                <i class="fa-solid fa-hard-drive"></i>
+                                <span>Data Storage Infrastructure</span>
+                            </div>
+                            <div class="component-box" data-component="training-data">
+                                <i class="fa-solid fa-table"></i>
+                                <span>Training Data</span>
+                            </div>
+                            <div class="component-box" data-component="data-processing">
+                                <i class="fa-solid fa-filter"></i>
+                                <span>Data Filtering & Processing</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Horizontal Flow Arrow -->
+                    <div class="flow-arrows horizontal">
+                        <div class="arrow-right">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                    </div>
+
+                    <!-- Data Sources Layer -->
+                    <div class="architecture-layer data-layer" data-layer="data">
+                        <div class="layer-header">
+                            <div class="layer-title">Data Sources</div>
+                            <div class="layer-description">External data providers and input sources</div>
+                        </div>
+                        <div class="layer-components">
+                            <div class="component-box" data-component="external-sources">
+                                <i class="fa-solid fa-cloud"></i>
+                                <span>External Sources</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <section id="checklist" class="checklist-section">
+    <div class="container">
+        <h2 class="section-title">AI Security Assessment Checklist</h2>
+        <p style="text-align: center; font-size: 1.2rem; opacity: 0.9; margin-bottom: 50px;">
+            Comprehensive checklist for conducting AI security assessments
+        </p>
+        <div class="checklist-container">
+            <div class="checklist-phases" id="checklist-phases">
+                <!-- Checklist phases will be populated by JavaScript -->
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <button class="cta-button" onclick="resetChecklist()">Reset Checklist</button>
+                <button class="cta-button" onclick="exportChecklist()" style="margin-left: 20px;">Export Progress</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Methodology Downloads -->
+<section style="padding: 100px 0; background: #f8f9fa;">
+    <div class="container">
+        <h2 class="section-title">Framework Resources</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px;">
+            <div class="resource-card" style="background: #ffffff; border: 1px solid #e9ecef; border-radius: 15px; padding: 30px; text-align: center; transition: all 0.3s ease; cursor: pointer; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" onclick="openModal('methodology-guide')">
+                <h3 style="color: #8936de; margin-bottom: 15px;">
+                    <i class="fa-solid fa-file-lines"></i> Methodology Guide
+                </h3>
+                <p style="color: #555555; opacity: 0.9; margin-bottom: 20px;">
+                    Complete AI security assessment methodology with checklists and templates
+                </p>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+                    <a href="AI Security Methodology Document.pdf" download="AI_Security_Methodology_Guide.pdf" class="resource-btn primary-btn">
+                        <i class="fa-solid fa-download"></i> Download Guide
+                    </a>
+                    <button class="resource-btn secondary-btn" onclick="event.stopPropagation(); openModal('methodology-guide');">
+                        <i class="fa-solid fa-eye"></i> View Guide
+                    </button>
+                    <button class="resource-btn secondary-btn" onclick="event.stopPropagation(); openModal('playbook-example');">
+                        <i class="fa-solid fa-clipboard-list"></i> Playbook Example
+                    </button>
+                    <button class="resource-btn secondary-btn" onclick="event.stopPropagation(); window.open('docs/methodology/', '_blank');">
+                        <i class="fa-solid fa-book-open"></i> Online Docs
+                    </button>
+                </div>
+            </div>
+            
+            <div class="resource-card" style="background: #ffffff; border: 1px solid #e9ecef; border-radius: 15px; padding: 30px; text-align: center; transition: all 0.3s ease; cursor: pointer; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" onclick="openModal('testing-tools')">
+                <h3 style="color: #8936de; margin-bottom: 15px;">
+                    <i class="fa-solid fa-wrench"></i> Testing Tools
+                </h3>
+                <p style="color: #555555; opacity: 0.9; margin-bottom: 20px;">
+                    Automated tools and scripts for AI security testing and validation
+                </p>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+                    <a href="https://github.com/Regine12/AISec-pentester.git" target="_blank" class="resource-btn primary-btn">
+                        <i class="fa-brands fa-github"></i> GitHub Repo
+                    </a>
+                    <button class="resource-btn secondary-btn" onclick="event.stopPropagation(); openModal('testing-tools');">
+                        <i class="fa-solid fa-eye"></i> View Tools
+                    </button>
+                    <button class="resource-btn secondary-btn" onclick="event.stopPropagation(); showToolsDemo();">
+                        <i class="fa-solid fa-play"></i> Demo
+                    </button>
+                    <button class="resource-btn secondary-btn" onclick="event.stopPropagation(); downloadTools();">
+                        <i class="fa-solid fa-download"></i> Download
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 AI Security Framework. Built for comprehensive AI security assessment.</p>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>    
+
+    <script src="main.js"></script>
+
+   <!-- Modal content for 'methodology-guide' -->
+<div id="methodology-guide-content" style="display:none;">
+    <h2><i class="fa-solid fa-file-lines"></i> AI Security Methodology Guide</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 30px 0;">
+        <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
+            <h4 style="color: #8936de; margin-bottom: 10px;">
+                <i class="fa-solid fa-map"></i> Framework Overview
+            </h4>
+            <p style="font-size: 0.9rem; opacity: 0.9;">Comprehensive AI security assessment methodology integrating MITRE ATLAS, OWASP LLM Top 10, and industry best practices.</p>
+        </div>
+        <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
+            <h4 style="color: #8936de; margin-bottom: 10px;">
+                <i class="fa-solid fa-list-check"></i> Assessment Checklists
+            </h4>
+            <p style="font-size: 0.9rem; opacity: 0.9;">Detailed checklists for each assessment phase with MITRE ATLAS technique mapping and validation criteria.</p>
+        </div>
+        <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
+            <h4 style="color: #8936de; margin-bottom: 10px;">
+                <i class="fa-solid fa-chart-line"></i> Risk Assessment
+            </h4>
+            <p style="font-size: 0.9rem; opacity: 0.9;">Risk scoring algorithms and matrices aligned with ATLAS threat landscape and business impact analysis.</p>
+        </div>
+    </div>
+    <h3 style="margin: 30px 0 20px 0;">Document Sections:</h3>
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
+        <div style="display: flex; align-items: center; padding: 10px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+            <i class="fa-solid fa-circle-dot" style="color: #8936de; margin-right: 10px;"></i>
+            <span>Phase 1: Preparation and Scoping</span>
+        </div>
+        <div style="display: flex; align-items: center; padding: 10px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+            <i class="fa-solid fa-circle-dot" style="color: #8936de; margin-right: 10px;"></i>
+            <span>Phase 2: Asset Identification</span>
+        </div>
+        <div style="display: flex; align-items: center; padding: 10px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+            <i class="fa-solid fa-circle-dot" style="color: #8936de; margin-right: 10px;"></i>
+            <span>Phase 3: Threat Modeling</span>
+        </div>
+        <div style="display: flex; align-items: center; padding: 10px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+            <i class="fa-solid fa-circle-dot" style="color: #8936de; margin-right: 10px;"></i>
+            <span>Phase 4: Vulnerability Assessment</span>
+        </div>
+        <div style="display: flex; align-items: center; padding: 10px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+            <i class="fa-solid fa-circle-dot" style="color: #8936de; margin-right: 10px;"></i>
+            <span>Phase 5: Penetration Testing</span>
+        </div>
+        <div style="display: flex; align-items: center; padding: 10px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+            <i class="fa-solid fa-circle-dot" style="color: #8936de; margin-right: 10px;"></i>
+            <span>Phase 6: Reporting & Remediation</span>
+        </div>
+    </div>
+    <h3 style="margin: 30px 0 20px 0;">Framework Integration:</h3>
+    <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 30px;">
+        <div style="background: linear-gradient(45deg, #ff6b6b, #ff8e8e); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem;">
+            <i class="fa-solid fa-shield"></i> MITRE ATLAS
+        </div>
+        <div style="background: linear-gradient(45deg, #8936de, #00f2fe); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem;">
+            <i class="fa-solid fa-bug"></i> OWASP LLM Top 10
+        </div>
+        <div style="background: linear-gradient(45deg, #ffeb3b, #ffc107); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem;">
+            <i class="fa-solid fa-cog"></i> NIST AI RMF
+        </div>
+        <div style="background: linear-gradient(45deg, #4caf50, #8bc34a); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem;">
+            <i class="fa-solid fa-cloud"></i> CSA AI Controls
+        </div>
+    </div>
+    <div style="text-align: center; margin-top: 30px;">
+        <a href="AI Security Methodology Document.pdf" target="_blank" 
+           style="background: linear-gradient(45deg, #8936de, #17a2b8); color: white; padding: 12px 30px; border-radius: 25px; text-decoration: none; display: inline-block; margin: 10px;">
+            <i class="fa-solid fa-download"></i> Download Full Guide (PDF)
+        </a>
+        <button onclick="window.open('docs/methodology/', '_blank')" 
+                style="background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); padding: 12px 30px; border-radius: 25px; cursor: pointer; margin: 10px;">
+            <i class="fa-solid fa-book-open"></i> View Online Documentation
+        </button>
+    </div>
+</div>
+
+<!-- Modal content for 'playbook-example' -->
+<div id="playbook-example-content" style="display:none;">
+    <h2><i class="fa-solid fa-clipboard-list"></i> AI Security Assessment Playbook Example</h2>
+    <div style="max-width: 800px; margin: 0 auto;">
+        
+        <div style="background: rgba(137, 54, 222, 0.1); border-left: 4px solid #8936de; padding: 20px; margin: 20px 0; border-radius: 10px;">
+            <h3><i class="fa-solid fa-target"></i> Target System: Large Language Model API Service</h3>
+            <p><strong>Scope:</strong> Cloud-based LLM service with REST API endpoints, user authentication, and data processing capabilities</p>
+            <p><strong>Timeline:</strong> 2-week comprehensive security assessment</p>
+            <p><strong>Team:</strong> 3 security specialists (AI Security, Network Security, Application Security)</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 30px 0;">
+            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px;">
+                <h4 style="color: #8936de; margin-bottom: 15px;"><i class="fa-solid fa-calendar-alt"></i> Phase 1: Reconnaissance (Days 1-2)</h4>
+                <ul style="margin-left: 15px;">
+                    <li><strong>OSINT Collection:</strong> Public API documentation, GitHub repositories, tech stack identification</li>
+                    <li><strong>Attack Surface Mapping:</strong> Identify all endpoints, authentication mechanisms, data flows</li>
+                    <li><strong>Threat Modeling:</strong> Apply MITRE ATLAS framework to identify potential attack vectors</li>
+                </ul>
+                <div style="background: rgba(23, 162, 184, 0.2); padding: 10px; border-radius: 8px; margin-top: 10px;">
+                    <strong>Tools:</strong> Nmap, Burp Suite, Custom OSINT scripts
+                </div>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px;">
+                <h4 style="color: #8936de; margin-bottom: 15px;"><i class="fa-solid fa-shield-alt"></i> Phase 2: Input Validation Testing (Days 3-5)</h4>
+                <ul style="margin-left: 15px;">
+                    <li><strong>Prompt Injection:</strong> Test for direct and indirect prompt injection vulnerabilities</li>
+                    <li><strong>Input Sanitization:</strong> Evaluate filtering and validation mechanisms</li>
+                    <li><strong>Context Manipulation:</strong> Assess system prompt protection and context boundaries</li>
+                </ul>
+                <div style="background: rgba(23, 162, 184, 0.2); padding: 10px; border-radius: 8px; margin-top: 10px;">
+                    <strong>Tools:</strong> Custom prompt injection payloads, Automated fuzzing tools
+                </div>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px;">
+                <h4 style="color: #8936de; margin-bottom: 15px;"><i class="fa-solid fa-database"></i> Phase 3: Data Security Assessment (Days 6-8)</h4>
+                <ul style="margin-left: 15px;">
+                    <li><strong>Training Data Inference:</strong> Attempt to extract training data through model queries</li>
+                    <li><strong>PII Leakage:</strong> Test for personal information exposure in model responses</li>
+                    <li><strong>Data Storage Security:</strong> Evaluate encryption, access controls, and backup security</li>
+                </ul>
+                <div style="background: rgba(23, 162, 184, 0.2); padding: 10px; border-radius: 8px; margin-top: 10px;">
+                    <strong>Tools:</strong> Model inversion scripts, PII detection tools, Database security scanners
+                </div>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px;">
+                <h4 style="color: #8936de; margin-bottom: 15px;"><i class="fa-solid fa-brain"></i> Phase 4: Model Security Testing (Days 9-11)</h4>
+                <ul style="margin-left: 15px;">
+                    <li><strong>Model Extraction:</strong> Attempt to reverse-engineer model architecture and parameters</li>
+                    <li><strong>Adversarial Attacks:</strong> Generate adversarial inputs to test model robustness</li>
+                    <li><strong>Bias and Fairness:</strong> Evaluate model outputs for discriminatory patterns</li>
+                </ul>
+                <div style="background: rgba(23, 162, 184, 0.2); padding: 10px; border-radius: 8px; margin-top: 10px;">
+                    <strong>Tools:</strong> Adversarial ML libraries, Model extraction frameworks, Bias detection tools
+                </div>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px;">
+                <h4 style="color: #8936de; margin-bottom: 15px;"><i class="fa-solid fa-network-wired"></i> Phase 5: Infrastructure Security (Days 12-13)</h4>
+                <ul style="margin-left: 15px;">
+                    <li><strong>API Security:</strong> Authentication bypass, rate limiting, and authorization flaws</li>
+                    <li><strong>Container Security:</strong> Docker/Kubernetes misconfigurations and vulnerabilities</li>
+                    <li><strong>Network Security:</strong> TLS configuration, certificate validation, network segmentation</li>
+                </ul>
+                <div style="background: rgba(23, 162, 184, 0.2); padding: 10px; border-radius: 8px; margin-top: 10px;">
+                    <strong>Tools:</strong> SSLyze, Docker security scanners, Kubernetes security tools
+                </div>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px;">
+                <h4 style="color: #8936de; margin-bottom: 15px;"><i class="fa-solid fa-file-alt"></i> Phase 6: Reporting & Remediation (Day 14)</h4>
+                <ul style="margin-left: 15px;">
+                    <li><strong>Vulnerability Classification:</strong> CVSS scoring, MITRE ATLAS TTPs mapping</li>
+                    <li><strong>Risk Assessment:</strong> Business impact analysis and remediation prioritization</li>
+                    <li><strong>Recommendations:</strong> Specific technical and procedural security improvements</li>
+                </ul>
+                <div style="background: rgba(23, 162, 184, 0.2); padding: 10px; border-radius: 8px; margin-top: 10px;">
+                    <strong>Deliverables:</strong> Executive summary, Technical report, Remediation roadmap
+                </div>
+            </div>
+        </div>
+
+        <div style="background: rgba(137, 54, 222, 0.1); border: 2px solid #8936de; padding: 25px; margin: 30px 0; border-radius: 15px;">
+            <h3 style="color: #8936de; margin-bottom: 15px;"><i class="fa-solid fa-exclamation-triangle"></i> Key Findings Example</h3>
+            <div style="margin-bottom: 15px;">
+                <h4 style="color: #ff6b6b;">Critical: Prompt Injection Vulnerability (CVSS 9.1)</h4>
+                <p><strong>Description:</strong> System prompt can be overridden through indirect injection via user-uploaded documents, allowing attackers to manipulate AI behavior and extract sensitive information.</p>
+                <p><strong>Recommendation:</strong> Implement robust input sanitization, context isolation, and output filtering mechanisms.</p>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <h4 style="color: #ffa500;">High: Training Data Inference (CVSS 7.8)</h4>
+                <p><strong>Description:</strong> Model responses contain verbatim training data, potentially exposing proprietary information and personal data.</p>
+                <p><strong>Recommendation:</strong> Apply differential privacy techniques and implement data anonymization in training pipelines.</p>
+            </div>
+            <div>
+                <h4 style="color: #ffeb3b;">Medium: Insufficient Rate Limiting (CVSS 5.3)</h4>
+                <p><strong>Description:</strong> API endpoints lack proper rate limiting, enabling resource exhaustion and potential DoS attacks.</p>
+                <p><strong>Recommendation:</strong> Implement tiered rate limiting based on user authentication levels and request complexity.</p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <p style="font-size: 0.9rem; opacity: 0.8;">This playbook follows industry standards including MITRE ATLAS, OWASP LLM Top 10, and NIST AI RMF guidelines.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Modal content for 'testing-tools' -->
+<div id="testing-tools-content" style="display:none;">
+    <h2><i class="fa-solid fa-wrench"></i> AI Security Testing Tools</h2>
+    <div style="background: rgba(79, 172, 254, 0.1); padding: 20px; border-radius: 15px; border-left: 4px solid #8936de; margin: 20px 0;">
+        <h4 style="color: #8936de; margin-bottom: 10px;">
+            <i class="fa-solid fa-info-circle"></i> MITRE ATLAS Integration
+        </h4>
+        <p style="margin: 0; opacity: 0.9;">Our testing tools implement MITRE ATLAS techniques and tactics for comprehensive AI security assessment with automated SAST/DAST capabilities.</p>
+    </div>
+    <h3 style="margin: 30px 0 20px 0;">Available Tools:</h3>
+    <div style="display: grid; gap: 20px;">
+        <div style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
+            <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                <i class="fa-solid fa-robot" style="color: #8936de; font-size: 1.5rem; margin-right: 15px;"></i>
+                <h4 style="color: #8936de; margin: 0;">AI Model Security Scanner</h4>
+            </div>
+            <p style="opacity: 0.9; margin-bottom: 15px;">Automated vulnerability assessment for ML models including adversarial robustness testing and model extraction detection.</p>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <span style="background: rgba(255, 107, 107, 0.2); padding: 4px 12px; border-radius: 15px; font-size: 0.8rem;">
+                    <i class="fa-solid fa-shield-virus"></i> Adversarial Testing
+                </span>
+                <span style="background: rgba(255, 193, 7, 0.2); padding: 4px 12px; border-radius: 15px; font-size: 0.8rem;">
+                    <i class="fa-solid fa-eye"></i> Model Extraction
+                </span>
+                <span style="background: rgba(76, 175, 80, 0.2); padding: 4px 12px; border-radius: 15px; font-size: 0.8rem;">
+                    <i class="fa-solid fa-lock"></i> Privacy Attacks
+                </span>
+            </div>
+        </div>
+        <div style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
+            <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                <i class="fa-solid fa-database" style="color: #8936de; font-size: 1.5rem; margin-right: 15px;"></i>
+                <h4 style="color: #8936de; margin: 0;">Data Pipeline Security Analyzer</h4>
+            </div>
+            <p style="opacity: 0.9; margin-bottom: 15px;">Comprehensive analysis of data ingestion, processing, and storage security with poisoning attack detection.</p>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <span style="background: rgba(255, 87, 34, 0.2); padding: 4px 12px; border-radius: 15px; font-size: 0.8rem;">
+                    <i class="fa-solid fa-biohazard"></i> Data Poisoning
+                </span>
+                <span style="background: rgba(156, 39, 176, 0.2); padding: 4px 12px; border-radius: 15px; font-size: 0.8rem;">
+                    <i class="fa-solid fa-filter"></i> Input Validation
+                </span>
+                <span style="background: rgba(3, 169, 244, 0.2); padding: 4px 12px; border-radius: 15px; font-size: 0.8rem;">
+                    <i class="fa-solid fa-stream"></i> Pipeline Security
+                </span>
+            </div>
+        </div>
+        <div style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
+            <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                <i class="fa-solid fa-comments" style="color: #8936de; font-size: 1.5rem; margin-right: 15px;"></i>
+                <h4 style="color: #8936de; margin: 0;">LLM Security Tester</h4>
+            </div>
+            <p style="opacity: 0.9; margin-bottom: 15px;">Specialized testing for Large Language Models including prompt injection, jailbreaking, and output manipulation detection.</p>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <span style="background: rgba(233, 30, 99, 0.2); padding: 4px 12px; border-radius: 15px; font-size: 0.8rem;">
+                    <i class="fa-solid fa-terminal"></i> Prompt Injection
+                </span>
+                <span style="background: rgba(255, 152, 0, 0.2); padding: 4px 12px; border-radius: 15px; font-size: 0.8rem;">
+                    <i class="fa-solid fa-unlock"></i> Jailbreaking
+                </span>
+                <span style="background: rgba(121, 85, 72, 0.2); padding: 4px 12px; border-radius: 15px; font-size: 0.8rem;">
+                    <i class="fa-solid fa-edit"></i> Output Manipulation
+                </span>
+            </div>
+        </div>
+        <div style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
+            <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                <i class="fa-solid fa-network-wired" style="color: #8936de; font-size: 1.5rem; margin-right: 15px;"></i>
+                <h4 style="color: #8936de; margin: 0;">API Security Scanner</h4>
+            </div>
+            <p style="opacity: 0.9; margin-bottom: 15px;">Automated API security testing for AI service endpoints including authentication bypass and injection attacks.</p>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <span style="background: rgba(63, 81, 181, 0.2); padding: 4px 12px; border-radius: 15px; font-size: 0.8rem;">
+                    <i class="fa-solid fa-key"></i> Auth Testing
+                </span>
+                <span style="background: rgba(139, 195, 74, 0.2); padding: 4px 12px; border-radius: 15px; font-size: 0.8rem;">
+                    <i class="fa-solid fa-syringe"></i> Injection Tests
+                </span>
+                <span style="background: rgba(255, 193, 7, 0.2); padding: 4px 12px; border-radius: 15px; font-size: 0.8rem;">
+                    <i class="fa-solid fa-tachometer-alt"></i> Rate Limiting
+                </span>
+            </div>
+        </div>
+    </div>
+    <h3 style="margin: 30px 0 20px 0;">MITRE ATLAS Technique Coverage:</h3>
+    <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 15px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+            <div style="text-align: center; padding: 15px;">
+                <i class="fa-solid fa-crosshairs" style="color: #ff6b6b; font-size: 2rem; margin-bottom: 10px;"></i>
+                <h5 style="color: #ff6b6b; margin: 0;">Initial Access</h5>
+                <p style="font-size: 0.8rem; opacity: 0.8; margin: 5px 0;">ML Supply Chain Compromise</p>
+            </div>
+            <div style="text-align: center; padding: 15px;">
+                <i class="fa-solid fa-cogs" style="color: #ffeb3b; font-size: 2rem; margin-bottom: 10px;"></i>
+                <h5 style="color: #ffeb3b; margin: 0;">Execution</h5>
+                <p style="font-size: 0.8rem; opacity: 0.8; margin: 5px 0;">Serverless Execution</p>
+            </div>
+            <div style="text-align: center; padding: 15px;">
+                <i class="fa-solid fa-user-ninja" style="color: #4caf50; font-size: 2rem; margin-bottom: 10px;"></i>
+                <h5 style="color: #4caf50; margin: 0;">Defense Evasion</h5>
+                <p style="font-size: 0.8rem; opacity: 0.8; margin: 5px 0;">Adversarial Perturbations</p>
+            </div>
+            <div style="text-align: center; padding: 15px;">
+                <i class="fa-solid fa-eye" style="color: #2196f3; font-size: 2rem; margin-bottom: 10px;"></i>
+                <h5 style="color: #2196f3; margin: 0;">Discovery</h5>
+                <p style="font-size: 0.8rem; opacity: 0.8; margin: 5px 0;">ML Artifact Enumeration</p>
+            </div>
+        </div>
+    </div>
+    <div style="text-align: center; margin-top: 30px;">
+        <a href="https://github.com/Regine12/AISec-pentester.git" target="_blank" 
+           style="background: linear-gradient(45deg, #8936de, #00f2fe); color: white; padding: 12px 30px; border-radius: 25px; text-decoration: none; display: inline-block; margin: 10px;">
+            <i class="fa-brands fa-github"></i> Visit GitHub Repository
+        </a>
+        <button onclick="showToolsDemo()" 
+                style="background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); padding: 12px 30px; border-radius: 25px; cursor: pointer; margin: 10px;">
+            <i class="fa-solid fa-play"></i> View Demo
+        </button>
+        <button onclick="downloadTools()" 
+                style="background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); padding: 12px 30px; border-radius: 25px; cursor: pointer; margin: 10px;">
+            <i class="fa-solid fa-download"></i> Download Tools
+        </button>
+    </div>
+    <div style="background: rgba(255, 193, 7, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #ffc107; margin-top: 30px;">
+        <p style="margin: 0; font-size: 0.9rem;">
+            <i class="fa-solid fa-exclamation-triangle" style="color: #ffc107; margin-right: 8px;"></i>
+            <strong>Note:</strong> These tools are designed for authorized security testing only. Ensure proper authorization before testing any AI systems.
+        </p>
+    </div>
+</div>
+    
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "files.associations": {
+    "*.html": "html",
+    "*.css": "css",
+    "*.js": "javascript"
+  },
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "live-server.settings.port": 3000,
+  "live-server.settings.host": "localhost",
+  "live-server.settings.root": "/public",
+  "css.validate": true,
+  "html.validate.styles": true,
+  "html.validate.scripts": true,
+  "javascript.validate.enable": true
+}
