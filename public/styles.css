@@ -1,3 +1,9 @@
+/*
+ * AI Security Framework Styles
+ * Mobile Responsive Update: July 25, 2025 - Version 2.0
+ * Mobile Navigation & Responsive Layout
+ */
+
 .framework-card h3 i {
   margin-right: 10px;
   color: #8936de;
@@ -133,6 +139,50 @@
             background: rgba(137, 54, 222, 0.1);
             color: #8936de;
             transform: translateY(-2px);
+        }
+
+        /* Mobile Navigation Toggle - High Priority */
+        .nav-toggle {
+            display: none !important;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+            background: transparent;
+            border: none;
+            outline: none;
+        }
+
+        .nav-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #8936de;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+            display: block;
+        }
+
+        .nav-toggle.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Ensure mobile toggle shows on mobile */
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: flex !important;
+                background: rgba(137, 54, 222, 0.1) !important;
+                border: 2px solid #8936de !important;
+                border-radius: 5px !important;
+            }
         }
 
         /* Hero Section */
@@ -981,12 +1031,12 @@
         }
 
         @media (max-width: 768px) {
-            /* Navigation */
-            .nav-toggle {
-                display: flex;
+            /* Navigation - Higher specificity */
+            .header .nav .nav-toggle {
+                display: flex !important;
             }
             
-            .nav-links {
+            .header .nav .nav-links {
                 position: absolute;
                 top: 100%;
                 left: 0;
@@ -1000,19 +1050,20 @@
                 transition: max-height 0.3s ease;
                 box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
                 border-radius: 0 0 15px 15px;
+                z-index: 999;
             }
             
-            .nav-links.active {
-                max-height: 400px;
+            .header .nav .nav-links.active {
+                max-height: 400px !important;
             }
             
-            .nav-links a {
+            .header .nav .nav-links a {
                 padding: 15px 20px;
                 border-radius: 0;
                 border-bottom: 1px solid rgba(137, 54, 222, 0.1);
             }
             
-            .nav-links a:last-child {
+            .header .nav .nav-links a:last-child {
                 border-bottom: none;
             }
 
