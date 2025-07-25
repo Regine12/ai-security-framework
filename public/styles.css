@@ -1932,3 +1932,57 @@
         height: 250px;
     }
 }
+
+/* CRITICAL: Mobile Navigation Fix - Highest Priority */
+@media (max-width: 768px) {
+    /* Ensure nav-links has id-based specificity */
+    nav #nav-links {
+        display: none !important;
+        position: absolute !important;
+        top: 100% !important;
+        left: 0 !important;
+        width: 100% !important;
+        background-color: #fff !important;
+        border-top: 1px solid #ddd !important;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
+        z-index: 9999 !important;
+        flex-direction: column !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
+    /* Show when active - highest specificity */
+    nav #nav-links.active {
+        display: flex !important;
+        animation: mobileSlideDown 0.3s ease;
+    }
+    
+    nav #nav-links.active li {
+        width: 100% !important;
+        border-bottom: 1px solid #eee !important;
+    }
+    
+    nav #nav-links.active li a {
+        display: block !important;
+        padding: 15px 20px !important;
+        color: #333 !important;
+        text-decoration: none !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    
+    nav #nav-links.active li a:hover {
+        background-color: #f5f5f5 !important;
+    }
+    
+    @keyframes mobileSlideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}

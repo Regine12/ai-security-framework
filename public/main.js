@@ -1,21 +1,28 @@
 
-        // Mobile Navigation Toggle
-        function toggleMobileNav() {
-            console.log('Mobile nav toggle clicked'); // Debug log
-            const navLinks = document.getElementById('nav-links');
-            const navToggle = document.querySelector('.nav-toggle');
-            
-            if (navLinks && navToggle) {
-                console.log('Elements found, toggling classes'); // Debug log
-                navLinks.classList.toggle('active');
-                navToggle.classList.toggle('active');
-                
-                // Force style check
-                console.log('Nav links has active class:', navLinks.classList.contains('active'));
-            } else {
-                console.error('Nav elements not found:', { navLinks, navToggle });
-            }
-        }
+// Global mobile navigation function
+function toggleMobileNav() {
+    console.log('Mobile nav toggle clicked'); // Debug log
+    const navLinks = document.getElementById('nav-links');
+    const navToggle = document.querySelector('.nav-toggle');
+    
+    if (navLinks && navToggle) {
+        console.log('Elements found, toggling classes'); // Debug log
+        navLinks.classList.toggle('active');
+        navToggle.classList.toggle('active');
+        
+        // Force style check
+        console.log('Nav links has active class:', navLinks.classList.contains('active'));
+        
+        // Additional debug - check computed styles
+        const computedStyle = window.getComputedStyle(navLinks);
+        console.log('Nav links display:', computedStyle.display);
+    } else {
+        console.error('Nav elements not found:', { navLinks, navToggle });
+    }
+}
+
+// Make sure function is available globally
+window.toggleMobileNav = toggleMobileNav;
 
         // Close mobile nav when clicking on a link
         document.addEventListener('DOMContentLoaded', function() {
@@ -81,12 +88,12 @@
                 'data-security': `
                     <h2>Data Security</h2>
                     <h3>Key Areas:</h3>
-                    <ul>
-                        <li><strong>Training Data Protection:</strong> Prevent data poisoning and ensure data integrity</li>
-                        <li><strong>Input Validation:</strong> Sanitize and validate all inputs to prevent injection attacks</li>
-                        <li><strong>Output Filtering:</strong> Prevent sensitive information leakage</li>
-                        <li><strong>Data Governance:</strong> Establish data classification and handling procedures</li>
-                    </ul>
+                    <div style="margin-bottom: 20px;">
+                        <p><strong>Training Data Protection:</strong> Prevent data poisoning and ensure data integrity</p>
+                        <p><strong>Input Validation:</strong> Sanitize and validate all inputs to prevent injection attacks</p>
+                        <p><strong>Output Filtering:</strong> Prevent sensitive information leakage</p>
+                        <p><strong>Data Governance:</strong> Establish data classification and handling procedures</p>
+                    </div>
                     <h3>Assessment Checklist:</h3>
                     <ul>
                         <li>✓ Data source authentication</li>
@@ -98,12 +105,12 @@
                 'model-security': `
                     <h2>Model Security</h2>
                     <h3>Key Areas:</h3>
-                    <ul>
-                        <li><strong>Model Extraction Protection:</strong> Prevent unauthorized model replication</li>
-                        <li><strong>Adversarial Robustness:</strong> Defend against adversarial examples</li>
-                        <li><strong>Model Inversion Prevention:</strong> Protect against training data reconstruction</li>
-                        <li><strong>Intellectual Property Protection:</strong> Secure model architecture and weights</li>
-                    </ul>
+                    <div style="margin-bottom: 20px;">
+                        <p><strong>Model Extraction Protection:</strong> Prevent unauthorized model replication</p>
+                        <p><strong>Adversarial Robustness:</strong> Defend against adversarial examples</p>
+                        <p><strong>Model Inversion Prevention:</strong> Protect against training data reconstruction</p>
+                        <p><strong>Intellectual Property Protection:</strong> Secure model architecture and weights</p>
+                    </div>
                     <h3>Assessment Checklist:</h3>
                     <ul>
                         <li>✓ Model access controls</li>
@@ -115,12 +122,12 @@
                 'deployment-security': `
                     <h2>Deployment Security</h2>
                     <h3>Key Areas:</h3>
-                    <ul>
-                        <li><strong>API Security:</strong> Secure API endpoints and authentication</li>
-                        <li><strong>Infrastructure Hardening:</strong> Secure deployment environment</li>
-                        <li><strong>Runtime Protection:</strong> Monitor and protect during execution</li>
-                        <li><strong>Scalability Security:</strong> Maintain security under load</li>
-                    </ul>
+                    <div style="margin-bottom: 20px;">
+                        <p><strong>API Security:</strong> Secure API endpoints and authentication</p>
+                        <p><strong>Infrastructure Hardening:</strong> Secure deployment environment</p>
+                        <p><strong>Runtime Protection:</strong> Monitor and protect during execution</p>
+                        <p><strong>Scalability Security:</strong> Maintain security under load</p>
+                    </div>
                     <h3>Assessment Checklist:</h3>
                     <ul>
                         <li>✓ API authentication and authorization</li>
@@ -207,12 +214,12 @@
                 'supply-chain': `
                     <h2>Supply Chain Security</h2>
                     <h3>Key Areas:</h3>
-                    <ul>
-                        <li><strong>Model Repository Security:</strong> Validate models from HuggingFace, GitHub, etc.</li>
-                        <li><strong>Dependency Analysis:</strong> Audit third-party libraries and frameworks</li>
-                        <li><strong>Pickle File Scanning:</strong> Detect malicious serialized objects</li>
-                        <li><strong>Provenance Tracking:</strong> Maintain model and data lineage</li>
-                    </ul>
+                    <div style="margin-bottom: 20px;">
+                        <p><strong>Model Repository Security:</strong> Validate models from HuggingFace, GitHub, etc.</p>
+                        <p><strong>Dependency Analysis:</strong> Audit third-party libraries and frameworks</p>
+                        <p><strong>Pickle File Scanning:</strong> Detect malicious serialized objects</p>
+                        <p><strong>Provenance Tracking:</strong> Maintain model and data lineage</p>
+                    </div>
                     <h3>Assessment Checklist:</h3>
                     <ul>
                         <li>✓ Model signature verification</li>
@@ -224,12 +231,12 @@
                 'governance': `
                     <h2>AI Governance</h2>
                     <h3>Key Areas:</h3>
-                    <ul>
-                        <li><strong>Policy Framework:</strong> Establish AI security policies and procedures</li>
-                        <li><strong>Compliance Mapping:</strong> Align with regulatory requirements</li>
-                        <li><strong>Risk Management:</strong> Implement AI-specific risk assessment</li>
-                        <li><strong>Ethics Integration:</strong> Ensure responsible AI development</li>
-                    </ul>
+                    <div style="margin-bottom: 20px;">
+                        <p><strong>Policy Framework:</strong> Establish AI security policies and procedures</p>
+                        <p><strong>Compliance Mapping:</strong> Align with regulatory requirements</p>
+                        <p><strong>Risk Management:</strong> Implement AI-specific risk assessment</p>
+                        <p><strong>Ethics Integration:</strong> Ensure responsible AI development</p>
+                    </div>
                     <h3>Assessment Checklist:</h3>
                     <ul>
                         <li>✓ AI security policy documentation</li>
@@ -241,12 +248,12 @@
                 'incident-response': `
                     <h2>Incident Response</h2>
                     <h3>Key Areas:</h3>
-                    <ul>
-                        <li><strong>AI-Specific Incidents:</strong> Model poisoning, adversarial attacks</li>
-                        <li><strong>Detection Capabilities:</strong> Anomaly detection and behavioral monitoring</li>
-                        <li><strong>Response Procedures:</strong> Incident classification and escalation</li>
-                        <li><strong>Recovery Planning:</strong> Model rollback and retraining procedures</li>
-                    </ul>
+                    <div style="margin-bottom: 20px;">
+                        <p><strong>AI-Specific Incidents:</strong> Model poisoning, adversarial attacks</p>
+                        <p><strong>Detection Capabilities:</strong> Anomaly detection and behavioral monitoring</p>
+                        <p><strong>Response Procedures:</strong> Incident classification and escalation</p>
+                        <p><strong>Recovery Planning:</strong> Model rollback and retraining procedures</p>
+                    </div>
                     <h3>Assessment Checklist:</h3>
                     <ul>
                         <li>✓ AI incident playbooks</li>
