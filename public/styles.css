@@ -175,13 +175,41 @@
             transform: rotate(45deg) translate(-5px, -6px);
         }
 
-        /* Ensure mobile toggle shows on mobile */
+        /* Alternative mobile navigation approach */
         @media (max-width: 768px) {
             .nav-toggle {
                 display: flex !important;
                 background: rgba(137, 54, 222, 0.1) !important;
                 border: 2px solid #8936de !important;
                 border-radius: 5px !important;
+            }
+            
+            .nav-links {
+                display: none !important;
+            }
+            
+            .nav-links.active {
+                display: flex !important;
+                position: absolute !important;
+                top: 100% !important;
+                left: 0 !important;
+                width: 100% !important;
+                background: white !important;
+                flex-direction: column !important;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
+                border-radius: 0 0 15px 15px !important;
+                z-index: 999 !important;
+                padding: 10px 0 !important;
+            }
+            
+            .nav-links.active a {
+                padding: 15px 20px !important;
+                border-bottom: 1px solid rgba(137, 54, 222, 0.1) !important;
+                margin: 0 !important;
+            }
+            
+            .nav-links.active a:last-child {
+                border-bottom: none !important;
             }
         }
 
@@ -1037,24 +1065,28 @@
             }
             
             .header .nav .nav-links {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: rgba(255, 255, 255, 0.98);
-                backdrop-filter: blur(10px);
-                flex-direction: column;
-                gap: 0;
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.3s ease;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-                border-radius: 0 0 15px 15px;
-                z-index: 999;
+                position: absolute !important;
+                top: 100% !important;
+                left: 0 !important;
+                width: 100% !important;
+                background: rgba(255, 255, 255, 0.98) !important;
+                backdrop-filter: blur(10px) !important;
+                flex-direction: column !important;
+                gap: 0 !important;
+                max-height: 0 !important;
+                overflow: hidden !important;
+                transition: max-height 0.3s ease !important;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
+                border-radius: 0 0 15px 15px !important;
+                z-index: 999 !important;
+                opacity: 0 !important;
+                visibility: hidden !important;
             }
             
             .header .nav .nav-links.active {
-                max-height: 400px !important;
+                max-height: 500px !important;
+                opacity: 1 !important;
+                visibility: visible !important;
             }
             
             .header .nav .nav-links a {

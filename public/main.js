@@ -1,11 +1,20 @@
 
         // Mobile Navigation Toggle
         function toggleMobileNav() {
+            console.log('Mobile nav toggle clicked'); // Debug log
             const navLinks = document.getElementById('nav-links');
             const navToggle = document.querySelector('.nav-toggle');
             
-            navLinks.classList.toggle('active');
-            navToggle.classList.toggle('active');
+            if (navLinks && navToggle) {
+                console.log('Elements found, toggling classes'); // Debug log
+                navLinks.classList.toggle('active');
+                navToggle.classList.toggle('active');
+                
+                // Force style check
+                console.log('Nav links has active class:', navLinks.classList.contains('active'));
+            } else {
+                console.error('Nav elements not found:', { navLinks, navToggle });
+            }
         }
 
         // Close mobile nav when clicking on a link
