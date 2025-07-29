@@ -539,7 +539,7 @@ window.toggleMobileNav = toggleMobileNav;
                 'methodology-guide': document.getElementById('methodology-guide-content')?.innerHTML || `
                     <h2><i class="fa-solid fa-file-lines"></i> AI Security Methodology Guide</h2>
                     <div style="margin: 30px 0;">
-                        <h3>📋 What's Included:</h3>
+                        <h3>What's Included:</h3>
                         <ul style="text-align: left; margin: 20px 0;">
                             <li><strong>Complete Assessment Framework:</strong> Step-by-step methodology for AI security evaluation</li>
                             <li><strong>Threat Modeling Templates:</strong> Pre-built templates for AI-specific threat scenarios</li>
@@ -549,7 +549,7 @@ window.toggleMobileNav = toggleMobileNav;
                             <li><strong>Reporting Templates:</strong> Professional templates for security assessment reports</li>
                         </ul>
                         
-                        <h3>🎯 Perfect For:</h3>
+                        <h3>Perfect For:</h3>
                         <ul style="text-align: left; margin: 20px 0;">
                             <li>Security professionals conducting AI assessments</li>
                             <li>AI/ML engineers implementing security best practices</li>
@@ -558,7 +558,7 @@ window.toggleMobileNav = toggleMobileNav;
                         </ul>
                         
                         <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin: 20px 0;">
-                            <p><strong>💡 Pro Tip:</strong> This comprehensive guide provides everything you need to establish a robust AI security assessment program in your organization.</p>
+                            <p><strong>Pro Tip:</strong> This comprehensive guide provides everything you need to establish a robust AI security assessment program in your organization.</p>
                         </div>
                         
                         <div style="text-align: center; margin-top: 30px;">
@@ -575,7 +575,7 @@ window.toggleMobileNav = toggleMobileNav;
                 'playbook-example': document.getElementById('playbook-example-content')?.innerHTML || `
                     <h2><i class="fa-solid fa-clipboard-list"></i> AI Security Assessment Playbook Example</h2>
                     <div style="margin: 30px 0;">
-                        <h3>🔍 Sample Assessment Scenario: E-commerce Recommendation Engine</h3>
+                        <h3>Sample Assessment Scenario: E-commerce Recommendation Engine</h3>
                         
                         <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin: 20px 0;">
                             <h4>Target System:</h4>
@@ -607,7 +607,7 @@ window.toggleMobileNav = toggleMobileNav;
                         </ul>
                         
                         <div style="background: #e8f5e8; padding: 15px; border-radius: 8px; margin: 20px 0;">
-                            <strong>📊 Expected Outcome:</strong> Comprehensive security posture assessment with actionable remediation recommendations
+                            <strong>Expected Outcome:</strong> Comprehensive security posture assessment with actionable remediation recommendations
                         </div>
                     </div>
                 `
@@ -991,7 +991,7 @@ function showScenarioDetails(scenarioType) {
             </ul>
             
             <div style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #8936de;">
-                <strong>💡 Pro Tip:</strong> Implement defense-in-depth strategies combining multiple mitigation techniques for maximum protection.
+                <strong>Pro Tip:</strong> Implement defense-in-depth strategies combining multiple mitigation techniques for maximum protection.
             </div>
         `);
     }
@@ -1320,7 +1320,7 @@ function showToolsDemo() {
         </div>
 
         <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 15px; margin-bottom: 20px;">
-            <h4 style="color: #8936de; margin-bottom: 15px;">📊 MITRE ATLAS Integration</h4>
+            <h4 style="color: #8936de; margin-bottom: 15px;">MITRE ATLAS Integration</h4>
             <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; font-size: 0.8rem;">
                 <div style="background: rgba(137, 54, 222, 0.1); padding: 8px; border-radius: 5px; text-align: center;">
                     <strong>Initial Access</strong><br>T1190, T1200, T1566
@@ -1337,18 +1337,18 @@ function showToolsDemo() {
         <div style="text-align: center; margin-top: 30px;">
             <button onclick="startFullSystemDemo()" 
                     style="background: linear-gradient(45deg, #8936de, #17a2b8); color: white; padding: 15px 40px; border-radius: 25px; border: none; cursor: pointer; font-size: 1.1rem; margin: 10px; box-shadow: 0 4px 15px rgba(137, 54, 222, 0.3);">
-                🚀 Launch Full System Demo
+                Launch Full System Demo
             </button>
             <br>
             <button onclick="showImplementationPlan()" 
                     style="background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); padding: 12px 30px; border-radius: 25px; cursor: pointer; margin: 10px;">
-                📋 View Implementation Roadmap
+                View Implementation Roadmap
             </button>
         </div>
 
         <div style="text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
             <p style="font-size: 0.9rem; opacity: 0.7;">
-                <strong>⚠️ Ethical Use Only:</strong> These tools are designed for authorized security testing of AI systems you own or have explicit permission to test.
+                <strong>Ethical Use Only:</strong> These tools are designed for authorized security testing of AI systems you own or have explicit permission to test.
             </p>
         </div>
     `);
@@ -1471,7 +1471,7 @@ function startFullSystemDemo() {
         
         <div style="text-align: center; margin-top: 20px;">
             <button onclick="showImplementationPlan()" style="background: #8936de; color: white; border: none; padding: 12px 25px; border-radius: 5px; cursor: pointer; margin: 5px;">
-                📋 View Implementation Plan
+                View Implementation Plan
             </button>
             <button onclick="closeModal()" style="background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); padding: 12px 25px; border-radius: 5px; cursor: pointer; margin: 5px;">
                 Close Demo
@@ -1525,7 +1525,7 @@ function showImplementationPlan() {
         </div>
 
         <div style="background: rgba(23, 162, 184, 0.1); padding: 20px; border-radius: 15px; border: 2px solid #17a2b8; margin: 30px 0;">
-            <h4 style="color: #17a2b8; margin-bottom: 15px;">🛠️ Technical Stack</h4>
+            <h4 style="color: #17a2b8; margin-bottom: 15px;">Technical Stack</h4>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
                 <div>
                     <h5 style="color: #17a2b8;">Core Framework</h5>
@@ -2247,7 +2247,7 @@ function showLockedStepMessage(stepNumber) {
 function showCongratulations() {
     openModalWithContent(`
         <h2><i class="fa-solid fa-trophy"></i> Congratulations!</h2>
-        <p>🎉 You have successfully completed the AI Security Assessment Tour!</p>
+        <p>You have successfully completed the AI Security Assessment Tour!</p>
         <p>You now have a comprehensive understanding of the 6-phase methodology for securing AI systems.</p>
         <div style="text-align: center; margin: 30px 0;">
             <div style="font-size: 4rem; color: #8936de;">🏆</div>
