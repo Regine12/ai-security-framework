@@ -824,27 +824,41 @@ function calculateRisk() {
     const baseScore = likelihood * impact;
     const adjustedScore = Math.min(25, baseScore * (assetCriticality / 3));
     
-    let riskLevel, riskColor;
+    let riskLevel, riskColor, riskDescription;
     if (adjustedScore >= 20) {
         riskLevel = 'Critical';
         riskColor = '#f44336';
+        riskDescription = 'Immediate action required. System shutdown may be necessary.';
     } else if (adjustedScore >= 15) {
         riskLevel = 'High';
         riskColor = '#ff5722';
+        riskDescription = 'Urgent attention needed. Implement controls within 30 days.';
     } else if (adjustedScore >= 10) {
         riskLevel = 'Medium';
         riskColor = '#ffc107';
+        riskDescription = 'Plan mitigation within 90 days. Monitor closely.';
     } else if (adjustedScore >= 5) {
         riskLevel = 'Low';
         riskColor = '#8bc34a';
+        riskDescription = 'Address through standard processes. Review annually.';
     } else {
         riskLevel = 'Very Low';
         riskColor = '#4caf50';
+        riskDescription = 'Acceptable risk level. Document and monitor periodically.';
     }
     
     document.getElementById('calculated-score').textContent = Math.round(adjustedScore);
     document.getElementById('risk-level').textContent = `${riskLevel} Risk`;
     document.getElementById('risk-result').style.background = `linear-gradient(45deg, ${riskColor}, ${riskColor}aa)`;
+    
+    // Show calculation formula
+    const formulaElement = document.getElementById('calculation-formula');
+    if (formulaElement) {
+        formulaElement.innerHTML = `
+            <strong>Calculation:</strong> (Likelihood: ${likelihood} × Impact: ${impact}) × Asset Criticality Factor: ${(assetCriticality/3).toFixed(1)} = ${Math.round(adjustedScore)}<br>
+            <em>${riskDescription}</em>
+        `;
+    }
     
     // Generate recommendations
     const recommendations = generateRecommendations(threatType, riskLevel, assetCriticality);
@@ -1015,6 +1029,12 @@ function generateRecommendations(threatType, riskLevel, criticality) {
             recommendations.push('Conduct bias testing and monitoring');
             recommendations.push('Implement fairness constraints');
             recommendations.push('Use diverse training datasets');
+            break;
+        case 'privacy':
+            recommendations.push('Implement differential privacy techniques');
+            recommendations.push('Deploy data anonymization methods');
+            recommendations.push('Use federated learning approaches');
+            recommendations.push('Conduct privacy impact assessments');
             break;
     }
     if (criticality >= 4) {
@@ -1223,13 +1243,335 @@ document.addEventListener('keydown', function(e) {
 // --- Demo/Download Functions for Framework Resources ---
 function showToolsDemo() {
     openModalWithContent(`
-        <h2><i class="fa-solid fa-play"></i> Tools Demo</h2>
-        <p>Demo video or interactive walkthrough coming soon.</p>
+        <h2>AI Security Testing Tools - Interactive Demo</h2>
+        
+        <div style="background: rgba(137, 54, 222, 0.1); border-left: 4px solid #8936de; padding: 20px; margin: 20px 0; border-radius: 10px;">
+            <h3>AI-Augmented Penetration Testing Suite</h3>
+            <p>Our testing framework combines <strong>MITRE ATLAS</strong> methodology with <strong>AI-augmented ethical hacking</strong> capabilities, inspired by Mindgard.ai and PenTest++ research.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 30px 0;">
+            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
+                <h4 style="color: #ff6b6b; margin-bottom: 15px;">Adversarial Testing Engine</h4>
+                <ul style="font-size: 0.9rem; line-height: 1.6;">
+                    <li>Automated adversarial example generation</li>
+                    <li>Multi-modal attack vector testing (text, image, audio)</li>
+                    <li>Evasion attack simulation against ML models</li>
+                    <li>Real-time robustness assessment</li>
+                </ul>
+                <div style="margin-top: 15px;">
+                    <button onclick="startAdversarialDemo()" style="background: #ff6b6b; color: white; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer;">
+                        Demo Adversarial Testing
+                    </button>
+                </div>
+            </div>
+            
+            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
+                <h4 style="color: #ffc107; margin-bottom: 15px;">Data Poisoning Detector</h4>
+                <ul style="font-size: 0.9rem; line-height: 1.6;">
+                    <li>Training data integrity validation</li>
+                    <li>Backdoor detection algorithms</li>
+                    <li>Statistical anomaly analysis</li>
+                    <li>Poison injection simulation</li>
+                </ul>
+                <div style="margin-top: 15px;">
+                    <button onclick="startPoisoningDemo()" style="background: #ffc107; color: white; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer;">
+                        Demo Poisoning Detection
+                    </button>
+                </div>
+            </div>
+            
+            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
+                <h4 style="color: #17a2b8; margin-bottom: 15px;">Model Extraction Scanner</h4>
+                <ul style="font-size: 0.9rem; line-height: 1.6;">
+                    <li>API query pattern analysis</li>
+                    <li>Model architecture inference</li>
+                    <li>Intellectual property protection testing</li>
+                    <li>Membership inference attacks</li>
+                </ul>
+                <div style="margin-top: 15px;">
+                    <button onclick="startExtractionDemo()" style="background: #17a2b8; color: white; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer;">
+                        Demo Model Extraction
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div style="background: rgba(23, 162, 184, 0.1); padding: 20px; border-radius: 15px; border: 2px solid #17a2b8; margin: 30px 0;">
+            <h4 style="color: #17a2b8; margin-bottom: 15px;">AI-Augmented Features (PenTest++ Inspired)</h4>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                <div>
+                    <h5 style="color: #17a2b8;">Automated Vulnerability Discovery</h5>
+                    <p style="font-size: 0.9rem; opacity: 0.9;">AI agents automatically identify and exploit AI-specific vulnerabilities using reinforcement learning.</p>
+                </div>
+                <div>
+                    <h5 style="color: #17a2b8;">Intelligent Attack Chaining</h5>
+                    <p style="font-size: 0.9rem; opacity: 0.9;">ML-powered attack orchestration that combines multiple techniques for maximum impact assessment.</p>
+                </div>
+                <div>
+                    <h5 style="color: #17a2b8;">Ethical Constraints Engine</h5>
+                    <p style="font-size: 0.9rem; opacity: 0.9;">Built-in safeguards ensure testing remains within ethical boundaries and authorized scope.</p>
+                </div>
+                <div>
+                    <h5 style="color: #17a2b8;">Real-time Risk Scoring</h5>
+                    <p style="font-size: 0.9rem; opacity: 0.9;">Dynamic CVSS-style scoring with AI-specific risk metrics and business impact analysis.</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 15px; margin-bottom: 20px;">
+            <h4 style="color: #8936de; margin-bottom: 15px;">📊 MITRE ATLAS Integration</h4>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; font-size: 0.8rem;">
+                <div style="background: rgba(137, 54, 222, 0.1); padding: 8px; border-radius: 5px; text-align: center;">
+                    <strong>Initial Access</strong><br>T1190, T1200, T1566
+                </div>
+                <div style="background: rgba(137, 54, 222, 0.1); padding: 8px; border-radius: 5px; text-align: center;">
+                    <strong>ML Attack Staging</strong><br>T1484, T1485, T1486
+                </div>
+                <div style="background: rgba(137, 54, 222, 0.1); padding: 8px; border-radius: 5px; text-align: center;">
+                    <strong>Impact</strong><br>T1496, T1499, T1565
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <button onclick="startFullSystemDemo()" 
+                    style="background: linear-gradient(45deg, #8936de, #17a2b8); color: white; padding: 15px 40px; border-radius: 25px; border: none; cursor: pointer; font-size: 1.1rem; margin: 10px; box-shadow: 0 4px 15px rgba(137, 54, 222, 0.3);">
+                🚀 Launch Full System Demo
+            </button>
+            <br>
+            <button onclick="showImplementationPlan()" 
+                    style="background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); padding: 12px 30px; border-radius: 25px; cursor: pointer; margin: 10px;">
+                📋 View Implementation Roadmap
+            </button>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+            <p style="font-size: 0.9rem; opacity: 0.7;">
+                <strong>⚠️ Ethical Use Only:</strong> These tools are designed for authorized security testing of AI systems you own or have explicit permission to test.
+            </p>
+        </div>
     `);
 }
 
 function downloadTools() {
     window.open('https://github.com/Regine12/AISec-pentester.git', '_blank');
+}
+
+// Individual demo functions for different testing modules
+function startAdversarialDemo() {
+    openModalWithContent(`
+        <h2>Adversarial Testing Engine Demo</h2>
+        <div style="background: #1a1a1a; padding: 20px; border-radius: 10px; margin: 20px 0; font-family: 'Courier New', monospace; color: #00ff00;">
+            <div style="margin-bottom: 10px;">$ aisec-pentester --module adversarial --target model.pkl</div>
+            <div style="margin-bottom: 10px;">[INFO] Analyzing model architecture...</div>
+            <div style="margin-bottom: 10px;">[PROGRESS] Generating adversarial examples...</div>
+            <div style="margin-bottom: 10px;">[RESULT] Testing robustness: 73% accuracy under attack</div>
+            <div style="margin-bottom: 10px;">[WARNING] Found 23 exploitable inputs</div>
+            <div style="color: #ff4444;">[CRITICAL] Model vulnerable to imperceptible perturbations</div>
+        </div>
+        <p>This demo shows how our AI-powered testing engine automatically discovers adversarial vulnerabilities by generating targeted inputs that fool ML models while remaining imperceptible to humans.</p>
+        <div style="text-align: center; margin-top: 20px;">
+            <button onclick="closeModal()" style="background: #8936de; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
+                Close Demo
+            </button>
+        </div>
+    `);
+}
+
+function startPoisoningDemo() {
+    openModalWithContent(`
+        <h2>Data Poisoning Detection Demo</h2>
+        <div style="background: #1a1a1a; padding: 20px; border-radius: 10px; margin: 20px 0; font-family: 'Courier New', monospace; color: #00ff00;">
+            <div style="margin-bottom: 10px;">$ aisec-pentester --module poisoning --dataset training_data.csv</div>
+            <div style="margin-bottom: 10px;">[INFO] Scanning 10,000 training samples...</div>
+            <div style="margin-bottom: 10px;">[PROGRESS] Statistical analysis in progress...</div>
+            <div style="margin-bottom: 10px;">[RESULT] Detected 157 anomalous samples</div>
+            <div style="margin-bottom: 10px;">[FOUND] Backdoor pattern identified in 12 samples</div>
+            <div style="color: #ffaa00;">[MEDIUM] Potential poisoning attack detected</div>
+        </div>
+        <p>Our poisoning detector uses advanced statistical methods and ML algorithms to identify malicious data injections that could compromise model integrity during training or inference.</p>
+        <div style="text-align: center; margin-top: 20px;">
+            <button onclick="closeModal()" style="background: #8936de; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
+                Close Demo
+            </button>
+        </div>
+    `);
+}
+
+function startExtractionDemo() {
+    openModalWithContent(`
+        <h2>Model Extraction Scanner Demo</h2>
+        <div style="background: #1a1a1a; padding: 20px; border-radius: 10px; margin: 20px 0; font-family: 'Courier New', monospace; color: #00ff00;">
+            <div style="margin-bottom: 10px;">$ aisec-pentester --module extraction --target https://api.example.com/predict</div>
+            <div style="margin-bottom: 10px;">[INFO] Probing API endpoints...</div>
+            <div style="margin-bottom: 10px;">[PROGRESS] Analyzing response patterns...</div>
+            <div style="margin-bottom: 10px;">[ANALYSIS] Inferring model architecture: Deep Neural Network</div>
+            <div style="margin-bottom: 10px;">[ESTIMATE] Estimated parameters: ~2.3M</div>
+            <div style="color: #ff4444;">[HIGH RISK] Model extraction possible with 89% fidelity</div>
+        </div>
+        <p>This module tests whether proprietary AI models can be reverse-engineered through API queries, helping organizations protect their intellectual property.</p>
+        <div style="text-align: center; margin-top: 20px;">
+            <button onclick="closeModal()" style="background: #8936de; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
+                Close Demo
+            </button>
+        </div>
+    `);
+}
+
+function startFullSystemDemo() {
+    openModalWithContent(`
+        <h2>Full AI Security Testing Suite Demo</h2>
+        <div style="background: rgba(137, 54, 222, 0.1); border-left: 4px solid #8936de; padding: 20px; margin: 20px 0; border-radius: 10px;">
+            <h3>Complete Assessment Workflow</h3>
+            <p>This comprehensive demo shows the full AI security testing pipeline combining all modules with MITRE ATLAS methodology.</p>
+        </div>
+        
+        <div style="background: #1a1a1a; padding: 20px; border-radius: 10px; margin: 20px 0; font-family: 'Courier New', monospace; color: #00ff00; max-height: 300px; overflow-y: auto;">
+            <div style="margin-bottom: 5px;">$ aisec-pentester --full-assessment --target ai-system.yaml</div>
+            <div style="margin-bottom: 5px;">[INFO] Starting AI Security Penetration Test...</div>
+            <div style="margin-bottom: 5px;">[INFO] Loading MITRE ATLAS TTPs...</div>
+            <div style="margin-bottom: 5px;">[PHASE 1] Reconnaissance & Asset Discovery</div>
+            <div style="margin-bottom: 5px;">   ├─ Identified 5 ML models</div>
+            <div style="margin-bottom: 5px;">   ├─ Found 3 data pipelines</div>
+            <div style="margin-bottom: 5px;">   └─ Discovered 7 API endpoints</div>
+            <div style="margin-bottom: 5px;">[PHASE 2] Data Integrity Testing</div>
+            <div style="margin-bottom: 5px;">   ├─ Poisoning scan: 2 risks found</div>
+            <div style="margin-bottom: 5px;">   └─ Data quality: PASSED</div>
+            <div style="margin-bottom: 5px;">[PHASE 3] Adversarial Robustness Testing</div>
+            <div style="margin-bottom: 5px;">   ├─ Generated 1,000 adversarial examples</div>
+            <div style="margin-bottom: 5px;">   ├─ Model accuracy drop: 23%</div>
+            <div style="margin-bottom: 5px;">   └─ Robustness score: 6.7/10</div>
+            <div style="margin-bottom: 5px;">[PHASE 4] Model Extraction Testing</div>
+            <div style="margin-bottom: 5px;">   ├─ API query limit: BYPASSED</div>
+            <div style="margin-bottom: 5px;">   └─ Extraction fidelity: 91%</div>
+            <div style="margin-bottom: 5px;">[PHASE 5] Risk Assessment & Reporting</div>
+            <div style="color: #ff4444;">[CRITICAL] 3 high-risk vulnerabilities found</div>
+            <div style="color: #ffaa00;">[MEDIUM] 7 security issues identified</div>
+            <div style="color: #00ff00;">✅ PASSED: 12 security controls</div>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0;">
+            <div style="background: rgba(244, 67, 54, 0.1); padding: 15px; border-radius: 8px; text-align: center;">
+                <h4 style="color: #f44336;">Risk Score</h4>
+                <div style="font-size: 2rem; font-weight: bold; color: #f44336;">7.8</div>
+                <div style="font-size: 0.9rem;">High Risk</div>
+            </div>
+            <div style="background: rgba(255, 193, 7, 0.1); padding: 15px; border-radius: 8px; text-align: center;">
+                <h4 style="color: #ffc107;">Vulnerabilities</h4>
+                <div style="font-size: 2rem; font-weight: bold; color: #ffc107;">10</div>
+                <div style="font-size: 0.9rem;">Issues Found</div>
+            </div>
+            <div style="background: rgba(76, 175, 80, 0.1); padding: 15px; border-radius: 8px; text-align: center;">
+                <h4 style="color: #4caf50;">Coverage</h4>
+                <div style="font-size: 2rem; font-weight: bold; color: #4caf50;">94%</div>
+                <div style="font-size: 0.9rem;">ATLAS TTPs</div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 20px;">
+            <button onclick="showImplementationPlan()" style="background: #8936de; color: white; border: none; padding: 12px 25px; border-radius: 5px; cursor: pointer; margin: 5px;">
+                📋 View Implementation Plan
+            </button>
+            <button onclick="closeModal()" style="background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); padding: 12px 25px; border-radius: 5px; cursor: pointer; margin: 5px;">
+                Close Demo
+            </button>
+        </div>
+    `);
+}
+
+function showImplementationPlan() {
+    openModalWithContent(`
+        <h2>AI Security Testing Suite - Implementation Roadmap</h2>
+        
+        <div style="background: rgba(137, 54, 222, 0.1); border-left: 4px solid #8936de; padding: 20px; margin: 20px 0; border-radius: 10px;">
+            <h3>Project Vision</h3>
+            <p>Build a comprehensive AI security testing platform that combines <strong>MITRE ATLAS</strong> methodology with <strong>AI-augmented ethical hacking</strong> capabilities, inspired by <strong>Mindgard.ai</strong> and <strong>PenTest++</strong> research.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 30px 0;">
+            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
+                <h4 style="color: #4caf50; margin-bottom: 15px;">Phase 1: Foundation (Weeks 1-4)</h4>
+                <ul style="font-size: 0.9rem; line-height: 1.6;">
+                    <li>Core framework architecture</li>
+                    <li>MITRE ATLAS TTP database integration</li>
+                    <li>Basic CLI interface</li>
+                    <li>Configuration management system</li>
+                    <li>Logging and reporting infrastructure</li>
+                </ul>
+            </div>
+            
+            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
+                <h4 style="color: #ffc107; margin-bottom: 15px;">Phase 2: Core Modules (Weeks 5-8)</h4>
+                <ul style="font-size: 0.9rem; line-height: 1.6;">
+                    <li>Adversarial testing engine</li>
+                    <li>Data poisoning detection</li>
+                    <li>Model extraction scanner</li>
+                    <li>Privacy leakage analyzer</li>
+                    <li>Basic AI-powered vulnerability discovery</li>
+                </ul>
+            </div>
+            
+            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
+                <h4 style="color: #17a2b8; margin-bottom: 15px;">Phase 3: AI Enhancement (Weeks 9-12)</h4>
+                <ul style="font-size: 0.9rem; line-height: 1.6;">
+                    <li>Reinforcement learning agents</li>
+                    <li>Intelligent attack chaining</li>
+                    <li>Automated payload generation</li>
+                    <li>Dynamic risk scoring</li>
+                    <li>Ethical constraints engine</li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="background: rgba(23, 162, 184, 0.1); padding: 20px; border-radius: 15px; border: 2px solid #17a2b8; margin: 30px 0;">
+            <h4 style="color: #17a2b8; margin-bottom: 15px;">🛠️ Technical Stack</h4>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                <div>
+                    <h5 style="color: #17a2b8;">Core Framework</h5>
+                    <p style="font-size: 0.9rem; opacity: 0.9;">Python 3.9+, FastAPI, SQLAlchemy, Redis, Docker</p>
+                </div>
+                <div>
+                    <h5 style="color: #17a2b8;">ML/AI Libraries</h5>
+                    <p style="font-size: 0.9rem; opacity: 0.9;">PyTorch, TensorFlow, Transformers, Gymnasium, Stable-Baselines3</p>
+                </div>
+                <div>
+                    <h5 style="color: #17a2b8;">Security Tools</h5>
+                    <p style="font-size: 0.9rem; opacity: 0.9;">ART (IBM), CleverHans, Adversarial-Robustness-Toolbox</p>
+                </div>
+                <div>
+                    <h5 style="color: #17a2b8;">Web Interface</h5>
+                    <p style="font-size: 0.9rem; opacity: 0.9;">React, D3.js, WebSocket, Progressive Web App</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 15px; margin-bottom: 20px;">
+            <h4 style="color: #8936de; margin-bottom: 15px;">📁 Repository Structure</h4>
+            <div style="background: #1a1a1a; padding: 15px; border-radius: 8px; font-family: 'Courier New', monospace; color: #00ff00; font-size: 0.8rem;">
+AISec-pentester/<br>
+├── core/                 # Core framework<br>
+├── modules/              # Testing modules<br>
+│   ├── adversarial/      # Adversarial testing<br>
+│   ├── poisoning/        # Data poisoning detection<br>
+│   ├── extraction/       # Model extraction<br>
+│   └── privacy/          # Privacy analysis<br>
+├── ai_agents/            # AI-powered testing agents<br>
+├── mitre_atlas/          # ATLAS TTP mappings<br>
+├── web_interface/        # Web dashboard<br>
+├── reports/              # Report generation<br>
+├── config/               # Configuration files<br>
+└── docs/                 # Documentation
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <button onclick="window.open('https://github.com/Regine12/ai-security-framework', '_blank')" 
+                    style="background: linear-gradient(45deg, #8936de, #17a2b8); color: white; padding: 15px 40px; border-radius: 25px; border: none; cursor: pointer; font-size: 1.1rem; margin: 10px; box-shadow: 0 4px 15px rgba(137, 54, 222, 0.3);">
+                View Implementation Progress
+            </button>
+        </div>
+    `);
 }
 
 // --- Architecture Diagram Interactivity ---
@@ -1610,6 +1952,7 @@ function resetLayerHighlight() {
 let currentTourStep = 0;
 let completedSteps = [];
 let guidedTourActive = false;
+let guidedTourPaused = false;
 let guidedTourTimeouts = [];
 
 function startTourStep(stepNumber) {
@@ -1674,6 +2017,7 @@ function resetTour() {
     currentTourStep = 0;
     completedSteps = [];
     guidedTourActive = false;
+    guidedTourPaused = false;
     
     // Clear any pending timeouts
     guidedTourTimeouts.forEach(timeout => clearTimeout(timeout));
@@ -1696,34 +2040,148 @@ function resetTour() {
     });
     
     updateProgressBar();
-    updateGuidedTourButton();
+    updateGuidedTourButtons();
+}
+
+// New improved guided tour functions
+function toggleGuidedTour() {
+    if (guidedTourActive && !guidedTourPaused) {
+        stopGuidedTour();
+    } else if (guidedTourPaused) {
+        resumeGuidedTour();
+    } else {
+        startGuidedTour();
+    }
 }
 
 function startGuidedTour() {
     resetTour();
     guidedTourActive = true;
-    updateGuidedTourButton();
+    guidedTourPaused = false;
+    currentTourStep = 1;
+    updateGuidedTourButtons();
     
     startTourStep(1);
     
-    // Auto-progress through steps with delays
+    // Auto-progress through steps with longer delays for better control
     guidedTourTimeouts.push(setTimeout(() => {
-        if (guidedTourActive) startTourStep(2);
-    }, 5000));
+        if (guidedTourActive && !guidedTourPaused) {
+            currentTourStep = 2;
+            startTourStep(2);
+        }
+    }, 8000)); // Increased from 5000ms
     guidedTourTimeouts.push(setTimeout(() => {
-        if (guidedTourActive) startTourStep(3);
-    }, 10000));
+        if (guidedTourActive && !guidedTourPaused) {
+            currentTourStep = 3;
+            startTourStep(3);
+        }
+    }, 16000)); // Increased from 10000ms
     guidedTourTimeouts.push(setTimeout(() => {
-        if (guidedTourActive) startTourStep(4);
-    }, 15000));
+        if (guidedTourActive && !guidedTourPaused) {
+            currentTourStep = 4;
+            startTourStep(4);
+        }
+    }, 24000)); // Increased from 15000ms
     guidedTourTimeouts.push(setTimeout(() => {
-        if (guidedTourActive) startTourStep(5);
-    }, 20000));
+        if (guidedTourActive && !guidedTourPaused) {
+            currentTourStep = 5;
+            startTourStep(5);
+        }
+    }, 32000)); // Increased from 20000ms
     guidedTourTimeouts.push(setTimeout(() => {
-        if (guidedTourActive) startTourStep(6);
-        guidedTourActive = false;
-        updateGuidedTourButton();
-    }, 25000));
+        if (guidedTourActive && !guidedTourPaused) {
+            currentTourStep = 6;
+            startTourStep(6);
+            guidedTourActive = false;
+            guidedTourPaused = false;
+            updateGuidedTourButtons();
+        }
+    }, 40000)); // Increased from 25000ms
+}
+
+function pauseGuidedTour() {
+    guidedTourPaused = true;
+    // Clear all pending timeouts
+    guidedTourTimeouts.forEach(timeout => clearTimeout(timeout));
+    guidedTourTimeouts = [];
+    updateGuidedTourButtons();
+}
+
+function resumeGuidedTour() {
+    if (!guidedTourActive) return;
+    
+    guidedTourPaused = false;
+    updateGuidedTourButtons();
+    
+    // Calculate remaining time and resume from current step
+    const nextStep = Math.min(currentTourStep + 1, 6);
+    if (nextStep <= 6) {
+        // Resume with shorter delay
+        guidedTourTimeouts.push(setTimeout(() => {
+            if (guidedTourActive && !guidedTourPaused) {
+                currentTourStep = nextStep;
+                startTourStep(nextStep);
+                
+                // Continue with remaining steps
+                for (let step = nextStep + 1; step <= 6; step++) {
+                    const delay = (step - nextStep) * 8000;
+                    guidedTourTimeouts.push(setTimeout(() => {
+                        if (guidedTourActive && !guidedTourPaused) {
+                            currentTourStep = step;
+                            startTourStep(step);
+                            if (step === 6) {
+                                guidedTourActive = false;
+                                guidedTourPaused = false;
+                                updateGuidedTourButtons();
+                            }
+                        }
+                    }, delay));
+                }
+            }
+        }, 2000));
+    }
+}
+
+function updateGuidedTourButtons() {
+    const guidedTourBtn = document.getElementById('guided-tour-btn');
+    const pauseTourBtn = document.getElementById('pause-tour-btn');
+    
+    if (guidedTourBtn) {
+        if (guidedTourActive && !guidedTourPaused) {
+            guidedTourBtn.textContent = 'Stop Tour';
+            guidedTourBtn.onclick = stopGuidedTour;
+            if (pauseTourBtn) {
+                pauseTourBtn.style.display = 'inline-block';
+                pauseTourBtn.textContent = 'Pause Tour';
+                pauseTourBtn.onclick = pauseGuidedTour;
+            }
+        } else if (guidedTourActive && guidedTourPaused) {
+            guidedTourBtn.textContent = 'Stop Tour';
+            guidedTourBtn.onclick = stopGuidedTour;
+            if (pauseTourBtn) {
+                pauseTourBtn.style.display = 'inline-block';
+                pauseTourBtn.textContent = 'Resume Tour';
+                pauseTourBtn.onclick = resumeGuidedTour;
+            }
+        } else {
+            guidedTourBtn.textContent = 'Start Guided Tour';
+            guidedTourBtn.onclick = toggleGuidedTour;
+            if (pauseTourBtn) {
+                pauseTourBtn.style.display = 'none';
+            }
+        }
+    }
+}
+
+function stopGuidedTour() {
+    guidedTourActive = false;
+    guidedTourPaused = false;
+    currentTourStep = 0;
+    // Clear all pending timeouts
+    guidedTourTimeouts.forEach(timeout => clearTimeout(timeout));
+    guidedTourTimeouts = [];
+    updateGuidedTourButtons();
+    resetTour();
 }
 
 function pauseGuidedTour() {
@@ -1829,3 +2287,5 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     initializeArchitectureDiagram();
 });
+
+// Removed internal functions that were meant for development, not users

@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Security Infrastructure Diagrams</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #8936de;
+            margin-bottom: 40px;
+        }
+        .diagram-section {
+            margin: 40px 0;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            background: #f9f9f9;
+        }
+        .diagram-title {
+            color: #8936de;
+            border-bottom: 2px solid #8936de;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .mermaid {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .ascii-diagram {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            overflow-x: auto;
+            white-space: pre;
+        }
+        .description {
+            background: #e8f4fd;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #8936de;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏗️ AI Security Infrastructure Diagrams</h1>
+
+        <!-- High-Level Architecture -->
+        <div class="diagram-section">
+            <h2 class="diagram-title">1. High-Level AI Security Architecture</h2>
+            <div class="description">
+                <strong>Overview:</strong> Complete AI system architecture showing security layers, data flows, and protection mechanisms.
+            </div>
+            <div class="mermaid">
+                graph TB
+                    subgraph "External Zone"
+                        U[Users/Clients]
+                        A[Attackers]
+                        DS[Data Sources]
+                    end
+                    
+                    subgraph "DMZ (Demilitarized Zone)"
+                        LB[Load Balancer]
+                        WAF[Web Application Firewall]
+                        AG[API Gateway]
+                    end
+                    
+                    subgraph "Application Layer"
+                        WS[Web Server]
+                        AS[Application Server]
+                        AU[Authentication Service]
+                        PM[Plugin Manager]
+                    end
+                    
+                    subgraph "AI/ML Layer"
+                        MS[Model Serving]
+                        MT[Model Training]
+                        MR[Model Registry]
+                        ME[Model Evaluation]
+                    end
+                    
+                    subgraph "Data Layer"
+                        DP[Data Processing]
+                        DV[Data Validation]
+                        DS2[Data Storage]
+                        DC[Data Cache]
+                    end
+                    
+                    subgraph "Infrastructure Layer"
+                        K8S[Kubernetes Cluster]
+                        DB[(Database)]
+                        FS[(File Storage)]
+                        MQ[Message Queue]
+                    end
+                    
+                    subgraph "Security Layer"
+                        SIEM[SIEM/Monitoring]
+                        IDS[Intrusion Detection]
+                        VS[Vulnerability Scanner]
+                        AM[Access Management]
+                    end
+                    
+                    U --> LB
+                    A -.-> WAF
+                    LB --> WAF
+                    WAF --> AG
+                    AG --> WS
+                    WS --> AS
+                    AS --> AU
+                    AS --> PM
+                    AS --> MS
+                    MS --> MT
+                    MT --> MR
+                    MS --> ME
+                    AS --> DP
+                    DP --> DV
+                    DV --> DS2
+                    DS2 --> DC
+                    DS --> DP
+                    
+                    K8S --> DB
+                    K8S --> FS
+                    K8S --> MQ
+                    
+                    SIEM --> IDS
+                    SIEM --> VS
+                    SIEM --> AM
+                    
+                    classDef external fill:#ff6b6b,stroke:#333,stroke-width:2px,color:#fff
+                    classDef dmz fill:#ffa500,stroke:#333,stroke-width:2px,color:#fff
+                    classDef app fill:#4ecdc4,stroke:#333,stroke-width:2px,color:#fff
+                    classDef ai fill:#8936de,stroke:#333,stroke-width:2px,color:#fff
+                    classDef data fill:#45b7d1,stroke:#333,stroke-width:2px,color:#fff
+                    classDef infra fill:#96ceb4,stroke:#333,stroke-width:2px,color:#fff
+                    classDef security fill:#ff9ff3,stroke:#333,stroke-width:2px,color:#fff
+                    
+                    class U,A,DS external
+                    class LB,WAF,AG dmz
+                    class WS,AS,AU,PM app
+                    class MS,MT,MR,ME ai
+                    class DP,DV,DS2,DC data
+                    class K8S,DB,FS,MQ infra
+                    class SIEM,IDS,VS,AM security
+            </div>
+        </div>
+
+        <!-- Threat Model Diagram -->
+        <div class="diagram-section">
+            <h2 class="diagram-title">2. AI Threat Model & Attack Vectors</h2>
+            <div class="description">
+                <strong>Purpose:</strong> Maps potential attack vectors and threat actors targeting different components of the AI system.
+            </div>
+            <div class="mermaid">
+                graph LR
+                    subgraph "Threat Actors"
+                        TA1[External Attackers]
+                        TA2[Malicious Insiders]
+                        TA3[Nation States]
+                        TA4[Competitors]
+                    end
+                    
+                    subgraph "Attack Vectors"
+                        AV1[Model Poisoning]
+                        AV2[Adversarial Examples]
+                        AV3[Model Extraction]
+                        AV4[Prompt Injection]
+                        AV5[Data Poisoning]
+                        AV6[Privacy Attacks]
+                    end
+                    
+                    subgraph "AI System Components"
+                        C1[Training Data]
+                        C2[ML Model]
+                        C3[Inference API]
+                        C4[Model Repository]
+                        C5[Training Pipeline]
+                        C6[Monitoring System]
+                    end
+                    
+                    subgraph "Security Controls"
+                        SC1[Input Validation]
+                        SC2[Anomaly Detection]
+                        SC3[Access Controls]
+                        SC4[Encryption]
+                        SC5[Audit Logging]
+                        SC6[Rate Limiting]
+                    end
+                    
+                    TA1 --> AV1
+                    TA1 --> AV2
+                    TA2 --> AV5
+                    TA3 --> AV3
+                    TA4 --> AV3
+                    
+                    AV1 --> C1
+                    AV2 --> C3
+                    AV3 --> C2
+                    AV4 --> C3
+                    AV5 --> C1
+                    AV6 --> C2
+                    
+                    SC1 -.-> AV4
+                    SC2 -.-> AV1
+                    SC3 -.-> AV3
+                    SC4 -.-> AV6
+                    SC5 -.-> AV5
+                    SC6 -.-> AV2
+                    
+                    classDef threat fill:#ff6b6b,stroke:#333,stroke-width:2px,color:#fff
+                    classDef attack fill:#ffa500,stroke:#333,stroke-width:2px,color:#fff
+                    classDef component fill:#8936de,stroke:#333,stroke-width:2px,color:#fff
+                    classDef control fill:#4ecdc4,stroke:#333,stroke-width:2px,color:#fff
+                    
+                    class TA1,TA2,TA3,TA4 threat
+                    class AV1,AV2,AV3,AV4,AV5,AV6 attack
+                    class C1,C2,C3,C4,C5,C6 component
+                    class SC1,SC2,SC3,SC4,SC5,SC6 control
+            </div>
+        </div>
+
+        <!-- Data Flow Diagram -->
+        <div class="diagram-section">
+            <h2 class="diagram-title">3. AI Data Flow & Security Checkpoints</h2>
+            <div class="description">
+                <strong>Focus:</strong> Shows how data flows through the AI system with security validation points.
+            </div>
+            <div class="mermaid">
+                flowchart TD
+                    A[Raw Data Sources] --> B{Data Validation}
+                    B -->|Valid| C[Data Preprocessing]
+                    B -->|Invalid| D[Quarantine & Alert]
+                    
+                    C --> E{Content Security Scan}
+                    E -->|Clean| F[Feature Engineering]
+                    E -->|Suspicious| G[Security Review]
+                    
+                    F --> H[Training Data Store]
+                    G --> I{Manual Review}
+                    I -->|Approved| F
+                    I -->|Rejected| J[Block & Log]
+                    
+                    H --> K[Model Training]
+                    K --> L{Model Validation}
+                    L -->|Pass| M[Model Registry]
+                    L -->|Fail| N[Retrain Alert]
+                    
+                    M --> O[Model Deployment]
+                    O --> P[Inference API]
+                    
+                    Q[User Input] --> R{Input Sanitization}
+                    R -->|Safe| S[Inference Processing]
+                    R -->|Malicious| T[Block & Alert]
+                    
+                    S --> P
+                    P --> U{Output Filtering}
+                    U -->|Safe| V[Response to User]
+                    U -->|Sensitive| W[Redact & Log]
+                    
+                    X[Monitoring Agent] --> Y[Security Dashboard]
+                    Y --> Z[Incident Response]
+                    
+                    classDef input fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+                    classDef process fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+                    classDef security fill:#ffecb3,stroke:#e65100,stroke-width:2px
+                    classDef storage fill:#e8f5e8,stroke:#1b5e20,stroke-width:2px
+                    classDef alert fill:#ffcdd2,stroke:#c62828,stroke-width:2px
+                    
+                    class A,Q input
+                    class C,F,K,O,S process
+                    class B,E,L,R,U security
+                    class H,M storage
+                    class D,G,J,N,T,W,Z alert
+            </div>
+        </div>
+
+        <!-- Network Security Diagram -->
+        <div class="diagram-section">
+            <h2 class="diagram-title">4. Network Security Architecture</h2>
+            <div class="description">
+                <strong>Details:</strong> Network segmentation and security controls for AI infrastructure.
+            </div>
+            <div class="ascii-diagram">
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                                INTERNET                                         │
+└─────────────────────────────┬───────────────────────────────────────────────────┘
+                              │
+┌─────────────────────────────▼───────────────────────────────────────────────────┐
+│                          DMZ ZONE                                               │
+│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐     │
+│  │     CDN     │    │Load Balancer│    │     WAF     │    │ API Gateway │     │
+│  │             │    │             │    │             │    │             │     │
+│  └─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘     │
+└─────────────────────────────┬───────────────────────────────────────────────────┘
+                              │ HTTPS/TLS 
+┌─────────────────────────────▼───────────────────────────────────────────────────┐
+│                       WEB/APP TIER                                              │
+│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐     │
+│  │ Web Server  │    │  App Server │    │    Auth     │    │  Session    │     │
+│  │ (NGINX)     │    │  (Node.js)  │    │  Service    │    │   Store     │     │
+│  └─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘     │
+└─────────────────────────────┬───────────────────────────────────────────────────┘
+                              │ Internal Network
+┌─────────────────────────────▼───────────────────────────────────────────────────┐
+│                        AI/ML TIER                                               │
+│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐     │
+│  │   Model     │    │  Training   │    │   Model     │    │ Inference   │     │
+│  │  Registry   │    │  Service    │    │ Validation  │    │   Engine    │     │
+│  └─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘     │
+└─────────────────────────────┬───────────────────────────────────────────────────┘
+                              │ Database Network
+┌─────────────────────────────▼───────────────────────────────────────────────────┐
+│                        DATA TIER                                                │
+│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐     │
+│  │  Training   │    │  Model      │    │   Logs &    │    │  Encrypted  │     │
+│  │    Data     │    │  Storage    │    │  Metrics    │    │   Backup    │     │
+│  │  Database   │    │             │    │  Database   │    │             │     │
+│  └─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘     │
+└─────────────────────────────┬───────────────────────────────────────────────────┘
+                              │ Management Network
+┌─────────────────────────────▼───────────────────────────────────────────────────┐
+│                      SECURITY/MGMT TIER                                         │
+│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐     │
+│  │    SIEM     │    │  Monitoring │    │ Vulnerability│    │   Backup    │     │
+│  │  Platform   │    │   Stack     │    │   Scanner   │    │  Service    │     │
+│  └─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘     │
+└─────────────────────────────────────────────────────────────────────────────────┘
+
+Security Controls:
+• Firewalls between each tier
+• Network segmentation with VLANs
+• Zero-trust network access
+• Encrypted communications (mTLS)
+• Network monitoring and IDS/IPS
+• Jump boxes for administrative access
+            </div>
+        </div>
+
+        <!-- Security Controls Matrix -->
+        <div class="diagram-section">
+            <h2 class="diagram-title">5. Security Controls Implementation Matrix</h2>
+            <div class="description">
+                <strong>Mapping:</strong> Security controls mapped to AI system components and MITRE ATLAS techniques.
+            </div>
+            <div class="mermaid">
+                graph TB
+                    subgraph "MITRE ATLAS Techniques"
+                        T1[T1001: Data Poisoning]
+                        T2[T1002: Adversarial Examples]  
+                        T3[T1003: Model Extraction]
+                        T4[T1004: Prompt Injection]
+                        T5[T1005: Privacy Attacks]
+                    end
+                    
+                    subgraph "Preventive Controls"
+                        PC1[Input Validation]
+                        PC2[Access Controls]
+                        PC3[Encryption]
+                        PC4[Rate Limiting]
+                        PC5[Data Sanitization]
+                    end
+                    
+                    subgraph "Detective Controls"  
+                        DC1[Anomaly Detection]
+                        DC2[Behavioral Monitoring]
+                        DC3[Audit Logging]
+                        DC4[Model Drift Detection]
+                        DC5[Security Scanning]
+                    end
+                    
+                    subgraph "Corrective Controls"
+                        CC1[Incident Response]
+                        CC2[Model Retraining]
+                        CC3[Access Revocation]
+                        CC4[Data Quarantine]
+                        CC5[Security Patching]
+                    end
+                    
+                    T1 -.-> PC5
+                    T1 -.-> DC1
+                    T1 -.-> CC4
+                    
+                    T2 -.-> PC1
+                    T2 -.-> DC2
+                    T2 -.-> CC2
+                    
+                    T3 -.-> PC2
+                    T3 -.-> DC3
+                    T3 -.-> CC3
+                    
+                    T4 -.-> PC1
+                    T4 -.-> DC5
+                    T4 -.-> CC1
+                    
+                    T5 -.-> PC3
+                    T5 -.-> DC4
+                    T5 -.-> CC2
+                    
+                    classDef threat fill:#ff6b6b,stroke:#333,stroke-width:2px,color:#fff
+                    classDef preventive fill:#4ecdc4,stroke:#333,stroke-width:2px,color:#fff
+                    classDef detective fill:#ffa500,stroke:#333,stroke-width:2px,color:#fff
+                    classDef corrective fill:#8936de,stroke:#333,stroke-width:2px,color:#fff
+                    
+                    class T1,T2,T3,T4,T5 threat
+                    class PC1,PC2,PC3,PC4,PC5 preventive
+                    class DC1,DC2,DC3,DC4,DC5 detective
+                    class CC1,CC2,CC3,CC4,CC5 corrective
+            </div>
+        </div>
+
+        <!-- Deployment Architecture -->
+        <div class="diagram-section">
+            <h2 class="diagram-title">6. Cloud Deployment Architecture (Kubernetes)</h2>
+            <div class="description">
+                <strong>Infrastructure:</strong> Container orchestration and microservices architecture for AI systems.
+            </div>
+            <div class="mermaid">
+                graph TB
+                    subgraph "Kubernetes Cluster"
+                        subgraph "Ingress Layer"
+                            ING[Ingress Controller]
+                            SSL[SSL Termination]
+                        end
+                        
+                        subgraph "Application Namespace"
+                            subgraph "Frontend Services"
+                                UI[UI Service]
+                                API[API Service]
+                            end
+                            
+                            subgraph "AI/ML Services"
+                                MS[Model Serving]
+                                MT[Model Training]
+                                MP[Model Pipeline]
+                            end
+                            
+                            subgraph "Data Services"
+                                DS[Data Service]
+                                DV[Data Validation]
+                                DP[Data Processing]
+                            end
+                        end
+                        
+                        subgraph "System Namespace"
+                            MON[Monitoring]
+                            LOG[Logging]
+                            SEC[Security Scanner]
+                        end
+                        
+                        subgraph "Storage Layer"
+                            PV1[Persistent Volume - Models]
+                            PV2[Persistent Volume - Data]
+                            PV3[Persistent Volume - Logs]
+                        end
+                    end
+                    
+                    subgraph "External Services"
+                        DB[(Cloud Database)]
+                        S3[(Object Storage)]
+                        ML[ML Platform APIs]
+                    end
+                    
+                    ING --> UI
+                    ING --> API
+                    SSL --> ING
+                    
+                    API --> MS
+                    API --> DS
+                    MS --> MT
+                    MT --> MP
+                    DS --> DV
+                    DV --> DP
+                    
+                    MON --> API
+                    MON --> MS
+                    LOG --> API
+                    SEC --> MS
+                    
+                    MS --> PV1
+                    DS --> PV2
+                    LOG --> PV3
+                    
+                    API --> DB
+                    MS --> S3
+                    MT --> ML
+                    
+                    classDef ingress fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+                    classDef app fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+                    classDef ai fill:#8936de,stroke:#333,stroke-width:2px,color:#fff
+                    classDef data fill:#e8f5e8,stroke:#1b5e20,stroke-width:2px
+                    classDef system fill:#fff3e0,stroke:#e65100,stroke-width:2px
+                    classDef storage fill:#fce4ec,stroke:#880e4f,stroke-width:2px
+                    classDef external fill:#f1f8e9,stroke:#33691e,stroke-width:2px
+                    
+                    class ING,SSL ingress
+                    class UI,API app
+                    class MS,MT,MP ai
+                    class DS,DV,DP data
+                    class MON,LOG,SEC system
+                    class PV1,PV2,PV3 storage
+                    class DB,S3,ML external
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 40px 0; padding: 20px; background: #f0f8ff; border-radius: 10px;">
+            <h3 style="color: #8936de;">📊 Interactive Diagrams Available</h3>
+            <p>These diagrams can be integrated into your AI Security Framework with interactive features, tooltips, and drill-down capabilities.</p>
+            <p><strong>Technologies Used:</strong> Mermaid.js, HTML5/CSS3, SVG Graphics, Interactive JavaScript</p>
+        </div>
+    </div>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            flowchart: {
+                htmlLabels: true,
+                curve: 'cardinal'
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,11 +1,81 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Test Page</title>
+    <title>Mobile Nav Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .nav-toggle {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 10px;
+            background: rgba(137, 54, 222, 0.1);
+            border: 2px solid #8936de;
+            border-radius: 5px;
+            width: 50px;
+            height: 50px;
+        }
+        .nav-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #8936de;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+        .nav-links {
+            display: none;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            background: white;
+            flex-direction: column;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+        }
+        .nav-links.active {
+            display: flex !important;
+        }
+        .nav-links a {
+            padding: 15px 20px;
+            text-decoration: none;
+            color: #333;
+            border-bottom: 1px solid #eee;
+        }
+    </style>
 </head>
 <body>
-    <h1>Deployment Test - This page works!</h1>
-    <p>If you can see this, the deployment is working correctly.</p>
+    <h1>Mobile Navigation Test</h1>
+    
+    <div class="nav-toggle" onclick="toggleTest()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    
+    <div class="nav-links" id="test-nav">
+        <a href="#overview">Overview</a>
+        <a href="#controls">Controls</a>
+        <a href="#tour">Tour</a>
+    </div>
+    
+    <p>Click the hamburger menu above. Check console for debug messages.</p>
     <a href="index.html">Go to Main Site</a>
+    
+    <script>
+        function toggleTest() {
+            console.log('Test toggle clicked!');
+            const navLinks = document.getElementById('test-nav');
+            if (navLinks) {
+                navLinks.classList.toggle('active');
+                console.log('Active class toggled. Has active:', navLinks.classList.contains('active'));
+            } else {
+                console.error('Nav links not found');
+            }
+        }
+        
+        console.log('Test script loaded');
+    </script>
 </body>
 </html>
