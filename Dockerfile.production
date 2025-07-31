@@ -1,0 +1,79 @@
+# Production Dockerfile for AI Security Framework
+FROM node:18-alpine AS web-builder
+
+# Set working directory for web interface
+WORKDIR /app/web
+
+# Copy package files
+COPY package*.json ./
+RUN npm ci --only=production && npm cache clean --force
+
+# Copy web assets
+COPY public/ ./public/
+COPY server.js ./
+
+# Python runtime for AISec-Pentester
+FROM python:3.10-slim AS production
+
+# Install system dependencies for production
+RUN apt-get update && apt-get install -y \
+    gcc \
+    g++ \
+    curl \
+    git \
+    nginx \
+    supervisor \
+    && rm -rf /var/lib/apt/lists/* \
+    && apt-get clean
+
+# Create application user with proper permissions
+RUN useradd --create-home --shell /bin/bash --uid 1000 aisec
+WORKDIR /home/aisec
+
+# Copy Python requirements and install with optimizations
+COPY aisec_pentester/requirements.txt requirements.txt
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt && \
+    pip install --no-cache-dir gunicorn uvicorn[standard] && \
+    python -m compileall .
+
+# Copy application code with proper ownership
+COPY --chown=aisec:aisec aisec_pentester/ aisec_pentester/
+COPY --chown=aisec:aisec --from=web-builder /app/web/ web/
+COPY --chown=aisec:aisec launch_aisec.py ./
+
+# Install Node.js for web interface
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
+    apt-get install -y nodejs
+
+# Set up production directories
+RUN mkdir -p logs output config data temp && \
+    chown -R aisec:aisec logs output config data temp
+
+# Copy production configuration files
+COPY --chown=aisec:aisec production/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY --chown=aisec:aisec production/gunicorn.conf.py ./
+COPY --chown=aisec:aisec production/nginx.conf /etc/nginx/sites-available/default
+
+# Create startup script
+COPY --chown=aisec:aisec production/start.sh ./
+RUN chmod +x start.sh
+
+# Set environment variables for production
+ENV PYTHONPATH=/home/aisec
+ENV NODE_ENV=production
+ENV PYTHON_ENV=production
+ENV PORT=3000
+ENV WORKERS=4
+ENV MAX_REQUESTS=1000
+ENV TIMEOUT=120
+
+# Expose ports
+EXPOSE 3000 3443
+
+# Health check for production
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+    CMD curl -f http://localhost:3000/health || exit 1
+
+# Use supervisor to manage multiple services
+CMD ["./start.sh"]
