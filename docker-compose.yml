@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  aisec-framework:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - LOG_LEVEL=info
+    volumes:
+      - ./output:/home/aisec/output
+      - ./logs:/home/aisec/logs
+      - ./config:/home/aisec/config
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - aisec-network
+
+  # Optional: Redis for session storage
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    volumes:
+      - redis-data:/data
+    networks:
+      - aisec-network
+
+  # Optional: Nginx reverse proxy
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/ssl/certs:ro
+    depends_on:
+      - aisec-framework
+    restart: unless-stopped
+    networks:
+      - aisec-network
+
+volumes:
+  redis-data:
+
+networks:
+  aisec-network:
+    driver: bridge

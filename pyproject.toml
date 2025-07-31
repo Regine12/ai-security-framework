@@ -1,0 +1,85 @@
+# Configuration for building Python packages
+[build-system]
+requires = ["setuptools>=65.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aisec-pentester"
+version = "2.0.0"
+description = "Production-ready AI Security Testing Framework"
+readme = "README_AISEC.md"
+license = { file = "LICENSE" }
+authors = [
+    { name = "AI Security Research Team", email = "security@aisec-pentester.org" }
+]
+keywords = [
+    "ai-security", "adversarial-attacks", "machine-learning-security",
+    "penetration-testing", "data-poisoning", "model-extraction"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Information Technology",
+    "Topic :: Security",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "numpy>=1.21.0",
+    "pandas>=1.5.0",
+    "scikit-learn>=1.1.0",
+    "torch>=1.13.0",
+    "torchvision>=0.14.0",
+    "transformers>=4.20.0",
+    "adversarial-robustness-toolbox>=1.15.0",
+    "foolbox>=3.3.0",
+    "click>=8.0.0",
+    "pyyaml>=6.0",
+    "rich>=12.0.0",
+    "requests>=2.28.0",
+    "matplotlib>=3.5.0",
+    "seaborn>=0.11.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=6.0",
+    "pytest-cov>=2.0",
+    "black>=22.0",
+    "flake8>=4.0",
+    "mypy>=0.950",
+]
+gpu = [
+    "torch[cuda]>=1.13.0",
+    "torchvision[cuda]>=0.14.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/Regine12/AISec-pentester"
+Repository = "https://github.com/Regine12/AISec-pentester.git"
+Issues = "https://github.com/Regine12/AISec-pentester/issues"
+
+[project.scripts]
+aisec = "aisec_pentester.__main__:main"
+aisec-pentester = "aisec_pentester.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["aisec_pentester*"]
+
+[tool.setuptools.package-data]
+aisec_pentester = ["config/*.yaml", "templates/*.json"]
+
+[tool.black]
+line-length = 88
+target-version = ['py38']
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"

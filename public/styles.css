@@ -4,6 +4,22 @@
  * Mobile Navigation & Responsive Layout
  */
 
+/* Warning pulse animation for ethical use section */
+@keyframes pulse {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .framework-card h3 i {
   margin-right: 10px;
   color: #8936de;
@@ -506,8 +522,8 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
-        .risk-cell.critical { background: rgba(183, 66, 57, 0.4); }
-        .risk-cell.high { background: rgba(255, 87, 34, 0.4); }
+        .risk-cell.critical { background: rgba(139, 0, 0, 0.8); color: white; font-weight: bold; } /* Much darker red */
+        .risk-cell.high { background: rgba(204, 51, 0, 0.7); color: white; font-weight: bold; } /* Darker orange */
         .risk-cell.medium { background: rgba(255, 193, 7, 0.4); }
         .risk-cell.low { background: rgba(139, 195, 74, 0.4); }
         .risk-cell.very-low { background: rgba(76, 175, 80, 0.4); }

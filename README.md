@@ -11,7 +11,7 @@ A comprehensive, interactive AI security assessment framework that integrates MI
 
 **[View Live Framework →](https://graceful-halva-6e33c6.netlify.app/)**
 
-## 🎯 Overview
+## Overview
 
 The AI Security Framework provides security professionals with:
 
@@ -22,9 +22,9 @@ The AI Security Framework provides security professionals with:
 - **Assessment Checklists** - Comprehensive evaluation criteria
 - **Methodology Guide** - Complete PDF documentation with templates
 
-## 🚀 Features
+## Features
 
-### 🛡️ Security Assessment Components
+### Security Assessment Components
 
 - **Framework Overview** - Six core security domains for AI systems
 - **Attack Surface Mapping** - Visual representation of AI attack vectors
@@ -33,7 +33,7 @@ The AI Security Framework provides security professionals with:
 - **Risk Assessment Tools** - Matrix, calculator, and scenario analysis
 - **Architecture Analysis** - Component-level security evaluation
 
-### 📊 MITRE ATLAS Integration
+### MITRE ATLAS Integration
 
 - **Technique Taxonomy** - Complete ATLAS technique mapping
 - **Attack Pattern Analysis** - AI-specific threat vectors
@@ -41,7 +41,7 @@ The AI Security Framework provides security professionals with:
 - **Threat Modeling** - Automated threat landscape generation
 - **Assessment Automation** - ATLAS-based security testing protocols
 
-### 🔍 OWASP LLM Top 10 Coverage
+### OWASP LLM Top 10 Coverage
 
 - **LLM01** - Prompt Injection Prevention
 - **LLM06** - Sensitive Information Disclosure
@@ -65,7 +65,7 @@ The AI Security Framework provides security professionals with:
 └── netlify.toml                     # Deployment configuration
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Local Development
 
@@ -108,7 +108,7 @@ The framework is configured for automatic deployment on Netlify:
 - **Tour Navigation** - Step-through guided assessment process
 - **PDF Resources** - Download comprehensive methodology guide
 
-## 🔧 Technical Implementation
+## Technical Implementation
 
 ### MITRE ATLAS Integration (Planned)
 
@@ -139,9 +139,9 @@ function calculateAtlasRisk(technique, asset, environment) {
 }
 ```
 
-## 📋 Roadmap
+## Roadmap
 
-### Phase 1: Core Framework (✅ Complete)
+### Phase 1: Core Framework (Complete)
 - [x] Interactive web interface
 - [x] Basic MITRE ATLAS integration
 - [x] OWASP LLM Top 10 coverage
@@ -155,7 +155,7 @@ function calculateAtlasRisk(technique, asset, environment) {
 - [ ] Assessment automation
 - [ ] Custom reporting engine
 
-### Phase 3: API and Extensibility (📋 Planned)
+### Phase 3: API and Extensibility (Planned)
 - [ ] REST API for assessment data
 - [ ] Plugin architecture
 - [ ] Custom assessment modules
@@ -191,7 +191,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **NIST AI RMF** - AI Risk Management Framework
 - **CSA** - Cloud Security Alliance AI controls
 
-## 📚 Resources
+## Resources
 
 - [MITRE ATLAS Framework](https://attack.mitre.org/matrices/enterprise/atlas/)
 - [OWASP LLM Top 10](https://owasp.org/www-project-top-10-for-large-language-model-applications/)

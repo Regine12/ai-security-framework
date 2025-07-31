@@ -1,0 +1,131 @@
+{
+  "assessment_id": "aisec_demo_20250731_111859",
+  "timestamp": "2025-07-31T11:18:59.690929",
+  "framework_version": "2.0.0",
+  "target_info": {
+    "model_type": "TestMLP",
+    "parameters": 4322,
+    "device": "cpu",
+    "dataset": "synthetic"
+  },
+  "adversarial_testing": {
+    "test_type": "adversarial_robustness",
+    "attacks_tested": [
+      "FGSM",
+      "PGD",
+      "C&W",
+      "DeepFool"
+    ],
+    "attack_results": {
+      "FGSM": {
+        "success_rate": 0.34,
+        "avg_perturbation_l2": 0.23,
+        "status": "VULNERABLE"
+      },
+      "PGD": {
+        "success_rate": 0.67,
+        "avg_perturbation_l2": 0.31,
+        "status": "VULNERABLE"
+      },
+      "C&W": {
+        "success_rate": 0.28,
+        "avg_perturbation_l2": 0.15,
+        "status": "ROBUST"
+      },
+      "DeepFool": {
+        "success_rate": 0.45,
+        "avg_perturbation_l2": 0.19,
+        "status": "VULNERABLE"
+      }
+    },
+    "robustness_metrics": {
+      "overall_robustness_score": 56.5,
+      "vulnerability_count": 3,
+      "robustness_level": "MODERATELY_VULNERABLE"
+    }
+  },
+  "poisoning_detection": {
+    "test_type": "data_poisoning_detection",
+    "detection_results": {
+      "Label Flipping": {
+        "detection_accuracy": 0.82,
+        "false_positive_rate": 0.05,
+        "status": "DETECTED"
+      },
+      "Backdoor Injection": {
+        "detection_accuracy": 0.74,
+        "false_positive_rate": 0.08,
+        "status": "DETECTED"
+      },
+      "Feature Manipulation": {
+        "detection_accuracy": 0.69,
+        "false_positive_rate": 0.06,
+        "status": "MISSED"
+      }
+    },
+    "overall_detection_metrics": {
+      "average_detection_accuracy": 75.0,
+      "detection_reliability": "RELIABLE",
+      "methods_detected": 2
+    }
+  },
+  "extraction_testing": {
+    "test_type": "model_extraction",
+    "extraction_results": {
+      "Query-based": {
+        "extraction_success_rate": 0.42,
+        "model_fidelity": 0.87,
+        "queries_required": 15000,
+        "status": "VULNERABLE"
+      },
+      "Gradient-based": {
+        "extraction_success_rate": 0.35,
+        "model_fidelity": 0.91,
+        "queries_required": 8500,
+        "status": "PROTECTED"
+      },
+      "Side-channel": {
+        "extraction_success_rate": 0.18,
+        "model_fidelity": 0.62,
+        "queries_required": 2300,
+        "status": "PROTECTED"
+      }
+    },
+    "privacy_metrics": {
+      "overall_privacy_score": 68.3,
+      "extraction_vulnerability_count": 1,
+      "privacy_level": "MEDIUM_PRIVACY"
+    }
+  },
+  "security_metrics": {
+    "overall_risk_score": 58,
+    "security_categories": {
+      "adversarial_robustness": 56.5,
+      "data_integrity": 75.0,
+      "model_privacy": 68.3
+    }
+  },
+  "recommendations": [
+    {
+      "priority": "HIGH",
+      "category": "Adversarial Defense",
+      "recommendation": "Implement adversarial training with PGD and FGSM",
+      "impact": "HIGH",
+      "effort": "MEDIUM"
+    },
+    {
+      "priority": "MEDIUM",
+      "category": "Model Privacy",
+      "recommendation": "Implement differential privacy and query limiting",
+      "impact": "MEDIUM",
+      "effort": "HIGH"
+    },
+    {
+      "priority": "LOW",
+      "category": "Monitoring",
+      "recommendation": "Implement continuous security monitoring",
+      "impact": "MEDIUM",
+      "effort": "LOW"
+    }
+  ]
+}

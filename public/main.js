@@ -228,23 +228,7 @@ window.toggleMobileNav = toggleMobileNav;
                         <li> Provenance documentation review</li>
                     </ul>
                 `,
-                'governance': `
-                    <h2>AI Governance</h2>
-                    <h3>Key Areas:</h3>
-                    <div style="margin-bottom: 20px;">
-                        <p><strong>Policy Framework:</strong> Establish AI security policies and procedures</p>
-                        <p><strong>Compliance Mapping:</strong> Align with regulatory requirements</p>
-                        <p><strong>Risk Management:</strong> Implement AI-specific risk assessment</p>
-                        <p><strong>Ethics Integration:</strong> Ensure responsible AI development</p>
-                    </div>
-                    <h3>Assessment Checklist:</h3>
-                    <ul>
-                        <li> AI security policy documentation</li>
-                        <li> Compliance framework mapping</li>
-                        <li> Risk register and mitigation plans</li>
-                        <li> Ethics review process</li>
-                    </ul>
-                `,
+                'governance': null, // Use HTML content instead
                 'incident-response': `
                     <h2>Incident Response</h2>
                     <h3>Key Areas:</h3>
@@ -332,6 +316,30 @@ window.toggleMobileNav = toggleMobileNav;
                         <li>Container security hardening</li>
                         <li>Network segmentation</li>
                         <li>Runtime application self-protection</li>
+                    </ul>
+                `,
+                'infrastructure-attacks': `
+                    <h2>Infrastructure Layer Attacks</h2>
+                    <h3>Attack Vectors:</h3>
+                    <ul>
+                        <li><strong>Cloud Infrastructure:</strong> Compromising cloud services and resources</li>
+                        <li><strong>Container Security:</strong> Exploiting containerization vulnerabilities</li>
+                        <li><strong>Network Attacks:</strong> Man-in-the-middle and traffic interception</li>
+                        <li><strong>Hardware Attacks:</strong> Physical access and side-channel exploitation</li>
+                    </ul>
+                    <h3>Common Techniques:</h3>
+                    <ul>
+                        <li>Privilege escalation in cloud environments</li>
+                        <li>Container breakout and image poisoning</li>
+                        <li>DNS hijacking and SSL stripping</li>
+                        <li>Hardware implants and timing attacks</li>
+                    </ul>
+                    <h3>MITRE ATLAS Mapping:</h3>
+                    <ul>
+                        <li>T1190: Exploit Public-Facing Application</li>
+                        <li>T1078: Valid Accounts</li>
+                        <li>T1055: Process Injection</li>
+                        <li>T1210: Exploitation of Remote Services</li>
                     </ul>
                 `,
                 'preventive-controls': `
@@ -613,6 +621,13 @@ window.toggleMobileNav = toggleMobileNav;
                 `
             };
             
+            // First check if there's an HTML element with content for this modal
+            const htmlContent = document.getElementById(contentId + '-content');
+            if (htmlContent) {
+                return htmlContent.innerHTML;
+            }
+            
+            // Fall back to JavaScript content
             return contents[contentId] || '<h2>Content not found</h2>';
         }
 
@@ -782,21 +797,278 @@ function resetChecklist() {
 
 function exportChecklist() {
     const progress = {};
+    let totalItems = 0;
+    let completedItems = 0;
+    
     checklistPhases.forEach((phase, phaseIndex) => {
+        const phaseCompleted = getCompletedItems(phaseIndex);
+        const phaseTotal = phase.items.length;
+        totalItems += phaseTotal;
+        completedItems += phaseCompleted;
+        
         progress[phase.title] = {
-            completed: getCompletedItems(phaseIndex),
-            total: phase.items.length,
+            completed: phaseCompleted,
+            total: phaseTotal,
+            completionPercentage: Math.round((phaseCompleted / phaseTotal) * 100),
+            status: phaseCompleted === phaseTotal ? 'Complete' : phaseCompleted > 0 ? 'In Progress' : 'Not Started',
             items: phase.items.map((item, itemIndex) => ({
                 name: item,
                 completed: localStorage.getItem(`checklist-${phaseIndex}-${itemIndex}`) === 'true'
             }))
         };
     });
-    const blob = new Blob([JSON.stringify(progress, null, 2)], { type: 'application/json' });
+    
+    // Enhanced export data with metadata
+    const exportData = {
+        metadata: {
+            exportDate: new Date().toISOString(),
+            frameworkVersion: 'AISec-Pentester v2.0',
+            assessmentType: 'AI Security Assessment Checklist',
+            totalPhases: checklistPhases.length,
+            overallCompletion: Math.round((completedItems / totalItems) * 100),
+            status: completedItems === totalItems ? 'Assessment Complete' : 
+                    completedItems > 0 ? 'Assessment In Progress' : 'Assessment Not Started'
+        },
+        summary: {
+            totalItems: totalItems,
+            completedItems: completedItems,
+            remainingItems: totalItems - completedItems,
+            completionPercentage: Math.round((completedItems / totalItems) * 100)
+        },
+        phaseProgress: progress,
+        recommendations: generateRecommendations(progress)
+    };
+    
+    // Export as enhanced JSON
+    const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `ai-security-checklist-progress-${new Date().toISOString().split('T')[0]}.json`;
+    const timestamp = new Date().toISOString().split('T')[0];
+    a.download = `aisec-assessment-checklist-${timestamp}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+    
+    // Also generate HTML report
+    generateChecklistReport(exportData);
+}
+
+function generateRecommendations(progress) {
+    const recommendations = [];
+    
+    Object.entries(progress).forEach(([phaseName, phaseData]) => {
+        const completion = phaseData.completionPercentage;
+        
+        if (completion === 0) {
+            recommendations.push({
+                priority: 'High',
+                phase: phaseName,
+                recommendation: `Begin ${phaseName} assessment phase - no items have been completed yet.`,
+                impact: 'Critical for security posture assessment'
+            });
+        } else if (completion < 50) {
+            recommendations.push({
+                priority: 'Medium',
+                phase: phaseName,
+                recommendation: `Continue ${phaseName} assessment - ${completion}% complete. Focus on remaining ${phaseData.total - phaseData.completed} items.`,
+                impact: 'Important for comprehensive security coverage'
+            });
+        } else if (completion < 100) {
+            recommendations.push({
+                priority: 'Low',
+                phase: phaseName, 
+                recommendation: `Complete final ${phaseData.total - phaseData.completed} items in ${phaseName} for full phase completion.`,
+                impact: 'Ensures complete security assessment coverage'
+            });
+        }
+    });
+    
+    return recommendations;
+}
+
+function generateChecklistReport(data) {
+    const htmlContent = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Security Assessment Progress Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f5f5f5; }
+        .container { max-width: 1000px; margin: 0 auto; background: white; padding: 40px; border-radius: 10px; box-shadow: 0 0 20px rgba(0,0,0,0.1); }
+        .header { text-align: center; margin-bottom: 40px; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 10px; }
+        .summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 30px 0; }
+        .summary-card { background: #f8f9fa; padding: 20px; border-radius: 10px; text-align: center; border-left: 4px solid #667eea; }
+        .number { font-size: 2em; font-weight: bold; color: #667eea; }
+        .label { color: #666; text-transform: uppercase; font-size: 0.9em; }
+        .phase { margin: 20px 0; padding: 20px; border: 1px solid #ddd; border-radius: 10px; }
+        .phase-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .phase-title { font-size: 1.2em; font-weight: bold; color: #333; }
+        .progress-bar { background: #e9ecef; height: 20px; border-radius: 10px; overflow: hidden; margin: 10px 0; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, #28a745, #20c997); transition: width 0.3s ease; }
+        .items-list { margin-top: 15px; }
+        .item { padding: 8px 12px; margin: 5px 0; border-radius: 5px; display: flex; align-items: center; }
+        .item.completed { background: #d4edda; border-left: 3px solid #28a745; }
+        .item.pending { background: #fff3cd; border-left: 3px solid #ffc107; }
+        .recommendations { margin-top: 30px; }
+        .recommendation { padding: 15px; margin: 10px 0; border-radius: 5px; border-left: 4px solid; }
+        .rec-high { background: #f8d7da; border-left-color: #dc3545; }
+        .rec-medium { background: #fff3cd; border-left-color: #ffc107; }
+        .rec-low { background: #d4edda; border-left-color: #28a745; }
+        .footer { text-align: center; margin-top: 40px; color: #666; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>AI Security Assessment Progress Report</h1>
+            <p>Generated on ${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString()}</p>
+        </div>
+        
+        <div class="summary">
+            <div class="summary-card">
+                <div class="number">${data.summary.completionPercentage}%</div>
+                <div class="label">Overall Completion</div>
+            </div>
+            <div class="summary-card">
+                <div class="number">${data.summary.completedItems}</div>
+                <div class="label">Items Completed</div>
+            </div>
+            <div class="summary-card">
+                <div class="number">${data.summary.remainingItems}</div>
+                <div class="label">Items Remaining</div>
+            </div>
+            <div class="summary-card">
+                <div class="number">${data.metadata.totalPhases}</div>
+                <div class="label">Assessment Phases</div>
+            </div>
+        </div>
+        
+        <h2>Phase Progress</h2>
+        ${Object.entries(data.phaseProgress).map(([phaseName, phaseData]) => `
+            <div class="phase">
+                <div class="phase-header">
+                    <div class="phase-title">${phaseName}</div>
+                    <div>${phaseData.completed}/${phaseData.total} items (${phaseData.completionPercentage}%)</div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: ${phaseData.completionPercentage}%"></div>
+                </div>
+                <div class="items-list">
+                    ${phaseData.items.map(item => `
+                        <div class="item ${item.completed ? 'completed' : 'pending'}">
+                            ${item.completed ? '✓' : '○'} ${item.name}
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `).join('')}
+        
+        <h2>Recommendations</h2>
+        <div class="recommendations">
+            ${data.recommendations.map(rec => `
+                <div class="recommendation rec-${rec.priority.toLowerCase()}">
+                    <strong>${rec.priority} Priority:</strong> ${rec.recommendation}
+                    <br><small><strong>Impact:</strong> ${rec.impact}</small>
+                </div>
+            `).join('')}
+        </div>
+        
+        <div class="footer">
+            <p>This report was generated by the AISec-Pentester Framework v2.0</p>
+            <p>Assessment Status: ${data.metadata.status}</p>
+        </div>
+    </div>
+</body>
+</html>`;
+    
+    const blob = new Blob([htmlContent], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    const timestamp = new Date().toISOString().split('T')[0];
+    a.download = `aisec-assessment-report-${timestamp}.html`;
+    a.click();
+    URL.revokeObjectURL(url);
+}
+
+function exportSimpleReport() {
+    const progress = {};
+    let totalItems = 0;
+    let completedItems = 0;
+    
+    checklistPhases.forEach((phase, phaseIndex) => {
+        const phaseCompleted = getCompletedItems(phaseIndex);
+        const phaseTotal = phase.items.length;
+        totalItems += phaseTotal;
+        completedItems += phaseCompleted;
+        
+        progress[phase.title] = {
+            completed: phaseCompleted,
+            total: phaseTotal,
+            completionPercentage: Math.round((phaseCompleted / phaseTotal) * 100),
+            status: phaseCompleted === phaseTotal ? 'Complete' : phaseCompleted > 0 ? 'In Progress' : 'Not Started',
+            items: phase.items.map((item, itemIndex) => ({
+                name: item,
+                completed: localStorage.getItem(`checklist-${phaseIndex}-${itemIndex}`) === 'true'
+            }))
+        };
+    });
+    
+    // Generate simple text report
+    const timestamp = new Date().toLocaleDateString();
+    const overallCompletion = Math.round((completedItems / totalItems) * 100);
+    
+    let reportText = `AI SECURITY ASSESSMENT REPORT\n`;
+    reportText += `Generated: ${timestamp}\n`;
+    reportText += `Framework: AISec-Pentester v2.0\n\n`;
+    
+    reportText += `EXECUTIVE SUMMARY\n`;
+    reportText += `================\n`;
+    reportText += `Overall Progress: ${overallCompletion}% (${completedItems}/${totalItems} items)\n`;
+    reportText += `Status: ${completedItems === totalItems ? 'Assessment Complete' : 
+                    completedItems > 0 ? 'Assessment In Progress' : 'Assessment Not Started'}\n\n`;
+    
+    reportText += `PHASE BREAKDOWN\n`;
+    reportText += `===============\n`;
+    
+    Object.entries(progress).forEach(([phaseTitle, phaseData]) => {
+        reportText += `${phaseTitle}: ${phaseData.completionPercentage}% Complete (${phaseData.completed}/${phaseData.total})\n`;
+        reportText += `Status: ${phaseData.status}\n`;
+        
+        reportText += `Items:\n`;
+        phaseData.items.forEach(item => {
+            reportText += `  ${item.completed ? '✓' : '☐'} ${item.name}\n`;
+        });
+        reportText += `\n`;
+    });
+    
+    if (completedItems > 0) {
+        reportText += `RECOMMENDATIONS\n`;
+        reportText += `===============\n`;
+        const incomplete = Object.entries(progress).filter(([, data]) => data.completed < data.total);
+        
+        if (incomplete.length > 0) {
+            reportText += `Priority Areas for Completion:\n`;
+            incomplete.forEach(([title, data]) => {
+                reportText += `- ${title}: ${data.total - data.completed} remaining items\n`;
+            });
+        } else {
+            reportText += `All assessment phases completed successfully.\n`;
+            reportText += `Proceed with remediation of identified security issues.\n`;
+        }
+    }
+    
+    reportText += `\n--- End of Report ---\n`;
+    
+    // Export as text file
+    const blob = new Blob([reportText], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    const timestamp2 = new Date().toISOString().split('T')[0];
+    a.download = `aisec-assessment-report-${timestamp2}.txt`;
     a.click();
     URL.revokeObjectURL(url);
 }
@@ -1346,10 +1618,20 @@ function showToolsDemo() {
             </button>
         </div>
 
-        <div style="text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
-            <p style="font-size: 0.9rem; opacity: 0.7;">
-                <strong>Ethical Use Only:</strong> These tools are designed for authorized security testing of AI systems you own or have explicit permission to test.
+        <div style="text-align: center; margin-top: 20px; padding: 20px; background: linear-gradient(135deg, #ff4444 0%, #cc1f1f 100%); border-radius: 15px; border: 2px solid #ff6666; box-shadow: 0 4px 20px rgba(255, 68, 68, 0.3);">
+            <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 10px;">
+                <i class="fa-solid fa-triangle-exclamation" style="font-size: 1.5rem; color: #fff; margin-right: 10px; animation: pulse 2s infinite;"></i>
+                <h3 style="color: #fff; margin: 0; font-weight: bold; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">ETHICAL USE ONLY</h3>
+                <i class="fa-solid fa-triangle-exclamation" style="font-size: 1.5rem; color: #fff; margin-left: 10px; animation: pulse 2s infinite;"></i>
+            </div>
+            <p style="color: #fff; font-size: 0.95rem; margin: 0; line-height: 1.4; text-shadow: 0 1px 2px rgba(0,0,0,0.3);">
+                <strong>WARNING:</strong> These tools are designed for authorized security testing of AI systems you own or have explicit written permission to test. Unauthorized access to computer systems is illegal in most jurisdictions.
             </p>
+            <div style="margin-top: 10px; padding: 8px; background: rgba(255,255,255,0.1); border-radius: 8px; border: 1px solid rgba(255,255,255,0.2);">
+                <p style="color: #fff; font-size: 0.85rem; margin: 0; font-style: italic;">
+                    Always follow responsible disclosure practices and respect legal boundaries.
+                </p>
+            </div>
         </div>
     `);
 }
@@ -1448,7 +1730,7 @@ function startFullSystemDemo() {
             <div style="margin-bottom: 5px;">[PHASE 5] Risk Assessment & Reporting</div>
             <div style="color: #ff4444;">[CRITICAL] 3 high-risk vulnerabilities found</div>
             <div style="color: #ffaa00;">[MEDIUM] 7 security issues identified</div>
-            <div style="color: #00ff00;">✅ PASSED: 12 security controls</div>
+            <div style="color: #00ff00;">PASSED: 12 security controls</div>
         </div>
         
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0;">
@@ -2014,16 +2296,16 @@ function updateProgressBar() {
 }
 
 function resetTour() {
+    // Stop any active tour first
+    if (guidedTourActive) {
+        stopGuidedTour();
+        return;
+    }
+    
     currentTourStep = 0;
     completedSteps = [];
-    guidedTourActive = false;
-    guidedTourPaused = false;
     
-    // Clear any pending timeouts
-    guidedTourTimeouts.forEach(timeout => clearTimeout(timeout));
-    guidedTourTimeouts = [];
-    
-    // Reset all steps
+    // Reset all steps visually
     document.querySelectorAll('.tour-step').forEach((step, index) => {
         step.classList.remove('active', 'completed');
         if (index > 0) {
@@ -2063,25 +2345,25 @@ function startGuidedTour() {
     
     startTourStep(1);
     
-    // Auto-progress through steps with longer delays for better control
+    // Auto-progress through steps with much better timing for reading
     guidedTourTimeouts.push(setTimeout(() => {
         if (guidedTourActive && !guidedTourPaused) {
             currentTourStep = 2;
             startTourStep(2);
         }
-    }, 8000)); // Increased from 5000ms
+    }, 12000)); // Increased to 12 seconds
     guidedTourTimeouts.push(setTimeout(() => {
         if (guidedTourActive && !guidedTourPaused) {
             currentTourStep = 3;
             startTourStep(3);
         }
-    }, 16000)); // Increased from 10000ms
+    }, 24000)); // Increased to 24 seconds
     guidedTourTimeouts.push(setTimeout(() => {
         if (guidedTourActive && !guidedTourPaused) {
             currentTourStep = 4;
             startTourStep(4);
         }
-    }, 24000)); // Increased from 15000ms
+    }, 36000)); // Increased to 36 seconds
     guidedTourTimeouts.push(setTimeout(() => {
         if (guidedTourActive && !guidedTourPaused) {
             currentTourStep = 5;
@@ -2176,12 +2458,15 @@ function updateGuidedTourButtons() {
 function stopGuidedTour() {
     guidedTourActive = false;
     guidedTourPaused = false;
-    currentTourStep = 0;
+    
     // Clear all pending timeouts
     guidedTourTimeouts.forEach(timeout => clearTimeout(timeout));
     guidedTourTimeouts = [];
+    
     updateGuidedTourButtons();
-    resetTour();
+    
+    // Don't reset visuals, just stop the automation
+    // User can manually reset if they want
 }
 
 function pauseGuidedTour() {
@@ -2250,7 +2535,7 @@ function showCongratulations() {
         <p>You have successfully completed the AI Security Assessment Tour!</p>
         <p>You now have a comprehensive understanding of the 6-phase methodology for securing AI systems.</p>
         <div style="text-align: center; margin: 30px 0;">
-            <div style="font-size: 4rem; color: #8936de;">🏆</div>
+            <div style="font-size: 4rem; color: #8936de;"><i class="fa-solid fa-trophy"></i></div>
         </div>
         <div style="background: rgba(137, 54, 222, 0.1); padding: 20px; border-radius: 15px; margin: 20px 0;">
             <h3>Next Steps:</h3>
@@ -2287,5 +2572,41 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     initializeArchitectureDiagram();
 });
+
+// Risk matrix highlighting functions
+function highlightRiskRange(riskLevel) {
+    clearRiskHighlight(); // Clear any existing highlights
+    
+    const riskRanges = {
+        'critical': [20, 21, 22, 23, 24, 25],
+        'high': [15, 16, 17, 18, 19],
+        'medium': [10, 11, 12, 13, 14],
+        'low': [5, 6, 7, 8, 9],
+        'very-low': [1, 2, 3, 4]
+    };
+    
+    const range = riskRanges[riskLevel];
+    if (range) {
+        range.forEach(score => {
+            const cell = document.querySelector(`[data-score="${score}"]`);
+            if (cell) {
+                cell.style.boxShadow = '0 0 15px rgba(255, 255, 255, 0.8)';
+                cell.style.transform = 'scale(1.05)';
+                cell.style.zIndex = '10';
+                cell.style.position = 'relative';
+            }
+        });
+    }
+}
+
+function clearRiskHighlight() {
+    const allCells = document.querySelectorAll('.risk-cell');
+    allCells.forEach(cell => {
+        cell.style.boxShadow = '';
+        cell.style.transform = '';
+        cell.style.zIndex = '';
+        cell.style.position = '';
+    });
+}
 
 // Removed internal functions that were meant for development, not users

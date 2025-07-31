@@ -8,7 +8,7 @@ This is the official implementation tool for the AI Security Framework - a compr
 
 ## Features
 
-### 🔒 Comprehensive Security Assessment
+### Comprehensive Security Assessment
 - **Data Security**: Training data protection, input validation, output filtering
 - **Model Security**: Model extraction protection, adversarial robustness, IP protection
 - **Deployment Security**: API security, infrastructure hardening, runtime protection
@@ -16,14 +16,14 @@ This is the official implementation tool for the AI Security Framework - a compr
 - **AI Governance**: Policy frameworks, compliance mapping, risk management
 - **Incident Response**: AI-specific incident handling and recovery procedures
 
-### 📊 Interactive Assessment Tools
+### Interactive Assessment Tools
 - Step-by-step guided assessment methodology
 - Interactive checklists with progress tracking
 - MITRE ATLAS technique mapping
 - Attack surface visualization
 - Comprehensive reporting and documentation
 
-### 🎯 MITRE ATLAS Integration
+### MITRE ATLAS Integration
 - Complete mapping to MITRE ATLAS tactics and techniques
 - Threat scenario modeling
 - Risk prioritization matrix
@@ -103,4 +103,4 @@ For questions, suggestions, or contributions, please open an issue or contact th
 
 ---
 
-**⚡ Get Started**: Visit [graceful-halva-6e33c6.netlify.app](https://graceful-halva-6e33c6.netlify.app/) to begin your AI security assessment today!
+**Get Started**: Visit [graceful-halva-6e33c6.netlify.app](https://graceful-halva-6e33c6.netlify.app/) to begin your AI security assessment today!
