@@ -1,63 +1,48 @@
 #!/usr/bin/env python3
 """
-AISec-Pentester Tool Launcher
-Simple interface to launch the AI Security Testing Framework
+Legacy AISec Pentester Tool Launcher
+Redirects to the new comprehensive launcher
 """
 
 import os
 import sys
 import subprocess
+from pathlib import Path
 
 def main():
-    print("=" * 60)
-    print("AI Security Framework - AISec-Pentester")
-    print("Professional AI Penetration Testing & Security Assessment")
-    print("=" * 60)
-    print()
+    """Main launcher function - redirects to new launcher"""
+    print("🚀 Launching AI Security Framework...")
+    print("⚠️  This is the legacy launcher. Redirecting to comprehensive launcher...")
     
-    print("Available Options:")
-    print("1. Quick Demo (Individual modules)")
-    print("2. Full Assessment Demo")
-    print("3. Interactive Mode")
-    print("4. Help & Documentation")
-    print("5. Exit")
-    print()
-    
-    while True:
+    # Check if new launcher exists
+    new_launcher = Path("launch_aisec.py")
+    if new_launcher.exists():
+        print("✅ Starting comprehensive AI Security Framework...")
+        
+        # Forward command line arguments
+        args = sys.argv[1:] if len(sys.argv) > 1 else ["--web"]
+        
         try:
-            choice = input("Select option (1-5): ").strip()
-            
-            if choice == "1":
-                print("\nLaunching Quick Demo...")
-                subprocess.run([sys.executable, "demo.py", "--quick"], check=True)
-                
-            elif choice == "2":
-                print("\nLaunching Full Assessment Demo...")
-                subprocess.run([sys.executable, "demo.py", "--full"], check=True)
-                
-            elif choice == "3":
-                print("\nLaunching Interactive Mode...")
-                subprocess.run([sys.executable, "demo.py"], check=True)
-                
-            elif choice == "4":
-                print("\nDisplaying Help...")
-                subprocess.run([sys.executable, "demo.py", "--help"], check=True)
-                
-            elif choice == "5":
-                print("Exiting AISec-Pentester. Goodbye!")
-                break
-                
-            else:
-                print("Invalid choice. Please select 1-5.")
-                
-            print("\n" + "-" * 40)
-            
-        except KeyboardInterrupt:
-            print("\n\nExiting AISec-Pentester. Goodbye!")
-            break
+            # Execute the new launcher
+            result = subprocess.run([sys.executable, str(new_launcher)] + args)
+            return result.returncode
         except Exception as e:
-            print(f"Error: {e}")
-            print("Please try again.")
+            print(f"❌ Failed to launch new framework: {e}")
+    else:
+        print("❌ New launcher not found! Please use launch_aisec.py directly")
+        
+        # Fallback to simple web interface
+        import webbrowser
+        index_path = Path("public/index.html")
+        if index_path.exists():
+            file_url = f"file://{index_path.absolute()}"
+            webbrowser.open(file_url)
+            print(f"Web interface launched: {file_url}")
+        else:
+            print("Web interface files not found!")
+            return 1
+    
+    return 0
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
