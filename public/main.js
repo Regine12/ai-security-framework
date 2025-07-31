@@ -1,4 +1,7 @@
 
+// AI Security Framework JavaScript - Version 4.0
+console.log('AI Security Framework JS loaded successfully');
+
 // Global mobile navigation function
 function toggleMobileNav() {
     console.log('Mobile nav toggle clicked'); // Debug log
