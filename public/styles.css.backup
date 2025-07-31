@@ -90,7 +90,7 @@
 }
 
 .resource-card button {
-  background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+  background: linear-gradient(45deg, #8936de, #17a2b8);
   border: none;
   padding: 10px 20px;
   border-radius: 25px;
@@ -99,7 +99,7 @@
   transition: background 0.3s;
 }
 .resource-card button:hover {
-  background: linear-gradient(45deg, var(--accent-color), var(--secondary-color));
+  background: linear-gradient(45deg, #17a2b8, #8936de);
 }
 
 * {
@@ -143,7 +143,7 @@
         .logo {
             font-size: 24px;
             font-weight: bold;
-            background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+            background: linear-gradient(45deg, #8936de, #17a2b8);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -164,7 +164,7 @@
 
         .nav-links a:hover {
             background: rgba(137, 54, 222, 0.1);
-            color: var(--secondary-color);
+            color: #8936de;
             transform: translateY(-2px);
         }
 
@@ -183,7 +183,7 @@
         .nav-toggle span {
             width: 25px;
             height: 3px;
-            background: var(--secondary-color);
+            background: #8936de;
             margin: 3px 0;
             transition: 0.3s;
             border-radius: 2px;
@@ -207,7 +207,7 @@
             .nav-toggle {
                 display: flex !important;
                 background: rgba(137, 54, 222, 0.1) !important;
-                border: 2px solid var(--secondary-color) !important;
+                border: 2px solid #8936de !important;
                 border-radius: 5px !important;
             }
             
@@ -273,7 +273,7 @@
         .hero-content h1 {
             font-size: 4rem;
             margin-bottom: 20px;
-            background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+            background: linear-gradient(45deg, #8936de, #17a2b8);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -294,7 +294,7 @@
 
         .cta-button {
             padding: 15px 40px;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(45deg, #8936de, #17a2b8);
             border: none;
             border-radius: 50px;
             color: white;
@@ -307,7 +307,7 @@
 
         .cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(75, 12, 127, 0.4);
+            box-shadow: 0 10px 30px rgba(137, 54, 222, 0.4);
         }
 
         /* Framework Overview */
@@ -320,7 +320,7 @@
             text-align: center;
             font-size: 3rem;
             margin-bottom: 50px;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(45deg, #8936de, #17a2b8);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -346,13 +346,13 @@
         .framework-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(137, 54, 222, 0.2);
-            border-color: var(--secondary-color);
+            border-color: #8936de;
         }
 
         .framework-card h3 {
             font-size: 1.5rem;
             margin-bottom: 15px;
-            color: var(--secondary-color);
+            color: #8936de;
         }
 
         .framework-card p {
@@ -380,7 +380,7 @@
             position: relative;
             width: 280px;
             height: 280px;
-            border: 3px solid var(--secondary-color);
+            border: 3px solid #8936de;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -394,13 +394,13 @@
 
         .attack-layer:hover {
             transform: scale(1.1);
-            border-color: var(--accent-color);
+            border-color: #17a2b8;
             box-shadow: 0 0 30px rgba(137, 54, 222, 0.4);
             z-index: 3;
         }
 
         .attack-layer h4 {
-            color: var(--secondary-color);
+            color: #8936de;
             font-size: 1.2rem;
             text-align: center;
         }
@@ -444,13 +444,13 @@
         }
 
         .matrix-item:hover {
-            border-color: var(--secondary-color);
+            border-color: #8936de;
             background: rgba(79, 172, 254, 0.1);
             transform: translateY(-5px);
         }
 
         .matrix-item h4 {
-            color: var(--secondary-color);
+            color: #8936de;
             margin-bottom: 10px;
         }
 
@@ -482,9 +482,9 @@
         .risk-control-btn {
             padding: 12px 25px;
             background: rgba(137, 54, 222, 0.1);
-            border: 2px solid var(--secondary-color);
+            border: 2px solid #8936de;
             border-radius: 25px;
-            color: var(--secondary-color);
+            color: #8936de;
             cursor: pointer;
             transition: all 0.3s ease;
             font-weight: 600;
@@ -493,7 +493,7 @@
 
         .risk-control-btn:hover,
         .risk-control-btn.active {
-            background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+            background: linear-gradient(45deg, #8936de, #17a2b8);
             border-color: transparent;
             color: white;
             transform: translateY(-2px);
@@ -610,17 +610,17 @@
         .scenario-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 20px rgba(137, 54, 222, 0.15);
-            border-color: var(--secondary-color);
+            border-color: #8936de;
         }
 
         .scenario-icon {
             font-size: 2.5rem;
-            color: var(--secondary-color);
+            color: #8936de;
             margin-bottom: 15px;
         }
 
         .scenario-card h4 {
-            color: var(--secondary-color);
+            color: #8936de;
             margin-bottom: 10px;
             font-size: 1.2rem;
         }
@@ -659,7 +659,7 @@
         }
 
         .risk-result {
-            background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+            background: linear-gradient(45deg, #8936de, #17a2b8);
             border-radius: 15px;
             padding: 20px;
             text-align: center;
@@ -707,7 +707,7 @@
         .phase-title {
             font-size: 1.5rem;
             font-weight: bold;
-            color: var(--secondary-color);
+            color: #8936de;
         }
 
         .phase-progress {
@@ -784,7 +784,7 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color), var(--secondary-color));
+            background: linear-gradient(90deg, #8936de, #17a2b8, #8936de);
             border-radius: 25px 25px 0 0;
         }
 
@@ -842,7 +842,7 @@
         .layer-title {
             font-size: 1.3rem;
             font-weight: bold;
-            color: var(--secondary-color);
+            color: #8936de;
             margin-bottom: 5px;
         }
 
@@ -872,13 +872,13 @@
 
         .arrow-down i {
             font-size: 1.5rem;
-            color: var(--secondary-color);
+            color: #8936de;
             opacity: 0.7;
         }
 
         .arrow-right i {
             font-size: 1.5rem;
-            color: var(--secondary-color);
+            color: #8936de;
             opacity: 0.7;
         }
 
@@ -896,13 +896,13 @@
         .component-box:hover {
             transform: translateY(-3px);
             box-shadow: 0 5px 20px rgba(137, 54, 222, 0.2);
-            border-color: var(--secondary-color);
+            border-color: #8936de;
             background: rgba(137, 54, 222, 0.05);
         }
 
         .component-box i {
             font-size: 1.3rem;
-            color: var(--secondary-color);
+            color: #8936de;
             margin-bottom: 6px;
             display: block;
         }
@@ -923,7 +923,7 @@
         }
 
         .architecture-info h3 {
-            color: var(--secondary-color);
+            color: #8936de;
             margin-bottom: 20px;
             font-size: 1.5rem;
         }
@@ -947,11 +947,11 @@
             padding: 15px;
             background: rgba(137, 54, 222, 0.1);
             border-radius: 10px;
-            border-left: 4px solid var(--secondary-color);
+            border-left: 4px solid #8936de;
         }
 
         .instruction-item i {
-            color: var(--accent-color);
+            color: #17a2b8;
             font-size: 1.2rem;
             min-width: 20px;
         }
@@ -1031,7 +1031,7 @@
         .nav-toggle span {
             width: 25px;
             height: 3px;
-            background: var(--secondary-color);
+            background: #8936de;
             margin: 3px 0;
             transition: 0.3s;
             border-radius: 2px;
@@ -1456,7 +1456,7 @@
         }
 
         .tool-card h4 {
-            color: var(--secondary-color);
+            color: #8936de;
             margin-bottom: 10px;
         }
 
@@ -1494,7 +1494,7 @@
         }
 
         .tour-step.active {
-            border-color: var(--secondary-color);
+            border-color: #8936de;
             background: linear-gradient(135deg, #f8f9fa 0%, #e8f2ff 100%);
             transform: translateY(-5px) scale(1.02);
             box-shadow: 0 15px 40px rgba(137, 54, 222, 0.4);
@@ -1502,7 +1502,7 @@
         }
 
         .tour-step.completed {
-            border-color: var(--accent-color);
+            border-color: #17a2b8;
             background: linear-gradient(135deg, #f0fcfd 0%, #e0f7fa 100%);
             border-width: 2px;
         }
@@ -1515,14 +1515,14 @@
 
         .step-icon {
             font-size: 2.5rem;
-            color: var(--secondary-color);
+            color: #8936de;
             margin-bottom: 15px;
             transition: all 0.3s ease;
         }
 
         .tour-step:hover .step-icon {
             transform: scale(1.2) rotate(10deg);
-            color: var(--accent-color);
+            color: #17a2b8;
         }
 
         .tour-step-number {
@@ -1531,7 +1531,7 @@
             right: 15px;
             width: 40px;
             height: 40px;
-            background: linear-gradient(135deg, var(--secondary-color) 0%, #6a2d9f 100%);
+            background: linear-gradient(135deg, #8936de 0%, #6a2d9f 100%);
             color: white;
             border-radius: 50%;
             display: flex;
@@ -1544,7 +1544,7 @@
         }
 
         .tour-step.active .tour-step-number {
-            background: linear-gradient(135deg, var(--accent-color) 0%, #138496 100%);
+            background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);
             box-shadow: 0 6px 16px rgba(23, 162, 184, 0.4);
             animation: pulse 2s infinite;
         }
@@ -1556,14 +1556,14 @@
         }
 
         .tour-step.completed .tour-step-number {
-            background: linear-gradient(135deg, var(--secondary-color) 0%, #6a2d9f 100%);
+            background: linear-gradient(135deg, #8936de 0%, #6a2d9f 100%);
             box-shadow: 0 4px 12px rgba(137, 54, 222, 0.3);
         }
 
         .tour-step-title {
             font-size: 1.3rem;
             font-weight: bold;
-            color: var(--secondary-color);
+            color: #8936de;
             margin-bottom: 10px;
             text-align: left;
         }
@@ -1610,7 +1610,7 @@
 
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            background: linear-gradient(90deg, #8936de, #17a2b8);
             width: 0%;
             transition: width 0.5s ease;
             border-radius: 3px;
@@ -1627,7 +1627,7 @@
         }
 
         .tour-control-btn {
-            background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+            background: linear-gradient(45deg, #8936de, #17a2b8);
             border: none;
             padding: 12px 25px;
             border-radius: 30px;
@@ -1669,7 +1669,7 @@
             left: -2px;
             right: -2px;
             bottom: -2px;
-            background: linear-gradient(45deg, var(--secondary-color), var(--accent-color), var(--secondary-color));
+            background: linear-gradient(45deg, #8936de, #17a2b8, #8936de);
             border-radius: 22px;
             z-index: -1;
             animation: pulse-border 2s infinite;
@@ -1771,17 +1771,17 @@
             top: 20px;
             font-size: 28px;
             font-weight: bold;
-            color: var(--secondary-color);
+            color: #8936de;
             cursor: pointer;
             transition: color 0.3s ease;
         }
 
         .close:hover {
-            color: var(--accent-color);
+            color: #17a2b8;
         }
 
         .modal-content h2, .modal-content h3, .modal-content h4 {
-            color: var(--secondary-color);
+            color: #8936de;
         }
 
         .modal-content p, .modal-content li {
@@ -1789,11 +1789,11 @@
         }
 
         .modal-content a {
-            color: var(--secondary-color);
+            color: #8936de;
         }
 
         .modal-content a:hover {
-            color: var(--accent-color);
+            color: #17a2b8;
         }
 
         /* Responsive Design */
@@ -1874,7 +1874,7 @@
 
 /* Modal content styling for architecture details */
 .modal-content h3 {
-    color: var(--secondary-color);
+    color: #8936de;
     margin-top: 20px;
     margin-bottom: 10px;
 }
@@ -1889,7 +1889,7 @@
 }
 
 .modal-content strong {
-    color: var(--secondary-color);
+    color: #8936de;
 }
 
 /* Flow arrows between architecture layers */
@@ -1900,7 +1900,7 @@
 }
 
 .arrow-down {
-    color: var(--secondary-color);
+    color: #8936de;
     font-size: 2rem;
     animation: bounce 2s infinite;
 }
