@@ -11,13 +11,13 @@ from pathlib import Path
 
 def main():
     """Main launcher function - redirects to new launcher"""
-    print("🚀 Launching AI Security Framework...")
-    print("⚠️  This is the legacy launcher. Redirecting to comprehensive launcher...")
+    print("[LAUNCH] Launching AI Security Framework...")
+    print("[WARNING] This is the legacy launcher. Redirecting to comprehensive launcher...")
     
     # Check if new launcher exists
     new_launcher = Path("launch_aisec.py")
     if new_launcher.exists():
-        print("✅ Starting comprehensive AI Security Framework...")
+        print("[SUCCESS] Starting comprehensive AI Security Framework...")
         
         # Forward command line arguments
         args = sys.argv[1:] if len(sys.argv) > 1 else ["--web"]
@@ -27,9 +27,9 @@ def main():
             result = subprocess.run([sys.executable, str(new_launcher)] + args)
             return result.returncode
         except Exception as e:
-            print(f"❌ Failed to launch new framework: {e}")
+            print(f"[ERROR] Failed to launch new framework: {e}")
     else:
-        print("❌ New launcher not found! Please use launch_aisec.py directly")
+        print("[ERROR] New launcher not found! Please use launch_aisec.py directly")
         
         # Fallback to simple web interface
         import webbrowser
