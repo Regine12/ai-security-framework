@@ -699,10 +699,16 @@
             <div class="checklist-phases" id="checklist-phases">
                 <!-- Checklist phases will be populated by JavaScript -->
             </div>
-            <div style="text-align: center; margin-top: 40px;">
-                <button class="cta-button" onclick="resetChecklist()">Reset Checklist</button>
-                <button class="cta-button" onclick="exportChecklist()" style="margin-left: 20px;">Export Data (JSON)</button>
-                <button class="cta-button" onclick="exportSimpleReport()" style="margin-left: 20px;">Export Report (TXT)</button>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 40px;">
+                <button class="cta-button" onclick="resetChecklist()">
+                    <i class="fa-solid fa-undo"></i> Reset Checklist
+                </button>
+                <button class="cta-button" onclick="exportChecklist()">
+                    <i class="fa-solid fa-download"></i> Export Data (JSON)
+                </button>
+                <button class="cta-button" onclick="exportSimpleReport()">
+                    <i class="fa-solid fa-file-text"></i> Export Report (TXT)
+                </button>
             </div>
         </div>
     </div>
