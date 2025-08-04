@@ -31,12 +31,78 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Dynamic Background -->
     <section class="hero">
+        <!-- Background Image Slider -->
+        <div class="hero-background-slider">
+            <div class="hero-slide active" data-slide="0">
+                <img src="programming-background-with-person-working-with-codes-computer.jpg" alt="AI Security Development" loading="lazy">
+                <div class="hero-slide-overlay"></div>
+            </div>
+            <div class="hero-slide" data-slide="1">
+                <img src="standard-quality-control-collage-concept.jpg" alt="Quality Control Framework" loading="lazy">
+                <div class="hero-slide-overlay"></div>
+            </div>
+            <div class="hero-slide" data-slide="2">
+                <img src="rm373batch3-43.jpg" alt="Professional Security Team" loading="lazy">
+                <div class="hero-slide-overlay"></div>
+            </div>
+        </div>
+        
+        <!-- Hero Content -->
         <div class="hero-content">
             <h1>AI Security Framework</h1>
-            <p>Enterprise AI Penetration Testing & Security Assessment</p>
+            <p class="hero-subtitle">Enterprise AI Penetration Testing & Security Assessment</p>
+            
+            <!-- Dynamic Description Text -->
+            <div class="hero-description">
+                <div class="description-slide active" data-desc="0">
+                    <p>Professional-grade security assessment tools built with cutting-edge technology for comprehensive AI system evaluation and penetration testing.</p>
+                    <div class="hero-features">
+                        <span class="hero-tag"><i class="fa-solid fa-shield-alt"></i> MITRE ATLAS</span>
+                        <span class="hero-tag"><i class="fa-solid fa-bug"></i> OWASP LLM</span>
+                        <span class="hero-tag"><i class="fa-solid fa-brain"></i> ML Security</span>
+                    </div>
+                </div>
+                <div class="description-slide" data-desc="1">
+                    <p>Rigorous testing methodologies and quality assurance processes ensuring the highest standards in AI security assessment and vulnerability detection.</p>
+                    <div class="hero-features">
+                        <span class="hero-tag"><i class="fa-solid fa-check-double"></i> Validated Testing</span>
+                        <span class="hero-tag"><i class="fa-solid fa-chart-line"></i> Risk Analysis</span>
+                        <span class="hero-tag"><i class="fa-solid fa-certificate"></i> Compliance</span>
+                    </div>
+                </div>
+                <div class="description-slide" data-desc="2">
+                    <p>Backed by experienced cybersecurity experts specializing in artificial intelligence, machine learning security, and advanced threat detection methodologies.</p>
+                    <div class="hero-features">
+                        <span class="hero-tag"><i class="fa-solid fa-graduation-cap"></i> Expert Team</span>
+                        <span class="hero-tag"><i class="fa-solid fa-handshake"></i> Consulting</span>
+                        <span class="hero-tag"><i class="fa-solid fa-headset"></i> Support</span>
+                    </div>
+                </div>
+            </div>
+            
             <a href="#overview" class="cta-button" onclick="document.getElementById('overview').scrollIntoView({behavior: 'smooth'}); return false;">Explore Framework</a>
+        </div>
+        
+        <!-- Hero Slider Controls -->
+        <div class="hero-slider-controls">
+            <button class="hero-slider-btn prev" onclick="changeHeroSlide(-1)" aria-label="Previous slide">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <div class="hero-slider-dots">
+                <span class="hero-dot active" onclick="currentHeroSlide(1)" data-slide="0"></span>
+                <span class="hero-dot" onclick="currentHeroSlide(2)" data-slide="1"></span>
+                <span class="hero-dot" onclick="currentHeroSlide(3)" data-slide="2"></span>
+            </div>
+            <button class="hero-slider-btn next" onclick="changeHeroSlide(1)" aria-label="Next slide">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
+        
+        <!-- Auto-play indicator -->
+        <div class="hero-auto-play-indicator">
+            <div class="hero-play-progress"></div>
         </div>
     </section>
 

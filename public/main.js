@@ -2455,40 +2455,6 @@ AISec-pentester/<br>
             </button>
         </div>
     `);
-                    <p style="font-size: 0.9rem; opacity: 0.9;">ART (IBM), CleverHans, Adversarial-Robustness-Toolbox</p>
-                </div>
-                <div>
-                    <h5 style="color: #68abfe;">Web Interface</h5>
-                    <p style="font-size: 0.9rem; opacity: 0.9;">React, D3.js, WebSocket, Progressive Web App</p>
-                </div>
-            </div>
-        </div>
-
-        <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 15px; margin-bottom: 20px;">
-            <h4 style="color: #4b0c7f; margin-bottom: 15px;">Repository Structure (Implemented)</h4>
-            <div style="background: #1a1a1a; padding: 15px; border-radius: 8px; font-family: 'Courier New', monospace; color: #00ff00; font-size: 0.8rem;">
-AISec-pentester/<br>
-├── core/                 # [COMPLETE] Core framework<br>
-├── modules/              # [COMPLETE] Testing modules<br>
-│   ├── adversarial/      # [WORKING] Real adversarial testing<br>
-│   ├── poisoning/        # [WORKING] Data poisoning detection<br>
-│   ├── extraction/       # [WORKING] Model extraction scanner<br>
-│   └── privacy/          # [IMPLEMENTED] Privacy analysis<br>
-├── web_interface/        # [COMPLETE] Professional web dashboard<br>
-├── reports/              # [COMPLETE] HTML/PDF report generation<br>
-├── config/               # [COMPLETE] Configuration files<br>
-├── output/               # [ACTIVE] Assessment results<br>
-└── docs/                 # [COMPLETE] Comprehensive documentation
-            </div>
-        </div>
-
-        <div style="text-align: center; margin-top: 30px;">
-            <button onclick="window.open('https://github.com/Regine12/ai-security-framework', '_blank')" 
-                    style="background: linear-gradient(45deg, #4b0c7f, #68abfe); color: white; padding: 15px 40px; border-radius: 25px; border: none; cursor: pointer; font-size: 1.1rem; margin: 10px; box-shadow: 0 4px 15px rgba(75, 12, 127, 0.3);">
-                View Live Implementation
-            </button>
-        </div>
-    `);
 }
 
 // --- Architecture Diagram Interactivity ---
@@ -3243,5 +3209,205 @@ function clearRiskHighlight() {
         cell.style.position = '';
     });
 }
+
+// Hero Background Slider Functionality
+let currentHeroSlideIndex = 0;
+let heroSlideInterval;
+let heroSlides;
+let heroDots;
+let heroDescriptions;
+
+// Initialize hero slider when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    initializeHeroSlider();
+});
+
+function initializeHeroSlider() {
+    heroSlides = document.querySelectorAll('.hero-slide');
+    heroDots = document.querySelectorAll('.hero-dot');
+    heroDescriptions = document.querySelectorAll('.description-slide');
+    
+    if (heroSlides.length === 0) return; // Exit if no slides found
+    
+    // Start auto-play
+    startHeroAutoPlay();
+    
+    // Add touch/swipe support for mobile
+    addHeroTouchSupport();
+    
+    // Pause auto-play on hover
+    const heroSection = document.querySelector('.hero');
+    if (heroSection) {
+        heroSection.addEventListener('mouseenter', pauseHeroAutoPlay);
+        heroSection.addEventListener('mouseleave', startHeroAutoPlay);
+    }
+}
+
+function showHeroSlide(index) {
+    // Hide all slides and descriptions
+    heroSlides.forEach(slide => {
+        slide.classList.remove('active');
+    });
+    
+    heroDescriptions.forEach(desc => {
+        desc.classList.remove('active');
+    });
+    
+    // Remove active class from all dots
+    heroDots.forEach(dot => {
+        dot.classList.remove('active');
+    });
+    
+    // Normalize index (loop around if necessary)
+    if (index >= heroSlides.length) {
+        currentHeroSlideIndex = 0;
+    } else if (index < 0) {
+        currentHeroSlideIndex = heroSlides.length - 1;
+    } else {
+        currentHeroSlideIndex = index;
+    }
+    
+    // Show current slide, description, and highlight current dot
+    if (heroSlides[currentHeroSlideIndex]) {
+        heroSlides[currentHeroSlideIndex].classList.add('active');
+    }
+    if (heroDescriptions[currentHeroSlideIndex]) {
+        heroDescriptions[currentHeroSlideIndex].classList.add('active');
+    }
+    if (heroDots[currentHeroSlideIndex]) {
+        heroDots[currentHeroSlideIndex].classList.add('active');
+    }
+    
+    // Restart progress bar animation
+    restartHeroProgressBar();
+}
+
+function changeHeroSlide(direction) {
+    showHeroSlide(currentHeroSlideIndex + direction);
+}
+
+function currentHeroSlide(slideNumber) {
+    showHeroSlide(slideNumber - 1);
+}
+
+function nextHeroSlide() {
+    showHeroSlide(currentHeroSlideIndex + 1);
+}
+
+function startHeroAutoPlay() {
+    stopHeroAutoPlay(); // Clear any existing interval
+    heroSlideInterval = setInterval(nextHeroSlide, 6000); // Change slide every 6 seconds
+}
+
+function stopHeroAutoPlay() {
+    if (heroSlideInterval) {
+        clearInterval(heroSlideInterval);
+    }
+}
+
+function pauseHeroAutoPlay() {
+    stopHeroAutoPlay();
+    const progressBar = document.querySelector('.hero-play-progress');
+    if (progressBar) {
+        progressBar.style.animationPlayState = 'paused';
+    }
+}
+
+function restartHeroProgressBar() {
+    const progressBar = document.querySelector('.hero-play-progress');
+    if (progressBar) {
+        progressBar.style.animation = 'none';
+        // Force reflow
+        progressBar.offsetHeight;
+        progressBar.style.animation = 'heroProgressBar 6s linear infinite';
+    }
+}
+
+// Touch/Swipe Support for Mobile Hero
+function addHeroTouchSupport() {
+    const heroSection = document.querySelector('.hero');
+    if (!heroSection) return;
+    
+    let startX = 0;
+    let endX = 0;
+    
+    heroSection.addEventListener('touchstart', function(e) {
+        startX = e.touches[0].clientX;
+    }, { passive: true });
+    
+    heroSection.addEventListener('touchend', function(e) {
+        endX = e.changedTouches[0].clientX;
+        handleHeroSwipe();
+    }, { passive: true });
+    
+    function handleHeroSwipe() {
+        const swipeThreshold = 50; // Minimum swipe distance
+        const swipeDistance = endX - startX;
+        
+        if (Math.abs(swipeDistance) > swipeThreshold) {
+            if (swipeDistance > 0) {
+                // Swipe right - go to previous slide
+                changeHeroSlide(-1);
+            } else {
+                // Swipe left - go to next slide
+                changeHeroSlide(1);
+            }
+        }
+    }
+}
+
+// Keyboard navigation support for hero
+document.addEventListener('keydown', function(e) {
+    const heroSection = document.querySelector('.hero');
+    if (!heroSection || !heroSlides) return;
+    
+    // Check if hero is in viewport (roughly)
+    const rect = heroSection.getBoundingClientRect();
+    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+    
+    if (isVisible) {
+        switch(e.key) {
+            case 'ArrowLeft':
+                e.preventDefault();
+                changeHeroSlide(-1);
+                break;
+            case 'ArrowRight':
+                e.preventDefault();
+                changeHeroSlide(1);
+                break;
+            case ' ': // Spacebar
+                e.preventDefault();
+                if (heroSlideInterval) {
+                    pauseHeroAutoPlay();
+                } else {
+                    startHeroAutoPlay();
+                }
+                break;
+        }
+    }
+});
+
+// Intersection Observer for better performance
+function observeHeroSlider() {
+    const heroSection = document.querySelector('.hero');
+    if (!heroSection) return;
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                startHeroAutoPlay();
+            } else {
+                stopHeroAutoPlay();
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    observer.observe(heroSection);
+}
+
+// Initialize intersection observer when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(observeHeroSlider, 1000); // Delay to ensure DOM is fully loaded
+});
 
 // Removed internal functions that were meant for development, not users
