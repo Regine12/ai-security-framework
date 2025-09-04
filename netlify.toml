@@ -1,5 +1,6 @@
 [build]
   publish = "public"
+  # No build command needed - static site ready to deploy
 
 [build.environment]
   NODE_VERSION = "18"
