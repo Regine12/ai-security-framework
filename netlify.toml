@@ -1,6 +1,6 @@
 [build]
   publish = "public"
-  # No build command needed - static site ready to deploy
+  command = "echo 'No build step required - serving static files directly'"
 
 [build.environment]
   NODE_VERSION = "18"
