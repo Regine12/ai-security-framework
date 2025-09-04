@@ -5,17 +5,25 @@
 
 <img src="public/cyberforce-logo.png" width="20%" style="position: relative; top: 0; right: 0;" alt="AI Security Framework Logo"/>
 
-# AISec-Pentester: AI Security Framework
+# AISec-Pentester: AI Security Framework v2.0
 
 <em>Professional AI Security Assessment Platform for Enterprise-Grade Cybersecurity</em>
 
-<!-- BADGES -->
-<img src="https://img.shields.io/badge/Python-3.8+-3776AB.svg?style=default&logo=Python&logoColor=white" alt="Python">
-<img src="https://img.shields.io/badge/PyTorch-EE4C2C.svg?style=default&logo=PyTorch&logoColor=white" alt="PyTorch">
-<img src="https://img.shields.io/badge/scikit--learn-F7931E.svg?style=default&logo=scikit-learn&logoColor=white" alt="scikit-learn">
-<img src="https://img.shields.io/badge/Node.js-339933.svg?style=default&logo=Node.js&logoColor=white" alt="Node.js">
-<img src="https://img.shields.io/badge/Express-000000.svg?style=default&logo=Express&logoColor=white" alt="Express">
-<img src="https://img.shields.io/badge/Docker-2496ED.svg?style=default&logo=Docker&logoColor=white" alt="Docker">
+<!-- STATUS BADGES -->
+<img src="https://img.shields.io/badge/Status-Production_Ready-success.svg?style=flat-square" alt="Production Ready">
+<img src="https://img.shields.io/badge/Version-2.0.0-blue.svg?style=flat-square" alt="Version 2.0">
+<img src="https://img.shields.io/badge/Export_Functions-Fixed-green.svg?style=flat-square" alt="Export Functions Fixed">
+<img src="https://img.shields.io/badge/Web_Interface-Enhanced-brightgreen.svg?style=flat-square" alt="Enhanced Web Interface">
+
+<!-- TECHNOLOGY BADGES -->
+<img src="https://img.shields.io/badge/Python-3.8+-3776AB.svg?style=flat-square&logo=Python&logoColor=white" alt="Python">
+<img src="https://img.shields.io/badge/PyTorch-EE4C2C.svg?style=flat-square&logo=PyTorch&logoColor=white" alt="PyTorch">
+<img src="https://img.shields.io/badge/scikit--learn-F7931E.svg?style=flat-square&logo=scikit-learn&logoColor=white" alt="scikit-learn">
+<img src="https://img.shields.io/badge/Node.js-339933.svg?style=flat-square&logo=Node.js&logoColor=white" alt="Node.js">
+<img src="https://img.shields.io/badge/Express-000000.svg?style=flat-square&logo=Express&logoColor=white" alt="Express">
+<img src="https://img.shields.io/badge/Docker-2496ED.svg?style=flat-square&logo=Docker&logoColor=white" alt="Docker">
+<img src="https://img.shields.io/badge/MITRE_ATLAS-Integration-purple.svg?style=flat-square" alt="MITRE ATLAS">
+<img src="https://img.shields.io/badge/OWASP_LLM_Top_10-2025_Edition-red.svg?style=flat-square" alt="OWASP LLM Top 10">
 
 <em>Built with enterprise-grade technologies for comprehensive AI security assessment</em>
 
@@ -68,7 +76,16 @@
 
 ## Overview
 
-**AISec-Pentester** is a production-ready, enterprise-grade AI security testing framework designed to identify, assess, and mitigate security vulnerabilities in artificial intelligence systems. Built with over **6,000+ lines of production code**, this comprehensive platform combines cutting-edge security research with practical implementation.
+**AISec-Pentester v2.0** is a production-ready, enterprise-grade AI security testing framework designed to identify, assess, and mitigate security vulnerabilities in artificial intelligence systems. Built with over **6,000+ lines of production code**, this comprehensive platform combines cutting-edge security research with practical implementation and features a fully functional web interface with enhanced export capabilities.
+
+**🚀 What's New in v2.0:**
+
+- **✅ Fixed Export Functionality**: Resolved export button issues in the checklist section - "Export Data (HTML + JSON)" and "Export Report (TXT)" now work flawlessly
+- **🎨 Enhanced Web Interface**: Improved responsive design with dynamic background slider and professional UI components
+- **🔧 Code Quality Improvements**: Comprehensive error handling, safety checks, and function name conflict resolution
+- **📊 Enhanced Reporting**: Professional HTML, JSON, and TXT export formats with detailed metadata
+- **🏗️ Improved Architecture**: Cleaner project structure with better separation of concerns
+- **📖 Updated Documentation**: Comprehensive guides reflecting all current functionality
 
 **Why AISec-Pentester?**
 
@@ -79,9 +96,9 @@ The rapid adoption of AI systems in critical infrastructure, financial services,
 - **🎯 AI-Specific Security Testing**: Unlike traditional penetration testing tools, AISec-Pentester is purpose-built for AI/ML security assessment
 - **📊 Real Dataset Implementation**: Includes live testing on MNIST (70,000+ samples), UCI Adult Census (48,842+ records), and custom datasets
 - **🏢 Enterprise-Ready**: Professional reporting, compliance mapping, and integration capabilities for enterprise environments  
-- **🔬 Research-Based**: Implements latest academic research from OWASP AI/ML Top 10, MITRE ATLAS, and leading security conferences
+- **🔬 Research-Based**: Implements latest academic research from OWASP AI/ML Top 10 2025, MITRE ATLAS, and leading security conferences
 - **🌐 Multi-Interface**: Command-line, web interface, and Python API for different user preferences and integration scenarios
-- **📈 Comprehensive Reporting**: Executive summaries, technical findings, risk matrices, and remediation roadmaps
+- **📈 Comprehensive Reporting**: Executive summaries, technical findings, risk matrices, and remediation roadmaps with enhanced export functionality
 
 ### Core Capabilities
 
@@ -91,8 +108,9 @@ This framework provides structured assessment workflows for:
 - **🕵️ Model Protection**: Detect extraction attempts and intellectual property theft  
 - **🦠 Data Integrity**: Identify poisoned training data and compromised datasets
 - **🔒 Privacy Assessment**: Evaluate training data leakage and membership inference risks
-- **💬 Prompt Security**: Comprehensive LLM/chatbot prompt injection vulnerability testing
-- **📋 Compliance Mapping**: OWASP AI/ML Top 10, NIST AI RMF, and regulatory framework alignment
+- **💬 Prompt Security**: Comprehensive LLM/chatbot prompt injection vulnerability testing with OWASP LLM Top 10 2025 integration
+- **📋 Compliance Mapping**: OWASP AI/ML Top 10, NIST AI RMF, MITRE ATLAS, and regulatory framework alignment
+- **📤 Professional Export**: Enhanced HTML, JSON, and TXT export capabilities for assessment documentation
 
 ---
 
@@ -100,16 +118,16 @@ This framework provides structured assessment workflows for:
 
 |      | Feature Category     | Capabilities                              |
 | :--- | :------------------- | :---------------------------------------- |
-| 🏗️  | **Architecture**     | <ul><li>Modular framework with 5 specialized security testing modules</li><li>RESTful API with Express.js backend</li><li>Responsive web interface with real-time assessment tracking</li></ul> |
-| 🔧  | **Code Quality**     | <ul><li>6,000+ lines of production-ready Python code</li><li>Comprehensive test coverage with pytest</li><li>Professional logging and error handling</li></ul> |
-| 📚  | **Documentation**    | <ul><li>Extensive API documentation with interactive examples</li><li>Step-by-step deployment guides</li><li>Security best practices and compliance guidelines</li></ul> |
-| 🔗  | **Integrations**     | <ul><li>PyTorch, TensorFlow, scikit-learn model support</li><li>CI/CD pipeline integration with GitHub Actions</li><li>Enterprise SIEM and security tool integration</li></ul> |
-| 🧩  | **Modularity**       | <ul><li>Plugin-based architecture for custom security modules</li><li>Configurable assessment workflows</li><li>Extensible reporting and visualization system</li></ul> |
-| 🧪  | **Testing**          | <ul><li>Live testing on real datasets (MNIST, UCI Adult Census)</li><li>Automated regression testing and benchmark validation</li><li>Performance testing with profiling and optimization</li></ul> |
-| ⚡️  | **Performance**      | <ul><li>Optimized for large-scale model assessment (1M+ parameters)</li><li>Parallel processing and GPU acceleration support</li><li>Memory-efficient processing for resource-constrained environments</li></ul> |
-| 🛡️  | **Security**         | <ul><li>Secure configuration management with encryption</li><li>Assessment isolation and sandboxing</li><li>Audit logging and compliance reporting</li></ul> |
-| 📦  | **Dependencies**     | <ul><li>Curated dependency management with security scanning</li><li>Docker containerization for consistent deployment</li><li>Virtual environment and conda support</li></ul> |
-| 🚀  | **Scalability**      | <ul><li>Horizontal scaling with load balancing</li><li>Cloud deployment ready (AWS, Azure, GCP)</li><li>Enterprise multi-tenant architecture support</li></ul> |
+| 🏗️  | **Architecture**     | <ul><li>Modular framework with 5 specialized security testing modules</li><li>RESTful API with Express.js backend</li><li>Responsive web interface with real-time assessment tracking</li><li>Fixed export functionality with professional HTML, JSON, and TXT outputs</li></ul> |
+| 🔧  | **Code Quality**     | <ul><li>6,000+ lines of production-ready Python and JavaScript code</li><li>Comprehensive test coverage with pytest</li><li>Professional logging and error handling with safety checks</li><li>Resolved function name conflicts and enhanced stability</li></ul> |
+| 📚  | **Documentation**    | <ul><li>Extensive API documentation with interactive examples</li><li>Step-by-step deployment guides for multiple environments</li><li>Security best practices and compliance guidelines</li><li>Comprehensive README with up-to-date feature descriptions</li></ul> |
+| 🔗  | **Integrations**     | <ul><li>PyTorch, TensorFlow, scikit-learn model support</li><li>CI/CD pipeline integration with GitHub Actions</li><li>Enterprise SIEM and security tool integration</li><li>MITRE ATLAS and OWASP LLM Top 10 2025 framework alignment</li></ul> |
+| 🧩  | **Modularity**       | <ul><li>Plugin-based architecture for custom security modules</li><li>Configurable assessment workflows</li><li>Extensible reporting and visualization system</li><li>Enhanced export capabilities with metadata support</li></ul> |
+| 🧪  | **Testing**          | <ul><li>Live testing on real datasets (MNIST, UCI Adult Census)</li><li>Automated regression testing and benchmark validation</li><li>Performance testing with profiling and optimization</li><li>Comprehensive AI security vulnerability assessment</li></ul> |
+| ⚡️  | **Performance**      | <ul><li>Optimized for large-scale model assessment (1M+ parameters)</li><li>Parallel processing and GPU acceleration support</li><li>Memory-efficient processing for resource-constrained environments</li><li>Fast export processing with enhanced error handling</li></ul> |
+| 🛡️  | **Security**         | <ul><li>Secure configuration management with encryption</li><li>Assessment isolation and sandboxing</li><li>Audit logging and compliance reporting</li><li>Input validation and sanitization throughout the framework</li></ul> |
+| 📦  | **Dependencies**     | <ul><li>Curated dependency management with security scanning</li><li>Docker containerization for consistent deployment</li><li>Virtual environment and conda support</li><li>Regular security updates and vulnerability patching</li></ul> |
+| 🚀  | **Scalability**      | <ul><li>Horizontal scaling with load balancing</li><li>Cloud deployment ready (AWS, Azure, GCP)</li><li>Enterprise multi-tenant architecture support</li><li>Netlify deployment for web interface</li></ul> |
 
 ---
 
@@ -182,6 +200,38 @@ graph TB
 - **🔒 Security Modules**: Specialized testing modules for different AI security threat categories  
 - **📊 Data Layer**: Optimized data processing with support for popular ML frameworks
 - **🏗️ Infrastructure**: Enterprise deployment capabilities with monitoring and scalability
+
+---
+
+## Recent Updates & Fixes (v2.0)
+
+### 🚀 Major Enhancements
+- **Fixed Export Functionality**: Resolved critical issues with "Export Data (HTML + JSON)" and "Export Report (TXT)" buttons in the checklist section
+- **Enhanced Error Handling**: Added comprehensive safety checks and null validation throughout the export chain
+- **Function Name Conflict Resolution**: Renamed conflicting `generateRecommendations` functions to prevent naming collisions
+- **Improved Web Interface**: Enhanced responsive design with dynamic background slider and professional UI components
+- **Updated Framework Integration**: Added OWASP LLM Top 10 2025 edition and enhanced MITRE ATLAS integration
+
+### 🔧 Technical Improvements
+- **Enhanced `exportChecklist()` Function**: Now includes comprehensive error handling, metadata generation, and support for multiple export formats
+- **Improved `exportSimpleReport()` Function**: Enhanced with safety checks, detailed progress tracking, and professional TXT formatting
+- **Code Quality**: Resolved undefined property access issues and added defensive programming practices
+- **CSS Fixes**: Corrected stylesheet references and improved visual consistency
+- **Documentation Updates**: Comprehensive README refresh with current functionality and deployment guides
+
+### 📊 Export Capabilities
+| Export Type | Format | Features |
+|------------|--------|----------|
+| **Checklist Data** | HTML + JSON | Interactive HTML report with embedded JSON data, timestamp metadata, assessment summary |
+| **Simple Report** | TXT | Professional text format with executive summary, findings, and recommendations |
+| **Assessment Results** | Multiple | Comprehensive data export with risk analysis and compliance mapping |
+
+### 🎯 Current Status
+- ✅ All export functions tested and working
+- ✅ Web interface fully operational on localhost:3000
+- ✅ Enhanced documentation with deployment guides
+- ✅ Clean project structure on `cleanup-and-restructure` branch
+- ✅ Ready for independent Netlify deployment
 
 ---
 
@@ -690,23 +740,36 @@ The AISec-Pentester CLI provides comprehensive access to all framework capabilit
 
 **1. Access the web dashboard:**
 
-Navigate to `http://localhost:3000` after starting the application.
+Navigate to `http://localhost:3000` after starting the application with `npm start`.
 
 **2. Key features:**
 - **📊 Interactive Dashboard**: Real-time assessment monitoring and progress tracking
 - **🎛️ Configuration Manager**: Easy parameter adjustment and environment setup
 - **📈 Risk Calculator**: Dynamic risk assessment with visual matrix representation  
-- **📋 Assessment Checklist**: Comprehensive security evaluation workflow
-- **📄 Report Generation**: Multiple format exports (HTML, JSON, PDF)
+- **📋 Assessment Checklist**: Comprehensive security evaluation workflow with working export functions
+- **📄 Report Generation**: Multiple format exports (HTML + JSON, TXT) - fully functional in v2.0
 - **🏗️ Architecture Visualization**: Framework component exploration
+- **🔧 Enhanced Export Functions**: Fixed export buttons with comprehensive error handling
 
-**3. Workflow:**
+**3. Export Functionality (v2.0 Update):**
+- **"Export Data (HTML + JSON)"**: Creates professional HTML report with embedded JSON data and metadata
+- **"Export Report (TXT)"**: Generates executive summary in text format with findings and recommendations  
+- **Real-time Progress**: Visual feedback during export process with error handling
+- **Safety Checks**: Comprehensive validation and null checks prevent export failures
+
+**4. Workflow:**
 - Upload or configure your AI model
 - Select security assessment modules
 - Configure assessment parameters
 - Monitor real-time progress
 - Review comprehensive results
-- Export detailed reports
+- Export detailed reports using the fixed export buttons
+
+**5. Current Status:**
+- ✅ Web interface fully operational on localhost:3000
+- ✅ All export functions tested and working correctly
+- ✅ Enhanced error handling and user feedback
+- ✅ Professional styling and responsive design
 
 #### Python API
 
@@ -1635,6 +1698,60 @@ function calculateAtlasRisk(technique, asset, environment) {
 }
 ```
 
+---
+
+## 🎯 Current Status & Roadmap
+
+### ✅ Completed in v2.0 (Current)
+
+| Component | Status | Description |
+|-----------|--------|-------------|
+| **Export Functions** | ✅ **FIXED** | "Export Data (HTML + JSON)" and "Export Report (TXT)" buttons working perfectly |
+| **Web Interface** | ✅ **ENHANCED** | Professional responsive design with dynamic background slider |
+| **Error Handling** | ✅ **IMPROVED** | Comprehensive safety checks and null validation throughout |
+| **Code Quality** | ✅ **RESOLVED** | Function name conflicts resolved, defensive programming implemented |
+| **Documentation** | ✅ **UPDATED** | Comprehensive README with current functionality and deployment guides |
+| **Project Structure** | ✅ **CLEANED** | Organized project structure on separate branch for safe deployment |
+| **Server Functionality** | ✅ **WORKING** | Express.js server operational on localhost:3000 |
+| **Export Capabilities** | ✅ **TESTED** | Multiple format exports (HTML, JSON, TXT) with metadata support |
+
+### 🔧 Technical Improvements Made
+
+- **Fixed `exportChecklist()` Function**: Now handles undefined values safely and generates comprehensive reports
+- **Enhanced `exportSimpleReport()` Function**: Professional TXT formatting with detailed findings and recommendations
+- **Resolved CSS References**: Corrected stylesheet links for consistent styling
+- **Function Name Conflicts**: Renamed `generateRecommendations` to prevent naming collisions
+- **Enhanced MITRE ATLAS Integration**: Updated framework alignment with latest security standards
+- **OWASP LLM Top 10 2025**: Integrated latest vulnerability classifications
+
+### 🚀 Ready for Deployment
+
+The enhanced version is now ready for independent Netlify deployment:
+
+- ✅ **Branch**: `cleanup-and-restructure` - safe isolation from main branch
+- ✅ **Testing**: All functionality verified and working correctly
+- ✅ **Export Functions**: Fully operational with error handling
+- ✅ **Web Interface**: Professional UI with enhanced user experience
+- ✅ **Documentation**: Up-to-date guides and deployment instructions
+
+### 📋 Deployment Checklist
+
+**Pre-Deployment Verification:**
+- [x] Export buttons tested and working
+- [x] Server starts successfully on localhost:3000
+- [x] All static assets loading correctly
+- [x] CSS styles applied properly
+- [x] JavaScript functionality operational
+- [x] Enhanced documentation complete
+- [x] Branch pushed to GitHub successfully
+
+**Ready for Netlify:**
+- [x] `cleanup-and-restructure` branch available
+- [x] `netlify.toml` configuration present
+- [x] Build settings documented
+- [x] Static assets optimized
+- [x] Security headers configured
+
 ## Roadmap
 
 ### Phase 1: Core Framework (COMPLETE)
@@ -1852,6 +1969,89 @@ docker-compose -f docker-compose.production.yml up --build -d
 # Scale services for high availability
 docker-compose -f docker-compose.production.yml up --scale web=3 --scale worker=5
 ```
+
+---
+
+## 🌐 Deployment Options
+
+### Netlify Deployment (Recommended for Web Interface)
+
+The enhanced AI Security Framework v2.0 is optimized for Netlify deployment with the following configuration:
+
+**Quick Deploy to Netlify:**
+
+1. **GitHub Integration Method** (Recommended):
+   ```bash
+   # Ensure you're on the enhanced branch
+   git checkout cleanup-and-restructure
+   
+   # Verify branch is pushed to GitHub
+   git push -u origin cleanup-and-restructure
+   ```
+
+2. **Netlify Setup**:
+   - Go to [netlify.com](https://netlify.com) and sign in
+   - Click "New site from Git"
+   - Choose GitHub and select your `ai-security-framework` repository
+   - **Important**: Select the `cleanup-and-restructure` branch (not main)
+   - Configure build settings:
+     - **Build command**: `npm run build` (or leave empty for static site)
+     - **Publish directory**: `public`
+     - **Branch to deploy**: `cleanup-and-restructure`
+
+3. **Netlify Configuration** (netlify.toml):
+   ```toml
+   [build]
+     base = "."
+     publish = "public"
+     command = "npm install && npm run build"
+
+   [build.environment]
+     NODE_VERSION = "18"
+
+   [[redirects]]
+     from = "/api/*"
+     to = "/.netlify/functions/:splat"
+     status = 200
+
+   [[headers]]
+     for = "/*"
+     [headers.values]
+       X-Frame-Options = "DENY"
+       X-XSS-Protection = "1; mode=block"
+       X-Content-Type-Options = "nosniff"
+   ```
+
+**Benefits of Netlify Deployment:**
+- ✅ **Zero Downtime**: Atomic deployments with instant rollback
+- ✅ **Global CDN**: Fast content delivery worldwide
+- ✅ **HTTPS by Default**: Automatic SSL certificates
+- ✅ **Branch Previews**: Test changes before merging
+- ✅ **Form Handling**: Built-in form processing for assessments
+- ✅ **Edge Functions**: Serverless processing capabilities
+
+### Local Development Deployment
+
+```bash
+# Clone and setup (v2.0 enhanced version)
+git clone https://github.com/Regine12/ai-security-framework.git
+cd ai-security-framework
+git checkout cleanup-and-restructure
+
+# Install dependencies
+npm install
+
+# Start development server
+npm start
+# Access at: http://localhost:3000
+```
+
+**Features Available in Local Deployment:**
+- ✅ Interactive security assessment dashboard
+- ✅ Working export functionality (HTML + JSON, TXT)
+- ✅ Risk calculator and matrix visualization
+- ✅ MITRE ATLAS and OWASP LLM Top 10 integration
+- ✅ Comprehensive documentation and guides
 
 ### Cloud Platform Deployment
 
