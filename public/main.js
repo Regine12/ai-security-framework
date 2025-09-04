@@ -1,3 +1,4 @@
+/* Cache buster: Mon Aug 11 11:24:08 +03 2025 */
 
 // AI Security Framework JavaScript - Version 4.0
 console.log('AI Security Framework JS loaded successfully');
@@ -87,6 +88,12 @@ window.toggleMobileNav = toggleMobileNav;
 
         // Modal content generator
         function getModalContent(contentId) {
+            // First check if content exists in modalContents (loaded from external files)
+            if (typeof window !== 'undefined' && window.modalContents && window.modalContents[contentId]) {
+                return window.modalContents[contentId];
+            }
+            
+            // Fallback to internal contents for backward compatibility
             const contents = {
                 'data-security': `
                     <h2>Data Security</h2>
@@ -233,21 +240,41 @@ window.toggleMobileNav = toggleMobileNav;
                 `,
                 'governance': null, // Use HTML content instead
                 'incident-response': `
-                    <h2>Incident Response</h2>
-                    <h3>Key Areas:</h3>
-                    <div style="margin-bottom: 20px;">
-                        <p><strong>AI-Specific Incidents:</strong> Model poisoning, adversarial attacks</p>
-                        <p><strong>Detection Capabilities:</strong> Anomaly detection and behavioral monitoring</p>
-                        <p><strong>Response Procedures:</strong> Incident classification and escalation</p>
-                        <p><strong>Recovery Planning:</strong> Model rollback and retraining procedures</p>
+                    <h2><i class="fa-solid fa-ambulance"></i> Incident Response</h2>
+                    <div style="padding: 20px;">
+                        <h3>Overview</h3>
+                        <p>AI incident response involves detecting, analyzing, and responding to security incidents affecting AI systems, with specialized procedures for AI-specific threats.</p>
+                        
+                        <h3>AI-Specific Incident Types</h3>
+                        <ul>
+                            <li><strong>Model Poisoning:</strong> Malicious training data injection</li>
+                            <li><strong>Adversarial Attacks:</strong> Crafted inputs causing misclassification</li>
+                            <li><strong>Model Theft:</strong> Unauthorized model extraction or replication</li>
+                            <li><strong>Privacy Breaches:</strong> Sensitive data exposure from models</li>
+                            <li><strong>Bias Incidents:</strong> Discriminatory or unfair model behavior</li>
+                        </ul>
+                        
+                        <h3>Response Framework</h3>
+                        <ol>
+                            <li><strong>Detection:</strong> Automated monitoring and alert systems</li>
+                            <li><strong>Assessment:</strong> Impact analysis and incident classification</li>
+                            <li><strong>Containment:</strong> Isolate affected systems and limit damage</li>
+                            <li><strong>Investigation:</strong> Root cause analysis and evidence collection</li>
+                            <li><strong>Recovery:</strong> System restoration and validation</li>
+                            <li><strong>Lessons Learned:</strong> Process improvement and prevention</li>
+                        </ol>
+                        
+                        <div style="background: rgba(244, 67, 54, 0.1); border-left: 4px solid #f44336; padding: 15px; margin: 15px 0; border-radius: 8px;">
+                            <strong>Critical:</strong> Rapid response is essential to minimize AI incident impact
+                        </div>
+                        
+                        <div style="text-align: center; margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                            <a href="https://genai.owasp.org/resource/genai-incident-response-guide-1-0/" target="_blank" 
+                               style="display: inline-block; background: #0066cc; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold;">
+                               📋 OWASP GenAI Incident Response Guide
+                            </a>
+                        </div>
                     </div>
-                    <h3>Assessment Checklist:</h3>
-                    <ul>
-                        <li> AI incident playbooks</li>
-                        <li> Detection and alerting systems</li>
-                        <li> Response team training</li>
-                        <li> Recovery and continuity plans</li>
-                    </ul>
                 `,
                 'data-attacks': `
                     <h2>Data Layer Attacks</h2>
@@ -580,8 +607,45 @@ window.toggleMobileNav = toggleMobileNav;
                     </div>
                 `,
                 'testing-tools': document.getElementById('testing-tools-content')?.innerHTML || `
-                    <h2>Testing Tools</h2>
-                    <p>Full content coming soon.</p>
+                    <h2><i class="fa-solid fa-tools"></i> AI Security Testing Tools</h2>
+                    <div style="padding: 20px;">
+                        <h3>Overview</h3>
+                        <p>Comprehensive suite of tools and techniques for testing AI system security, from automated vulnerability scanners to custom adversarial testing frameworks.</p>
+                        
+                        <h3>Automated Testing Tools</h3>
+                        <ul>
+                            <li><strong>AISec Scanner:</strong> Automated vulnerability assessment for AI systems</li>
+                            <li><strong>Model Robustness Tester:</strong> Adversarial example generation and testing</li>
+                            <li><strong>Privacy Analysis Toolkit:</strong> Membership inference and model inversion tests</li>
+                            <li><strong>Bias Detection Suite:</strong> Fairness and discrimination testing tools</li>
+                        </ul>
+                        
+                        <h3>Manual Testing Frameworks</h3>
+                        <ul>
+                            <li><strong>Prompt Injection Toolkit:</strong> LLM security testing templates</li>
+                            <li><strong>Data Poisoning Simulator:</strong> Training data integrity testing</li>
+                            <li><strong>Model Extraction Tester:</strong> IP protection validation tools</li>
+                            <li><strong>API Security Scanner:</strong> ML API endpoint security assessment</li>
+                        </ul>
+                        
+                        <h3>Integration Capabilities</h3>
+                        <div style="display: grid; gap: 8px;">
+                            <div><i class="fa-solid fa-check" style="color: #28a745; margin-right: 8px;"></i> CI/CD pipeline integration</div>
+                            <div><i class="fa-solid fa-check" style="color: #28a745; margin-right: 8px;"></i> Custom reporting and dashboards</div>
+                            <div><i class="fa-solid fa-check" style="color: #28a745; margin-right: 8px;"></i> SIEM integration for monitoring</div>
+                            <div><i class="fa-solid fa-check" style="color: #28a745; margin-right: 8px;"></i> Multi-framework model support</div>
+                        </div>
+                        
+                        <div style="background: #e8f5e8; padding: 15px; border-radius: 8px; margin: 20px 0;">
+                            <strong>Enterprise Ready:</strong> All tools include enterprise-grade features with support for compliance reporting and audit trails.
+                        </div>
+                        
+                        <div style="text-align: center; margin-top: 30px;">
+                            <a href="mailto:info@aisec-framework.com?subject=Testing Tools Access" class="cta-button" style="margin: 10px;">
+                                <i class="fa-solid fa-envelope"></i> Request Access
+                            </a>
+                        </div>
+                    </div>
                 `,
                 'playbook-example': document.getElementById('playbook-example-content')?.innerHTML || `
                     <h2><i class="fa-solid fa-clipboard-list"></i> AI Security Assessment Playbook Example</h2>
@@ -602,12 +666,12 @@ window.toggleMobileNav = toggleMobileNav;
                         </ul>
                         
                         <h4>Phase 2: Security Controls Assessment</h4>
-                        <ul style="text-align: left; margin: 15px 0;">
-                            <li>- Input validation and sanitization mechanisms</li>
-                            <li>- Model access controls and API rate limiting</li>
-                            <li>- Data anonymization and differential privacy</li>
-                            <li>- Adversarial detection and response procedures</li>
-                        </ul>
+                        <div style="text-align: left; margin: 15px 0; display: grid; gap: 8px;">
+                            <div><i class="fa-solid fa-check" style="color: #28a745; margin-right: 8px;"></i> Input validation and sanitization mechanisms</div>
+                            <div><i class="fa-solid fa-check" style="color: #28a745; margin-right: 8px;"></i> Model access controls and API rate limiting</div>
+                            <div><i class="fa-solid fa-check" style="color: #28a745; margin-right: 8px;"></i> Data anonymization and differential privacy</div>
+                            <div><i class="fa-solid fa-check" style="color: #28a745; margin-right: 8px;"></i> Adversarial detection and response procedures</div>
+                        </div>
                         
                         <h4>Phase 3: Testing & Validation</h4>
                         <ul style="text-align: left; margin: 15px 0;">
@@ -617,8 +681,1024 @@ window.toggleMobileNav = toggleMobileNav;
                             <li>Performance impact assessment of security controls</li>
                         </ul>
                         
+                        <h4>Phase 4: Risk Assessment Results</h4>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0;">
+                            <div style="background: #ffe6e6; padding: 15px; border-radius: 8px; border-left: 4px solid #ff4444;">
+                                <h5 style="margin: 0 0 10px 0; color: #cc0000;">High Risk</h5>
+                                <p style="margin: 0; font-size: 0.9rem;">Model inversion vulnerability detected</p>
+                            </div>
+                            <div style="background: #fff3cd; padding: 15px; border-radius: 8px; border-left: 4px solid #ffc107;">
+                                <h5 style="margin: 0 0 10px 0; color: #856404;">Medium Risk</h5>
+                                <p style="margin: 0; font-size: 0.9rem;">Insufficient input validation</p>
+                            </div>
+                            <div style="background: #d4edda; padding: 15px; border-radius: 8px; border-left: 4px solid #28a745;">
+                                <h5 style="margin: 0 0 10px 0; color: #155724;">Low Risk</h5>
+                                <p style="margin: 0; font-size: 0.9rem;">Strong access controls in place</p>
+                            </div>
+                        </div>
+                        
                         <div style="background: #e8f5e8; padding: 15px; border-radius: 8px; margin: 20px 0;">
-                            <strong>Expected Outcome:</strong> Comprehensive security posture assessment with actionable remediation recommendations
+                            <strong>Expected Outcome:</strong> Comprehensive security posture assessment with actionable remediation recommendations and compliance validation.
+                        </div>
+                        
+                        <div style="text-align: center; margin-top: 30px;">
+                            <a href="AI Security Framework - Comprehensive Resource Documentation.pdf" download="AI_Security_Playbook_Example.pdf" class="cta-button" style="margin: 10px;">
+                                <i class="fa-solid fa-download"></i> Download Full Playbook
+                            </a>
+                        </div>
+                    </div>
+                `,
+                'deterrent-controls': `
+                    <h2>Deterrent Controls</h2>
+                    <h3>Security Awareness:</h3>
+                    <ul>
+                        <li>AI security training and education programs</li>
+                        <li>Security policy documentation and communication</li>
+                        <li>Threat intelligence sharing and awareness</li>
+                        <li>Incident case studies and lessons learned</li>
+                    </ul>
+                    <h3>Legal & Compliance:</h3>
+                    <ul>
+                        <li>Data protection and privacy regulations compliance</li>
+                        <li>Terms of service and acceptable use policies</li>
+                        <li>Intellectual property protection measures</li>
+                        <li>Regulatory reporting and audit requirements</li>
+                    </ul>
+                    <h3>Organizational Controls:</h3>
+                    <ul>
+                        <li>Security governance and oversight</li>
+                        <li>Risk management frameworks</li>
+                        <li>Vendor security assessments</li>
+                        <li>Third-party security certifications</li>
+                    </ul>
+                `,
+                'model-updates': `
+                    <h2>Model Updates</h2>
+                    <h3>Update Management:</h3>
+                    <ul>
+                        <li>Version control for model artifacts</li>
+                        <li>Staged deployment and rollback procedures</li>
+                        <li>A/B testing for model updates</li>
+                        <li>Performance validation before deployment</li>
+                    </ul>
+                    <h3>Security Validation:</h3>
+                    <ul>
+                        <li>Security regression testing</li>
+                        <li>Adversarial robustness validation</li>
+                        <li>Data drift and model drift monitoring</li>
+                        <li>Integrity verification of updated models</li>
+                    </ul>
+                    <h3>Change Management:</h3>
+                    <ul>
+                        <li>Change approval and review processes</li>
+                        <li>Impact assessment for security implications</li>
+                        <li>Documentation of security changes</li>
+                        <li>Stakeholder notification and communication</li>
+                    </ul>
+                `,
+                'access-controls': `
+                    <h2>Access Controls</h2>
+                    <h3>Authentication & Authorization:</h3>
+                    <ul>
+                        <li>Multi-factor authentication (MFA) for AI system access</li>
+                        <li>Role-based access control (RBAC) implementation</li>
+                        <li>API key management and rotation policies</li>
+                        <li>Single sign-on (SSO) integration for centralized access</li>
+                    </ul>
+                    <h3>Model Access Security:</h3>
+                    <ul>
+                        <li>Model endpoint authentication and authorization</li>
+                        <li>Access logging and audit trails</li>
+                        <li>Rate limiting and throttling mechanisms</li>
+                        <li>IP whitelisting and geolocation restrictions</li>
+                    </ul>
+                    <h3>Data Access Controls:</h3>
+                    <ul>
+                        <li>Training data access restrictions</li>
+                        <li>Sensitive data masking and tokenization</li>
+                        <li>Data classification and labeling</li>
+                        <li>Principle of least privilege enforcement</li>
+                    </ul>
+                `,
+                'monitoring': `
+                    <h2>Monitoring</h2>
+                    <h3>Performance Monitoring:</h3>
+                    <ul>
+                        <li>Model accuracy and performance metrics tracking</li>
+                        <li>Response time and latency monitoring</li>
+                        <li>Resource utilization (CPU, memory, GPU) monitoring</li>
+                        <li>Throughput and request volume analysis</li>
+                    </ul>
+                    <h3>Security Monitoring:</h3>
+                    <ul>
+                        <li>Authentication and authorization events logging</li>
+                        <li>API access patterns and anomaly detection</li>
+                        <li>Input validation failures and attack attempts</li>
+                        <li>Model behavior and output monitoring</li>
+                    </ul>
+                    <h3>Data Quality Monitoring:</h3>
+                    <ul>
+                        <li>Data drift detection and alerts</li>
+                        <li>Input data quality and schema validation</li>
+                        <li>Training data integrity monitoring</li>
+                        <li>Bias detection and fairness metrics</li>
+                    </ul>
+                `,
+                'anomaly-detection': `
+                    <h2>Anomaly Detection</h2>
+                    <h3>Behavioral Anomalies:</h3>
+                    <ul>
+                        <li>Unusual query patterns and frequency detection</li>
+                        <li>Abnormal model response characteristics</li>
+                        <li>Unexpected resource consumption patterns</li>
+                        <li>Deviation from baseline performance metrics</li>
+                    </ul>
+                    <h3>Input Anomalies:</h3>
+                    <ul>
+                        <li>Adversarial input pattern recognition</li>
+                        <li>Prompt injection attempt detection</li>
+                        <li>Malformed or suspicious input identification</li>
+                        <li>Out-of-distribution input detection</li>
+                    </ul>
+                    <h3>Output Anomalies:</h3>
+                    <ul>
+                        <li>Unexpected model prediction patterns</li>
+                        <li>Sensitive information disclosure detection</li>
+                        <li>Bias or fairness violations identification</li>
+                        <li>Model hallucination and confabulation detection</li>
+                    </ul>
+                `,
+                'owasp-llm06': `
+                    <h2><i class="fa-solid fa-robot"></i> LLM06: Excessive Agency</h2>
+                    <div style="padding: 20px;">
+                        <div style="background: rgba(244, 67, 54, 0.1); border-left: 4px solid #f44336; padding: 15px; margin: 15px 0; border-radius: 8px;">
+                            <strong>HIGH RISK:</strong> LLM systems granted excessive autonomy and permissions
+                        </div>
+                        
+                        <h3>Overview</h3>
+                        <p>Excessive Agency occurs when LLM systems are granted excessive autonomy, permissions, or functionality beyond what is necessary for their intended purpose. This can lead to unintended actions, privilege escalation, and system compromise.</p>
+                        
+                        <h3>Common Scenarios</h3>
+                        <ul>
+                            <li><strong>Overprovisioned Permissions:</strong> LLMs with unnecessary access to critical systems</li>
+                            <li><strong>Autonomous Decision Making:</strong> Systems making high-risk decisions without human oversight</li>
+                            <li><strong>Unrestricted API Access:</strong> LLMs with broad access to external services and APIs</li>
+                            <li><strong>Administrative Privileges:</strong> Systems operating with elevated permissions</li>
+                            <li><strong>Cross-domain Access:</strong> Access to multiple unrelated systems or data domains</li>
+                        </ul>
+                        
+                        <h3>Mitigation Strategies</h3>
+                        <ul>
+                            <li>Implement principle of least privilege for LLM systems</li>
+                            <li>Use role-based access control (RBAC) with minimal permissions</li>
+                            <li>Require human approval for high-risk actions</li>
+                            <li>Implement activity monitoring and audit logging</li>
+                            <li>Deploy circuit breakers and safety mechanisms</li>
+                            <li>Regular review and adjustment of system permissions</li>
+                        </ul>
+                        
+                        <div style="text-align: center; margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                            <a href="https://genai.owasp.org/llmrisk/llm06/" target="_blank" 
+                               style="display: inline-block; background: #0066cc; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold;">
+                               📖 Read Official OWASP Documentation
+                            </a>
+                        </div>
+                    </div>
+                `,
+                'owasp-llm07': `
+                    <h2><i class="fa-solid fa-code"></i> LLM07: System Prompt Leakage</h2>
+                    <div style="padding: 20px;">
+                        <div style="background: rgba(253, 126, 20, 0.1); border-left: 4px solid #fd7e14; padding: 15px; margin: 15px 0; border-radius: 8px;">
+                            <strong>MEDIUM RISK:</strong> System prompts and instructions exposed to attackers
+                        </div>
+                        
+                        <h3>Overview</h3>
+                        <p>System Prompt Leakage occurs when LLM applications inadvertently expose their internal system prompts, instructions, or configuration details through user interactions. This information can be used by attackers to understand system behavior and craft more effective attacks.</p>
+                        
+                        <h3>Types of Leakage</h3>
+                        <ul>
+                            <li><strong>System Instructions:</strong> Internal prompts and behavioral guidelines</li>
+                            <li><strong>Configuration Details:</strong> Model parameters and system settings</li>
+                            <li><strong>Role Definitions:</strong> Internal personas and character instructions</li>
+                            <li><strong>Safety Guidelines:</strong> Internal content filtering and safety rules</li>
+                            <li><strong>API Details:</strong> Internal function calls and system integrations</li>
+                        </ul>
+                        
+                        <h3>Mitigation Strategies</h3>
+                        <ul>
+                            <li>Implement robust prompt isolation and sandboxing</li>
+                            <li>Use obfuscation techniques for sensitive system instructions</li>
+                            <li>Deploy output filtering to prevent system information leakage</li>
+                            <li>Implement proper error handling that doesn't expose internals</li>
+                            <li>Regular testing for prompt leakage vulnerabilities</li>
+                            <li>Use indirect prompting and instruction encoding</li>
+                        </ul>
+                        
+                        <div style="text-align: center; margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                            <a href="https://genai.owasp.org/llmrisk/llm07/" target="_blank" 
+                               style="display: inline-block; background: #0066cc; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold;">
+                               📖 Read Official OWASP Documentation
+                            </a>
+                        </div>
+                    </div>
+                `,
+                'owasp-llm08': `
+                    <h2><i class="fa-solid fa-database"></i> LLM08: Vector and Embedding Weaknesses</h2>
+                    <div style="padding: 20px;">
+                        <div style="background: rgba(244, 67, 54, 0.1); border-left: 4px solid #f44336; padding: 15px; margin: 15px 0; border-radius: 8px;">
+                            <strong>HIGH RISK:</strong> Vulnerabilities in vector databases and embedding systems
+                        </div>
+                        
+                        <h3>Overview</h3>
+                        <p>Vector and Embedding Weaknesses occur when LLM applications rely on vector databases, embeddings, or retrieval-augmented generation (RAG) systems that contain security vulnerabilities. These weaknesses can lead to data poisoning, unauthorized access, or manipulation of retrieval results.</p>
+                        
+                        <h3>Common Vulnerabilities</h3>
+                        <ul>
+                            <li><strong>Embedding Poisoning:</strong> Malicious vectors injected into embedding databases</li>
+                            <li><strong>Similarity Search Manipulation:</strong> Crafted queries to retrieve unintended content</li>
+                            <li><strong>Vector Database Access Control:</strong> Insufficient authentication and authorization</li>
+                            <li><strong>Cross-tenant Data Leakage:</strong> Accessing embeddings from other users or organizations</li>
+                            <li><strong>Metadata Exploitation:</strong> Sensitive information stored in vector metadata</li>
+                        </ul>
+                        
+                        <h3>Mitigation Strategies</h3>
+                        <ul>
+                            <li>Implement strong access controls for vector databases</li>
+                            <li>Use embedding integrity verification and checksums</li>
+                            <li>Deploy anomaly detection for unusual similarity patterns</li>
+                            <li>Implement proper data segregation and tenant isolation</li>
+                            <li>Regular auditing of embedding quality and integrity</li>
+                            <li>Use differential privacy for sensitive embedding generation</li>
+                        </ul>
+                        
+                        <div style="text-align: center; margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                            <a href="https://genai.owasp.org/llmrisk/llm08/" target="_blank" 
+                               style="display: inline-block; background: #0066cc; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold;">
+                               📖 Read Official OWASP Documentation
+                            </a>
+                        </div>
+                    </div>
+                `,
+                'owasp-llm09': `
+                    <h2><i class="fa-solid fa-exclamation-circle"></i> LLM09: Misinformation</h2>
+                    <div style="padding: 20px;">
+                        <div style="background: rgba(253, 126, 20, 0.1); border-left: 4px solid #fd7e14; padding: 15px; margin: 15px 0; border-radius: 8px;">
+                            <strong>MEDIUM RISK:</strong> LLMs produce false or misleading information
+                        </div>
+                        
+                        <h3>Overview</h3>
+                        <p>Misinformation occurs when LLMs generate false, misleading, or inaccurate information that could lead to incorrect decisions, harm users, or spread false narratives. This includes hallucinations, outdated information, and deliberately misleading content.</p>
+                        
+                        <h3>Types of Misinformation</h3>
+                        <ul>
+                            <li><strong>Hallucinations:</strong> Generating plausible but factually incorrect information</li>
+                            <li><strong>Outdated Information:</strong> Providing information that is no longer current or accurate</li>
+                            <li><strong>Biased Content:</strong> Information skewed by training data biases</li>
+                            <li><strong>Fabricated Citations:</strong> Creating fake references or sources</li>
+                            <li><strong>Contradictory Responses:</strong> Providing inconsistent information across interactions</li>
+                        </ul>
+                        
+                        <h3>Mitigation Strategies</h3>
+                        <ul>
+                            <li>Implement fact-checking and verification mechanisms</li>
+                            <li>Use multiple information sources and cross-validation</li>
+                            <li>Deploy confidence scoring and uncertainty quantification</li>
+                            <li>Implement human review for critical information domains</li>
+                            <li>Regular model retraining with updated and verified data</li>
+                            <li>Clear disclaimers about information accuracy and limitations</li>
+                        </ul>
+                        
+                        <div style="text-align: center; margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                            <a href="https://genai.owasp.org/llmrisk/llm09/" target="_blank" 
+                               style="display: inline-block; background: #0066cc; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold;">
+                               📖 Read Official OWASP Documentation
+                            </a>
+                        </div>
+                    </div>
+                `,
+                'owasp-llm10': `
+                    <h2><i class="fa-solid fa-battery-empty"></i> LLM10: Unbounded Consumption</h2>
+                    <div style="padding: 20px;">
+                        <div style="background: rgba(253, 126, 20, 0.1); border-left: 4px solid #fd7e14; padding: 15px; margin: 15px 0; border-radius: 8px;">
+                            <strong>MEDIUM RISK:</strong> Uncontrolled resource consumption leading to service disruption
+                        </div>
+                        
+                        <h3>Overview</h3>
+                        <p>Unbounded Consumption occurs when LLM applications consume excessive computational resources, leading to service degradation, increased costs, or complete service unavailability. This can be caused by inefficient resource management or malicious resource exhaustion attacks.</p>
+                        
+                        <h3>Resource Consumption Types</h3>
+                        <ul>
+                            <li><strong>Computational Resources:</strong> Excessive CPU and GPU usage</li>
+                            <li><strong>Memory Consumption:</strong> Uncontrolled RAM and VRAM usage</li>
+                            <li><strong>Token Consumption:</strong> Exceeding token limits and quotas</li>
+                            <li><strong>API Costs:</strong> Excessive charges from cloud ML services</li>
+                            <li><strong>Storage Resources:</strong> Unbounded data storage and logs</li>
+                        </ul>
+                        
+                        <h3>Attack Vectors</h3>
+                        <ul>
+                            <li>Resource-intensive queries designed to exhaust system capacity</li>
+                            <li>Context window flooding with maximum token usage</li>
+                            <li>Recursive or self-referential prompts causing processing loops</li>
+                            <li>High-frequency request patterns overwhelming the service</li>
+                            <li>Large file uploads or complex reasoning tasks</li>
+                        </ul>
+                        
+                        <h3>Mitigation Strategies</h3>
+                        <ul>
+                            <li>Implement robust rate limiting and request throttling</li>
+                            <li>Set reasonable limits on input length and complexity</li>
+                            <li>Monitor resource usage and implement timeout mechanisms</li>
+                            <li>Use load balancing and auto-scaling infrastructure</li>
+                            <li>Deploy circuit breakers and system protection mechanisms</li>
+                            <li>Implement cost monitoring and budget alerts</li>
+                        </ul>
+                        
+                        <div style="text-align: center; margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                            <a href="https://genai.owasp.org/llmrisk/llm10/" target="_blank" 
+                               style="display: inline-block; background: #0066cc; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold;">
+                               📖 Read Official OWASP Documentation
+                            </a>
+                        </div>
+                    </div>
+                `,
+                'supply-chain': `
+                    <h2><i class="fa-solid fa-link"></i> Supply Chain Security</h2>
+                    <div style="padding: 20px;">
+                        <h3>Overview</h3>
+                        <p>AI supply chain security encompasses the security of all components, dependencies, and third-party services used in AI system development and deployment.</p>
+                        
+                        <h3>Key Risk Areas</h3>
+                        <ul>
+                            <li><strong>Model Dependencies:</strong> Third-party models and pre-trained components</li>
+                            <li><strong>Training Data Sources:</strong> External datasets and data providers</li>
+                            <li><strong>Development Tools:</strong> ML frameworks, libraries, and development environments</li>
+                            <li><strong>Cloud Services:</strong> Third-party AI/ML platforms and APIs</li>
+                        </ul>
+                        
+                        <h3>Security Measures</h3>
+                        <div style="display: grid; gap: 8px;">
+                            <div><i class="fa-solid fa-check" style="color: #28a745; margin-right: 8px;"></i> Vendor security assessments</div>
+                            <div><i class="fa-solid fa-check" style="color: #28a745; margin-right: 8px;"></i> Dependency vulnerability scanning</div>
+                            <div><i class="fa-solid fa-check" style="color: #28a745; margin-right: 8px;"></i> Model provenance verification</div>
+                            <div><i class="fa-solid fa-check" style="color: #28a745; margin-right: 8px;"></i> Supply chain integrity monitoring</div>
+                        </div>
+                        
+                        <div style="background: rgba(255, 193, 7, 0.1); border-left: 4px solid #ffc107; padding: 15px; margin: 15px 0; border-radius: 8px;">
+                            <strong>Critical:</strong> Verify integrity and authenticity of all AI components
+                        </div>
+                    </div>
+                `,
+                'governance': `
+                    <h2><i class="fa-solid fa-gavel"></i> AI Governance</h2>
+                    <div style="padding: 20px;">
+                        <h3>Overview</h3>
+                        <p>AI governance provides the framework for ensuring responsible development, deployment, and use of AI systems while maintaining compliance with regulations and ethical standards.</p>
+                        
+                        <h3>Governance Components</h3>
+                        <ul>
+                            <li><strong>Policy Framework:</strong> AI security policies and procedures</li>
+                            <li><strong>Risk Management:</strong> AI-specific risk assessment and mitigation</li>
+                            <li><strong>Compliance Management:</strong> Regulatory compliance monitoring</li>
+                            <li><strong>Ethics Board:</strong> AI ethics review and oversight</li>
+                        </ul>
+                        
+                        <h3>Key Activities</h3>
+                        <div style="display: grid; gap: 8px;">
+                            <div><i class="fa-solid fa-check" style="color: #28a745; margin-right: 8px;"></i> AI risk assessments</div>
+                            <div><i class="fa-solid fa-check" style="color: #28a745; margin-right: 8px;"></i> Model approval processes</div>
+                            <div><i class="fa-solid fa-check" style="color: #28a745; margin-right: 8px;"></i> Bias and fairness audits</div>
+                            <div><i class="fa-solid fa-check" style="color: #28a745; margin-right: 8px;"></i> Incident response procedures</div>
+                            <div><i class="fa-solid fa-check" style="color: #28a745; margin-right: 8px;"></i> Continuous monitoring and review</div>
+                        </div>
+                        
+                        <h3>Regulatory Considerations</h3>
+                        <ul>
+                            <li>EU AI Act compliance requirements</li>
+                            <li>GDPR and data protection regulations</li>
+                            <li>Industry-specific AI regulations</li>
+                            <li>Emerging AI governance standards</li>
+                        </ul>
+                        
+                        <div style="text-align: center; margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                            <a href="https://genai.owasp.org/resource/llm-applications-cybersecurity-and-governance-checklist-english/" target="_blank" 
+                               style="display: inline-block; background: #0066cc; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold;">
+                               📋 OWASP LLM Governance Checklist
+                            </a>
+                        </div>
+                    </div>
+                `,
+                'data-attacks': `
+                    <h2><i class="fa-solid fa-database"></i> Data Layer Attacks</h2>
+                    <div style="padding: 20px;">
+                        <h3>Overview</h3>
+                        <p>Attacks targeting the data layer focus on compromising training data, inference data, or data pipelines used by AI systems.</p>
+                        
+                        <h3>Attack Vectors</h3>
+                        <ul>
+                            <li><strong>Data Poisoning:</strong> Injecting malicious data into training sets</li>
+                            <li><strong>Training Data Extraction:</strong> Recovering sensitive training data</li>
+                            <li><strong>Data Pipeline Compromise:</strong> Attacking data processing workflows</li>
+                            <li><strong>Membership Inference:</strong> Determining if data was used in training</li>
+                            <li><strong>Property Inference:</strong> Inferring dataset properties</li>
+                        </ul>
+                        
+                        <h3>Impact Assessment</h3>
+                        <ul>
+                            <li>Model performance degradation</li>
+                            <li>Privacy violations and data breaches</li>
+                            <li>Regulatory compliance failures</li>
+                            <li>Intellectual property theft</li>
+                        </ul>
+                        
+                        <h3>Defense Strategies</h3>
+                        <div style="display: grid; gap: 8px;">
+                            <div><i class="fa-solid fa-shield" style="color: #007bff; margin-right: 8px;"></i> Data validation and sanitization</div>
+                            <div><i class="fa-solid fa-shield" style="color: #007bff; margin-right: 8px;"></i> Differential privacy techniques</div>
+                            <div><i class="fa-solid fa-shield" style="color: #007bff; margin-right: 8px;"></i> Secure data pipelines</div>
+                            <div><i class="fa-solid fa-shield" style="color: #007bff; margin-right: 8px;"></i> Anomaly detection in training data</div>
+                        </div>
+                    </div>
+                `,
+                'model-attacks': `
+                    <h2><i class="fa-solid fa-brain"></i> Model Layer Attacks</h2>
+                    <div style="padding: 20px;">
+                        <h3>Overview</h3>
+                        <p>Attacks targeting the model layer exploit vulnerabilities in the AI model itself, its architecture, or its behavior.</p>
+                        
+                        <h3>Attack Vectors</h3>
+                        <ul>
+                            <li><strong>Adversarial Examples:</strong> Crafted inputs causing misclassification</li>
+                            <li><strong>Model Extraction:</strong> Stealing model parameters or functionality</li>
+                            <li><strong>Model Inversion:</strong> Reconstructing training data from models</li>
+                            <li><strong>Backdoor Attacks:</strong> Hidden triggers causing malicious behavior</li>
+                            <li><strong>Evasion Attacks:</strong> Bypassing model detection capabilities</li>
+                        </ul>
+                        
+                        <h3>Threat Scenarios</h3>
+                        <ul>
+                            <li>Malware detection bypass</li>
+                            <li>Biometric authentication spoofing</li>
+                            <li>Autonomous vehicle manipulation</li>
+                            <li>Content moderation evasion</li>
+                        </ul>
+                        
+                        <h3>Defense Mechanisms</h3>
+                        <div style="display: grid; gap: 8px;">
+                            <div><i class="fa-solid fa-shield" style="color: #007bff; margin-right: 8px;"></i> Adversarial training</div>
+                            <div><i class="fa-solid fa-shield" style="color: #007bff; margin-right: 8px;"></i> Input preprocessing and detection</div>
+                            <div><i class="fa-solid fa-shield" style="color: #007bff; margin-right: 8px;"></i> Model ensemble techniques</div>
+                            <div><i class="fa-solid fa-shield" style="color: #007bff; margin-right: 8px;"></i> Output monitoring and validation</div>
+                        </div>
+                    </div>
+                `,
+                'deployment-attacks': `
+                    <h2><i class="fa-solid fa-cloud"></i> Deployment Layer Attacks</h2>
+                    <div style="padding: 20px;">
+                        <h3>Overview</h3>
+                        <p>Attacks targeting the deployment layer focus on the infrastructure, APIs, and runtime environment where AI models are deployed and served.</p>
+                        
+                        <h3>Attack Vectors</h3>
+                        <ul>
+                            <li><strong>API Exploitation:</strong> Attacking model serving endpoints</li>
+                            <li><strong>Container Escape:</strong> Breaking out of containerized environments</li>
+                            <li><strong>Service Hijacking:</strong> Taking control of model services</li>
+                            <li><strong>Resource Exhaustion:</strong> DoS attacks against AI services</li>
+                            <li><strong>Prompt Injection:</strong> Manipulating LLM behavior through prompts</li>
+                        </ul>
+                        
+                        <h3>Infrastructure Targets</h3>
+                        <ul>
+                            <li>Model serving containers and orchestration</li>
+                            <li>API gateways and load balancers</li>
+                            <li>GPU clusters and compute resources</li>
+                            <li>Model registries and artifact stores</li>
+                        </ul>
+                        
+                        <h3>Security Controls</h3>
+                        <div style="display: grid; gap: 8px;">
+                            <div><i class="fa-solid fa-shield" style="color: #007bff; margin-right: 8px;"></i> API authentication and rate limiting</div>
+                            <div><i class="fa-solid fa-shield" style="color: #007bff; margin-right: 8px;"></i> Container security and scanning</div>
+                            <div><i class="fa-solid fa-shield" style="color: #007bff; margin-right: 8px;"></i> Network segmentation and monitoring</div>
+                            <div><i class="fa-solid fa-shield" style="color: #007bff; margin-right: 8px;"></i> Runtime protection and anomaly detection</div>
+                        </div>
+                    </div>
+                `,
+                'infrastructure-attacks': `
+                    <h2><i class="fa-solid fa-server"></i> Infrastructure Layer Attacks</h2>
+                    <div style="padding: 20px;">
+                        <h3>Overview</h3>
+                        <p>Attacks targeting the underlying infrastructure supporting AI systems, including compute resources, networks, and supporting services.</p>
+                        
+                        <h3>Attack Vectors</h3>
+                        <ul>
+                            <li><strong>GPU Hijacking:</strong> Unauthorized use of GPU resources</li>
+                            <li><strong>Cloud Account Compromise:</strong> Attacking cloud AI services</li>
+                            <li><strong>Network Infiltration:</strong> Lateral movement through AI infrastructure</li>
+                            <li><strong>Storage Attacks:</strong> Compromising model and data storage</li>
+                            <li><strong>Supply Chain Attacks:</strong> Attacking infrastructure dependencies</li>
+                        </ul>
+                        
+                        <h3>High-Value Targets</h3>
+                        <ul>
+                            <li>GPU clusters and high-performance computing</li>
+                            <li>Cloud AI/ML services and APIs</li>
+                            <li>Model training and inference pipelines</li>
+                            <li>Data lakes and feature stores</li>
+                        </ul>
+                        
+                        <h3>Protection Strategies</h3>
+                        <div style="display: grid; gap: 8px;">
+                            <div><i class="fa-solid fa-shield" style="color: #007bff; margin-right: 8px;"></i> Infrastructure hardening and patching</div>
+                            <div><i class="fa-solid fa-shield" style="color: #007bff; margin-right: 8px;"></i> Zero-trust network architecture</div>
+                            <div><i class="fa-solid fa-shield" style="color: #007bff; margin-right: 8px;"></i> Resource monitoring and anomaly detection</div>
+                            <div><i class="fa-solid fa-shield" style="color: #007bff; margin-right: 8px;"></i> Backup and disaster recovery planning</div>
+                        </div>
+                    </div>
+                `,
+                'preventive-controls': `
+                    <h2><i class="fa-solid fa-shield-alt"></i> Preventive Controls</h2>
+                    <div style="padding: 20px;">
+                        <h3>Overview</h3>
+                        <p>Preventive controls are security measures designed to prevent security incidents before they occur by blocking unauthorized access and malicious activities.</p>
+                        
+                        <h3>Access Controls</h3>
+                        <ul>
+                            <li><strong>Multi-Factor Authentication:</strong> Additional verification layers</li>
+                            <li><strong>Role-Based Access Control:</strong> Permissions based on user roles</li>
+                            <li><strong>API Key Management:</strong> Secure API authentication</li>
+                            <li><strong>Network Segmentation:</strong> Isolated network zones</li>
+                        </ul>
+                        
+                        <h3>Data Protection</h3>
+                        <ul>
+                            <li><strong>Encryption:</strong> Data protection at rest and in transit</li>
+                            <li><strong>Data Masking:</strong> Hiding sensitive information</li>
+                            <li><strong>Access Logging:</strong> Audit trails for data access</li>
+                            <li><strong>Data Classification:</strong> Sensitivity-based handling</li>
+                        </ul>
+                        
+                        <h3>Implementation Checklist</h3>
+                        <div style="display: grid; gap: 8px;">
+                            <div><i class="fa-solid fa-check" style="color: #28a745; margin-right: 8px;"></i> Input validation and sanitization</div>
+                            <div><i class="fa-solid fa-check" style="color: #28a745; margin-right: 8px;"></i> Authentication mechanisms</div>
+                            <div><i class="fa-solid fa-check" style="color: #28a745; margin-right: 8px;"></i> Authorization policies</div>
+                            <div><i class="fa-solid fa-check" style="color: #28a745; margin-right: 8px;"></i> Secure configuration management</div>
+                        </div>
+                    </div>
+                `,
+                'detective-controls': `
+                    <h2><i class="fa-solid fa-search"></i> Detective Controls</h2>
+                    <div style="padding: 20px;">
+                        <h3>Overview</h3>
+                        <p>Detective controls identify and alert on security incidents and anomalous behavior in AI systems during or after they occur.</p>
+                        
+                        <h3>Monitoring Capabilities</h3>
+                        <ul>
+                            <li><strong>Real-time Monitoring:</strong> Continuous system observation</li>
+                            <li><strong>Anomaly Detection:</strong> Identifying unusual patterns</li>
+                            <li><strong>Behavioral Analysis:</strong> User and system behavior monitoring</li>
+                            <li><strong>Performance Monitoring:</strong> Model performance tracking</li>
+                        </ul>
+                        
+                        <h3>Detection Mechanisms</h3>
+                        <ul>
+                            <li><strong>Log Analysis:</strong> Automated log parsing and correlation</li>
+                            <li><strong>Security Information and Event Management (SIEM):</strong> Centralized monitoring</li>
+                            <li><strong>Intrusion Detection Systems (IDS):</strong> Network and host-based detection</li>
+                            <li><strong>Machine Learning Anomaly Detection:</strong> AI-powered threat detection</li>
+                        </ul>
+                        
+                        <h3>Alert Categories</h3>
+                        <div style="display: grid; gap: 8px;">
+                            <div><i class="fa-solid fa-exclamation-triangle" style="color: #ffc107; margin-right: 8px;"></i> Security incidents and breaches</div>
+                            <div><i class="fa-solid fa-exclamation-triangle" style="color: #ffc107; margin-right: 8px;"></i> Performance degradation</div>
+                            <div><i class="fa-solid fa-exclamation-triangle" style="color: #ffc107; margin-right: 8px;"></i> Unusual access patterns</div>
+                            <div><i class="fa-solid fa-exclamation-triangle" style="color: #ffc107; margin-right: 8px;"></i> Model behavior anomalies</div>
+                        </div>
+                    </div>
+                `,
+                'corrective-controls': `
+                    <h2><i class="fa-solid fa-tools"></i> Corrective Controls</h2>
+                    <div style="padding: 20px;">
+                        <h3>Overview</h3>
+                        <p>Corrective controls are implemented to remediate security incidents and restore normal operations after a security breach or failure.</p>
+                        
+                        <h3>Incident Response</h3>
+                        <ul>
+                            <li><strong>Automated Response:</strong> Immediate containment actions</li>
+                            <li><strong>Manual Remediation:</strong> Human-led investigation and fixes</li>
+                            <li><strong>System Recovery:</strong> Restoration to known good state</li>
+                            <li><strong>Evidence Preservation:</strong> Forensic data collection</li>
+                        </ul>
+                        
+                        <h3>Recovery Procedures</h3>
+                        <ul>
+                            <li><strong>Model Rollback:</strong> Revert to previous secure version</li>
+                            <li><strong>Data Restoration:</strong> Recover from clean backups</li>
+                            <li><strong>System Patching:</strong> Apply security updates</li>
+                            <li><strong>Configuration Reset:</strong> Restore secure settings</li>
+                        </ul>
+                        
+                        <h3>Post-Incident Activities</h3>
+                        <div style="display: grid; gap: 8px;">
+                            <div><i class="fa-solid fa-check" style="color: #28a745; margin-right: 8px;"></i> Lessons learned documentation</div>
+                            <div><i class="fa-solid fa-check" style="color: #28a745; margin-right: 8px;"></i> Control effectiveness review</div>
+                            <div><i class="fa-solid fa-check" style="color: #28a745; margin-right: 8px;"></i> Process improvement recommendations</div>
+                            <div><i class="fa-solid fa-check" style="color: #28a745; margin-right: 8px;"></i> Stakeholder communication</div>
+                        </div>
+                    </div>
+                `,
+                'deterrent-controls': `
+                    <h2><i class="fa-solid fa-exclamation-triangle"></i> Deterrent Controls</h2>
+                    <div style="padding: 20px;">
+                        <h3>Overview</h3>
+                        <p>Deterrent controls discourage potential attackers from attempting to compromise AI systems through visible security measures and consequences.</p>
+                        
+                        <h3>Visible Security Measures</h3>
+                        <ul>
+                            <li><strong>Security Notices:</strong> Clear warnings about monitoring and consequences</li>
+                            <li><strong>Legal Frameworks:</strong> Terms of service and legal consequences</li>
+                            <li><strong>Audit Trails:</strong> Visible logging and monitoring indicators</li>
+                            <li><strong>Security Certifications:</strong> Display of security compliance badges</li>
+                        </ul>
+                        
+                        <h3>Policy and Legal Deterrents</h3>
+                        <ul>
+                            <li><strong>Acceptable Use Policies:</strong> Clear guidelines for system use</li>
+                            <li><strong>Data Protection Compliance:</strong> GDPR, CCPA, and other regulations</li>
+                            <li><strong>Intellectual Property Protection:</strong> Copyright and patent enforcement</li>
+                            <li><strong>Incident Reporting:</strong> Legal obligations for breach notification</li>
+                        </ul>
+                        
+                        <h3>Enforcement Mechanisms</h3>
+                        <div style="display: grid; gap: 8px;">
+                            <div><i class="fa-solid fa-gavel" style="color: #dc3545; margin-right: 8px;"></i> Legal prosecution for violations</div>
+                            <div><i class="fa-solid fa-gavel" style="color: #dc3545; margin-right: 8px;"></i> Account suspension and banning</div>
+                            <div><i class="fa-solid fa-gavel" style="color: #dc3545; margin-right: 8px;"></i> Financial penalties and damages</div>
+                            <div><i class="fa-solid fa-gavel" style="color: #dc3545; margin-right: 8px;"></i> Public disclosure of violations</div>
+                        </div>
+                    </div>
+                `,
+                'access-controls': `
+                    <h2><i class="fa-solid fa-key"></i> Access Controls</h2>
+                    <div style="padding: 20px;">
+                        <h3>Overview</h3>
+                        <p>Access controls ensure that only authorized users and systems can access AI resources, data, and functionality based on their identity and permissions.</p>
+                        
+                        <h3>Authentication Methods</h3>
+                        <ul>
+                            <li><strong>Multi-Factor Authentication (MFA):</strong> Multiple verification factors</li>
+                            <li><strong>Single Sign-On (SSO):</strong> Centralized authentication</li>
+                            <li><strong>API Key Management:</strong> Secure programmatic access</li>
+                            <li><strong>Certificate-Based Authentication:</strong> PKI and digital certificates</li>
+                        </ul>
+                        
+                        <h3>Authorization Models</h3>
+                        <ul>
+                            <li><strong>Role-Based Access Control (RBAC):</strong> Permissions based on roles</li>
+                            <li><strong>Attribute-Based Access Control (ABAC):</strong> Fine-grained policy-based access</li>
+                            <li><strong>Mandatory Access Control (MAC):</strong> System-enforced security labels</li>
+                            <li><strong>Discretionary Access Control (DAC):</strong> Owner-controlled permissions</li>
+                        </ul>
+                        
+                        <h3>Implementation Best Practices</h3>
+                        <div style="display: grid; gap: 8px;">
+                            <div><i class="fa-solid fa-lock" style="color: #6f42c1; margin-right: 8px;"></i> Principle of least privilege</div>
+                            <div><i class="fa-solid fa-lock" style="color: #6f42c1; margin-right: 8px;"></i> Regular access reviews and updates</div>
+                            <div><i class="fa-solid fa-lock" style="color: #6f42c1; margin-right: 8px;"></i> Automated provisioning and deprovisioning</div>
+                            <div><i class="fa-solid fa-lock" style="color: #6f42c1; margin-right: 8px;"></i> Comprehensive audit logging</div>
+                        </div>
+                    </div>
+                `,
+                'monitoring': `
+                    <h2><i class="fa-solid fa-chart-line"></i> Monitoring</h2>
+                    <div style="padding: 20px;">
+                        <h3>Overview</h3>
+                        <p>Comprehensive monitoring provides real-time visibility into AI system performance, security, and behavior to detect issues and ensure optimal operation.</p>
+                        
+                        <h3>Monitoring Categories</h3>
+                        <ul>
+                            <li><strong>Performance Monitoring:</strong> Model accuracy, latency, and throughput</li>
+                            <li><strong>Security Monitoring:</strong> Access patterns, anomalies, and threats</li>
+                            <li><strong>Resource Monitoring:</strong> CPU, memory, GPU, and network utilization</li>
+                            <li><strong>Data Quality Monitoring:</strong> Input validation and data drift detection</li>
+                        </ul>
+                        
+                        <h3>Monitoring Tools</h3>
+                        <ul>
+                            <li><strong>Application Performance Monitoring (APM):</strong> End-to-end performance tracking</li>
+                            <li><strong>Security Information and Event Management (SIEM):</strong> Security event correlation</li>
+                            <li><strong>Infrastructure Monitoring:</strong> System health and resource usage</li>
+                            <li><strong>Model Monitoring:</strong> AI-specific performance and behavior tracking</li>
+                        </ul>
+                        
+                        <h3>Key Metrics</h3>
+                        <div style="display: grid; gap: 8px;">
+                            <div><i class="fa-solid fa-tachometer-alt" style="color: #17a2b8; margin-right: 8px;"></i> Model accuracy and precision scores</div>
+                            <div><i class="fa-solid fa-tachometer-alt" style="color: #17a2b8; margin-right: 8px;"></i> Response time and latency measurements</div>
+                            <div><i class="fa-solid fa-tachometer-alt" style="color: #17a2b8; margin-right: 8px;"></i> Error rates and exception frequency</div>
+                            <div><i class="fa-solid fa-tachometer-alt" style="color: #17a2b8; margin-right: 8px;"></i> Resource utilization and capacity</div>
+                        </div>
+                    </div>
+                `,
+                'anomaly-detection': `
+                    <h2><i class="fa-solid fa-exclamation-circle"></i> Anomaly Detection</h2>
+                    <div style="padding: 20px;">
+                        <h3>Overview</h3>
+                        <p>Anomaly detection systems identify unusual patterns, behaviors, or events that deviate from normal operation and may indicate security threats or system issues.</p>
+                        
+                        <h3>Detection Methods</h3>
+                        <ul>
+                            <li><strong>Statistical Analysis:</strong> Deviation from statistical norms</li>
+                            <li><strong>Machine Learning:</strong> Pattern recognition and classification</li>
+                            <li><strong>Rule-Based Detection:</strong> Predefined threshold and pattern rules</li>
+                            <li><strong>Behavioral Analysis:</strong> User and system behavior profiling</li>
+                        </ul>
+                        
+                        <h3>Anomaly Types</h3>
+                        <ul>
+                            <li><strong>Input Anomalies:</strong> Unusual or malformed input data</li>
+                            <li><strong>Output Anomalies:</strong> Unexpected model predictions or responses</li>
+                            <li><strong>Performance Anomalies:</strong> Degraded system or model performance</li>
+                            <li><strong>Behavioral Anomalies:</strong> Unusual access or usage patterns</li>
+                        </ul>
+                        
+                        <h3>Response Actions</h3>
+                        <div style="display: grid; gap: 8px;">
+                            <div><i class="fa-solid fa-bell" style="color: #fd7e14; margin-right: 8px;"></i> Real-time alerting and notifications</div>
+                            <div><i class="fa-solid fa-bell" style="color: #fd7e14; margin-right: 8px;"></i> Automated response and containment</div>
+                            <div><i class="fa-solid fa-bell" style="color: #fd7e14; margin-right: 8px;"></i> Investigation and root cause analysis</div>
+                            <div><i class="fa-solid fa-bell" style="color: #fd7e14; margin-right: 8px;"></i> Model retraining and optimization</div>
+                        </div>
+                    </div>
+                `,
+                'model-updates': `
+                    <h2><i class="fa-solid fa-sync-alt"></i> Model Updates</h2>
+                    <div style="padding: 20px;">
+                        <h3>Overview</h3>
+                        <p>Secure model update processes ensure that AI models can be safely updated, deployed, and rolled back while maintaining security and performance standards.</p>
+                        
+                        <h3>Update Process</h3>
+                        <ul>
+                            <li><strong>Version Control:</strong> Track all model versions and changes</li>
+                            <li><strong>Testing and Validation:</strong> Comprehensive testing before deployment</li>
+                            <li><strong>Staged Deployment:</strong> Gradual rollout with monitoring</li>
+                            <li><strong>Rollback Capability:</strong> Quick reversion to previous versions</li>
+                        </ul>
+                        
+                        <h3>Security Validation</h3>
+                        <ul>
+                            <li><strong>Security Testing:</strong> Vulnerability and robustness assessment</li>
+                            <li><strong>Performance Validation:</strong> Ensure no degradation in performance</li>
+                            <li><strong>Compliance Verification:</strong> Regulatory and policy compliance</li>
+                            <li><strong>Bias and Fairness Testing:</strong> Ethical AI validation</li>
+                        </ul>
+                        
+                        <h3>Change Management</h3>
+                        <div style="display: grid; gap: 8px;">
+                            <div><i class="fa-solid fa-clipboard-check" style="color: #20c997; margin-right: 8px;"></i> Change approval and documentation</div>
+                            <div><i class="fa-solid fa-clipboard-check" style="color: #20c997; margin-right: 8px;"></i> Impact assessment and risk analysis</div>
+                            <div><i class="fa-solid fa-clipboard-check" style="color: #20c997; margin-right: 8px;"></i> Stakeholder notification and communication</div>
+                            <div><i class="fa-solid fa-clipboard-check" style="color: #20c997; margin-right: 8px;"></i> Post-deployment monitoring and validation</div>
+                        </div>
+                    </div>
+                `,
+                'owasp-llm01': `
+                    <h2><i class="fa-solid fa-robot"></i> LLM01: Prompt Injection</h2>
+                    <div style="padding: 20px;">
+                        <div style="background: rgba(244, 67, 54, 0.1); border-left: 4px solid #f44336; padding: 15px; margin: 15px 0; border-radius: 8px;">
+                            <strong>CRITICAL RISK:</strong> Manipulating LLM through crafted prompts
+                        </div>
+                        
+                        <h3>Overview</h3>
+                        <p>Prompt Injection occurs when an attacker manipulates a Large Language Model (LLM) through crafted inputs, causing the model to execute unintended commands or bypass safety measures.</p>
+                        
+                        <h3>Attack Vectors</h3>
+                        <ul>
+                            <li><strong>Direct Injection:</strong> Malicious instructions embedded in user input</li>
+                            <li><strong>Indirect Injection:</strong> Malicious content from external sources (documents, web pages)</li>
+                            <li><strong>System Prompt Override:</strong> Attempts to override system-level instructions</li>
+                            <li><strong>Context Poisoning:</strong> Corrupting the conversation context</li>
+                        </ul>
+                        
+                        <h3>Mitigation Strategies</h3>
+                        <ul>
+                            <li>Input validation and sanitization</li>
+                            <li>Privilege separation for LLM operations</li>
+                            <li>Output content filtering</li>
+                            <li>Contextual awareness and monitoring</li>
+                        </ul>
+                        
+                        <div style="text-align: center; margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                            <a href="https://genai.owasp.org/llmrisk/llm01/" target="_blank" 
+                               style="display: inline-block; background: #0066cc; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold;">
+                               📖 Read Official OWASP Documentation
+                            </a>
+                        </div>
+                    </div>
+                `,
+                'owasp-llm02': `
+                    <h2><i class="fa-solid fa-robot"></i> LLM02: Insecure Output Handling</h2>
+                    <div style="padding: 20px;">
+                        <div style="background: rgba(244, 67, 54, 0.1); border-left: 4px solid #f44336; padding: 15px; margin: 15px 0; border-radius: 8px;">
+                            <strong>HIGH RISK:</strong> Inadequate validation of LLM outputs
+                        </div>
+                        
+                        <h3>Overview</h3>
+                        <p>Insecure Output Handling occurs when LLM outputs are not properly validated, sanitized, or encoded before being used in downstream systems, leading to various injection attacks.</p>
+                        
+                        <h3>Common Vulnerabilities</h3>
+                        <ul>
+                            <li><strong>Code Injection:</strong> LLM output executed as code</li>
+                            <li><strong>Cross-Site Scripting (XSS):</strong> Malicious scripts in web output</li>
+                            <li><strong>SQL Injection:</strong> Database query manipulation</li>
+                            <li><strong>Command Injection:</strong> System command execution</li>
+                        </ul>
+                        
+                        <h3>Mitigation Strategies</h3>
+                        <ul>
+                            <li>Output validation and sanitization</li>
+                            <li>Content encoding and escaping</li>
+                            <li>Output format restrictions</li>
+                            <li>Sandbox execution environments</li>
+                        </ul>
+                        
+                        <div style="text-align: center; margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                            <a href="https://genai.owasp.org/llmrisk/llm02/" target="_blank" 
+                               style="display: inline-block; background: #0066cc; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold;">
+                               📖 Read Official OWASP Documentation
+                            </a>
+                        </div>
+                    </div>
+                `,
+                'owasp-llm03': `
+                    <h2><i class="fa-solid fa-robot"></i> LLM03: Training Data Poisoning</h2>
+                    <div style="padding: 20px;">
+                        <div style="background: rgba(244, 67, 54, 0.1); border-left: 4px solid #f44336; padding: 15px; margin: 15px 0; border-radius: 8px;">
+                            <strong>HIGH RISK:</strong> Malicious manipulation of training data
+                        </div>
+                        
+                        <h3>Overview</h3>
+                        <p>Training Data Poisoning involves injecting malicious or biased content into the training dataset, causing the model to learn incorrect patterns, behaviors, or biases.</p>
+                        
+                        <h3>Attack Methods</h3>
+                        <ul>
+                            <li><strong>Data Injection:</strong> Adding malicious training examples</li>
+                            <li><strong>Label Flipping:</strong> Changing correct labels to incorrect ones</li>
+                            <li><strong>Backdoor Insertion:</strong> Embedding hidden triggers</li>
+                            <li><strong>Bias Amplification:</strong> Introducing discriminatory patterns</li>
+                        </ul>
+                        
+                        <h3>Mitigation Strategies</h3>
+                        <ul>
+                            <li>Data source verification and validation</li>
+                            <li>Statistical outlier detection</li>
+                            <li>Data provenance tracking</li>
+                            <li>Differential privacy techniques</li>
+                        </ul>
+                        
+                        <div style="text-align: center; margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                            <a href="https://genai.owasp.org/llmrisk/llm03/" target="_blank" 
+                               style="display: inline-block; background: #0066cc; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold;">
+                               📖 Read Official OWASP Documentation
+                            </a>
+                        </div>
+                    </div>
+                `,
+                'owasp-llm04': `
+                    <h2><i class="fa-solid fa-robot"></i> LLM04: Model Denial of Service</h2>
+                    <div style="padding: 20px;">
+                        <div style="background: rgba(253, 126, 20, 0.1); border-left: 4px solid #fd7e14; padding: 15px; margin: 15px 0; border-radius: 8px;">
+                            <strong>MEDIUM RISK:</strong> Resource exhaustion attacks against LLM services
+                        </div>
+                        
+                        <h3>Overview</h3>
+                        <p>Model Denial of Service attacks aim to overwhelm LLM services by consuming excessive computational resources, causing service degradation or unavailability.</p>
+                        
+                        <h3>Attack Vectors</h3>
+                        <ul>
+                            <li><strong>Resource Exhaustion:</strong> High-complexity query flooding</li>
+                            <li><strong>Input Manipulation:</strong> Crafted inputs causing excessive processing</li>
+                            <li><strong>Context Length Attacks:</strong> Maximum token limit exploitation</li>
+                            <li><strong>Recursive Patterns:</strong> Self-reinforcing computational loops</li>
+                        </ul>
+                        
+                        <h3>Mitigation Strategies</h3>
+                        <ul>
+                            <li>Rate limiting and throttling</li>
+                            <li>Input length and complexity restrictions</li>
+                            <li>Resource monitoring and circuit breakers</li>
+                            <li>Load balancing and auto-scaling</li>
+                        </ul>
+                        
+                        <div style="text-align: center; margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                            <a href="https://genai.owasp.org/llmrisk/llm04/" target="_blank" 
+                               style="display: inline-block; background: #0066cc; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold;">
+                               📖 Read Official OWASP Documentation
+                            </a>
+                        </div>
+                    </div>
+                `,
+                'owasp-llm05': `
+                    <h2><i class="fa-solid fa-robot"></i> LLM05: Supply Chain Vulnerabilities</h2>
+                    <div style="padding: 20px;">
+                        <div style="background: rgba(244, 67, 54, 0.1); border-left: 4px solid #f44336; padding: 15px; margin: 15px 0; border-radius: 8px;">
+                            <strong>HIGH RISK:</strong> Compromised dependencies and third-party components
+                        </div>
+                        
+                        <h3>Overview</h3>
+                        <p>Supply Chain Vulnerabilities involve compromised dependencies, pre-trained models, datasets, or plugins that can introduce security risks into LLM applications.</p>
+                        
+                        <h3>Risk Sources</h3>
+                        <ul>
+                            <li><strong>Compromised Models:</strong> Backdoored or malicious pre-trained models</li>
+                            <li><strong>Vulnerable Dependencies:</strong> Third-party libraries with security flaws</li>
+                            <li><strong>Malicious Plugins:</strong> Unsafe extensions or add-ons</li>
+                            <li><strong>Poisoned Datasets:</strong> Training data from untrusted sources</li>
+                        </ul>
+                        
+                        <h3>Mitigation Strategies</h3>
+                        <ul>
+                            <li>Vendor and component security assessment</li>
+                            <li>Model and data provenance verification</li>
+                            <li>Regular security scanning and updates</li>
+                            <li>Sandbox testing environments</li>
+                        </ul>
+                        
+                        <div style="text-align: center; margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                            <a href="https://genai.owasp.org/llmrisk/llm05/" target="_blank" 
+                               style="display: inline-block; background: #0066cc; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold;">
+                               📖 Read Official OWASP Documentation
+                            </a>
+                        </div>
+                    </div>
+                `,
+                'owasp-llm08': `
+                    <h2><i class="fa-solid fa-robot"></i> LLM08: Excessive Agency</h2>
+                    <div style="padding: 20px;">
+                        <div style="background: rgba(244, 67, 54, 0.1); border-left: 4px solid #f44336; padding: 15px; margin: 15px 0; border-radius: 8px;">
+                            <strong>HIGH RISK:</strong> LLM systems granted excessive autonomy and permissions
+                        </div>
+                        
+                        <h3>Overview</h3>
+                        <p>Excessive Agency occurs when LLM systems are granted excessive autonomy, permissions, or functionality beyond what is necessary for their intended purpose.</p>
+                        
+                        <h3>Common Scenarios</h3>
+                        <ul>
+                            <li><strong>Overprovisioned Permissions:</strong> LLMs with unnecessary system access</li>
+                            <li><strong>Autonomous Decision Making:</strong> High-risk decisions without oversight</li>
+                            <li><strong>Unrestricted API Access:</strong> Broad access to external services</li>
+                            <li><strong>Administrative Privileges:</strong> Elevated system permissions</li>
+                        </ul>
+                        
+                        <h3>Mitigation Strategies</h3>
+                        <ul>
+                            <li>Principle of least privilege implementation</li>
+                            <li>Human oversight for critical decisions</li>
+                            <li>Role-based access control (RBAC)</li>
+                            <li>Activity monitoring and audit logging</li>
+                        </ul>
+                        
+                        <div style="text-align: center; margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                            <a href="https://genai.owasp.org/llmrisk/llm08/" target="_blank" 
+                               style="display: inline-block; background: #0066cc; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold;">
+                               📖 Read Official OWASP Documentation
+                            </a>
+                        </div>
+                    </div>
+                `,
+                'owasp-llm09': `
+                    <h2><i class="fa-solid fa-robot"></i> LLM09: Overreliance</h2>
+                    <div style="padding: 20px;">
+                        <div style="background: rgba(253, 126, 20, 0.1); border-left: 4px solid #fd7e14; padding: 15px; margin: 15px 0; border-radius: 8px;">
+                            <strong>MEDIUM RISK:</strong> Excessive dependence on LLM outputs without verification
+                        </div>
+                        
+                        <h3>Overview</h3>
+                        <p>Overreliance occurs when users or systems place excessive trust in LLM outputs without proper verification, leading to misinformation spread and poor decision-making.</p>
+                        
+                        <h3>Risk Factors</h3>
+                        <ul>
+                            <li><strong>Automated Decision Making:</strong> Critical decisions based solely on LLM output</li>
+                            <li><strong>Lack of Human Oversight:</strong> Insufficient validation processes</li>
+                            <li><strong>Misplaced Confidence:</strong> Overestimating LLM accuracy and reliability</li>
+                            <li><strong>Context Ignorance:</strong> Applying LLM advice outside its domain</li>
+                        </ul>
+                        
+                        <h3>Mitigation Strategies</h3>
+                        <ul>
+                            <li>Human-in-the-loop validation processes</li>
+                            <li>Output confidence scoring and uncertainty quantification</li>
+                            <li>Cross-validation with multiple sources</li>
+                            <li>Clear limitation disclosure and user education</li>
+                        </ul>
+                        
+                        <div style="text-align: center; margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                            <a href="https://genai.owasp.org/llmrisk/llm09/" target="_blank" 
+                               style="display: inline-block; background: #0066cc; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold;">
+                               📖 Read Official OWASP Documentation
+                            </a>
                         </div>
                     </div>
                 `
@@ -640,194 +1720,720 @@ window.toggleMobileNav = toggleMobileNav;
     });
 });
 
-// --- Checklist Logic ---
-const checklistPhases = [
+// --- Enhanced AI Security Assessment Checklist with Dependency Management ---
+const enhancedChecklistPhases = [
     {
+        id: 'scope_definition',
         title: 'Planning & Preparation',
+        dependencies: [],
+        required_for: ['asset_discovery', 'threat_modeling'],
         items: [
-            'Scope defined and documented',
-            'Stakeholder approvals obtained',
-            'Test environment provisioned',
-            'Tools installed and configured'
-        ]
+            { title: 'AI system scope defined and documented', description: 'Define the boundaries and components of the AI system to be assessed' },
+            { title: 'Stakeholder approvals obtained', description: 'Secure necessary approvals from business owners and technical teams' },
+            { title: 'Security test environment provisioned', description: 'Set up isolated environment for security testing activities' },
+            { title: 'AI security tools installed and configured', description: 'Install and configure tools for AI-specific security testing' },
+            { title: 'Baseline security posture documented', description: 'Document current security controls and configurations' }
+        ],
+        critical_items: [0, 1], // Items that must be completed for phase to be considered done
+        ai_specific: true
     },
     {
-        title: 'Threat Modeling',
+        id: 'asset_discovery',
+        title: 'AI Asset Discovery & Mapping',
+        dependencies: ['scope_definition'],
+        required_for: ['threat_modeling', 'vulnerability_assessment'],
         items: [
-            'Assets & data flows mapped',
-            'AI-specific threat scenarios identified',
-            'Risk ranking completed',
-            'Prioritized threat matrix documented'
-        ]
+            { title: 'AI models and algorithms inventoried', description: 'Create comprehensive inventory of all AI models in use' },
+            { title: 'Training data sources identified and classified', description: 'Map all data sources used for model training and inference' },
+            { title: 'API endpoints and interfaces mapped', description: 'Document all API endpoints and integration points' },
+            { title: 'Data flows and processing pipelines documented', description: 'Map data flow through the AI system architecture' },
+            { title: 'Third-party AI services cataloged', description: 'Identify and document external AI services and dependencies' }
+        ],
+        critical_items: [0, 1, 3],
+        ai_specific: true
     },
     {
-        title: 'Baseline Security Checks',
+        id: 'threat_modeling',
+        title: 'AI Threat Modeling',
+        dependencies: ['scope_definition', 'asset_discovery'],
+        required_for: ['vulnerability_assessment', 'penetration_testing'],
         items: [
-            'Network & OS scans passed',
-            'API auth and access control verified',
-            'Dependency vulnerabilities reviewed',
-            'Secure configs enforced'
-        ]
+            { title: 'MITRE ATLAS threat scenarios mapped', description: 'Map relevant MITRE ATLAS tactics, techniques, and procedures (TTPs) to the AI system' },
+            { title: 'OWASP LLM Top 10 risks assessed', description: 'Evaluate the system against OWASP LLM Top 10 2025 vulnerabilities' },
+            { title: 'AI-specific attack vectors identified', description: 'Identify AI-specific threats like adversarial attacks, data poisoning, and model inversion' },
+            { title: 'Risk ranking and prioritization completed', description: 'Rank identified threats by likelihood and impact using AI security framework' },
+            { title: 'Threat model documentation finalized', description: 'Create comprehensive threat model documentation with AI-specific considerations' }
+        ],
+        critical_items: [0, 1, 2],
+        ai_specific: true
     },
     {
+        id: 'vulnerability_assessment',
+        title: 'AI Security Vulnerability Assessment',
+        dependencies: ['asset_discovery', 'threat_modeling'],
+        required_for: ['penetration_testing'],
+        items: [
+            { title: 'Model architecture security review completed', description: 'Review AI model architecture for security vulnerabilities and design flaws' },
+            { title: 'Training data integrity validation performed', description: 'Validate training data sources for poisoning, bias, and integrity issues' },
+            { title: 'API security scanning executed', description: 'Scan AI model APIs for common web vulnerabilities and AI-specific issues' },
+            { title: 'Dependency vulnerability analysis completed', description: 'Analyze AI framework dependencies for known security vulnerabilities' },
+            { title: 'Configuration security assessment done', description: 'Review AI system configuration for security misconfigurations' }
+        ],
+        critical_items: [0, 2, 3],
+        ai_specific: true
+    },
+    {
+        id: 'penetration_testing',
         title: 'AI Adversarial Testing',
+        dependencies: ['vulnerability_assessment'],
+        required_for: ['reporting'],
         items: [
-            'Data poisoning tests executed',
-            'Evasion/adversarial examples tested',
-            'Prompt injection scenarios executed',
-            'DoS resilience evaluated'
-        ]
+            { title: 'Adversarial example generation and testing', description: 'Generate adversarial examples to test model robustness against malicious inputs' },
+            { title: 'Data poisoning attack simulations', description: 'Simulate data poisoning attacks on training and inference pipelines' },
+            { title: 'Prompt injection testing (for LLMs)', description: 'Test large language models for prompt injection and jailbreaking vulnerabilities' },
+            { title: 'Model extraction attempts', description: 'Attempt to extract model parameters or functionality through black-box testing' },
+            { title: 'Privacy leakage testing (membership inference)', description: 'Test for privacy leakage through membership inference and model inversion attacks' },
+            { title: 'Supply chain security validation', description: 'Validate security of AI model supply chain including pre-trained models and datasets' }
+        ],
+        critical_items: [0, 1, 2],
+        ai_specific: true
     },
     {
-        title: 'Output & Integration Checks',
-        items: [
-            'Output sanitization confirmed',
-            'Content safety filters tested',
-            'Plugin access controls validated',
-            'Downstream usage reviewed'
-        ]
-    },
-    {
-        title: 'Privacy & Logging',
-        items: [
-            'Membership inference tests done',
-            'Logs cover AI events',
-            'Anomaly alerts configured',
-            'Incident response plan exists'
-        ]
-    },
-    {
+        id: 'reporting',
         title: 'Analysis & Reporting',
+        dependencies: ['penetration_testing'],
+        required_for: [],
         items: [
-            'Findings documented with severity',
-            'Recommendations assigned',
-            'Executive summary drafted',
-            'Checklist closure verified'
-        ]
+            { title: 'Findings documented with AI-specific context', description: 'Document all security findings with AI-specific context and implications' },
+            { title: 'Risk ratings assigned using AI security framework', description: 'Assign risk ratings using AI security framework methodology and CVSS adaptations' },
+            { title: 'Remediation recommendations prioritized', description: 'Prioritize remediation recommendations based on AI security risk assessment' },
+            { title: 'Executive summary with AI security posture', description: 'Create executive summary highlighting AI security posture and key risks' },
+            { title: 'Technical appendix with detailed findings', description: 'Provide detailed technical appendix with evidence and proof-of-concept details' },
+            { title: 'Compliance mapping (AI regulations)', description: 'Map findings to relevant AI regulations and compliance frameworks' }
+        ],
+        critical_items: [0, 1, 2],
+        ai_specific: true
     }
 ];
 
-function initializeChecklist() {
-    const container = document.getElementById('checklist-phases');
-    if (!container) return;
-    container.innerHTML = '';
+class AssessmentWorkflow {
+    constructor() {
+        this.phases = enhancedChecklistPhases;
+        this.completedPhases = this.loadCompletedPhases();
+    }
+    
+    loadCompletedPhases() {
+        const saved = localStorage.getItem('completed_phases');
+        return saved ? JSON.parse(saved) : [];
+    }
+    
+    saveCompletedPhases() {
+        localStorage.setItem('completed_phases', JSON.stringify(this.completedPhases));
+    }
+    
+    isPhaseCompleted(phaseId) {
+        return this.completedPhases.includes(phaseId);
+    }
+    
+    canStartPhase(phaseId) {
+        const phase = this.phases.find(p => p.id === phaseId);
+        if (!phase) return false;
+        
+        return phase.dependencies.every(dep => this.isPhaseCompleted(dep));
+    }
+    
+    getNextAvailablePhases() {
+        return this.phases.filter(phase => 
+            !this.isPhaseCompleted(phase.id) && 
+            this.canStartPhase(phase.id)
+        );
+    }
+    
+    markPhaseCompleted(phaseId) {
+        if (!this.completedPhases.includes(phaseId)) {
+            this.completedPhases.push(phaseId);
+            this.saveCompletedPhases();
+        }
+    }
+    
+    getPhaseStatus(phaseId) {
+        if (this.isPhaseCompleted(phaseId)) return 'completed';
+        if (this.canStartPhase(phaseId)) return 'available';
+        return 'locked';
+    }
+    
+    getDependencyChain(phaseId) {
+        const phase = this.phases.find(p => p.id === phaseId);
+        if (!phase) return [];
+        
+        let chain = [];
+        phase.dependencies.forEach(dep => {
+            chain.push(dep);
+            chain = chain.concat(this.getDependencyChain(dep));
+        });
+        
+        return [...new Set(chain)]; // Remove duplicates
+    }
+}
 
-    checklistPhases.forEach((phase, phaseIndex) => {
-        const phaseElement = document.createElement('div');
-        phaseElement.className = 'checklist-phase';
-        
-        const completed = getCompletedItems(phaseIndex);
-        const progress = Math.round((completed / phase.items.length) * 100);
-        
-        phaseElement.innerHTML = `
-            <div class="phase-header" onclick="togglePhase(${phaseIndex})">
-                <div class="phase-title">
-                    <i class="fa-solid fa-chevron-right" id="chevron-${phaseIndex}"></i>
-                    ${phase.title}
-                </div>
-                <div class="phase-progress">${completed}/${phase.items.length} (${progress}%)</div>
-            </div>
-            <div class="progress-bar">
-                <div class="progress-fill" style="width: ${progress}%"></div>
-            </div>
-            <div class="checklist-items" id="items-${phaseIndex}">
-                ${phase.items.map((item, itemIndex) => {
-                    const key = `${phaseIndex}-${itemIndex}`;
-                    const isChecked = localStorage.getItem(`checklist-${key}`) === 'true';
-                    return `
-                        <div class="checklist-item ${isChecked ? 'completed' : ''}">
-                            <input type="checkbox" id="item-${key}" ${isChecked ? 'checked' : ''} 
-                                   onchange="toggleItem('${key}')">
-                            <label for="item-${key}">${item}</label>
+const workflowManager = new AssessmentWorkflow();
+
+// Simple working checklist implementation
+function initializeSimpleChecklist() {
+    console.log('Initializing simple checklist...');
+    const container = document.getElementById('checklist-phases');
+    if (!container) {
+        console.error('Checklist container not found!');
+        return;
+    }
+    
+    container.innerHTML = `
+        <div style="padding: 20px; background: rgba(255,255,255,0.1); border-radius: 10px; margin: 20px 0; text-align: center;">
+            <h3>🔄 Loading AI Security Assessment Checklist...</h3>
+            <p>Found ${enhancedChecklistPhases ? enhancedChecklistPhases.length : 0} phases to process</p>
+        </div>
+    `;
+    
+    setTimeout(() => {
+        try {
+            container.innerHTML = ''; // Clear loading message
+            
+            enhancedChecklistPhases.forEach((phase, phaseIndex) => {
+                const completedItems = getCompletedItemsForPhase(phaseIndex);
+                const progress = Math.round((completedItems / phase.items.length) * 100);
+                
+                const phaseDiv = document.createElement('div');
+                phaseDiv.className = 'checklist-phase';
+                phaseDiv.style.cssText = `
+                    background: rgba(255,255,255,0.05);
+                    margin: 15px 0;
+                    padding: 20px;
+                    border-radius: 10px;
+                    border: 1px solid rgba(255,255,255,0.1);
+                `;
+                
+                phaseDiv.innerHTML = `
+                    <div style="cursor: pointer; padding: 10px;" onclick="toggleSimplePhase(${phaseIndex})">
+                        <h3 style="color: #68abfe; margin: 0 0 10px 0;">
+                            <i class="fa-solid fa-chevron-right" id="chevron-${phaseIndex}"></i>
+                            ${phase.title}
+                        </h3>
+                        <div style="font-size: 0.9rem; opacity: 0.8;">
+                            Progress: ${completedItems}/${phase.items.length} items (${progress}%)
                         </div>
-                    `;
-                }).join('')}
-            </div>
-        `;
-        
-        container.appendChild(phaseElement);
+                        <div style="background: rgba(255,255,255,0.1); height: 4px; border-radius: 2px; margin-top: 8px;">
+                            <div style="background: #68abfe; height: 100%; width: ${progress}%; border-radius: 2px; transition: width 0.3s;"></div>
+                        </div>
+                    </div>
+                    
+                    <div id="phase-${phaseIndex}-items" style="display: none; margin-top: 15px; padding: 15px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+                        ${phase.items.map((item, itemIndex) => `
+                            <div style="margin: 10px 0; padding: 12px; background: rgba(255,255,255,0.05); border-radius: 6px;">
+                                <label style="display: flex; align-items: flex-start; cursor: pointer;">
+                                    <input type="checkbox" 
+                                           id="enhanced-checklist-${phaseIndex}-${itemIndex}"
+                                           onchange="updateSimpleProgress(${phaseIndex}, ${itemIndex})"
+                                           style="margin-right: 12px; margin-top: 2px;">
+                                    <div>
+                                        <div style="font-weight: 500; margin-bottom: 4px;">${item.title}</div>
+                                        <div style="font-size: 0.85rem; opacity: 0.7;">${item.description || ''}</div>
+                                    </div>
+                                </label>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                
+                container.appendChild(phaseDiv);
+            });
+            
+            // Load saved states
+            loadSimpleChecklistStates();
+            
+            console.log('Simple checklist initialization complete');
+            
+        } catch (error) {
+            console.error('Error building checklist:', error);
+            container.innerHTML = `
+                <div style="padding: 20px; background: rgba(244, 67, 54, 0.1); border-radius: 10px; margin: 20px 0; color: #f44336;">
+                    <h3>❌ Error Loading Checklist</h3>
+                    <p>Error: ${error.message}</p>
+                    <button onclick="initializeSimpleChecklist()" style="padding: 8px 16px; background: #f44336; color: white; border: none; border-radius: 4px; cursor: pointer; margin-top: 10px;">
+                        Try Again
+                    </button>
+                </div>
+            `;
+        }
+    }, 500);
+}
+
+function toggleSimplePhase(phaseIndex) {
+    const itemsDiv = document.getElementById(`phase-${phaseIndex}-items`);
+    const chevron = document.getElementById(`chevron-${phaseIndex}`);
+    
+    if (itemsDiv && chevron) {
+        const isHidden = itemsDiv.style.display === 'none';
+        itemsDiv.style.display = isHidden ? 'block' : 'none';
+        chevron.style.transform = isHidden ? 'rotate(90deg)' : 'rotate(0deg)';
+    }
+}
+
+function updateSimpleProgress(phaseIndex, itemIndex) {
+    const checkbox = document.getElementById(`enhanced-checklist-${phaseIndex}-${itemIndex}`);
+    if (checkbox) {
+        localStorage.setItem(`enhanced-checklist-${phaseIndex}-${itemIndex}`, checkbox.checked);
+        updatePhaseProgress(phaseIndex);
+    }
+}
+
+function loadSimpleChecklistStates() {
+    enhancedChecklistPhases.forEach((phase, phaseIndex) => {
+        phase.items.forEach((item, itemIndex) => {
+            const checkbox = document.getElementById(`enhanced-checklist-${phaseIndex}-${itemIndex}`);
+            const saved = localStorage.getItem(`enhanced-checklist-${phaseIndex}-${itemIndex}`);
+            if (checkbox && saved === 'true') {
+                checkbox.checked = true;
+            }
+        });
+        updatePhaseProgress(phaseIndex);
     });
 }
 
-function getCompletedItems(phaseIndex) {
+function updatePhaseProgress(phaseIndex) {
+    const completedItems = getCompletedItemsForPhase(phaseIndex);
+    const totalItems = enhancedChecklistPhases[phaseIndex].items.length;
+    const progress = Math.round((completedItems / totalItems) * 100);
+    
+    // Update progress text and bar
+    const phaseDiv = document.querySelector(`[onclick="toggleSimplePhase(${phaseIndex})"]`);
+    if (phaseDiv) {
+        const progressText = phaseDiv.querySelector('div[style*="font-size: 0.9rem"]');
+        const progressBar = phaseDiv.querySelector('div[style*="background: #68abfe"]');
+        
+        if (progressText) {
+            progressText.textContent = `Progress: ${completedItems}/${totalItems} items (${progress}%)`;
+        }
+        if (progressBar) {
+            progressBar.style.width = `${progress}%`;
+        }
+    }
+}
+
+// Original complex checklist (kept for reference)
+// Simple working checklist functions
+function initializeSimpleChecklist() {
+    console.log('Initializing simple checklist...');
+    const container = document.getElementById('checklist-phases');
+    if (!container) {
+        console.error('Checklist container not found!');
+        return;
+    }
+    
+    container.innerHTML = `
+        <div style="padding: 20px; background: rgba(255,255,255,0.1); border-radius: 10px; margin: 20px 0; text-align: center;">
+            <h3>🔄 Loading AI Security Assessment Checklist...</h3>
+            <p>Found ${enhancedChecklistPhases ? enhancedChecklistPhases.length : 0} phases to process</p>
+        </div>
+    `;
+    
+    setTimeout(() => {
+        try {
+            container.innerHTML = ''; // Clear loading message
+            
+            enhancedChecklistPhases.forEach((phase, phaseIndex) => {
+                const completedItems = getCompletedItemsForPhase(phaseIndex);
+                const progress = Math.round((completedItems / phase.items.length) * 100);
+                
+                // Check if phase is locked based on dependencies
+                const isLocked = isPhaseLockedByDependencies(phase, phaseIndex);
+                const isCompleted = completedItems === phase.items.length;
+                
+                const phaseDiv = document.createElement('div');
+                phaseDiv.className = 'checklist-phase';
+                phaseDiv.style.cssText = `
+                    background: rgba(255,255,255,0.05);
+                    margin: 15px 0;
+                    padding: 20px;
+                    border-radius: 10px;
+                    border: 1px solid rgba(255,255,255,0.1);
+                    ${isLocked ? 'opacity: 0.6;' : ''}
+                `;
+                
+                phaseDiv.innerHTML = `
+                    <div style="cursor: ${isLocked ? 'not-allowed' : 'pointer'}; padding: 10px;" onclick="${isLocked ? '' : `toggleSimplePhase(${phaseIndex})`}">
+                        <h3 style="color: ${isLocked ? '#888' : isCompleted ? '#4caf50' : '#68abfe'}; margin: 0 0 10px 0;">
+                            <i class="fa-solid fa-chevron-right" id="chevron-${phaseIndex}"></i>
+                            ${phase.title}
+                            ${isLocked ? '<i class="fa-solid fa-lock" style="margin-left: 10px; color: #f44336;"></i>' : ''}
+                            ${isCompleted ? '<i class="fa-solid fa-check-circle" style="margin-left: 10px; color: #4caf50;"></i>' : ''}
+                        </h3>
+                        <div style="font-size: 0.9rem; opacity: 0.8;">
+                            Progress: ${completedItems}/${phase.items.length} items (${progress}%)
+                        </div>
+                        <div style="background: rgba(255,255,255,0.1); height: 4px; border-radius: 2px; margin-top: 8px;">
+                            <div style="background: ${isCompleted ? '#4caf50' : isLocked ? '#888' : '#68abfe'}; height: 100%; width: ${progress}%; border-radius: 2px; transition: width 0.3s;"></div>
+                        </div>
+                    </div>
+                    
+                    ${phase.dependencies && phase.dependencies.length > 0 ? `
+                        <div style="margin: 10px 0; padding: 10px; background: rgba(104,171,254,0.1); border-left: 4px solid #68abfe; border-radius: 6px;">
+                            <div style="font-size: 0.85rem; color: #68abfe; font-weight: 500;">
+                                <i class="fa-solid fa-link" style="margin-right: 6px;"></i>
+                                <strong>Dependencies:</strong> 
+                                ${phase.dependencies.map(depId => {
+                                    const depPhase = enhancedChecklistPhases.find(p => p.id === depId);
+                                    const depIndex = enhancedChecklistPhases.findIndex(p => p.id === depId);
+                                    const depCompleted = depIndex >= 0 ? getCompletedItemsForPhase(depIndex) === enhancedChecklistPhases[depIndex].items.length : false;
+                                    return `<span style="color: ${depCompleted ? '#4caf50' : '#f44336'}; margin-right: 8px;">
+                                                ${depPhase ? depPhase.title : depId} 
+                                                ${depCompleted ? '✓' : '✗'}
+                                            </span>`;
+                                }).join('')}
+                            </div>
+                            ${isLocked ? '<div style="font-size: 0.8rem; color: #f44336; margin-top: 5px;"><i class="fa-solid fa-exclamation-triangle"></i> Complete required dependencies first</div>' : ''}
+                        </div>
+                    ` : ''}
+                    
+                    <div id="phase-${phaseIndex}-items" style="display: none; margin-top: 15px; padding: 15px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+                        ${phase.items.map((item, itemIndex) => `
+                            <div style="margin: 10px 0; padding: 12px; background: rgba(255,255,255,0.05); border-radius: 6px;">
+                                <label style="display: flex; align-items: flex-start; cursor: ${isLocked ? 'not-allowed' : 'pointer'};">
+                                    <input type="checkbox" 
+                                           id="enhanced-checklist-${phaseIndex}-${itemIndex}"
+                                           ${isLocked ? 'disabled' : ''}
+                                           onchange="updateSimpleProgress(${phaseIndex}, ${itemIndex})"
+                                           style="margin-right: 12px; margin-top: 2px;">
+                                    <div>
+                                        <div style="font-weight: 500; margin-bottom: 4px; ${isLocked ? 'color: #888;' : ''}">${item.title}</div>
+                                        <div style="font-size: 0.85rem; opacity: 0.7; ${isLocked ? 'color: #666;' : ''}">${item.description || ''}</div>
+                                    </div>
+                                </label>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                
+                container.appendChild(phaseDiv);
+            });
+            
+            // Load saved states
+            loadSimpleChecklistStates();
+            
+            console.log('Checklist with dependencies initialized successfully');
+            
+        } catch (error) {
+            console.error('Error building checklist:', error);
+            container.innerHTML = `
+                <div style="padding: 20px; background: rgba(244, 67, 54, 0.1); border-radius: 10px; margin: 20px 0; color: #f44336;">
+                    <h3>❌ Error Loading Checklist</h3>
+                    <p>Error: ${error.message}</p>
+                    <button onclick="initializeSimpleChecklist()" style="padding: 8px 16px; background: #f44336; color: white; border: none; border-radius: 4px; cursor: pointer; margin-top: 10px;">
+                        Try Again
+                    </button>
+                </div>
+            `;
+        }
+    }, 500);
+}
+
+function isPhaseLockedByDependencies(phase, phaseIndex) {
+    if (!phase.dependencies || phase.dependencies.length === 0) {
+        return false; // No dependencies = not locked
+    }
+    
+    // Check if all dependencies are completed
+    return phase.dependencies.some(depId => {
+        const depIndex = enhancedChecklistPhases.findIndex(p => p.id === depId);
+        if (depIndex === -1) return true; // Dependency not found = locked
+        
+        const depCompleted = getCompletedItemsForPhase(depIndex);
+        const depTotal = enhancedChecklistPhases[depIndex].items.length;
+        return depCompleted < depTotal; // If dependency not 100% complete = locked
+    });
+}
+
+function toggleSimplePhase(phaseIndex) {
+    const itemsDiv = document.getElementById(`phase-${phaseIndex}-items`);
+    const chevron = document.getElementById(`chevron-${phaseIndex}`);
+    
+    if (itemsDiv && chevron) {
+        const isHidden = itemsDiv.style.display === 'none';
+        itemsDiv.style.display = isHidden ? 'block' : 'none';
+        chevron.style.transform = isHidden ? 'rotate(90deg)' : 'rotate(0deg)';
+    }
+}
+
+function updateSimpleProgress(phaseIndex, itemIndex) {
+    const checkbox = document.getElementById(`enhanced-checklist-${phaseIndex}-${itemIndex}`);
+    if (checkbox) {
+        localStorage.setItem(`enhanced-checklist-${phaseIndex}-${itemIndex}`, checkbox.checked);
+        updatePhaseProgress(phaseIndex);
+        
+        // Check if this completion unlocks other phases
+        checkAndUpdateDependentPhases();
+    }
+}
+
+function checkAndUpdateDependentPhases() {
+    // Re-render the checklist to update lock states
+    setTimeout(() => {
+        initializeSimpleChecklist();
+    }, 100);
+}
+
+function loadSimpleChecklistStates() {
+    enhancedChecklistPhases.forEach((phase, phaseIndex) => {
+        phase.items.forEach((item, itemIndex) => {
+            const checkbox = document.getElementById(`enhanced-checklist-${phaseIndex}-${itemIndex}`);
+            const saved = localStorage.getItem(`enhanced-checklist-${phaseIndex}-${itemIndex}`);
+            if (checkbox && saved === 'true') {
+                checkbox.checked = true;
+            }
+        });
+        updatePhaseProgress(phaseIndex);
+    });
+}
+
+function updatePhaseProgress(phaseIndex) {
+    const completedItems = getCompletedItemsForPhase(phaseIndex);
+    const totalItems = enhancedChecklistPhases[phaseIndex].items.length;
+    const progress = Math.round((completedItems / totalItems) * 100);
+    
+    // Update progress text and bar
+    const phaseDiv = document.querySelector(`[onclick*="toggleSimplePhase(${phaseIndex})"]`);
+    if (phaseDiv) {
+        const progressText = phaseDiv.querySelector('div[style*="font-size: 0.9rem"]');
+        const progressBar = phaseDiv.querySelector('div[style*="background: rgba(255,255,255,0.1)"] > div');
+        
+        if (progressText) {
+            progressText.textContent = `Progress: ${completedItems}/${totalItems} items (${progress}%)`;
+        }
+        if (progressBar) {
+            progressBar.style.width = `${progress}%`;
+        }
+    }
+}
+
+function getCompletedItemsForPhase(phaseIndex) {
     let completed = 0;
-    checklistPhases[phaseIndex].items.forEach((_, itemIndex) => {
-        const key = `${phaseIndex}-${itemIndex}`;
-        if (localStorage.getItem(`checklist-${key}`) === 'true') {
+    enhancedChecklistPhases[phaseIndex].items.forEach((_, itemIndex) => {
+        const key = `enhanced-checklist-${phaseIndex}-${itemIndex}`;
+        if (localStorage.getItem(key) === 'true') {
             completed++;
         }
     });
     return completed;
 }
 
-function togglePhase(phaseIndex) {
-    const itemsElement = document.getElementById(`items-${phaseIndex}`);
+function toggleEnhancedPhase(phaseIndex) {
+    const contentElement = document.getElementById(`phase-content-${phaseIndex}`);
     const chevron = document.getElementById(`chevron-${phaseIndex}`);
     
-    if (itemsElement.classList.contains('expanded')) {
-        itemsElement.classList.remove('expanded');
-        chevron.style.transform = 'rotate(0deg)';
-    } else {
-        itemsElement.classList.add('expanded');
-        chevron.style.transform = 'rotate(90deg)';
+    if (contentElement && chevron) {
+        const isExpanded = contentElement.style.display !== 'none';
+        contentElement.style.display = isExpanded ? 'none' : 'block';
+        chevron.style.transform = isExpanded ? 'rotate(0deg)' : 'rotate(90deg)';
     }
 }
 
-function toggleItem(key) {
-    const checkbox = document.getElementById(`item-${key}`);
-    const item = checkbox.closest('.checklist-item');
+function toggleEnhancedItem(phaseIndex, itemIndex) {
+    const key = `${phaseIndex}-${itemIndex}`;
+    const currentState = localStorage.getItem(`checklist-${key}`) === 'true';
     
-    if (checkbox.checked) {
-        localStorage.setItem(`checklist-${key}`, 'true');
-        item.classList.add('completed');
-    } else {
+    if (currentState) {
         localStorage.removeItem(`checklist-${key}`);
-        item.classList.remove('completed');
+    } else {
+        localStorage.setItem(`checklist-${key}`, 'true');
     }
-    initializeChecklist();
+    
+    // Update the checklist display
+    initializeEnhancedChecklist();
+    
+    // Update workflow manager
+    workflowManager.updateProgress();
 }
 
-function resetChecklist() {
-    if (confirm('Are you sure you want to reset all progress?')) {
+function markPhaseComplete(phaseId, event) {
+    event.stopPropagation();
+    
+    workflowManager.markPhaseCompleted(phaseId);
+    
+    // Immediate DOM update
+    const phaseElement = document.querySelector(`[data-phase-id="${phaseId}"]`);
+    if (phaseElement) {
+        phaseElement.classList.add('completed');
+        const statusElement = phaseElement.querySelector('.phase-status');
+        if (statusElement) {
+            statusElement.innerHTML = '<i class="fa-solid fa-check-circle"></i> Completed';
+            statusElement.style.color = '#4caf50';
+        }
+        const button = phaseElement.querySelector('.complete-phase-btn');
+        if (button) {
+            button.style.display = 'none';
+        }
+    }
+    
+    // Unlock next phases
+    const nextPhases = workflowManager.getNextAvailablePhases();
+    nextPhases.forEach(nextPhase => {
+        const nextElement = document.querySelector(`[data-phase-id="${nextPhase.id}"]`);
+        if (nextElement && nextElement.classList.contains('locked')) {
+            nextElement.classList.remove('locked');
+            const nextStatus = nextElement.querySelector('.phase-status');
+            if (nextStatus) {
+                nextStatus.innerHTML = '<i class="fa-solid fa-clock"></i> Available';
+                nextStatus.style.color = '#2196f3';
+            }
+        }
+    });
+    
+    // Refresh the checklist display
+    initializeEnhancedChecklist();
+    
+    // Show completion notification
+    const phase = enhancedChecklistPhases.find(p => p.id === phaseId);
+    showSuccessNotification(`${phase.title} completed! 🎉`);
+}
+
+function showProgressNotification(phaseIndex) {
+    const phase = enhancedChecklistPhases[phaseIndex];
+    const completed = getCompletedItemsForPhase(phaseIndex);
+    const total = phase.items.length;
+    const progress = Math.round((completed / total) * 100);
+    
+    const notification = document.createElement('div');
+    notification.className = 'progress-notification';
+    notification.innerHTML = `${phase.title}: ${progress}% complete`;
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #2196f3;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        z-index: 1000;
+        transition: opacity 0.3s;
+    `;
+    
+    document.body.appendChild(notification);
+    setTimeout(() => {
+        notification.style.opacity = '0';
+        setTimeout(() => notification.remove(), 300);
+    }, 2000);
+}
+
+function showSuccessNotification(message) {
+    const notification = document.createElement('div');
+    notification.className = 'success-notification';
+    notification.innerHTML = message;
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #4caf50;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        z-index: 1000;
+        transition: opacity 0.3s;
+    `;
+    
+    document.body.appendChild(notification);
+    setTimeout(() => {
+        notification.style.opacity = '0';
+        setTimeout(() => notification.remove(), 300);
+    }, 3000);
+}
+
+function showInfoNotification(message) {
+    const notification = document.createElement('div');
+    notification.className = 'info-notification';
+    notification.innerHTML = message;
+    notification.style.cssText = `
+        position: fixed;
+        top: 70px;
+        right: 20px;
+        background: #ff9800;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        z-index: 1000;
+        transition: opacity 0.3s;
+    `;
+    
+    document.body.appendChild(notification);
+    setTimeout(() => {
+        notification.style.opacity = '0';
+        setTimeout(() => notification.remove(), 300);
+    }, 4000);
+}
+
+function resetEnhancedChecklist() {
+    if (confirm('Are you sure you want to reset all progress? This will clear all completed items and phases.')) {
+        // Clear all checklist items
         Object.keys(localStorage).forEach(key => {
             if (key.startsWith('checklist-')) {
                 localStorage.removeItem(key);
             }
         });
-        initializeChecklist();
+        
+        // Clear completed phases
+        localStorage.removeItem('completed_phases');
+        workflowManager.completedPhases = [];
+        
+        initializeEnhancedChecklist();
+        showSuccessNotification('Assessment progress reset successfully');
     }
 }
 
+// Legacy functions for backward compatibility
+function initializeChecklist() {
+    initializeEnhancedChecklist();
+}
+
+function toggleItem(key) {
+    const phaseIndex = parseInt(key.split('-')[0]);
+    toggleEnhancedItem(key, phaseIndex);
+}
+
+function resetChecklist() {
+    resetEnhancedChecklist();
+}
+
 function exportChecklist() {
-    const progress = {};
-    let totalItems = 0;
-    let completedItems = 0;
-    
-    checklistPhases.forEach((phase, phaseIndex) => {
-        const phaseCompleted = getCompletedItems(phaseIndex);
-        const phaseTotal = phase.items.length;
-        totalItems += phaseTotal;
-        completedItems += phaseCompleted;
+    console.log('exportChecklist function called');
+    try {
+        const progress = {};
+        let totalItems = 0;
+        let completedItems = 0;
         
-        progress[phase.title] = {
-            completed: phaseCompleted,
-            total: phaseTotal,
-            completionPercentage: Math.round((phaseCompleted / phaseTotal) * 100),
-            status: phaseCompleted === phaseTotal ? 'Complete' : phaseCompleted > 0 ? 'In Progress' : 'Not Started',
-            items: phase.items.map((item, itemIndex) => ({
-                name: item,
-                completed: localStorage.getItem(`checklist-${phaseIndex}-${itemIndex}`) === 'true'
-            }))
-        };
-    });
-    
-    // Enhanced export data with metadata
-    const exportData = {
+        enhancedChecklistPhases.forEach((phase, phaseIndex) => {
+            const phaseCompleted = getCompletedItemsForPhase(phaseIndex);
+            const phaseTotal = phase.items.length;
+            totalItems += phaseTotal;
+            completedItems += phaseCompleted;
+            
+            progress[phase.title] = {
+                completed: phaseCompleted,
+                total: phaseTotal,
+                completionPercentage: Math.round((phaseCompleted / phaseTotal) * 100),
+                status: phaseCompleted === phaseTotal ? 'Complete' : phaseCompleted > 0 ? 'In Progress' : 'Not Started',
+                items: phase.items.map((item, itemIndex) => ({
+                    name: item.title || item,
+                    description: item.description || '',
+                    completed: localStorage.getItem(`enhanced-checklist-${phaseIndex}-${itemIndex}`) === 'true'
+                }))
+            };
+        });
+        
+        // Enhanced export data with metadata
+        const exportData = {
         metadata: {
             exportDate: new Date().toISOString(),
             frameworkVersion: 'AISec-Pentester v2.0',
             assessmentType: 'AI Security Assessment Checklist',
-            totalPhases: checklistPhases.length,
+            totalPhases: enhancedChecklistPhases.length,
             overallCompletion: Math.round((completedItems / totalItems) * 100),
             status: completedItems === totalItems ? 'Assessment Complete' : 
                     completedItems > 0 ? 'Assessment In Progress' : 'Assessment Not Started'
@@ -839,7 +2445,7 @@ function exportChecklist() {
             completionPercentage: Math.round((completedItems / totalItems) * 100)
         },
         phaseProgress: progress,
-        recommendations: generateRecommendations(progress)
+        recommendations: generateRecommendations(progress) || []
     };
     
     // Export as enhanced JSON
@@ -854,6 +2460,39 @@ function exportChecklist() {
     
     // Also generate HTML report
     generateChecklistReport(exportData);
+    
+    // Show success message
+    openModalWithContent(`
+        <h2><i class="fa-solid fa-download"></i> Export Complete</h2>
+        <div style="padding: 20px;">
+            <div style="background: rgba(76, 175, 80, 0.1); border-left: 4px solid #4caf50; padding: 15px; margin: 15px 0; border-radius: 8px;">
+                <p><strong>✅ Successfully exported in 2 formats:</strong></p>
+                <ul style="margin: 10px 0; text-align: left;">
+                    <li><strong>JSON Report:</strong> <code>aisec-assessment-checklist-${timestamp}.json</code></li>
+                    <li><strong>HTML Report:</strong> <code>aisec-assessment-report-${timestamp}.html</code></li>
+                </ul>
+            </div>
+            
+            <h3>Export Contents:</h3>
+            <ul style="text-align: left; margin: 15px 0;">
+                <li><strong>Assessment Progress:</strong> ${exportData.summary.completionPercentage}% complete</li>
+                <li><strong>Phase Details:</strong> All ${exportData.metadata.totalPhases} phases with item-level progress</li>
+                <li><strong>Dependencies:</strong> Phase dependency tracking and status</li>
+                <li><strong>Recommendations:</strong> Automated next-step suggestions</li>
+                <li><strong>Metadata:</strong> Export timestamp and framework version</li>
+            </ul>
+            
+            <div style="text-align: center; margin-top: 20px;">
+                <button class="cta-button" onclick="closeModal()">
+                    <i class="fa-solid fa-check"></i> Close
+                </button>
+            </div>
+        </div>
+    `);
+    } catch (error) {
+        console.error('Error in exportChecklist:', error);
+        alert('Error exporting checklist: ' + error.message);
+    }
 }
 
 function generateRecommendations(progress) {
@@ -970,10 +2609,10 @@ function generateChecklistReport(data) {
         
         <h2>Recommendations</h2>
         <div class="recommendations">
-            ${data.recommendations.map(rec => `
-                <div class="recommendation rec-${rec.priority.toLowerCase()}">
-                    <strong>${rec.priority} Priority:</strong> ${rec.recommendation}
-                    <br><small><strong>Impact:</strong> ${rec.impact}</small>
+            ${(data.recommendations || []).map(rec => `
+                <div class="recommendation rec-${(rec.priority || 'medium').toLowerCase()}">
+                    <strong>${rec.priority || 'Medium'} Priority:</strong> ${rec.recommendation || 'No recommendation available'}
+                    <br><small><strong>Impact:</strong> ${rec.impact || 'Impact not specified'}</small>
                 </div>
             `).join('')}
         </div>
@@ -997,29 +2636,29 @@ function generateChecklistReport(data) {
 }
 
 function exportSimpleReport() {
-    const progress = {};
-    let totalItems = 0;
-    let completedItems = 0;
-    
-    checklistPhases.forEach((phase, phaseIndex) => {
-        const phaseCompleted = getCompletedItems(phaseIndex);
-        const phaseTotal = phase.items.length;
-        totalItems += phaseTotal;
-        completedItems += phaseCompleted;
+    console.log('exportSimpleReport function called');
+    try {
+        const progress = {};
+        let totalItems = 0;
+        let completedItems = 0;
         
-        progress[phase.title] = {
-            completed: phaseCompleted,
-            total: phaseTotal,
-            completionPercentage: Math.round((phaseCompleted / phaseTotal) * 100),
-            status: phaseCompleted === phaseTotal ? 'Complete' : phaseCompleted > 0 ? 'In Progress' : 'Not Started',
-            items: phase.items.map((item, itemIndex) => ({
-                name: item,
-                completed: localStorage.getItem(`checklist-${phaseIndex}-${itemIndex}`) === 'true'
-            }))
-        };
-    });
-    
-    // Generate simple text report
+        enhancedChecklistPhases.forEach((phase, phaseIndex) => {
+            const phaseCompleted = getCompletedItemsForPhase(phaseIndex);
+            const phaseTotal = phase.items.length;
+            totalItems += phaseTotal;
+            completedItems += phaseCompleted;
+            
+            progress[phase.title] = {
+                completed: phaseCompleted,
+                total: phaseTotal,
+                completionPercentage: Math.round((phaseCompleted / phaseTotal) * 100),
+                status: phaseCompleted === phaseTotal ? 'Complete' : phaseCompleted > 0 ? 'In Progress' : 'Not Started',
+                items: phase.items.map((item, itemIndex) => ({
+                    name: item.title || item,
+                    completed: localStorage.getItem(`enhanced-checklist-${phaseIndex}-${itemIndex}`) === 'true'
+                }))
+            };
+        });    // Generate simple text report
     const timestamp = new Date().toLocaleDateString();
     const overallCompletion = Math.round((completedItems / totalItems) * 100);
     
@@ -1074,6 +2713,10 @@ function exportSimpleReport() {
     a.download = `aisec-assessment-report-${timestamp2}.txt`;
     a.click();
     URL.revokeObjectURL(url);
+    } catch (error) {
+        console.error('Error in exportSimpleReport:', error);
+        alert('Error exporting report: ' + error.message);
+    }
 }
 
 // --- Risk Matrix Logic ---
@@ -1084,6 +2727,519 @@ function setRiskView(view) {
     document.getElementById('risk-calculator-view').style.display = view === 'calculator' ? 'block' : 'none';
     document.getElementById('risk-scenarios-view').style.display = view === 'scenarios' ? 'block' : 'none';
 }
+
+// Supply Chain Security Integration (Intern 3 Findings)
+const SUPPLY_CHAIN_SCAN_RESULTS = {
+    "summary": {
+        "total_issues": 31,
+        "total_issues_by_severity": {
+            "CRITICAL": 27,
+            "HIGH": 4,
+            "MEDIUM": 0,
+            "LOW": 0
+        },
+        "scan_coverage": "100% of common AI model formats",
+        "threat_landscape": "95% supply chain compromise risk"
+    },
+    "critical_findings": [
+        {
+            "threat": "Malicious Pickle Files",
+            "count": 20,
+            "risk_level": "CRITICAL",
+            "description": "Pickle files with embedded code execution payloads",
+            "affected_operators": ["eval", "system", "exec", "__import__"],
+            "impact": "Full system compromise, data exfiltration"
+        },
+        {
+            "threat": "Model Backdoors",
+            "count": 7,
+            "risk_level": "CRITICAL", 
+            "description": "Pre-trained models with embedded malicious behavior",
+            "affected_operators": ["_rebuild_tensor", "HTTPSConnection", "socket"],
+            "impact": "Data leakage, unauthorized network access"
+        }
+    ],
+    "high_findings": [
+        {
+            "threat": "Network Exfiltration",
+            "count": 4,
+            "risk_level": "HIGH",
+            "description": "Models attempting unauthorized network connections",
+            "affected_operators": ["HTTPSConnection", "requests.get", "ClientSession"],
+            "impact": "Data theft, command & control communication"
+        }
+    ]
+};
+
+// Offensive Security Testing Results (Intern 2 Findings) 
+const OFFENSIVE_SECURITY_RESULTS = {
+    "summary": {
+        "total_prompts_tested": 197,
+        "successful_injections": 18,
+        "injection_success_rate": 9.1,
+        "safe_responses": 179,
+        "safe_response_rate": 90.9
+    },
+    "injection_types": {
+        "direct_prompt_injection": {
+            "tested": 63,
+            "successful": 8,
+            "success_rate": 12.7,
+            "avg_severity": 2.5
+        },
+        "jailbreaking": {
+            "tested": 61, 
+            "successful": 7,
+            "success_rate": 11.5,
+            "avg_severity": 3.43
+        },
+        "instruction_manipulation": {
+            "tested": 48,
+            "successful": 8,
+            "success_rate": 16.7,
+            "avg_severity": 3.62
+        },
+        "misinformation_spread": {
+            "tested": 21,
+            "successful": 2,
+            "success_rate": 9.5,
+            "avg_severity": 5.0
+        },
+        "exploiting_trust": {
+            "tested": 4,
+            "successful": 1,
+            "success_rate": 25.0,
+            "avg_severity": 1.0
+        }
+    },
+    "severity_distribution": {
+        "grade_1": 8,
+        "grade_2": 3,
+        "grade_3": 4,
+        "grade_4": 1,
+        "grade_5": 2
+    },
+    "key_vulnerabilities": [
+        {
+            "type": "Instruction Override",
+            "description": "AI responds to commands to ignore previous instructions",
+            "severity": "HIGH",
+            "prevalence": "16.7% of manipulation attempts succeed"
+        },
+        {
+            "type": "Trust Exploitation", 
+            "description": "AI becomes overly helpful when users express emotional needs",
+            "severity": "MEDIUM",
+            "prevalence": "25% success rate but low impact"
+        },
+        {
+            "type": "Jailbreaking",
+            "description": "Bypassing safety guardrails through role-playing scenarios",
+            "severity": "HIGH",
+            "prevalence": "11.5% success rate with high impact potential"
+        }
+    ]
+};
+
+function showSupplyChainFindings() {
+    const findings = SUPPLY_CHAIN_SCAN_RESULTS;
+    
+    openModalWithContent(`
+        <h2><i class="fa-solid fa-shield-virus"></i> AI Supply Chain Security Scan Results</h2>
+        <div class="scan-summary-banner">
+            <div class="scan-stat critical">
+                <div class="stat-number">${findings.summary.total_issues}</div>
+                <div class="stat-label">Total Issues</div>
+            </div>
+            <div class="scan-stat critical">
+                <div class="stat-number">${findings.summary.total_issues_by_severity.CRITICAL}</div>
+                <div class="stat-label">Critical</div>
+            </div>
+            <div class="scan-stat high">
+                <div class="stat-number">${findings.summary.total_issues_by_severity.HIGH}</div>
+                <div class="stat-label">High</div>
+            </div>
+            <div class="scan-stat">
+                <div class="stat-number">0</div>
+                <div class="stat-label">False Positives</div>
+            </div>
+        </div>
+        
+        <div class="critical-threats-section">
+            <h3 style="color: #8B0000; margin: 20px 0 15px;"><i class="fa-solid fa-exclamation-triangle"></i> Critical Threats Detected</h3>
+            
+            ${findings.critical_findings.map(finding => `
+                <div class="threat-finding critical">
+                    <div class="finding-header">
+                        <h4>${finding.threat}</h4>
+                        <span class="finding-badge critical">${finding.count} Issues</span>
+                    </div>
+                    <p>${finding.description}</p>
+                    <div class="finding-details">
+                        <strong>Malicious Operators:</strong> 
+                        ${finding.affected_operators.map(op => `<code>${op}</code>`).join(', ')}
+                    </div>
+                    <div class="impact-description">
+                        <strong>Impact:</strong> ${finding.impact}
+                    </div>
+                </div>
+            `).join('')}
+            
+            ${findings.high_findings.map(finding => `
+                <div class="threat-finding high">
+                    <div class="finding-header">
+                        <h4>${finding.threat}</h4>
+                        <span class="finding-badge high">${finding.count} Issues</span>
+                    </div>
+                    <p>${finding.description}</p>
+                    <div class="finding-details">
+                        <strong>Network Operators:</strong> 
+                        ${finding.affected_operators.map(op => `<code>${op}</code>`).join(', ')}
+                    </div>
+                    <div class="impact-description">
+                        <strong>Impact:</strong> ${finding.impact}
+                    </div>
+                </div>
+            `).join('')}
+        </div>
+        
+        <div class="mitigation-section">
+            <h3 style="color: #4caf50; margin: 20px 0 15px;"><i class="fa-solid fa-shield-alt"></i> Recommended Mitigations</h3>
+            <div class="mitigation-grid">
+                <div class="mitigation-item">
+                    <h4>Model Source Verification</h4>
+                    <p>Implement cryptographic signatures for all AI models</p>
+                </div>
+                <div class="mitigation-item">
+                    <h4>Sandboxed Model Loading</h4>
+                    <p>Execute model inference in isolated environments</p>
+                </div>
+                <div class="mitigation-item">
+                    <h4>Static Analysis Integration</h4>
+                    <p>Automated scanning in CI/CD pipelines</p>
+                </div>
+                <div class="mitigation-item">
+                    <h4>Network Monitoring</h4>
+                    <p>Monitor all model-related network activity</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scan-metadata" style="margin-top: 30px; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 8px;">
+            <p><strong>Scan Coverage:</strong> ${findings.summary.scan_coverage}</p>
+            <p><strong>Industry Risk:</strong> ${findings.summary.threat_landscape}</p>
+            <p><strong>Scanned by:</strong> AI Supply Chain Specialist (Intern 3)</p>
+            <p><strong>Scan Date:</strong> ${new Date().toLocaleDateString()}</p>
+        </div>
+    `);
+}
+
+// Offensive Security Testing Results Display (Intern 2 Findings)
+function showOffensiveSecurityFindings() {
+    const findings = OFFENSIVE_SECURITY_RESULTS;
+    
+    openModalWithContent(`
+        <h2><i class="fa-solid fa-user-secret"></i> Offensive AI Security Testing Results</h2>
+        <div class="scan-summary-banner">
+            <div class="scan-stat">
+                <div class="stat-number">${findings.summary.total_prompts_tested}</div>
+                <div class="stat-label">Prompts Tested</div>
+            </div>
+            <div class="scan-stat medium">
+                <div class="stat-number">${findings.summary.successful_injections}</div>
+                <div class="stat-label">Successful Attacks</div>
+            </div>
+            <div class="scan-stat high">
+                <div class="stat-number">${findings.summary.injection_success_rate}%</div>
+                <div class="stat-label">Attack Success Rate</div>
+            </div>
+            <div class="scan-stat safe">
+                <div class="stat-number">${findings.summary.safe_response_rate}%</div>
+                <div class="stat-label">Safe Responses</div>
+            </div>
+        </div>
+        
+        <div class="attack-types-section">
+            <h3 style="color: #FF4500; margin: 20px 0 15px;"><i class="fa-solid fa-crosshairs"></i> Attack Vector Analysis</h3>
+            
+            <div class="attack-type-grid">
+                <div class="attack-finding critical">
+                    <div class="finding-header">
+                        <h4>Instruction Manipulation</h4>
+                        <span class="finding-badge critical">${findings.injection_types.instruction_manipulation.success_rate}% Success</span>
+                    </div>
+                    <p>Attempts to override AI system instructions and safety protocols</p>
+                    <div class="attack-stats">
+                        <div class="stat-row"><strong>Tested:</strong> ${findings.injection_types.instruction_manipulation.tested} prompts</div>
+                        <div class="stat-row"><strong>Successful:</strong> ${findings.injection_types.instruction_manipulation.successful} breaches</div>
+                        <div class="stat-row"><strong>Avg Severity:</strong> ${findings.injection_types.instruction_manipulation.avg_severity}/5</div>
+                    </div>
+                </div>
+                
+                <div class="attack-finding high">
+                    <div class="finding-header">
+                        <h4>Direct Prompt Injection</h4>
+                        <span class="finding-badge high">${findings.injection_types.direct_prompt_injection.success_rate}% Success</span>
+                    </div>
+                    <p>Direct commands embedded within user prompts to manipulate AI behavior</p>
+                    <div class="attack-stats">
+                        <div class="stat-row"><strong>Tested:</strong> ${findings.injection_types.direct_prompt_injection.tested} prompts</div>
+                        <div class="stat-row"><strong>Successful:</strong> ${findings.injection_types.direct_prompt_injection.successful} breaches</div>
+                        <div class="stat-row"><strong>Avg Severity:</strong> ${findings.injection_types.direct_prompt_injection.avg_severity}/5</div>
+                    </div>
+                </div>
+                
+                <div class="attack-finding high">
+                    <div class="finding-header">
+                        <h4>Jailbreaking</h4>
+                        <span class="finding-badge high">${findings.injection_types.jailbreaking.success_rate}% Success</span>
+                    </div>
+                    <p>Role-playing scenarios designed to bypass safety guardrails</p>
+                    <div class="attack-stats">
+                        <div class="stat-row"><strong>Tested:</strong> ${findings.injection_types.jailbreaking.tested} prompts</div>
+                        <div class="stat-row"><strong>Successful:</strong> ${findings.injection_types.jailbreaking.successful} breaches</div>
+                        <div class="stat-row"><strong>Avg Severity:</strong> ${findings.injection_types.jailbreaking.avg_severity}/5</div>
+                    </div>
+                </div>
+                
+                <div class="attack-finding critical">
+                    <div class="finding-header">
+                        <h4>Misinformation Spread</h4>
+                        <span class="finding-badge critical">Severity: ${findings.injection_types.misinformation_spread.avg_severity}/5</span>
+                    </div>
+                    <p>Attempts to make AI generate false or harmful information</p>
+                    <div class="attack-stats">
+                        <div class="stat-row"><strong>Tested:</strong> ${findings.injection_types.misinformation_spread.tested} prompts</div>
+                        <div class="stat-row"><strong>Success Rate:</strong> ${findings.injection_types.misinformation_spread.success_rate}%</div>
+                        <div class="stat-row"><strong>Risk Level:</strong> Highest Impact</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="vulnerability-insights">
+            <h3 style="color: #FFD700; margin: 20px 0 15px;"><i class="fa-solid fa-lightbulb"></i> Key Vulnerability Insights</h3>
+            
+            ${findings.key_vulnerabilities.map(vuln => `
+                <div class="vulnerability-insight ${(vuln.severity || 'medium').toLowerCase()}">
+                    <div class="vuln-header">
+                        <h4>${vuln.type || 'Unknown Vulnerability'}</h4>
+                        <span class="severity-badge ${(vuln.severity || 'medium').toLowerCase()}">${vuln.severity || 'Medium'}</span>
+                    </div>
+                    <p>${vuln.description || 'No description available'}</p>
+                    <div class="prevalence-info">
+                        <strong>Prevalence:</strong> ${vuln.prevalence}
+                    </div>
+                </div>
+            `).join('')}
+        </div>
+        
+        <div class="severity-breakdown">
+            <h3 style="color: #4caf50; margin: 20px 0 15px;"><i class="fa-solid fa-chart-bar"></i> Attack Severity Distribution</h3>
+            <div class="severity-chart">
+                <div class="severity-bar">
+                    <div class="severity-label">Grade 5 (Critical)</div>
+                    <div class="severity-progress">
+                        <div class="severity-fill critical" style="width: ${(findings.severity_distribution.grade_5 / findings.summary.successful_injections) * 100}%"></div>
+                    </div>
+                    <div class="severity-count">${findings.severity_distribution.grade_5} attacks</div>
+                </div>
+                <div class="severity-bar">
+                    <div class="severity-label">Grade 4 (High)</div>
+                    <div class="severity-progress">
+                        <div class="severity-fill high" style="width: ${(findings.severity_distribution.grade_4 / findings.summary.successful_injections) * 100}%"></div>
+                    </div>
+                    <div class="severity-count">${findings.severity_distribution.grade_4} attacks</div>
+                </div>
+                <div class="severity-bar">
+                    <div class="severity-label">Grade 3 (Medium)</div>
+                    <div class="severity-progress">
+                        <div class="severity-fill medium" style="width: ${(findings.severity_distribution.grade_3 / findings.summary.successful_injections) * 100}%"></div>
+                    </div>
+                    <div class="severity-count">${findings.severity_distribution.grade_3} attacks</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="defensive-recommendations">
+            <h3 style="color: #32CD32; margin: 20px 0 15px;"><i class="fa-solid fa-shield-alt"></i> Defensive Countermeasures</h3>
+            <div class="defense-grid">
+                <div class="defense-item">
+                    <h4>Input Sanitization</h4>
+                    <p>Implement robust input validation and sanitization layers</p>
+                </div>
+                <div class="defense-item">
+                    <h4>Context Isolation</h4>
+                    <p>Separate user input from system instructions using clear delimiters</p>
+                </div>
+                <div class="defense-item">
+                    <h4>Output Filtering</h4>
+                    <p>Monitor and filter AI responses for potential harmful content</p>
+                </div>
+                <div class="defense-item">
+                    <h4>Rate Limiting</h4>
+                    <p>Implement request rate limiting to prevent automated attacks</p>
+                </div>
+                <div class="defense-item">
+                    <h4>Behavioral Analysis</h4>
+                    <p>Monitor user interaction patterns for suspicious behavior</p>
+                </div>
+                <div class="defense-item">
+                    <h4>Instruction Hardening</h4>
+                    <p>Design system prompts that are resistant to override attempts</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scan-metadata" style="margin-top: 30px; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 8px;">
+            <p><strong>Test Method:</strong> Manual prompt injection testing with 197 crafted attack vectors</p>
+            <p><strong>Coverage:</strong> OWASP LLM Top 10, MITRE ATLAS attack patterns</p>
+            <p><strong>Tested by:</strong> Offensive AI Security Engineer (Intern 2)</p>
+            <p><strong>Test Date:</strong> ${new Date().toLocaleDateString()}</p>
+            <p><strong>Framework:</strong> Comprehensive prompt injection vulnerability assessment</p>
+        </div>
+    `);
+}
+
+// Enhanced risk calculator now includes:
+const AI_THREAT_TAXONOMY = {
+    // MITRE ATLAS Categories
+    "adversarial_ml": {
+        "subcategories": ["evasion", "poisoning", "model_extraction", "inference"],
+        "likelihood_factors": ["model_accessibility", "attack_sophistication", "defense_maturity"],
+        "impact_multipliers": [1.2, 1.5, 1.8],
+        "base_likelihood": 0.7
+    },
+    
+    // OWASP LLM Top 10 2025 with detailed threat modeling
+    "llm_vulnerabilities": {
+        "LLM01": { 
+            threat: "prompt_injection", 
+            base_likelihood: 0.95, 
+            industry_prevalence: 0.95,
+            detection_difficulty: 0.8,
+            mitigation_complexity: 0.9
+        },
+        "LLM02": { 
+            threat: "sensitive_disclosure", 
+            base_likelihood: 0.8,
+            industry_prevalence: 0.85,
+            detection_difficulty: 0.6,
+            mitigation_complexity: 0.7
+        },
+        "LLM03": { 
+            threat: "supply_chain", 
+            base_likelihood: 0.7,
+            industry_prevalence: 0.75,
+            detection_difficulty: 0.8,
+            mitigation_complexity: 0.8
+        },
+        "LLM04": { 
+            threat: "data_model_poisoning", 
+            base_likelihood: 0.4,
+            industry_prevalence: 0.35,
+            detection_difficulty: 0.9,
+            mitigation_complexity: 0.8
+        },
+        "LLM05": { 
+            threat: "improper_output", 
+            base_likelihood: 0.7,
+            industry_prevalence: 0.78,
+            detection_difficulty: 0.6,
+            mitigation_complexity: 0.5
+        },
+        "LLM06": { 
+            threat: "excessive_agency", 
+            base_likelihood: 0.5,
+            industry_prevalence: 0.45,
+            detection_difficulty: 0.7,
+            mitigation_complexity: 0.8
+        },
+        "LLM07": { 
+            threat: "system_prompt_leakage", 
+            base_likelihood: 0.6,
+            industry_prevalence: 0.55,
+            detection_difficulty: 0.5,
+            mitigation_complexity: 0.6
+        },
+        "LLM08": { 
+            threat: "vector_embedding", 
+            base_likelihood: 0.4,
+            industry_prevalence: 0.35,
+            detection_difficulty: 0.8,
+            mitigation_complexity: 0.7
+        },
+        "LLM09": { 
+            threat: "misinformation", 
+            base_likelihood: 0.8,
+            industry_prevalence: 0.85,
+            detection_difficulty: 0.9,
+            mitigation_complexity: 0.9
+        },
+        "LLM10": { 
+            threat: "unbounded_consumption", 
+            base_likelihood: 0.6,
+            industry_prevalence: 0.55,
+            detection_difficulty: 0.4,
+            mitigation_complexity: 0.3
+        }
+    },
+    
+    // AI-Specific Business Risks
+    "ai_business_risks": {
+        "algorithmic_bias": { likelihood: 0.7, impact_modifier: 1.3 },
+        "model_drift": { likelihood: 0.8, impact_modifier: 1.1 },
+        "explainability_gaps": { likelihood: 0.6, impact_modifier: 1.2 },
+        "regulatory_compliance": { likelihood: 0.9, impact_modifier: 1.4 }
+    }
+};
+
+const RISK_ACTION_MATRIX = {
+    "critical": {
+        "immediate_actions": [
+            "Isolate affected AI systems immediately",
+            "Activate incident response team",
+            "Implement emergency controls",
+            "Notify stakeholders within 1 hour"
+        ],
+        "timeline": "0-4 hours",
+        "approval_required": "CISO/CTO",
+        "color": "#d32f2f"
+    },
+    "high": {
+        "urgent_actions": [
+            "Deploy compensating controls",
+            "Schedule emergency patch",
+            "Increase monitoring",
+            "Document remediation plan"
+        ],
+        "timeline": "4-24 hours", 
+        "approval_required": "Security Manager",
+        "color": "#f57c00"
+    },
+    "medium": {
+        "planned_actions": [
+            "Schedule maintenance window",
+            "Update security procedures",
+            "Train relevant staff",
+            "Review control effectiveness"
+        ],
+        "timeline": "1-7 days",
+        "approval_required": "Team Lead",
+        "color": "#fbc02d"
+    },
+    "low": {
+        "routine_actions": [
+            "Add to security backlog",
+            "Include in next review cycle",
+            "Update documentation",
+            "Monitor for changes"
+        ],
+        "timeline": "1-30 days",
+        "approval_required": "Team Member",
+        "color": "#689f38"
+    }
+};
 
 function calculateRisk() {
     const threatType = document.getElementById('threat-type').value;
@@ -1096,51 +3252,135 @@ function calculateRisk() {
         return;
     }
     
+    // Enhanced risk calculation with AI-specific factors
+    const aiSpecificFactors = calculateAISpecificFactors(threatType);
     const baseScore = likelihood * impact;
-    const adjustedScore = Math.min(25, baseScore * (assetCriticality / 3));
+    const adjustedScore = Math.min(25, baseScore * (assetCriticality / 3) * aiSpecificFactors.multiplier);
     
-    let riskLevel, riskColor, riskDescription;
-    if (adjustedScore >= 20) {
-        riskLevel = 'Critical';
-        riskColor = '#f44336';
-        riskDescription = 'Immediate action required. System shutdown may be necessary.';
-    } else if (adjustedScore >= 15) {
-        riskLevel = 'High';
-        riskColor = '#ff5722';
-        riskDescription = 'Urgent attention needed. Implement controls within 30 days.';
-    } else if (adjustedScore >= 10) {
-        riskLevel = 'Medium';
-        riskColor = '#ffc107';
-        riskDescription = 'Plan mitigation within 90 days. Monitor closely.';
-    } else if (adjustedScore >= 5) {
-        riskLevel = 'Low';
-        riskColor = '#8bc34a';
-        riskDescription = 'Address through standard processes. Review annually.';
-    } else {
-        riskLevel = 'Very Low';
-        riskColor = '#4caf50';
-        riskDescription = 'Acceptable risk level. Document and monitor periodically.';
-    }
+    const riskAssessment = determineRiskLevel(adjustedScore, threatType);
+    const actionPlan = RISK_ACTION_MATRIX[(riskAssessment.level || 'medium').toLowerCase()];
     
+    // Update UI with enhanced results
     document.getElementById('calculated-score').textContent = Math.round(adjustedScore);
-    document.getElementById('risk-level').textContent = `${riskLevel} Risk`;
-    document.getElementById('risk-result').style.background = `linear-gradient(45deg, ${riskColor}, ${riskColor}aa)`;
+    document.getElementById('risk-level').textContent = `${riskAssessment.level} Risk`;
+    document.getElementById('risk-result').style.background = `linear-gradient(45deg, ${riskAssessment.color}, ${riskAssessment.color}aa)`;
     
-    // Show calculation formula
+    // Enhanced calculation formula with AI context
     const formulaElement = document.getElementById('calculation-formula');
     if (formulaElement) {
         formulaElement.innerHTML = `
-            <strong>Calculation:</strong> (Likelihood: ${likelihood} × Impact: ${impact}) × Asset Criticality Factor: ${(assetCriticality/3).toFixed(1)} = ${Math.round(adjustedScore)}<br>
-            <em>${riskDescription}</em>
+            <div class="risk-calculation-details">
+                <strong>Enhanced AI Security Calculation:</strong><br>
+                Base Score: (Likelihood: ${likelihood} × Impact: ${impact}) = ${baseScore}<br>
+                Asset Criticality Factor: ${(assetCriticality/3).toFixed(1)}<br>
+                AI-Specific Threat Multiplier: ${aiSpecificFactors.multiplier.toFixed(2)}<br>
+                <strong>Final Risk Score: ${Math.round(adjustedScore)}</strong><br>
+                <em>${riskAssessment.description}</em>
+            </div>
+            <div class="threat-context" style="margin-top: 15px; padding: 10px; background: #f8f9fa; border-radius: 5px;">
+                <strong>Threat Context:</strong> ${aiSpecificFactors.context}
+            </div>
         `;
     }
     
-    // Generate recommendations
-    const recommendations = generateRecommendations(threatType, riskLevel, assetCriticality);
+    // Generate enhanced recommendations with action timeline
+    const recommendations = generateEnhancedRecommendations(threatType, riskAssessment.level, assetCriticality, actionPlan);
     const list = document.getElementById('recommendations-list');
     list.innerHTML = recommendations.map(rec => `<li>${rec}</li>`).join('');
     
     document.getElementById('risk-result').style.display = 'block';
+    
+    // Add visual risk indicators
+    updateRiskIndicators(riskAssessment.level, actionPlan);
+}
+
+function calculateAISpecificFactors(threatType) {
+    // Safety check for threatType
+    if (!threatType || typeof threatType !== 'string') {
+        threatType = 'general';
+    }
+    
+    let multiplier = 1.0;
+    let context = "";
+    
+    // Check OWASP LLM vulnerabilities
+    const owaspMatch = Object.entries(AI_THREAT_TAXONOMY.llm_vulnerabilities).find(
+        ([key, value]) => threatType.includes(value.threat) || threatType.includes(key)
+    );
+    
+    if (owaspMatch) {
+        const [owaspId, details] = owaspMatch;
+        multiplier = 1 + (details.base_likelihood * details.detection_difficulty);
+        context = `${owaspId}: Industry prevalence ${(details.industry_prevalence * 100).toFixed(0)}%, Detection difficulty: ${(details.detection_difficulty * 100).toFixed(0)}%`;
+    }
+    
+    // Check adversarial ML threats
+    if (threatType.includes('adversarial') || threatType.includes('poisoning') || threatType.includes('extraction')) {
+        const advFactors = AI_THREAT_TAXONOMY.adversarial_ml;
+        multiplier *= Math.max(...advFactors.impact_multipliers);
+        context += ` | Advanced ML attack vector with elevated impact potential`;
+    }
+    
+    // Check business risks
+    Object.entries(AI_THREAT_TAXONOMY.ai_business_risks).forEach(([risk, details]) => {
+        if (threatType.includes(risk.replace('_', ''))) {
+            multiplier *= details.impact_modifier;
+            context += ` | Business risk multiplier: ${details.impact_modifier}x`;
+        }
+    });
+    
+    return { multiplier, context: context || "Standard threat assessment parameters applied" };
+}
+
+function determineRiskLevel(score, threatType) {
+    let level, color, description;
+    
+    // Enhanced risk thresholds for AI-specific threats
+    if (score >= 20) {
+        level = 'Critical';
+        color = '#d32f2f';
+        description = 'CRITICAL: Immediate system isolation required. Deploy emergency incident response.';
+    } else if (score >= 15) {
+        level = 'High';
+        color = '#f57c00';
+        description = 'HIGH: Urgent remediation needed. Implement compensating controls within 24 hours.';
+    } else if (score >= 10) {
+        level = 'Medium';
+        color = '#fbc02d';
+        description = 'MEDIUM: Planned mitigation required. Address within current sprint cycle.';
+    } else if (score >= 5) {
+        level = 'Low';
+        color = '#689f38';
+        description = 'LOW: Monitor and address through standard security processes.';
+    } else {
+        level = 'Very Low';
+        color = '#388e3c';
+        description = 'VERY LOW: Acceptable risk level. Include in periodic security reviews.';
+    }
+    
+    return { level, color, description };
+}
+
+function updateRiskIndicators(riskLevel, actionPlan) {
+    // Add risk level indicator
+    const riskIndicator = document.createElement('div');
+    riskIndicator.className = 'risk-indicator';
+    riskIndicator.innerHTML = `
+        <div class="risk-status-badge" style="background: ${actionPlan.color}; color: white; padding: 5px 10px; border-radius: 15px; margin: 10px 0;">
+            <i class="fa-solid fa-exclamation-triangle"></i> ${riskLevel} Risk
+        </div>
+        <div class="action-timeline" style="font-size: 0.9em; color: #666;">
+            <strong>Action Required:</strong> ${actionPlan.timeline} | <strong>Approval:</strong> ${actionPlan.approval_required}
+        </div>
+    `;
+    
+    // Insert after risk result if not already present
+    const existingIndicator = document.querySelector('.risk-indicator');
+    if (existingIndicator) {
+        existingIndicator.replaceWith(riskIndicator);
+    } else {
+        document.getElementById('risk-result').appendChild(riskIndicator);
+    }
 }
 
 function showScenarioDetails(scenarioType) {
@@ -1272,51 +3512,181 @@ function showScenarioDetails(scenarioType) {
     }
 }
 
-function generateRecommendations(threatType, riskLevel, criticality) {
+function generateEnhancedRecommendations(threatType, riskLevel, criticality, actionPlan) {
+    // Safety checks for parameters
+    if (!threatType || typeof threatType !== 'string') {
+        threatType = 'general';
+    }
+    if (!riskLevel || typeof riskLevel !== 'string') {
+        riskLevel = 'medium';
+    }
+    
     const recommendations = [];
+    
+    // Add risk-level specific actions from the action matrix
+    if (actionPlan) {
+        const actions = actionPlan.immediate_actions || actionPlan.urgent_actions || actionPlan.planned_actions || actionPlan.routine_actions;
+        recommendations.push(`<strong>Priority Actions (${actionPlan.timeline}):</strong>`);
+        actions.forEach(action => recommendations.push(`• ${action}`));
+        recommendations.push(`<strong>Approval Required:</strong> ${actionPlan.approval_required}`);
+    }
+    
+    // OWASP LLM-specific recommendations
+    const owaspRecommendations = getOWASPLLMRecommendations(threatType);
+    if (owaspRecommendations.length > 0) {
+        recommendations.push(`<strong>OWASP LLM Top 10 Mitigations:</strong>`);
+        owaspRecommendations.forEach(rec => recommendations.push(`• ${rec}`));
+    }
+    
+    // Threat-specific technical recommendations
+    const technicalRecs = getTechnicalRecommendations(threatType, riskLevel);
+    if (technicalRecs.length > 0) {
+        recommendations.push(`<strong>Technical Implementation:</strong>`);
+        technicalRecs.forEach(rec => recommendations.push(`• ${rec}`));
+    }
+    
+    // Compliance and governance recommendations
     if (riskLevel === 'Critical' || riskLevel === 'High') {
-        recommendations.push('Implement immediate mitigation controls');
-        recommendations.push('Conduct emergency risk assessment');
-        recommendations.push('Activate incident response procedures');
+        recommendations.push(`<strong>Compliance & Governance:</strong>`);
+        recommendations.push('• Document incident in security register');
+        recommendations.push('• Notify relevant regulatory bodies if required');
+        recommendations.push('• Conduct post-incident review');
+        recommendations.push('• Update security policies and procedures');
     }
-    switch (threatType) {
-        case 'adversarial':
-            recommendations.push('Deploy adversarial detection systems');
-            recommendations.push('Implement input validation and sanitization');
-            recommendations.push('Use adversarial training techniques');
-            break;
-        case 'poisoning':
-            recommendations.push('Implement data provenance tracking');
-            recommendations.push('Deploy data quality monitoring');
-            recommendations.push('Use secure data pipelines');
-            break;
-        case 'extraction':
-            recommendations.push('Implement query rate limiting');
-            recommendations.push('Deploy model watermarking');
-            recommendations.push('Use differential privacy techniques');
-            break;
-        case 'prompt-injection':
-            recommendations.push('Implement prompt filtering');
-            recommendations.push('Use output sanitization');
-            recommendations.push('Deploy content safety filters');
-            break;
-        case 'bias':
-            recommendations.push('Conduct bias testing and monitoring');
-            recommendations.push('Implement fairness constraints');
-            recommendations.push('Use diverse training datasets');
-            break;
-        case 'privacy':
-            recommendations.push('Implement differential privacy techniques');
-            recommendations.push('Deploy data anonymization methods');
-            recommendations.push('Use federated learning approaches');
-            recommendations.push('Conduct privacy impact assessments');
-            break;
-    }
+    
+    // Asset criticality-based recommendations
     if (criticality >= 4) {
-        recommendations.push('Implement continuous monitoring');
-        recommendations.push('Establish 24/7 security operations');
+        recommendations.push(`<strong>High-Criticality Asset Actions:</strong>`);
+        recommendations.push('• Implement continuous monitoring');
+        recommendations.push('• Establish 24/7 security operations');
+        recommendations.push('• Deploy automated threat detection');
+        recommendations.push('• Create dedicated incident response team');
     }
+    
     return recommendations;
+}
+
+function getOWASPLLMRecommendations(threatType) {
+    const owaspMitigations = {
+        'prompt_injection': [
+            'Implement input validation and sanitization',
+            'Use parameterized queries for prompt templates',
+            'Deploy prompt injection detection systems',
+            'Implement least privilege access controls'
+        ],
+        'insecure_output': [
+            'Implement output validation and encoding',
+            'Deploy content filtering mechanisms',
+            'Use output sanitization libraries',
+            'Implement response validation checks'
+        ],
+        'training_poisoning': [
+            'Implement data provenance tracking',
+            'Deploy statistical anomaly detection',
+            'Use secure data collection pipelines',
+            'Implement data integrity verification'
+        ],
+        'model_dos': [
+            'Implement rate limiting and throttling',
+            'Deploy resource monitoring and alerting',
+            'Use load balancing and auto-scaling',
+            'Implement query complexity analysis'
+        ],
+        'supply_chain': [
+            'Verify model and dependency signatures',
+            'Implement software composition analysis',
+            'Use secure model repositories',
+            'Deploy vulnerability scanning for dependencies'
+        ],
+        'sensitive_disclosure': [
+            'Implement differential privacy mechanisms',
+            'Deploy data loss prevention (DLP) tools',
+            'Use output filtering for sensitive data',
+            'Implement access logging and monitoring'
+        ],
+        'insecure_plugins': [
+            'Implement plugin security validation',
+            'Use sandboxing for plugin execution',
+            'Deploy plugin integrity checking',
+            'Implement least privilege for plugin access'
+        ],
+        'excessive_agency': [
+            'Implement human-in-the-loop controls',
+            'Deploy decision audit trails',
+            'Use risk-based approval workflows',
+            'Implement action scope limitations'
+        ],
+        'overreliance': [
+            'Implement confidence scoring and thresholds',
+            'Deploy uncertainty quantification',
+            'Use human oversight for critical decisions',
+            'Implement model performance monitoring'
+        ],
+        'model_theft': [
+            'Implement API rate limiting and monitoring',
+            'Deploy query pattern analysis',
+            'Use model watermarking techniques',
+            'Implement access control and authentication'
+        ]
+    };
+    
+    // Match threat type to OWASP recommendations
+    for (const [owaspThreat, mitigations] of Object.entries(owaspMitigations)) {
+        if (threatType.includes(owaspThreat) || threatType.includes(owaspThreat.replace('_', ''))) {
+            return mitigations;
+        }
+    }
+    
+    return [];
+}
+
+function getTechnicalRecommendations(threatType, riskLevel) {
+    const technicalMitigations = {
+        'adversarial': [
+            'Deploy adversarial training techniques',
+            'Implement ensemble methods for robustness',
+            'Use input preprocessing and normalization',
+            'Deploy confidence-based rejection mechanisms'
+        ],
+        'poisoning': [
+            'Implement robust statistical outlier detection',
+            'Use federated learning with secure aggregation',
+            'Deploy data quality metrics and monitoring',
+            'Implement Byzantine-fault tolerant algorithms'
+        ],
+        'extraction': [
+            'Implement differential privacy in model outputs',
+            'Deploy query complexity and pattern analysis',
+            'Use model distillation and compression',
+            'Implement noise injection in responses'
+        ],
+        'privacy': [
+            'Deploy homomorphic encryption for data processing',
+            'Implement federated learning architectures',
+            'Use k-anonymity and l-diversity techniques',
+            'Deploy secure multi-party computation'
+        ],
+        'bias': [
+            'Implement fairness-aware machine learning',
+            'Deploy bias detection and measurement tools',
+            'Use adversarial debiasing techniques',
+            'Implement demographic parity constraints'
+        ]
+    };
+    
+    for (const [techThreat, mitigations] of Object.entries(technicalMitigations)) {
+        if (threatType.includes(techThreat)) {
+            return mitigations;
+        }
+    }
+    
+    return [];
+}
+
+// Legacy function for backward compatibility
+function generateThreatRecommendations(threatType, riskLevel, criticality) {
+    const actionPlan = RISK_ACTION_MATRIX[(riskLevel || 'medium').toLowerCase()];
+    return generateEnhancedRecommendations(threatType, riskLevel, criticality, actionPlan);
 }
 
 function showRiskDetails(likelihood, impact, level) {
@@ -1385,14 +3755,6 @@ function getRiskResponseStrategy(level) {
     return strategies[level] || strategies['medium'];
 }
 
-// --- Modal Enhancements ---
-function openModalWithContent(content) {
-    const modal = document.getElementById('modal');
-    const modalBody = document.getElementById('modal-body');
-    modalBody.innerHTML = content;
-    modal.style.display = 'block';
-}
-
 // --- Interactive Features ---
 function highlightRiskLevel(level) {
     document.querySelectorAll('.risk-cell').forEach(cell => {
@@ -1413,14 +3775,6 @@ function resetRiskHighlight() {
     });
 }
 
-function openModal(contentId) {
-    const modal = document.getElementById('modal');
-    const modalBody = document.getElementById('modal-body');
-    const content = getModalContent(contentId);
-    modalBody.innerHTML = content;
-    modal.style.display = 'block';
-}
-
 // --- DOMContentLoaded Initializers ---
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize Mermaid.js
@@ -1435,8 +3789,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    initializeChecklist();
-    initializeArchitectureDiagram();    // Smooth scrolling for navigation
+    initializeEnhancedChecklist();
+    initializeArchitectureDiagram();    
+    
+    // Fallback initialization
+    setTimeout(() => {
+        if (document.getElementById('checklist-phases').children.length === 0) {
+            console.log('Checklist empty, trying again...');
+            initializeEnhancedChecklist();
+        }
+    }, 1000);
+    
+    // Smooth scrolling for navigation
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -1470,31 +3834,31 @@ document.addEventListener('DOMContentLoaded', function() {
             <div style="display: flex; align-items: center; cursor: pointer;" 
                  onmouseover="highlightRiskLevel('critical')" 
                  onmouseout="resetRiskHighlight()">
-                <div style="width: 20px; height: 20px; background: rgba(244, 67, 54, 0.4); border-radius: 3px; margin-right: 8px;"></div>
+                <div style="width: 20px; height: 20px; background: #dc3545; border-radius: 3px; margin-right: 8px;"></div>
                 <span>Critical (20-25)</span>
             </div>
             <div style="display: flex; align-items: center; cursor: pointer;" 
                  onmouseover="highlightRiskLevel('high')" 
                  onmouseout="resetRiskHighlight()">
-                <div style="width: 20px; height: 20px; background: rgba(255, 87, 34, 0.4); border-radius: 3px; margin-right: 8px;"></div>
+                <div style="width: 20px; height: 20px; background: #fd7e14; border-radius: 3px; margin-right: 8px;"></div>
                 <span>High (15-19)</span>
             </div>
             <div style="display: flex; align-items: center; cursor: pointer;" 
                  onmouseover="highlightRiskLevel('medium')" 
                  onmouseout="resetRiskHighlight()">
-                <div style="width: 20px; height: 20px; background: rgba(255, 193, 7, 0.4); border-radius: 3px; margin-right: 8px;"></div>
+                <div style="width: 20px; height: 20px; background: #ffc107; border-radius: 3px; margin-right: 8px;"></div>
                 <span>Medium (10-14)</span>
             </div>
             <div style="display: flex; align-items: center; cursor: pointer;" 
                  onmouseover="highlightRiskLevel('low')" 
                  onmouseout="resetRiskHighlight()">
-                <div style="width: 20px; height: 20px; background: rgba(139, 195, 74, 0.4); border-radius: 3px; margin-right: 8px;"></div>
+                <div style="width: 20px; height: 20px; background: #20c997; border-radius: 3px; margin-right: 8px;"></div>
                 <span>Low (5-9)</span>
             </div>
             <div style="display: flex; align-items: center; cursor: pointer;" 
                  onmouseover="highlightRiskLevel('very-low')" 
                  onmouseout="resetRiskHighlight()">
-                <div style="width: 20px; height: 20px; background: rgba(76, 175, 80, 0.4); border-radius: 3px; margin-right: 8px;"></div>
+                <div style="width: 20px; height: 20px; background: #28a745; border-radius: 3px; margin-right: 8px;"></div>
                 <span>Very Low (1-4)</span>
             </div>
         </div>
@@ -1589,7 +3953,7 @@ function showToolsDemo() {
                 </div>
                 <div>
                     <h5 style="color: #68abfe;">Real-time Risk Scoring</h5>
-                    <p style="font-size: 0.9rem; opacity: 0.9;">Dynamic CVSS-style scoring with AI-specific risk metrics and business impact analysis.</p>
+                    <p style="font-size: 0.9rem; opacity: 0.9;">Dynamic AI-specific scoring with specialized risk metrics and business impact analysis.</p>
                 </div>
             </div>
         </div>
@@ -3410,4 +5774,874 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(observeHeroSlider, 1000); // Delay to ensure DOM is fully loaded
 });
 
-// Removed internal functions that were meant for development, not users
+// AI Red Teaming Functions
+function launchAIRedTeaming(type) {
+    let title, content;
+    
+    switch(type) {
+        case 'offensive':
+            title = 'Offensive Testing Platform';
+            content = `
+                <h3><i class="fa-solid fa-sword"></i> Advanced Adversarial Attack Framework</h3>
+                <div style="background: rgba(220, 53, 69, 0.1); padding: 20px; border-radius: 10px; margin: 20px 0;">
+                    <p>Advanced adversarial attack framework designed for comprehensive AI model penetration testing. Features automated vulnerability discovery, custom payload generation, and detailed attack simulation capabilities.</p>
+                    <h4>Key Capabilities:</h4>
+                    <ul>
+                        <li><strong>Automated Vulnerability Discovery:</strong> Systematic identification of AI model weaknesses</li>
+                        <li><strong>Custom Payload Generation:</strong> Tailored attack vectors for specific AI architectures</li>
+                        <li><strong>Attack Simulation:</strong> Realistic testing scenarios with detailed reporting</li>
+                        <li><strong>Comprehensive Analysis:</strong> In-depth security assessment with actionable insights</li>
+                    </ul>
+                </div>
+                <div style="text-align: center; margin: 20px 0;">
+                    <button onclick="window.open('https://github.com/adolfojara10/project_inti_1', '_blank')" 
+                            style="background: #dc3545; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; margin: 5px;">
+                        <i class="fa-brands fa-github"></i> View Repository
+                    </button>
+                </div>
+                <p style="color: #dc3545; font-size: 0.9rem;"><i class="fa-solid fa-exclamation-triangle"></i> <strong>Note:</strong> Framework designed for authorized security testing only.</p>
+            `;
+            break;
+            
+        case 'supply-chain':
+            title = 'Supply Chain Security Analysis';
+            content = `
+                <h3><i class="fa-solid fa-link"></i> Comprehensive Supply Chain Vulnerability Assessment</h3>
+                <div style="background: rgba(255, 193, 7, 0.1); padding: 20px; border-radius: 10px; margin: 20px 0;">
+                    <p>Comprehensive supply chain vulnerability assessment tool focusing on model dependencies, data provenance, and third-party integration security. Includes automated scanning and risk assessment capabilities.</p>
+                    <h4>Assessment Areas:</h4>
+                    <ul>
+                        <li><strong>Model Dependencies:</strong> Security analysis of AI framework dependencies and libraries</li>
+                        <li><strong>Data Provenance:</strong> Training data source validation and integrity verification</li>
+                        <li><strong>Third-party Integration:</strong> Security evaluation of external AI services and APIs</li>
+                        <li><strong>Risk Assessment:</strong> Automated scanning with comprehensive vulnerability reporting</li>
+                    </ul>
+                </div>
+                <div style="text-align: center; margin: 20px 0;">
+                    <button onclick="window.open('https://github.com/Danium-Syed/modelsec', '_blank')" 
+                            style="background: #ffc107; color: #212529; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; margin: 5px;">
+                        <i class="fa-brands fa-github"></i> View Repository
+                    </button>
+                </div>
+            `;
+            break;
+            
+        case 'integrated':
+            title = 'Integrated Assessment Suite';
+            content = `
+                <h3><i class="fa-solid fa-users"></i> Unified Security Evaluation Platform</h3>
+                <div style="background: rgba(104, 171, 254, 0.1); padding: 20px; border-radius: 10px; margin: 20px 0;">
+                    <p>Unified platform combining offensive testing and supply chain analysis for comprehensive AI security evaluation. Provides holistic vulnerability assessment with cross-platform reporting.</p>
+                    <h4>Platform Features:</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0;">
+                        <div style="background: rgba(220, 53, 69, 0.1); padding: 15px; border-radius: 8px; text-align: center;">
+                            <h5 style="color: #dc3545;">Offensive Testing</h5>
+                            <p style="font-size: 0.9rem;">Advanced adversarial attack framework</p>
+                        </div>
+                        <div style="background: rgba(255, 193, 7, 0.1); padding: 15px; border-radius: 8px; text-align: center;">
+                            <h5 style="color: #ffc107;">Supply Chain Analysis</h5>
+                            <p style="font-size: 0.9rem;">Comprehensive dependency assessment</p>
+                        </div>
+                        <div style="background: rgba(104, 171, 254, 0.1); padding: 15px; border-radius: 8px; text-align: center;">
+                            <h5 style="color: #4b0c7f;">Unified Reporting</h5>
+                            <p style="font-size: 0.9rem;">Cross-platform vulnerability analysis</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center; margin: 20px 0;">
+                    <button onclick="window.open('https://github.com/adolfojara10/project_inti_1', '_blank')" 
+                            style="background: #68abfe; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; margin: 5px;">
+                        <i class="fa-brands fa-github"></i> Main Repository
+                    </button>
+                </div>
+            `;
+            break;
+            
+        case 'demo':
+        default:
+            title = 'AI Red Teaming Platform';
+            content = `
+                <h3><i class="fa-solid fa-crosshairs"></i> What is AI Red Teaming?</h3>
+                <div style="background: rgba(220, 53, 69, 0.1); padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #dc3545;">
+                    <p><strong>AI Red Teaming</strong> is the practice of systematically testing AI systems by simulating adversarial attacks to identify vulnerabilities, weaknesses, and potential misuse scenarios. Unlike traditional penetration testing, AI red teaming focuses on:</p>
+                    <ul style="margin: 15px 0; padding-left: 20px;">
+                        <li><strong>Model Behavior Exploitation:</strong> Testing how AI models respond to malicious inputs</li>
+                        <li><strong>Data Poisoning Scenarios:</strong> Evaluating training data vulnerabilities</li>
+                        <li><strong>Prompt Injection Attacks:</strong> Testing LLM safety mechanisms and guardrails</li>
+                        <li><strong>Adversarial Examples:</strong> Crafting inputs that fool AI decision-making</li>
+                        <li><strong>Model Extraction:</strong> Attempting to reverse-engineer proprietary models</li>
+                    </ul>
+                </div>
+                
+                <h3><i class="fa-solid fa-shield-alt"></i> Our AI Red Teaming Approach</h3>
+                <div style="background: rgba(40, 167, 69, 0.1); padding: 20px; border-radius: 10px; margin: 20px 0;">
+                    <p>Our framework combines automated testing with human expertise to provide comprehensive AI security assessment:</p>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin: 20px 0;">
+                        <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px;">
+                            <h5 style="color: #dc3545; margin-bottom: 10px;"><i class="fa-solid fa-robot"></i> Automated Testing</h5>
+                            <p style="font-size: 0.9rem; margin: 0;">Systematic vulnerability scanning using our AISec-Pentester toolkit</p>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px;">
+                            <h5 style="color: #ffc107; margin-bottom: 10px;"><i class="fa-solid fa-users"></i> Human Expertise</h5>
+                            <p style="font-size: 0.9rem; margin: 0;">Security researchers crafting creative attack scenarios</p>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px;">
+                            <h5 style="color: #17a2b8; margin-bottom: 10px;"><i class="fa-solid fa-chart-line"></i> Impact Assessment</h5>
+                            <p style="font-size: 0.9rem; margin: 0;">Business risk evaluation and remediation guidance</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3><i class="fa-solid fa-play-circle"></i> Explore Our Red Teaming Capabilities</h3>
+                <div style="text-align: center; margin: 20px 0;">
+                    <button onclick="showPopularRedTeamTools()" 
+                            style="background: #dc3545; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; margin: 5px;">
+                        <i class="fa-solid fa-hammer"></i> Popular Red Team Tools
+                    </button>
+                    <button onclick="showAIRedTeamingMethodology()" 
+                            style="background: #28a745; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; margin: 5px;">
+                        <i class="fa-solid fa-book"></i> Red Teaming Methodology
+                    </button>
+                </div>
+                
+                <div style="background: rgba(104, 171, 254, 0.1); padding: 20px; border-radius: 10px; margin: 30px 0;">
+                    <h4 style="color: #68abfe; margin-bottom: 15px;"><i class="fa-solid fa-lightbulb"></i> Why AI Red Teaming Matters</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                        <div style="text-align: center;">
+                            <h5 style="color: #dc3545; margin-bottom: 8px;">Regulatory Compliance</h5>
+                            <p style="font-size: 0.85rem; margin: 0;">EU AI Act, NIST AI RMF requirements</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <h5 style="color: #ffc107; margin-bottom: 8px;">Business Protection</h5>
+                            <p style="font-size: 0.85rem; margin: 0;">Prevent costly AI security incidents</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <h5 style="color: #28a745; margin-bottom: 8px;">Trust & Reliability</h5>
+                            <p style="font-size: 0.85rem; margin: 0;">Build confidence in AI deployments</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="background: rgba(255, 193, 7, 0.1); padding: 15px; border-radius: 8px; margin-top: 20px;">
+                    <p style="margin: 0; font-size: 0.9rem;"><i class="fa-solid fa-info-circle"></i> <strong>Professional Service:</strong> Our AI red teaming services are designed for organizations looking to validate their AI security posture through comprehensive adversarial testing.</p>
+                </div>
+            `;
+            break;
+    }
+    
+    openModalWithContent(`
+        <h2>${title}</h2>
+        ${content}
+    `);
+}
+
+// Team Case Studies Function
+function showTeamCaseStudies() {
+    openModalWithContent(`
+        <h2><i class="fa-solid fa-chart-line"></i> Security Assessment Case Studies</h2>
+        
+        <div style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 15px; margin: 20px 0;">
+            <h3 style="color: #4b0c7f;"><i class="fa-solid fa-sword"></i> Case Study 1: Advanced LLM Penetration Testing</h3>
+            <p><strong>Scope:</strong> Production LLM API with 50,000+ daily users</p>
+            <p><strong>Focus:</strong> Offensive Security Assessment</p>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 15px 0;">
+                <div>
+                    <h4 style="color: #dc3545;">Critical Vulnerabilities:</h4>
+                    <ul>
+                        <li>Prompt injection bypass (CVSS 9.2)</li>
+                        <li>System prompt leakage</li>
+                        <li>Training data extraction</li>
+                        <li>Rate limiting bypass</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: #28a745;">Security Improvements:</h4>
+                    <ul>
+                        <li>Advanced input sanitization</li>
+                        <li>Context isolation mechanisms</li>
+                        <li>Differential privacy techniques</li>
+                        <li>Enhanced rate limiting</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <button onclick="window.open('../report_intern2.html', '_blank')" 
+                    style="background: #dc3545; color: white; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer;">
+                <i class="fa-solid fa-file-alt"></i> View Complete Assessment
+            </button>
+        </div>
+        
+        <div style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 15px; margin: 20px 0;">
+            <h3 style="color: #4b0c7f;"><i class="fa-solid fa-link"></i> Case Study 2: AI Supply Chain Security Assessment</h3>
+            <p><strong>Scope:</strong> Enterprise AI platform with 200+ dependencies</p>
+            <p><strong>Focus:</strong> Infrastructure & Dependency Security</p>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 15px 0;">
+                <div>
+                    <h4 style="color: #ffc107;">Security Risks:</h4>
+                    <ul>
+                        <li>Vulnerable ML framework versions</li>
+                        <li>Insecure model repositories</li>
+                        <li>Unverified training datasets</li>
+                        <li>Third-party API dependencies</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: #17a2b8;">Security Enhancements:</h4>
+                    <ul>
+                        <li>Automated dependency scanning</li>
+                        <li>Model integrity verification</li>
+                        <li>Data provenance tracking</li>
+                        <li>Vendor security assessments</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <button onclick="window.open('../scan_results_intern3.html', '_blank')" 
+                    style="background: #ffc107; color: #212529; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer;">
+                <i class="fa-solid fa-chart-bar"></i> View Security Analysis
+            </button>
+        </div>
+        
+        <div style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 15px; margin: 20px 0;">
+            <h3 style="color: #4b0c7f;"><i class="fa-solid fa-book"></i> Comprehensive Methodology Development</h3>
+            <p><strong>Scope:</strong> AI Security Assessment Framework</p>
+            <p><strong>Focus:</strong> Standardized Assessment Procedures</p>
+            
+            <div style="margin: 15px 0;">
+                <h4 style="color: #68abfe;">Framework Components:</h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
+                    <div style="background: rgba(104, 171, 254, 0.1); padding: 10px; border-radius: 5px; text-align: center;">
+                        <strong>MITRE ATLAS Coverage</strong>
+                    </div>
+                    <div style="background: rgba(104, 171, 254, 0.1); padding: 10px; border-radius: 5px; text-align: center;">
+                        <strong>OWASP LLM Top 10 2025</strong>
+                    </div>
+                    <div style="background: rgba(104, 171, 254, 0.1); padding: 10px; border-radius: 5px; text-align: center;">
+                        <strong>Risk Assessment Matrix</strong>
+                    </div>
+                    <div style="background: rgba(104, 171, 254, 0.1); padding: 10px; border-radius: 5px; text-align: center;">
+                        <strong>Case Studies & Examples</strong>
+                    </div>
+                </div>
+            </div>
+            
+            <button onclick="window.open('AI Security Methodology Document.pdf', '_blank')" 
+                    style="background: #68abfe; color: white; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer;">
+                <i class="fa-solid fa-download"></i> Download Methodology Guide
+            </button>
+        </div>
+        
+        <div style="text-align: center; margin: 30px 0; padding: 20px; background: rgba(40, 167, 69, 0.1); border-radius: 10px;">
+            <h4 style="color: #28a745;">Assessment Results</h4>
+            <p>These case studies demonstrate the effectiveness of multi-dimensional security assessment, combining offensive testing, infrastructure analysis, and standardized methodology to create comprehensive AI security evaluation.</p>
+        </div>
+    `);
+}
+
+// Report generation functions (placeholders for future implementation)
+function generateOffensiveReport() {
+    alert('Generating offensive security assessment report... This feature connects to the assessment database.');
+}
+
+function generateSupplyChainReport() {
+    alert('Generating supply chain security report... This feature aggregates scan results.');
+}
+
+function generateIntegratedReport() {
+    alert('Generating comprehensive assessment report... This feature combines all findings.');
+}
+
+// Popular Red Team Tools Function
+function showPopularRedTeamTools() {
+    openModalWithContent(`
+        <h2><i class="fa-solid fa-hammer"></i> Popular AI Red Teaming Tools</h2>
+        
+        <div style="background: rgba(220, 53, 69, 0.1); padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #dc3545;">
+            <p><strong>Community-Driven AI Security Testing Tools</strong> - A curated collection of popular open-source and commercial tools for AI red teaming and security assessment.</p>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 30px 0;">
+            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
+                <h4 style="color: #dc3545; margin-bottom: 15px;">
+                    <i class="fa-solid fa-brain"></i> LLM Security Testing
+                </h4>
+                <p style="font-size: 0.9rem; margin-bottom: 10px;"><strong>Garak:</strong> LLM vulnerability scanner by NVIDIA - Comprehensive security testing for large language models</p>
+                <p style="font-size: 0.9rem; margin-bottom: 10px;"><strong>PyRIT:</strong> Python Risk Identification Toolkit by Microsoft - Enterprise-grade AI red teaming</p>
+                <p style="font-size: 0.9rem; margin-bottom: 15px;"><strong>HarmBench:</strong> Standardized evaluation framework for automated red teaming</p>
+                <div style="text-align: center;">
+                    <button onclick="window.open('https://github.com/NVIDIA/garak', '_blank')" 
+                            style="background: #76b900; color: white; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer; margin: 3px; font-size: 0.9rem;">
+                        <i class="fa-brands fa-github"></i> Garak
+                    </button>
+                    <button onclick="window.open('https://github.com/Azure/PyRIT', '_blank')" 
+                            style="background: #0078d4; color: white; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer; margin: 3px; font-size: 0.9rem;">
+                        <i class="fa-brands fa-github"></i> PyRIT
+                    </button>
+                </div>
+            </div>
+            
+            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
+                <h4 style="color: #ffc107; margin-bottom: 15px;">
+                    <i class="fa-solid fa-crosshairs"></i> Adversarial ML Attacks
+                </h4>
+                <p style="font-size: 0.9rem; margin-bottom: 10px;"><strong>Adversarial Robustness Toolbox (ART):</strong> IBM's comprehensive ML security library</p>
+                <p style="font-size: 0.9rem; margin-bottom: 10px;"><strong>Foolbox:</strong> Python toolbox for adversarial attacks and defenses</p>
+                <p style="font-size: 0.9rem; margin-bottom: 15px;"><strong>CleverHans:</strong> Library for benchmarking ML system vulnerabilities</p>
+                <div style="text-align: center;">
+                    <button onclick="window.open('https://github.com/Trusted-AI/adversarial-robustness-toolbox', '_blank')" 
+                            style="background: #1261a0; color: white; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer; margin: 3px; font-size: 0.9rem;">
+                        <i class="fa-brands fa-github"></i> ART
+                    </button>
+                    <button onclick="window.open('https://github.com/bethgelab/foolbox', '_blank')" 
+                            style="background: #28a745; color: white; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer; margin: 3px; font-size: 0.9rem;">
+                        <i class="fa-brands fa-github"></i> Foolbox
+                    </button>
+                </div>
+            </div>
+            
+            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
+                <h4 style="color: #17a2b8; margin-bottom: 15px;">
+                    <i class="fa-solid fa-shield-alt"></i> Model Security Analysis
+                </h4>
+                <p style="font-size: 0.9rem; margin-bottom: 10px;"><strong>ModelScan:</strong> Protect AI's model malware scanning tool</p>
+                <p style="font-size: 0.9rem; margin-bottom: 10px;"><strong>SafeTensors:</strong> Hugging Face's secure tensor serialization format</p>
+                <p style="font-size: 0.9rem; margin-bottom: 15px;"><strong>ML Privacy Meter:</strong> Privacy leakage assessment for ML models</p>
+                <div style="text-align: center;">
+                    <button onclick="window.open('https://github.com/protectai/modelscan', '_blank')" 
+                            style="background: #dc3545; color: white; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer; margin: 3px; font-size: 0.9rem;">
+                        <i class="fa-brands fa-github"></i> ModelScan
+                    </button>
+                    <button onclick="window.open('https://github.com/huggingface/safetensors', '_blank')" 
+                            style="background: #ff9500; color: white; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer; margin: 3px; font-size: 0.9rem;">
+                        <i class="fa-brands fa-github"></i> SafeTensors
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div style="background: rgba(104, 171, 254, 0.1); padding: 20px; border-radius: 10px; margin: 30px 0;">
+            <h4 style="color: #68abfe; margin-bottom: 15px;"><i class="fa-solid fa-star"></i> Our Recommended Stack</h4>
+            <p style="margin-bottom: 15px;">Based on our practical security testing experience:</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                <div style="background: rgba(220, 53, 69, 0.1); padding: 15px; border-radius: 8px; text-align: center;">
+                    <h5 style="color: #dc3545; margin-bottom: 8px;">LLM Testing</h5>
+                    <p style="font-size: 0.85rem; margin: 0;">Garak + PyRIT</p>
+                </div>
+                <div style="background: rgba(255, 193, 7, 0.1); padding: 15px; border-radius: 8px; text-align: center;">
+                    <h5 style="color: #ffc107; margin-bottom: 8px;">Model Security</h5>
+                    <p style="font-size: 0.85rem; margin: 0;">ART + ModelScan</p>
+                </div>
+                <div style="background: rgba(40, 167, 69, 0.1); padding: 15px; border-radius: 8px; text-align: center;">
+                    <h5 style="color: #28a745; margin-bottom: 8px;">Comprehensive</h5>
+                    <p style="font-size: 0.85rem; margin: 0;">Our Framework</p>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin: 30px 0; padding: 15px; background: rgba(255, 193, 7, 0.1); border-radius: 10px;">
+            <p style="margin: 0; font-size: 0.9rem;">
+                <i class="fa-solid fa-exclamation-triangle" style="color: #ffc107; margin-right: 8px;"></i>
+                <strong>Disclaimer:</strong> These tools are for authorized security testing only. Always ensure proper authorization before testing any AI systems.
+        </div>
+    `);
+}
+
+// AI Red Teaming Methodology Function
+function showAIRedTeamingMethodology() {
+    openModalWithContent(`
+        <h2><i class="fa-solid fa-book"></i> AI Red Teaming Methodology</h2>
+        
+        <div style="background: rgba(220, 53, 69, 0.1); padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #dc3545;">
+            <p><strong>Systematic AI Security Testing Framework</strong> - Our comprehensive methodology for adversarial testing of AI systems, following industry best practices and emerging standards.</p>
+        </div>
+        
+        <div style="margin: 30px 0;">
+            <h3 style="color: #4b0c7f; margin-bottom: 20px;"><i class="fa-solid fa-list-ol"></i> 6-Phase Red Teaming Process</h3>
+            <div style="display: grid; gap: 20px;">
+                <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; border-left: 4px solid #dc3545;">
+                    <h4 style="color: #dc3545; margin-bottom: 10px;">Phase 1: Reconnaissance & Intelligence Gathering</h4>
+                    <ul style="font-size: 0.9rem; margin-bottom: 10px;">
+                        <li><strong>Model Architecture Analysis:</strong> Understanding the target AI system structure</li>
+                        <li><strong>Training Data Assessment:</strong> Analyzing data sources and preprocessing pipelines</li>
+                        <li><strong>Attack Surface Mapping:</strong> Identifying all possible input vectors and interfaces</li>
+                        <li><strong>Documentation Review:</strong> Security policies, API documentation, model cards</li>
+                    </ul>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; border-left: 4px solid #ffc107;">
+                    <h4 style="color: #ffc107; margin-bottom: 10px;">Phase 2: Threat Modeling & Attack Planning</h4>
+                    <ul style="font-size: 0.9rem; margin-bottom: 10px;">
+                        <li><strong>MITRE ATLAS Mapping:</strong> Identifying applicable adversarial tactics and techniques</li>
+                        <li><strong>Attack Vector Prioritization:</strong> Risk-based attack scenario selection</li>
+                        <li><strong>Resource Allocation:</strong> Planning automated vs. manual testing approaches</li>
+                        <li><strong>Success Metrics:</strong> Defining clear objectives for each attack vector</li>
+                    </ul>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; border-left: 4px solid #28a745;">
+                    <h4 style="color: #28a745; margin-bottom: 10px;">Phase 3: Automated Vulnerability Scanning</h4>
+                    <ul style="font-size: 0.9rem; margin-bottom: 10px;">
+                        <li><strong>Prompt Injection Testing:</strong> Systematic jailbreaking and bypass attempts</li>
+                        <li><strong>Adversarial Example Generation:</strong> Automated perturbation attacks</li>
+                        <li><strong>Model Extraction Attempts:</strong> API abuse and reverse engineering</li>
+                        <li><strong>Data Poisoning Simulation:</strong> Training data integrity testing</li>
+                    </ul>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; border-left: 4px solid #17a2b8;">
+                    <h4 style="color: #17a2b8; margin-bottom: 10px;">Phase 4: Manual Creative Testing</h4>
+                    <ul style="font-size: 0.9rem; margin-bottom: 10px;">
+                        <li><strong>Social Engineering Scenarios:</strong> Human-AI interaction manipulation</li>
+                        <li><strong>Context Window Attacks:</strong> Long-form prompt engineering</li>
+                        <li><strong>Multi-Modal Exploitation:</strong> Cross-domain input attacks</li>
+                        <li><strong>Business Logic Bypass:</strong> Workflow and process exploitation</li>
+                    </ul>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; border-left: 4px solid #6f42c1;">
+                    <h4 style="color: #6f42c1; margin-bottom: 10px;">Phase 5: Impact Assessment & Validation</h4>
+                    <ul style="font-size: 0.9rem; margin-bottom: 10px;">
+                        <li><strong>Business Impact Analysis:</strong> Quantifying potential damage scenarios</li>
+                        <li><strong>Attack Reproducibility:</strong> Validating and documenting successful exploits</li>
+                        <li><strong>Risk Scoring:</strong> CVSS adaptation for AI vulnerabilities</li>
+                        <li><strong>Evidence Collection:</strong> Screenshots, logs, and proof-of-concept code</li>
+                    </ul>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; border-left: 4px solid #e83e8c;">
+                    <h4 style="color: #e83e8c; margin-bottom: 10px;">Phase 6: Reporting & Remediation Guidance</h4>
+                    <ul style="font-size: 0.9rem; margin-bottom: 10px;">
+                        <li><strong>Executive Summary:</strong> C-level business impact communication</li>
+                        <li><strong>Technical Findings:</strong> Detailed vulnerability descriptions and PoCs</li>
+                        <li><strong>Remediation Roadmap:</strong> Prioritized fix recommendations</li>
+                        <li><strong>Continuous Monitoring:</strong> Ongoing security validation strategies</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div style="background: rgba(104, 171, 254, 0.1); padding: 20px; border-radius: 10px; margin: 30px 0;">
+            <h4 style="color: #68abfe; margin-bottom: 15px;"><i class="fa-solid fa-certificate"></i> Standards & Frameworks Integration</h4>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px; text-align: center;">
+                    <h5 style="color: #dc3545; margin-bottom: 8px;">MITRE ATLAS</h5>
+                    <p style="font-size: 0.85rem; margin: 0;">Adversarial Threat Landscape</p>
+                </div>
+                <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px; text-align: center;">
+                    <h5 style="color: #ffc107; margin-bottom: 8px;">OWASP LLM Top 10</h5>
+                    <p style="font-size: 0.85rem; margin: 0;">LLM-specific vulnerabilities</p>
+                </div>
+                <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px; text-align: center;">
+                    <h5 style="color: #28a745; margin-bottom: 8px;">NIST AI RMF</h5>
+                    <p style="font-size: 0.85rem; margin: 0;">Risk Management Framework</p>
+                </div>
+                <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px; text-align: center;">
+                    <h5 style="color: #17a2b8; margin-bottom: 8px;">ISO/IEC 27001</h5>
+                    <p style="font-size: 0.85rem; margin: 0;">Information Security Management</p>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin: 30px 0;">
+            <button onclick="window.open('AI Security Methodology Document.pdf', '_blank')" 
+                    style="background: #4b0c7f; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; margin: 5px;">
+                <i class="fa-solid fa-download"></i> Download Full Methodology Guide
+            </button>
+            <button onclick="showPopularRedTeamTools()" 
+                    style="background: #dc3545; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; margin: 5px;">
+                <i class="fa-solid fa-hammer"></i> View Red Team Tools
+            </button>
+        </div>
+        
+        <div style="background: rgba(255, 193, 7, 0.1); padding: 15px; border-radius: 8px; margin-top: 30px;">
+            <p style="margin: 0; font-size: 0.9rem;">
+                <i class="fa-solid fa-shield-alt" style="color: #ffc107; margin-right: 8px;"></i>
+                <strong>Professional Service:</strong> Our methodology is continuously updated based on the latest AI security research and real-world attack scenarios. Contact us for customized red teaming engagements.
+            </p>
+        </div>
+    `);
+}
+
+// Helper function to open modal with custom content
+function openModalWithContent(content) {
+    const modal = document.getElementById('modal');
+    const modalBody = document.getElementById('modal-body');
+    modalBody.innerHTML = content;
+    modal.style.display = 'block';
+}
+
+// Add modal content for control actions with links
+window.modalContents = window.modalContents || {};
+
+// Framework Resource Modals
+modalContents['methodology-guide'] = `
+    <h2><i class="fa-solid fa-file-lines"></i> AI Security Methodology Guide</h2>
+    
+    <!-- Enhanced Content Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 30px 0;">
+        <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
+            <h4 style="color: #4b0c7f; margin-bottom: 10px;">
+                <i class="fa-solid fa-shield-alt"></i> Framework Overview
+            </h4>
+            <p style="font-size: 0.9rem; opacity: 0.9;">Industry-leading AI security assessment methodology integrating MITRE ATLAS, OWASP LLM Top 10, and industry best practices.</p>
+        </div>
+        <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
+            <h4 style="color: #4b0c7f; margin-bottom: 10px;">
+                <i class="fa-solid fa-clipboard-check"></i> Assessment Checklists
+            </h4>
+            <p style="font-size: 0.9rem; opacity: 0.9;">Detailed checklists for each assessment phase with MITRE ATLAS technique mapping and validation criteria.</p>
+        </div>
+        <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
+            <h4 style="color: #4b0c7f; margin-bottom: 10px;">
+                <i class="fa-solid fa-calculator"></i> Risk Assessment
+            </h4>
+            <p style="font-size: 0.9rem; opacity: 0.9;">Risk scoring algorithms and matrices aligned with ATLAS threat landscape and business impact analysis.</p>
+        </div>
+    </div>
+
+    <!-- What's Included Section -->
+    <div style="background: rgba(75, 12, 127, 0.1); padding: 20px; border-radius: 15px; margin: 20px 0; border-left: 4px solid #4b0c7f;">
+        <h3 style="color: #4b0c7f; margin-bottom: 15px;">What's Included:</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+            <div>• Complete Assessment Framework</div>
+            <div>• Threat Modeling Templates</div>
+            <div>• Security Checklists</div>
+            <div>• Risk Assessment Matrix</div>
+            <div>• Testing Procedures</div>
+            <div>• Reporting Templates</div>
+        </div>
+    </div>
+
+    <!-- Document Sections -->
+    <h3 style="margin: 30px 0 20px 0;">Document Sections:</h3>
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
+        <div style="display: flex; align-items: center; padding: 10px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+            <i class="fa-solid fa-circle-dot" style="color: #4b0c7f; margin-right: 10px;"></i>
+            <span>Phase 1: Preparation and Scoping</span>
+        </div>
+        <div style="display: flex; align-items: center; padding: 10px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+            <i class="fa-solid fa-circle-dot" style="color: #4b0c7f; margin-right: 10px;"></i>
+            <span>Phase 2: Asset Identification</span>
+        </div>
+        <div style="display: flex; align-items: center; padding: 10px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+            <i class="fa-solid fa-circle-dot" style="color: #4b0c7f; margin-right: 10px;"></i>
+            <span>Phase 3: Threat Modeling</span>
+        </div>
+        <div style="display: flex; align-items: center; padding: 10px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+            <i class="fa-solid fa-circle-dot" style="color: #4b0c7f; margin-right: 10px;"></i>
+            <span>Phase 4: Vulnerability Assessment</span>
+        </div>
+        <div style="display: flex; align-items: center; padding: 10px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+            <i class="fa-solid fa-circle-dot" style="color: #4b0c7f; margin-right: 10px;"></i>
+            <span>Phase 5: Penetration Testing</span>
+        </div>
+        <div style="display: flex; align-items: center; padding: 10px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+            <i class="fa-solid fa-circle-dot" style="color: #4b0c7f; margin-right: 10px;"></i>
+            <span>Phase 6: Reporting & Remediation</span>
+        </div>
+    </div>
+
+    <!-- Framework Integration -->
+    <h3 style="margin: 30px 0 20px 0;">Framework Integration:</h3>
+    <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 30px;">
+        <div style="background: linear-gradient(45deg, #ff6b6b, #ff8e8e); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; color: white;">
+            <i class="fa-solid fa-shield"></i> MITRE ATLAS
+        </div>
+        <div style="background: linear-gradient(45deg, #4b0c7f, #68abfe); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; color: white;">
+            <i class="fa-solid fa-bug"></i> OWASP LLM Top 10
+        </div>
+        <div style="background: linear-gradient(45deg, #ffeb3b, #ffc107); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; color: #333;">
+            <i class="fa-solid fa-cog"></i> NIST AI RMF
+        </div>
+        <div style="background: linear-gradient(45deg, #4caf50, #8bc34a); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; color: white;">
+            <i class="fa-solid fa-cloud"></i> CSA AI Controls
+        </div>
+    </div>
+
+    <!-- Perfect For Section -->
+    <div style="background: rgba(104, 171, 254, 0.1); padding: 20px; border-radius: 15px; margin: 20px 0; border-left: 4px solid #68abfe;">
+        <h4 style="color: #68abfe; margin-bottom: 10px;">Perfect For:</h4>
+        <div>• Security professionals conducting AI assessments</div>
+        <div>• AI/ML engineers implementing security best practices</div>
+        <div>• Compliance teams ensuring regulatory adherence</div>
+        <div>• Organizations building secure AI systems</div>
+    </div>
+
+    <!-- Pro Tip -->
+    <div style="background: rgba(255, 193, 7, 0.1); padding: 15px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #ffc107;">
+        <strong style="color: #ffc107;">Pro Tip:</strong> This comprehensive guide provides everything you need to establish a robust AI security assessment program in your organization.
+    </div>
+
+    <!-- Download Buttons -->
+    <div style="text-align: center; margin-top: 30px;">
+        <a href="AI Security Methodology Document.pdf" target="_blank" 
+           style="background: linear-gradient(45deg, #4b0c7f, #68abfe); color: white; padding: 12px 30px; border-radius: 25px; text-decoration: none; display: inline-block; margin: 10px;">
+            <i class="fa-solid fa-download"></i> Download Full Guide (PDF)
+        </a>
+        <button onclick="window.open('AI Security Framework - Comprehensive Resource Documentation.pdf', '_blank')" 
+                style="background: linear-gradient(45deg, #68abfe, #4b0c7f); color: white; border: none; padding: 12px 30px; border-radius: 25px; cursor: pointer; margin: 10px;">
+            <i class="fa-solid fa-book-open"></i> View Online Documentation
+        </button>
+    </div>
+`;
+
+modalContents['testing-tools'] = `
+    <h2><i class="fa-solid fa-wrench"></i> AI Security Testing Tools</h2>
+    <div style="margin: 30px 0;">
+        <h3>Available Testing Modules:</h3>
+        <ul style="text-align: left; margin: 20px 0;">
+            <li><strong>Adversarial Testing Engine:</strong> FGSM, PGD, C&W, and DeepFool attack implementations</li>
+            <li><strong>Data Poisoning Detection:</strong> Statistical analysis and anomaly detection tools</li>
+            <li><strong>Model Extraction Scanner:</strong> Query pattern analysis and protection testing</li>
+            <li><strong>Privacy Leakage Analyzer:</strong> Membership inference and model inversion testing</li>
+            <li><strong>Prompt Injection Tester:</strong> Automated prompt injection vulnerability discovery</li>
+            <li><strong>Real Dataset Integration:</strong> MNIST, UCI Adult, and custom dataset support</li>
+        </ul>
+        
+        <h3>Tool Features:</h3>
+        <ul style="text-align: left; margin: 20px 0;">
+            <li>Professional CLI interface with comprehensive logging</li>
+            <li>Web-based dashboard for interactive testing</li>
+            <li>Automated HTML report generation</li>
+            <li>Docker containerization for easy deployment</li>
+            <li>Integration with MITRE ATLAS TTPs</li>
+            <li>6,000+ lines of production-ready code</li>
+        </ul>
+        
+        <div style="background: #e8f5e8; padding: 20px; border-radius: 10px; margin: 20px 0;">
+            <p><strong>Production Ready:</strong> Comprehensive AI security testing suite with working security modules for real AI attack testing and vulnerability assessment.</p>
+        </div>
+        
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="https://github.com/Regine12/AISec-pentester.git" target="_blank" class="cta-button" style="margin: 10px;">
+                <i class="fa-brands fa-github"></i> View Main Repository
+            </a>
+            <button class="cta-button" onclick="launchLiveDemo();" style="margin: 10px;">
+                <i class="fa-solid fa-play-circle"></i> Live Demo
+            </button>
+        </div>
+        
+        <h3 style="margin: 30px 0 20px 0;">AI Red Teaming Operations:</h3>
+        <div style="display: grid; gap: 20px; margin: 20px 0;">
+            <div style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
+                <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                    <i class="fa-solid fa-sword" style="color: #dc3545; font-size: 1.5rem; margin-right: 15px;"></i>
+                    <h4 style="color: #dc3545; margin: 0;">Offensive Testing Platform</h4>
+                </div>
+                <p style="opacity: 0.9; margin-bottom: 15px;">Advanced adversarial attack framework designed for comprehensive AI model penetration testing. Features automated vulnerability discovery, custom payload generation, and detailed attack simulation capabilities.</p>
+                <div style="text-align: center;">
+                    <a href="https://github.com/adolfojara10/project_inti_1" target="_blank" 
+                       style="background: rgba(220, 53, 69, 0.2); border: 1px solid #dc3545; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; display: inline-block;">
+                        <i class="fa-brands fa-github"></i> View Repository
+                    </a>
+                </div>
+            </div>
+            
+            <div style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
+                <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                    <i class="fa-solid fa-link" style="color: #ffc107; font-size: 1.5rem; margin-right: 15px;"></i>
+                    <h4 style="color: #ffc107; margin: 0;">Supply Chain Security Analysis</h4>
+                </div>
+                <p style="opacity: 0.9; margin-bottom: 15px;">Comprehensive supply chain vulnerability assessment tool focusing on model dependencies, data provenance, and third-party integration security. Includes automated scanning and risk assessment capabilities.</p>
+                <div style="text-align: center;">
+                    <a href="https://github.com/Danium-Syed/modelsec" target="_blank" 
+                       style="background: rgba(255, 193, 7, 0.2); border: 1px solid #ffc107; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; display: inline-block;">
+                        <i class="fa-brands fa-github"></i> View Repository
+                    </a>
+                </div>
+            </div>
+            
+            <div style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
+                <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                    <i class="fa-solid fa-users" style="color: #68abfe; font-size: 1.5rem; margin-right: 15px;"></i>
+                    <h4 style="color: #68abfe; margin: 0;">Integrated Assessment Suite</h4>
+                </div>
+                <p style="opacity: 0.9; margin-bottom: 15px;">Unified platform combining offensive testing and supply chain analysis for comprehensive AI security evaluation. Provides holistic vulnerability assessment with cross-platform reporting.</p>
+                <div style="text-align: center;">
+                    <a href="https://github.com/Regine12/ai-security-framework" target="_blank" 
+                       style="background: rgba(104, 171, 254, 0.2); border: 1px solid #68abfe; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; display: inline-block;">
+                        <i class="fa-brands fa-github"></i> Main Repository
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+`;
+
+modalContents['playbook-example'] = `
+    <h2><i class="fa-solid fa-clipboard-list"></i> AI Security Assessment Playbook Example</h2>
+    <div style="max-width: 800px; margin: 0 auto;">
+        
+        <!-- Enhanced Target System Overview -->
+        <div style="background: rgba(137, 54, 222, 0.1); border-left: 4px solid #4b0c7f; padding: 20px; margin: 20px 0; border-radius: 10px;">
+            <h3><i class="fa-solid fa-target"></i> Primary Target: Large Language Model API Service</h3>
+            <p><strong>Scope:</strong> Cloud-based LLM service with REST API endpoints, user authentication, and data processing capabilities</p>
+            <p><strong>Timeline:</strong> 2-week comprehensive security assessment</p>
+            <p><strong>Team:</strong> 3 security specialists (AI Security, Network Security, Application Security)</p>
+        </div>
+
+        <!-- Secondary Scenario Integration -->
+        <div style="background: rgba(40, 167, 69, 0.1); border-left: 4px solid #28a745; padding: 15px; margin: 20px 0; border-radius: 10px;">
+            <h4><i class="fa-solid fa-shopping-cart"></i> Secondary Scenario: E-commerce Recommendation Engine</h4>
+            <p style="margin: 5px 0 0 0; font-size: 0.9rem; opacity: 0.9;">Machine learning-based product recommendation system processing customer behavior data - used for comparative analysis and methodology validation</p>
+        </div>
+
+        <!-- Comprehensive 6-Phase Assessment -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 30px 0;">
+            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px;">
+                <h4 style="color: #4b0c7f; margin-bottom: 15px;"><i class="fa-solid fa-calendar-alt"></i> Phase 1: Reconnaissance & Threat Modeling (Days 1-2)</h4>
+                <ul style="margin-left: 15px;">
+                    <li><strong>OSINT Collection:</strong> Public API documentation, GitHub repositories, tech stack identification</li>
+                    <li><strong>Attack Surface Mapping:</strong> Identify all endpoints, authentication mechanisms, data flows</li>
+                    <li><strong>MITRE ATLAS Mapping:</strong> Data poisoning, model inversion, adversarial examples, privacy leakage analysis</li>
+                    <li><strong>Threat Modeling:</strong> Apply MITRE ATLAS framework to identify potential attack vectors</li>
+                </ul>
+                <div style="background: rgba(23, 162, 184, 0.2); padding: 10px; border-radius: 8px; margin-top: 10px;">
+                    <strong>Tools:</strong> Nmap, Burp Suite, Custom OSINT scripts, MITRE ATLAS Navigator
+                </div>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px;">
+                <h4 style="color: #4b0c7f; margin-bottom: 15px;"><i class="fa-solid fa-shield-alt"></i> Phase 2: Input Validation & Controls Assessment (Days 3-5)</h4>
+                <ul style="margin-left: 15px;">
+                    <li><strong>Prompt Injection:</strong> Test for direct and indirect prompt injection vulnerabilities</li>
+                    <li><strong>Input Sanitization:</strong> Evaluate filtering and validation mechanisms</li>
+                    <li><strong>Context Manipulation:</strong> Assess system prompt protection and context boundaries</li>
+                    <li><strong>Security Controls:</strong> API rate limiting, access controls, data anonymization</li>
+                </ul>
+                <div style="background: rgba(23, 162, 184, 0.2); padding: 10px; border-radius: 8px; margin-top: 10px;">
+                    <strong>Tools:</strong> Custom prompt injection payloads, Automated fuzzing tools, Input validation scanners
+                </div>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px;">
+                <h4 style="color: #4b0c7f; margin-bottom: 15px;"><i class="fa-solid fa-database"></i> Phase 3: Data Security Assessment (Days 6-8)</h4>
+                <ul style="margin-left: 15px;">
+                    <li><strong>Training Data Inference:</strong> Attempt to extract training data through model queries</li>
+                    <li><strong>PII Leakage:</strong> Test for personal information exposure in model responses</li>
+                    <li><strong>Data Storage Security:</strong> Evaluate encryption, access controls, and backup security</li>
+                    <li><strong>Privacy Analysis:</strong> Membership inference tests and differential privacy validation</li>
+                </ul>
+                <div style="background: rgba(23, 162, 184, 0.2); padding: 10px; border-radius: 8px; margin-top: 10px;">
+                    <strong>Tools:</strong> Model inversion scripts, PII detection tools, Database security scanners
+                </div>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px;">
+                <h4 style="color: #4b0c7f; margin-bottom: 15px;"><i class="fa-solid fa-brain"></i> Phase 4: Model Security & Adversarial Testing (Days 9-11)</h4>
+                <ul style="margin-left: 15px;">
+                    <li><strong>Model Extraction:</strong> Attempt to reverse-engineer model architecture and parameters</li>
+                    <li><strong>Adversarial Attacks:</strong> Generate adversarial inputs to test model robustness</li>
+                    <li><strong>Bias and Fairness:</strong> Evaluate model outputs for discriminatory patterns</li>
+                    <li><strong>Robustness Testing:</strong> Performance impact assessment of security controls</li>
+                </ul>
+                <div style="background: rgba(23, 162, 184, 0.2); padding: 10px; border-radius: 8px; margin-top: 10px;">
+                    <strong>Tools:</strong> Adversarial ML libraries, Model extraction frameworks, Bias detection tools
+                </div>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px;">
+                <h4 style="color: #4b0c7f; margin-bottom: 15px;"><i class="fa-solid fa-network-wired"></i> Phase 5: Infrastructure Security (Days 12-13)</h4>
+                <ul style="margin-left: 15px;">
+                    <li><strong>API Security:</strong> Authentication bypass, rate limiting, and authorization flaws</li>
+                    <li><strong>Container Security:</strong> Docker/Kubernetes misconfigurations and vulnerabilities</li>
+                    <li><strong>Network Security:</strong> TLS configuration, certificate validation, network segmentation</li>
+                    <li><strong>Detection & Response:</strong> Adversarial detection and response procedures</li>
+                </ul>
+                <div style="background: rgba(23, 162, 184, 0.2); padding: 10px; border-radius: 8px; margin-top: 10px;">
+                    <strong>Tools:</strong> SSLyze, Docker security scanners, Kubernetes security tools
+                </div>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px;">
+                <h4 style="color: #4b0c7f; margin-bottom: 15px;"><i class="fa-solid fa-file-alt"></i> Phase 6: Reporting & Remediation (Day 14)</h4>
+                <ul style="margin-left: 15px;">
+                    <li><strong>Vulnerability Classification:</strong> CVSS scoring, MITRE ATLAS TTPs mapping</li>
+                    <li><strong>Risk Assessment:</strong> Business impact analysis and remediation prioritization</li>
+                    <li><strong>Recommendations:</strong> Specific technical and procedural security improvements</li>
+                    <li><strong>Compliance Validation:</strong> Regulatory adherence assessment</li>
+                </ul>
+                <div style="background: rgba(23, 162, 184, 0.2); padding: 10px; border-radius: 8px; margin-top: 10px;">
+                    <strong>Deliverables:</strong> Executive summary, Technical report, Remediation roadmap
+                </div>
+            </div>
+        </div>
+
+        <!-- Enhanced Security Controls Assessment Integration -->
+        <div style="background: rgba(40, 167, 69, 0.1); padding: 20px; border-radius: 15px; margin: 20px 0; border-left: 4px solid #28a745;">
+            <h4 style="color: #28a745; margin-bottom: 15px;"><i class="fa-solid fa-shield-check"></i> Security Controls Validation Matrix</h4>
+            <div style="text-align: left; margin: 15px 0; display: grid; gap: 8px;">
+                <div><i class="fa-solid fa-check" style="color: #28a745; margin-right: 8px;"></i> Input validation and sanitization mechanisms</div>
+                <div><i class="fa-solid fa-check" style="color: #28a745; margin-right: 8px;"></i> Model access controls and API rate limiting</div>
+                <div><i class="fa-solid fa-check" style="color: #28a745; margin-right: 8px;"></i> Data anonymization and differential privacy</div>
+                <div><i class="fa-solid fa-check" style="color: #28a745; margin-right: 8px;"></i> Adversarial detection and response procedures</div>
+            </div>
+        </div>
+
+        <!-- Key Findings with Integrated Examples -->
+        <div style="background: rgba(137, 54, 222, 0.1); border: 2px solid #4b0c7f; padding: 25px; margin: 30px 0; border-radius: 15px;">
+            <h3 style="color: #4b0c7f; margin-bottom: 15px;"><i class="fa-solid fa-exclamation-triangle"></i> Key Findings Example</h3>
+            <div style="margin-bottom: 15px;">
+                <h4 style="color: #ff6b6b;">Critical: Prompt Injection Vulnerability (CVSS 9.1)</h4>
+                <p><strong>Description:</strong> System prompt can be overridden through indirect injection via user-uploaded documents, allowing attackers to manipulate AI behavior and extract sensitive information.</p>
+                <p><strong>Recommendation:</strong> Implement robust input sanitization, context isolation, and output filtering mechanisms.</p>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <h4 style="color: #ffa500;">High: Training Data Inference (CVSS 7.8)</h4>
+                <p><strong>Description:</strong> Model responses contain verbatim training data, potentially exposing proprietary information and personal data from recommendation engine training sets.</p>
+                <p><strong>Recommendation:</strong> Apply differential privacy techniques and implement data anonymization in training pipelines.</p>
+            </div>
+            <div>
+                <h4 style="color: #ffeb3b;">Medium: Insufficient Rate Limiting (CVSS 5.3)</h4>
+                <p><strong>Description:</strong> API endpoints lack proper rate limiting, enabling resource exhaustion and potential DoS attacks against both LLM and recommendation services.</p>
+                <p><strong>Recommendation:</strong> Implement tiered rate limiting based on user authentication levels and request complexity.</p>
+            </div>
+        </div>
+
+        <!-- Comprehensive Assessment Result -->
+        <div style="background: rgba(40, 167, 69, 0.1); padding: 20px; border-radius: 15px; margin: 20px 0; border-left: 4px solid #28a745;">
+            <h4 style="color: #28a745; margin-bottom: 10px;"><i class="fa-solid fa-chart-line"></i> Assessment Results Summary</h4>
+            <p><strong>Primary Target (LLM API):</strong> Comprehensive security assessment report with 31 findings, including 5 critical vulnerabilities requiring immediate attention.</p>
+            <p style="margin-top: 10px;"><strong>Secondary Analysis (Recommendation Engine):</strong> Comparative study identified 23 findings with 3 critical vulnerabilities, validating methodology effectiveness across AI system types.</p>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <p style="font-size: 0.9rem; opacity: 0.8;">This integrated playbook follows industry standards including MITRE ATLAS, OWASP LLM Top 10, and NIST AI RMF guidelines with multi-system validation approach.</p>
+        </div>
+    </div>
+`;
+
+modalContents['input-validation'] = `
+    <h2><i class="fa-solid fa-check-circle"></i> Input Validation Controls</h2>
+    <div style="padding: 20px;">
+        <h3>AI-Specific Input Validation</h3>
+        <p>Comprehensive validation strategies for AI system inputs including:</p>
+        <ul>
+            <li><strong>Prompt Sanitization</strong> - Remove malicious prompts and injection attempts</li>
+            <li><strong>Data Type Validation</strong> - Ensure inputs match expected formats and ranges</li>
+            <li><strong>Content Filtering</strong> - Block inappropriate, harmful, or biased content</li>
+            <li><strong>Rate Limiting</strong> - Prevent abuse and DoS attacks</li>
+        </ul>
+        
+        <h3>Implementation Guidelines</h3>
+        <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; margin: 15px 0;">
+            <p><strong>OWASP LLM01 Prevention:</strong> Implement strict input validation to prevent prompt injection attacks.</p>
+            <p>Learn more: <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" target="_blank" style="color: #68abfe;">OWASP LLM Top 10</a></p>
+        </div>
+        
+        <h3>Tools & Resources</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-top: 15px;">
+            <div style="background: rgba(255,255,255,0.03); padding: 10px; border-radius: 6px;">
+                <strong>NIST AI RMF</strong><br>
+                <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" style="color: #68abfe; font-size: 0.9rem;">Risk Management Framework</a>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); padding: 10px; border-radius: 6px;">
+                <strong>MITRE ATLAS</strong><br>
+                <a href="https://atlas.mitre.org/" target="_blank" style="color: #68abfe; font-size: 0.9rem;">Adversarial Threat Landscape</a>
+            </div>
+        </div>
+    </div>
+`;
+

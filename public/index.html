@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Security Framework - Professional Guide</title>
-    <link rel="stylesheet" href="styles.css?v=4.0">
+    <link rel="stylesheet" href="style.css?v=5.2">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
 </head>
@@ -167,40 +167,276 @@
         </div>
     </section>
 
-    <!-- Control Matrix -->
+    <!-- AI Security Controls -->
     <section id="controls" class="control-matrix">
         <div class="container">
-            <h2 class="section-title">Security Controls</h2>
-            <p style="text-align: center; font-size: 1.2rem; opacity: 0.9; margin-bottom: 50px;">
-                Industry-standard security controls mapped to MITRE ATLAS and OWASP LLM Top 10
+            <h2 class="section-title">AI Security Controls</h2>
+            <p style="text-align: center; font-size: 1.2rem; opacity: 0.9; margin-bottom: 30px;">
+                Specialized security framework combining traditional controls with AI-specific measures and organizational governance
             </p>
             
-            <div class="matrix-grid">
-                <div class="matrix-item" onclick="openModal('preventive-controls')">
-                    <h4>Preventive Controls</h4>
-                    <p>Input validation, access controls, secure coding practices</p>
+            <!-- AI Security Controls Framework -->
+            <div class="security-controls-overview">
+                <div class="control-categories">
+                    <div class="control-category" onclick="openModal('preventive-controls')">
+                        <div class="category-icon">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <h4>Preventive Controls</h4>
+                        <p>Input validation, prompt filtering, model access controls, training data sanitization</p>
+                        <div class="control-framework-tags">
+                            <span class="control-badge-small">Management</span>
+                            <span class="control-badge-small">Operational</span>
+                            <span class="control-badge-small">Technical</span>
+                        </div>
+                        <div class="control-actions">
+                            <button class="control-action-btn" onclick="event.stopPropagation(); openModal('input-validation')">
+                                <i class="fa-solid fa-check-circle"></i> Input Validation
+                            </button>
+                            <button class="control-action-btn" onclick="event.stopPropagation(); openModal('access-controls')">
+                                <i class="fa-solid fa-lock"></i> Access Controls
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="control-category" onclick="openModal('detective-controls')">
+                        <div class="category-icon">
+                            <i class="fa-solid fa-eye"></i>
+                        </div>
+                        <h4>Detective Controls</h4>
+                        <p>AI behavior monitoring, prompt injection detection, model drift analysis, adversarial attack identification</p>
+                        <div class="control-badge">Operational • Technical</div>
+                        <div class="control-actions">
+                            <button class="control-action-btn" onclick="event.stopPropagation(); openModal('monitoring')">
+                                <i class="fa-solid fa-chart-bar"></i> Monitoring
+                            </button>
+                            <button class="control-action-btn" onclick="event.stopPropagation(); openModal('anomaly-detection')">
+                                <i class="fa-solid fa-exclamation-triangle"></i> Anomaly Detection
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="control-category" onclick="openModal('corrective-controls')">
+                        <div class="category-icon">
+                            <i class="fa-solid fa-wrench"></i>
+                        </div>
+                        <h4>Corrective Controls</h4>
+                        <p>Model retraining, bias correction, security patches, incident remediation</p>
+                        <div class="control-framework-tags">
+                            <span class="control-badge-small">Management</span>
+                            <span class="control-badge-small">Operational</span>
+                            <span class="control-badge-small">Technical</span>
+                        </div>
+                        <div class="control-actions">
+                            <button class="control-action-btn" onclick="event.stopPropagation(); openModal('incident-response')">
+                                <i class="fa-solid fa-siren"></i> Incident Response
+                            </button>
+                            <button class="control-action-btn" onclick="event.stopPropagation(); openModal('model-updates')">
+                                <i class="fa-solid fa-sync"></i> Model Updates
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="control-category" onclick="openModal('deterrent-controls')">
+                        <div class="category-icon">
+                            <i class="fa-solid fa-ban"></i>
+                        </div>
+                        <h4>Deterrent Controls</h4>
+                        <p>Usage monitoring, audit trails, legal agreements, AI ethics policies, threat intelligence sharing</p>
+                        <div class="control-framework-tags">
+                            <span class="control-badge-small">Management</span>
+                            <span class="control-badge-small">Operational</span>
+                        </div>
+                        <div class="control-actions">
+                            <button class="control-action-btn" onclick="event.stopPropagation(); openModal('incident-response')">
+                                <i class="fa-solid fa-ambulance"></i> Incident Response
+                            </button>
+                            <button class="control-action-btn" onclick="event.stopPropagation(); openModal('model-updates')">
+                                <i class="fa-solid fa-sync-alt"></i> Model Updates
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <div class="matrix-item" onclick="openModal('detective-controls')">
-                    <h4>Detective Controls</h4>
-                    <p>Monitoring, logging, anomaly detection, behavioral analysis</p>
-                </div>
-                <div class="matrix-item" onclick="openModal('corrective-controls')">
-                    <h4>Corrective Controls</h4>
-                    <p>Incident response, model retraining, security patches</p>
-                </div>
-                <div class="matrix-item" onclick="openModal('owasp-llm01')">
-                    <h4>OWASP LLM01</h4>
-                    <p>Prompt Injection Prevention</p>
-                </div>
-                <div class="matrix-item" onclick="openModal('owasp-llm06')">
-                    <h4>OWASP LLM06</h4>
-                    <p>Sensitive Information Disclosure</p>
-                </div>
-                <div class="matrix-item" onclick="openModal('mitre-atlas')">
-                    <h4>MITRE ATLAS</h4>
-                    <p>Adversarial Threat Landscape</p>
+
+                <!-- MITRE ATLAS Integration -->
+                <div class="mitre-atlas-integration" style="margin: 40px 0; padding: 25px; background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); border-radius: 12px; color: white;">
+                    <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                        <i class="fa-solid fa-shield-alt" style="font-size: 2rem; margin-right: 15px; color: #ffd700;"></i>
+                        <div>
+                            <h3 style="margin: 0; font-size: 1.5rem;">MITRE ATLAS Integration</h3>
+                            <p style="margin: 5px 0 0 0; opacity: 0.9;">Framework Overview: MITRE ATLAS provides a comprehensive matrix of adversarial tactics and techniques against AI systems</p>
+                        </div>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 20px;">
+                        <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px;">
+                            <h4 style="margin: 0 0 8px 0; color: #ffd700;">Key Tactics:</h4>
+                            <ul style="margin: 0; padding-left: 20px; line-height: 1.6;">
+                                <li>Reconnaissance: Gathering information about AI systems</li>
+                                <li>Resource Development: Preparing attack infrastructure</li>
+                                <li>Initial Access: Gaining entry to AI systems</li>
+                                <li>Execution: Running malicious code or commands</li>
+                                <li>Persistence: Maintaining access to compromised systems</li>
+                            </ul>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px;">
+                            <h4 style="margin: 0 0 8px 0; color: #ffd700;">Assessment Integration:</h4>
+                            <ul style="margin: 0; padding-left: 20px; line-height: 1.6;">
+                                <li>Map vulnerabilities to ATLAS techniques</li>
+                                <li>Prioritize testing based on threat landscape</li>
+                                <li>Develop countermeasures for identified tactics</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <button onclick="window.open('https://atlas.mitre.org/matrices/ATLAS', '_blank')" style="background: #ffd700; color: #1e3c72; border: none; padding: 12px 24px; border-radius: 6px; font-weight: bold; cursor: pointer;">
+                            <i class="fa-solid fa-external-link-alt"></i> Explore MITRE ATLAS Framework
+                        </button>
+                    </div>
                 </div>
             </div>
+            
+            <!-- OWASP LLM Top 10 Section -->
+            <div style="text-align: center; margin: 40px 0 30px 0;">
+                <h3 style="color: #2c3e50; margin-bottom: 10px;">OWASP LLM Top 10 (2025) Security Vulnerabilities</h3>
+                <p style="opacity: 0.8; font-size: 1.1rem;">Critical security risks specifically identified for Large Language Model applications</p>
+            </div>
+            
+            <!-- LLM Controls Grid -->
+            <div class="controls-grid">
+                <div class="control-item" onclick="openModal('owasp-llm01')">
+                    <div class="control-header">
+                        <span class="control-id">LLM01</span>
+                        <span class="severity critical">CRITICAL</span>
+                    </div>
+                    <h3>Prompt Injection</h3>
+                    <p>User prompts alter LLM behavior through direct and indirect injection attacks</p>
+                    <div class="control-stats">
+                        <span class="stat">2025 Edition</span>
+                        <span class="stat test-results">Critical Risk</span>
+                    </div>
+                </div>
+
+                <div class="control-item" onclick="openModal('owasp-llm02')">
+                    <div class="control-header">
+                        <span class="control-id">LLM02</span>
+                        <span class="severity high">HIGH</span>
+                    </div>
+                    <h3>Sensitive Information Disclosure</h3>
+                    <p>LLM applications expose sensitive data through various leakage vectors</p>
+                    <div class="control-stats">
+                        <span class="stat">2025 Edition</span>
+                        <span class="stat">High Impact</span>
+                    </div>
+                </div>
+
+                <div class="control-item" onclick="openModal('owasp-llm03')">
+                    <div class="control-header">
+                        <span class="control-id">LLM03</span>
+                        <span class="severity critical">CRITICAL</span>
+                    </div>
+                    <h3>Supply Chain</h3>
+                    <p>LLM supply chains susceptible to various security vulnerabilities</p>
+                    <div class="control-stats">
+                        <span class="stat">2025 Edition</span>
+                        <span class="stat">Critical Risk</span>
+                    </div>
+                </div>
+
+                <div class="control-item" onclick="openModal('owasp-llm04')">
+                    <div class="control-header">
+                        <span class="control-id">LLM04</span>
+                        <span class="severity high">HIGH</span>
+                    </div>
+                    <h3>Data and Model Poisoning</h3>
+                    <p>Pre-training, fine-tuning, or embedding data manipulation</p>
+                    <div class="control-stats">
+                        <span class="stat">2025 Edition</span>
+                        <span class="stat">High Risk</span>
+                    </div>
+                </div>
+
+                <div class="control-item" onclick="openModal('owasp-llm05')">
+                    <div class="control-header">
+                        <span class="control-id">LLM05</span>
+                        <span class="severity high">HIGH</span>
+                    </div>
+                    <h3>Improper Output Handling</h3>
+                    <p>Insufficient validation, sanitization and handling of LLM outputs</p>
+                    <div class="control-stats">
+                        <span class="stat">2025 Edition</span>
+                        <span class="stat">High Risk</span>
+                    </div>
+                </div>
+
+                <div class="control-item" onclick="openModal('owasp-llm06')">
+                    <div class="control-header">
+                        <span class="control-id">LLM06</span>
+                        <span class="severity high">HIGH</span>
+                    </div>
+                    <h3>Excessive Agency</h3>
+                    <p>LLM systems granted excessive autonomy and permissions</p>
+                    <div class="control-stats">
+                        <span class="stat">2025 Edition</span>
+                        <span class="stat">High Risk</span>
+                    </div>
+                </div>
+
+                <div class="control-item" onclick="openModal('owasp-llm07')">
+                    <div class="control-header">
+                        <span class="control-id">LLM07</span>
+                        <span class="severity medium">MEDIUM</span>
+                    </div>
+                    <h3>System Prompt Leakage</h3>
+                    <p>System prompts and instructions exposed to attackers</p>
+                    <div class="control-stats">
+                        <span class="stat">2025 Edition</span>
+                        <span class="stat">Medium Risk</span>
+                    </div>
+                </div>
+
+                <div class="control-item" onclick="openModal('owasp-llm08')">
+                    <div class="control-header">
+                        <span class="control-id">LLM08</span>
+                        <span class="severity high">HIGH</span>
+                    </div>
+                    <h3>Vector and Embedding Weaknesses</h3>
+                    <p>Vulnerabilities in vector databases and embedding systems</p>
+                    <div class="control-stats">
+                        <span class="stat">2025 Edition</span>
+                        <span class="stat">High Risk</span>
+                    </div>
+                </div>
+
+                <div class="control-item" onclick="openModal('owasp-llm09')">
+                    <div class="control-header">
+                        <span class="control-id">LLM09</span>
+                        <span class="severity medium">MEDIUM</span>
+                    </div>
+                    <h3>Misinformation</h3>
+                    <p>LLMs produce false or misleading information</p>
+                    <div class="control-stats">
+                        <span class="stat">2025 Edition</span>
+                        <span class="stat">Medium Risk</span>
+                    </div>
+                </div>
+
+                <div class="control-item" onclick="openModal('owasp-llm10')">
+                    <div class="control-header">
+                        <span class="control-id">LLM10</span>
+                        <span class="severity medium">MEDIUM</span>
+                    </div>
+                    <h3>Unbounded Consumption</h3>
+                    <p>Uncontrolled resource consumption leading to service disruption</p>
+                    <div class="control-stats">
+                        <span class="stat">2025 Edition</span>
+                        <span class="stat">Medium Risk</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Guided Tour Controls -->
         </div>
     </section>
 
@@ -318,59 +554,29 @@
                 Advanced risk assessment tool for AI systems with comprehensive scoring capabilities
             </p>
             
-            <!-- Risk Definitions Section -->
-            <div style="background: rgba(255,255,255,0.05); padding: 30px; border-radius: 15px; margin-bottom: 40px; border: 1px solid rgba(255,255,255,0.1);">
-                <h3 style="color: #4b0c7f; margin-bottom: 25px; text-align: center;">Risk Assessment Definitions</h3>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 30px;">
-                    <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 10px; border-left: 4px solid #4b0c7f;">
-                        <h4 style="color: #4b0c7f; margin-bottom: 15px;">Likelihood Scale</h4>
-                        <div style="font-size: 0.9rem; line-height: 1.6;">
-                            <div style="margin-bottom: 8px;"><strong>Very High (5):</strong> Almost certain to occur (>90% probability)</div>
-                            <div style="margin-bottom: 8px;"><strong>High (4):</strong> Likely to occur (70-90% probability)</div>
-                            <div style="margin-bottom: 8px;"><strong>Medium (3):</strong> Possible to occur (30-70% probability)</div>
-                            <div style="margin-bottom: 8px;"><strong>Low (2):</strong> Unlikely to occur (10-30% probability)</div>
-                            <div><strong>Very Low (1):</strong> Rare occurrence (<10% probability)</div>
+            <!-- Risk Assessment Methodology -->
+            <div class="risk-methodology-info">
+                <div class="methodology-grid">
+                    <div class="methodology-item">
+                        <div class="method-icon">
+                            <i class="fa-solid fa-calculator"></i>
                         </div>
+                        <h4>Quantitative Scoring</h4>
+                        <p>Risk = Likelihood × Impact. Scores range from 1-25 providing precise risk quantification for AI systems.</p>
                     </div>
-                    
-                    <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 10px; border-left: 4px solid #68abfe;">
-                        <h4 style="color: #68abfe; margin-bottom: 15px;">Impact Scale</h4>
-                        <div style="font-size: 0.9rem; line-height: 1.6;">
-                            <div style="margin-bottom: 8px;"><strong>Very High (5):</strong> Catastrophic business/operational impact</div>
-                            <div style="margin-bottom: 8px;"><strong>High (4):</strong> Major business disruption or data loss</div>
-                            <div style="margin-bottom: 8px;"><strong>Medium (3):</strong> Moderate impact on operations</div>
-                            <div style="margin-bottom: 8px;"><strong>Low (2):</strong> Minor operational impact</div>
-                            <div><strong>Very Low (1):</strong> Negligible impact</div>
+                    <div class="methodology-item">
+                        <div class="method-icon">
+                            <i class="fa-solid fa-crosshairs"></i>
                         </div>
+                        <h4>Threat-Focused Assessment</h4>
+                        <p>Incorporates MITRE ATLAS and OWASP LLM Top 10 frameworks for comprehensive AI threat coverage.</p>
                     </div>
-                </div>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-                    <div style="background: rgba(244, 67, 54, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid #f44336; cursor: pointer;" 
-                         onmouseover="highlightRiskRange('critical')" onmouseout="clearRiskHighlight()">
-                        <h5 style="color: #f44336; margin-bottom: 10px;">Critical Risk (20-25)</h5>
-                        <p style="font-size: 0.85rem; margin: 0; opacity: 0.9;">Immediate action required. System shutdown may be necessary until mitigation is complete.</p>
-                    </div>
-                    <div style="background: rgba(255, 87, 34, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid #ff5722; cursor: pointer;"
-                         onmouseover="highlightRiskRange('high')" onmouseout="clearRiskHighlight()">
-                        <h5 style="color: #ff5722; margin-bottom: 10px;">High Risk (15-19)</h5>
-                        <p style="font-size: 0.85rem; margin: 0; opacity: 0.9;">Urgent attention needed. Implement controls within 30 days.</p>
-                    </div>
-                    <div style="background: rgba(255, 193, 7, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid #ffc107; cursor: pointer;"
-                         onmouseover="highlightRiskRange('medium')" onmouseout="clearRiskHighlight()">
-                        <h5 style="color: #ffc107; margin-bottom: 10px;">Medium Risk (10-14)</h5>
-                        <p style="font-size: 0.85rem; margin: 0; opacity: 0.9;">Plan mitigation within 90 days. Monitor closely.</p>
-                    </div>
-                    <div style="background: rgba(139, 195, 74, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid #8bc34a; cursor: pointer;"
-                         onmouseover="highlightRiskRange('low')" onmouseout="clearRiskHighlight()">
-                        <h5 style="color: #8bc34a; margin-bottom: 10px;">Low Risk (5-9)</h5>
-                        <p style="font-size: 0.85rem; margin: 0; opacity: 0.9;">Address through standard processes. Review annually.</p>
-                    </div>
-                    <div style="background: rgba(76, 175, 80, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid #4caf50; cursor: pointer;"
-                         onmouseover="highlightRiskRange('very-low')" onmouseout="clearRiskHighlight()">
-                        <h5 style="color: #4caf50; margin-bottom: 10px;">Very Low Risk (1-4)</h5>
-                        <p style="font-size: 0.85rem; margin: 0; opacity: 0.9;">Acceptable risk level. Document and monitor periodically.</p>
+                    <div class="methodology-item">
+                        <div class="method-icon">
+                            <i class="fa-solid fa-balance-scale"></i>
+                        </div>
+                        <h4>Enterprise Standards</h4>
+                        <p>Aligned with NIST AI RMF, ISO/IEC 23053, and enterprise risk management best practices.</p>
                     </div>
                 </div>
             </div>
@@ -393,7 +599,7 @@
                         
                         <div class="risk-header">Very High (5)</div>
                         <div class="risk-cell low" onclick="showRiskDetails(5, 1, 'low')" data-score="5">5</div>
-                        <div class="risk-cell high" onclick="showRiskDetails(5, 2, 'high')" data-score="10">10</div>
+                        <div class="risk-cell medium" onclick="showRiskDetails(5, 2, 'medium')" data-score="10">10</div>
                         <div class="risk-cell high" onclick="showRiskDetails(5, 3, 'high')" data-score="15">15</div>
                         <div class="risk-cell critical" onclick="showRiskDetails(5, 4, 'critical')" data-score="20">20</div>
                         <div class="risk-cell critical" onclick="showRiskDetails(5, 5, 'critical')" data-score="25">25</div>
@@ -408,8 +614,8 @@
                         <div class="risk-header">Medium (3)</div>
                         <div class="risk-cell very-low" onclick="showRiskDetails(3, 1, 'very-low')" data-score="3">3</div>
                         <div class="risk-cell low" onclick="showRiskDetails(3, 2, 'low')" data-score="6">6</div>
-                        <div class="risk-cell medium" onclick="showRiskDetails(3, 3, 'medium')" data-score="9">9</div>
-                        <div class="risk-cell high" onclick="showRiskDetails(3, 4, 'high')" data-score="12">12</div>
+                        <div class="risk-cell low" onclick="showRiskDetails(3, 3, 'low')" data-score="9">9</div>
+                        <div class="risk-cell medium" onclick="showRiskDetails(3, 4, 'medium')" data-score="12">12</div>
                         <div class="risk-cell high" onclick="showRiskDetails(3, 5, 'high')" data-score="15">15</div>
                         
                         <div class="risk-header">Low (2)</div>
@@ -426,13 +632,47 @@
                         <div class="risk-cell very-low" onclick="showRiskDetails(1, 4, 'very-low')" data-score="4">4</div>
                         <div class="risk-cell low" onclick="showRiskDetails(1, 5, 'low')" data-score="5">5</div>
                     </div>
+                    
+                    <div class="risk-matrix-key" style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                        <h4 style="margin-bottom: 10px; color: #4b0c7f;">Risk Level Key:</h4>
+                        <div class="risk-key-items" style="display: flex; flex-wrap: wrap; gap: 15px; align-items: center;">
+                            <div class="risk-key-item">
+                                <span class="risk-badge critical" style="display: inline-block; padding: 2px 8px; border-radius: 4px; color: white; background: #8B0000; font-size: 0.85rem; cursor: pointer; transition: all 0.3s ease;"
+                                      onmouseover="highlightRiskLevel('critical')" 
+                                      onmouseout="resetRiskHighlight()">Critical (20-25)</span>
+                            </div>
+                            <div class="risk-key-item">
+                                <span class="risk-badge high" style="display: inline-block; padding: 2px 8px; border-radius: 4px; color: white; background: #FF4500; font-size: 0.85rem; cursor: pointer; transition: all 0.3s ease;"
+                                      onmouseover="highlightRiskLevel('high')" 
+                                      onmouseout="resetRiskHighlight()">High (15-19)</span>
+                            </div>
+                            <div class="risk-key-item">
+                                <span class="risk-badge medium" style="display: inline-block; padding: 2px 8px; border-radius: 4px; color: black; background: #FFD700; font-size: 0.85rem; cursor: pointer; transition: all 0.3s ease;"
+                                      onmouseover="highlightRiskLevel('medium')" 
+                                      onmouseout="resetRiskHighlight()">Medium (10-14)</span>
+                            </div>
+                            <div class="risk-key-item">
+                                <span class="risk-badge low" style="display: inline-block; padding: 2px 8px; border-radius: 4px; color: black; background: #32CD32; font-size: 0.85rem; cursor: pointer; transition: all 0.3s ease;"
+                                      onmouseover="highlightRiskLevel('low')" 
+                                      onmouseout="resetRiskHighlight()">Low (5-9)</span>
+                            </div>
+                            <div class="risk-key-item">
+                                <span class="risk-badge very-low" style="display: inline-block; padding: 2px 8px; border-radius: 4px; color: white; background: #006400; font-size: 0.85rem; cursor: pointer; transition: all 0.3s ease;"
+                                      onmouseover="highlightRiskLevel('very-low')" 
+                                      onmouseout="resetRiskHighlight()">Very Low (1-4)</span>
+                            </div>
+                        </div>
+                        <p style="margin-top: 10px; font-size: 0.9rem; color: #666; font-style: italic;">
+                            Hover over risk levels to highlight corresponding cells. Click any cell for detailed risk assessment information.
+                        </p>
+                    </div>
                 </div>
 
                 <div id="risk-calculator-view" style="display: none;">
                     <div class="risk-calculator">
                         <h3 style="text-align: center; margin-bottom: 20px; color: #4b0c7f;">AI Risk Calculator</h3>
                         <p style="text-align: center; font-size: 0.9rem; opacity: 0.8; margin-bottom: 30px;">
-                            Calculate AI security risk using CVSS-style methodology with likelihood, impact, and asset criticality factors.
+                            Calculate AI security risk using comprehensive threat modeling with likelihood, impact, and asset criticality factors.
                         </p>
                         
                         <div class="calculator-row">
@@ -440,12 +680,100 @@
                                 <label for="threat-type">Threat Type:</label>
                                 <select id="threat-type" onchange="calculateRisk()">
                                     <option value="">Select Threat Type</option>
-                                    <option value="adversarial">Adversarial Attack - Malicious inputs to fool AI models</option>
-                                    <option value="poisoning">Data Poisoning - Corrupted training or inference data</option>
-                                    <option value="extraction">Model Extraction - Unauthorized model copying/reverse engineering</option>
-                                    <option value="prompt-injection">Prompt Injection - LLM behavior manipulation</option>
-                                    <option value="bias">Bias Exploitation - Leveraging algorithmic bias for attacks</option>
-                                    <option value="privacy">Privacy Leakage - Unintended exposure of sensitive data</option>
+                                    
+                                    <!-- MITRE ATLAS: Reconnaissance -->
+                                    <optgroup label="MITRE ATLAS: Reconnaissance">
+                                        <option value="ml-attack-staging">ML Attack Staging - Gathering information to plan ML attacks</option>
+                                        <option value="search-victim-domain">Search Victim-Owned Websites - Finding ML system information online</option>
+                                        <option value="search-open-datasets">Search Open Technical Databases - Mining public ML repositories</option>
+                                        <option value="active-scanning">Active Scanning - Probing ML systems for vulnerabilities</option>
+                                    </optgroup>
+                                    
+                                    <!-- MITRE ATLAS: Resource Development -->
+                                    <optgroup label="MITRE ATLAS: Resource Development">
+                                        <option value="develop-ml-attack">Develop ML Attack - Creating adversarial examples and attack tools</option>
+                                        <option value="acquire-ml-artifacts">Acquire ML Artifacts - Obtaining models, datasets, and tools</option>
+                                        <option value="poison-training-data">Poison Training Data - Corrupting datasets used for training</option>
+                                    </optgroup>
+                                    
+                                    <!-- MITRE ATLAS: Initial Access -->
+                                    <optgroup label="MITRE ATLAS: Initial Access">
+                                        <option value="supply-chain-compromise">Supply Chain Compromise - Compromising ML model distribution</option>
+                                        <option value="valid-accounts">Valid Accounts - Using legitimate credentials to access ML systems</option>
+                                        <option value="public-ml-api">Public-Facing Application - Exploiting public ML APIs</option>
+                                    </optgroup>
+                                    
+                                    <!-- MITRE ATLAS: ML Attack Staging -->
+                                    <optgroup label="MITRE ATLAS: ML Attack Staging">
+                                        <option value="victim-research">Victim Research - Gathering intelligence on target ML systems</option>
+                                        <option value="proxy-ml-attack">Proxy ML Attack - Using surrogate models for attack development</option>
+                                    </optgroup>
+                                    
+                                    <!-- MITRE ATLAS: ML Model Access -->
+                                    <optgroup label="MITRE ATLAS: ML Model Access">
+                                        <option value="inference-api-access">Inference API Access - Query-based access to ML models</option>
+                                        <option value="full-ml-model-access">Full ML Model Access - Complete access to model internals</option>
+                                        <option value="physical-environment">Physical Environment Access - Hardware-level model access</option>
+                                    </optgroup>
+                                    
+                                    <!-- MITRE ATLAS: Persistence -->
+                                    <optgroup label="MITRE ATLAS: Persistence">
+                                        <option value="backdoor-ml-model">Backdoor ML Model - Persistent model compromise</option>
+                                        <option value="poison-ml-model">Poison ML Model - Ongoing model corruption</option>
+                                    </optgroup>
+                                    
+                                    <!-- MITRE ATLAS: Defense Evasion -->
+                                    <optgroup label="MITRE ATLAS: Defense Evasion">
+                                        <option value="adversarial-perturbations">Adversarial Perturbations - Subtle input modifications</option>
+                                        <option value="physical-adversarial">Physical Adversarial Examples - Real-world attack objects</option>
+                                        <option value="evade-ml-model">Evade ML Model - Bypassing detection systems</option>
+                                    </optgroup>
+                                    
+                                    <!-- MITRE ATLAS: Discovery -->
+                                    <optgroup label="MITRE ATLAS: Discovery">
+                                        <option value="discover-ml-artifacts">Discover ML Artifacts - Finding models and data</option>
+                                        <option value="discover-ml-model-ontology">Discover ML Model Ontology - Understanding model structure</option>
+                                    </optgroup>
+                                    
+                                    <!-- MITRE ATLAS: Collection -->
+                                    <optgroup label="MITRE ATLAS: Collection">
+                                        <option value="infer-training-data">Infer Training Data - Extracting training information</option>
+                                        <option value="ml-model-inference">ML Model Inference - Gathering model predictions</option>
+                                    </optgroup>
+                                    
+                                    <!-- MITRE ATLAS: ML Attack Execution -->
+                                    <optgroup label="MITRE ATLAS: ML Attack Execution">
+                                        <option value="adversarial-ml">Adversarial ML - Direct model manipulation attacks</option>
+                                        <option value="prompt-injection">Prompt Injection - LLM behavior manipulation</option>
+                                        <option value="model-extraction">Model Extraction - Unauthorized model copying</option>
+                                    </optgroup>
+                                    
+                                    <!-- MITRE ATLAS: Exfiltration -->
+                                    <optgroup label="MITRE ATLAS: Exfiltration">
+                                        <option value="exfiltrate-ml-artifacts">Exfiltrate ML Artifacts - Stealing models and data</option>
+                                        <option value="exfiltrate-via-ml-inference">Exfiltrate via ML Inference - Data theft through queries</option>
+                                    </optgroup>
+                                    
+                                    <!-- MITRE ATLAS: Impact -->
+                                    <optgroup label="MITRE ATLAS: Impact">
+                                        <option value="erode-ml-model-integrity">Erode ML Model Integrity - Degrading model performance</option>
+                                        <option value="evade-defenses">Evade Defenses - Bypassing security controls</option>
+                                        <option value="disrupt-ml-system">Disrupt ML System - Causing system failures</option>
+                                    </optgroup>
+                                    
+                                    <!-- OWASP LLM Top 10 2025 -->
+                                    <optgroup label="OWASP LLM Top 10 (2025)">
+                                        <option value="llm01-prompt-injection">LLM01:2025 Prompt Injection</option>
+                                        <option value="llm02-sensitive-disclosure">LLM02:2025 Sensitive Information Disclosure</option>
+                                        <option value="llm03-supply-chain">LLM03:2025 Supply Chain</option>
+                                        <option value="llm04-data-model-poisoning">LLM04:2025 Data and Model Poisoning</option>
+                                        <option value="llm05-improper-output">LLM05:2025 Improper Output Handling</option>
+                                        <option value="llm06-excessive-agency">LLM06:2025 Excessive Agency</option>
+                                        <option value="llm07-system-prompt-leakage">LLM07:2025 System Prompt Leakage</option>
+                                        <option value="llm08-vector-embedding">LLM08:2025 Vector and Embedding Weaknesses</option>
+                                        <option value="llm09-misinformation">LLM09:2025 Misinformation</option>
+                                        <option value="llm10-unbounded-consumption">LLM10:2025 Unbounded Consumption</option>
+                                    </optgroup>
                                 </select>
                                 <div class="field-help" style="font-size: 0.75rem; color: #4b0c7f; margin-top: 5px;">
                                     Select the primary threat vector targeting your AI system
@@ -587,23 +915,40 @@
             Interactive visual representation of AI security framework architecture with component details
         </p>
         
-        <!-- Move Interactive Component Analysis before the diagram -->
-        <div class="architecture-info">
-            <h3><i class="fa-solid fa-diagram-project"></i> Component Analysis</h3>
-            <p>Click on any architectural component to explore detailed security considerations and potential vulnerabilities. Each layer represents critical security checkpoints in the AI system architecture.</p>
+        <!-- Interactive Component Analysis -->
+        <div class="architecture-overview">
+            <div class="overview-header">
+                <h3><i class="fa-solid fa-diagram-project"></i> Interactive Security Architecture</h3>
+                <p>Explore AI system components and their security implications through interactive visualization</p>
+            </div>
             
-            <div class="architecture-instructions">
-                <div class="instruction-item">
-                    <i class="fa-solid fa-mouse"></i>
-                    <span><strong>Click Components:</strong> View detailed security analysis for each component</span>
+            <div class="interaction-guide">
+                <div class="guide-item">
+                    <div class="guide-icon">
+                        <i class="fa-solid fa-mouse-pointer"></i>
+                    </div>
+                    <div class="guide-content">
+                        <h5>Click Components</h5>
+                        <p>View detailed security analysis</p>
+                    </div>
                 </div>
-                <div class="instruction-item">
-                    <i class="fa-solid fa-eye"></i>
-                    <span><strong>Hover Layers:</strong> Highlight related architectural elements</span>
+                <div class="guide-item">
+                    <div class="guide-icon">
+                        <i class="fa-solid fa-eye"></i>
+                    </div>
+                    <div class="guide-content">
+                        <h5>Hover Layers</h5>
+                        <p>Highlight related elements</p>
+                    </div>
                 </div>
-                <div class="instruction-item">
-                    <i class="fa-solid fa-shield-alt"></i>
-                    <span><strong>Security Focus:</strong> Each component represents potential attack surfaces</span>
+                <div class="guide-item">
+                    <div class="guide-icon">
+                        <i class="fa-solid fa-shield-alt"></i>
+                    </div>
+                    <div class="guide-content">
+                        <h5>Security Focus</h5>
+                        <p>Identify attack surfaces</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -766,11 +1111,14 @@
                 <!-- Checklist phases will be populated by JavaScript -->
             </div>
             <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 40px;">
+                <button class="cta-button" onclick="initializeSimpleChecklist()">
+                    <i class="fa-solid fa-refresh"></i> Load Checklist
+                </button>
                 <button class="cta-button" onclick="resetChecklist()">
                     <i class="fa-solid fa-undo"></i> Reset Checklist
                 </button>
                 <button class="cta-button" onclick="exportChecklist()">
-                    <i class="fa-solid fa-download"></i> Export Data (JSON)
+                    <i class="fa-solid fa-download"></i> Export Data (HTML + JSON)
                 </button>
                 <button class="cta-button" onclick="exportSimpleReport()">
                     <i class="fa-solid fa-file-text"></i> Export Report (TXT)
@@ -785,7 +1133,7 @@
     <div class="container">
         <h2 class="section-title">Framework Resources</h2>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px;">
-            <div class="resource-card" style="background: #ffffff; border: 1px solid #e9ecef; border-radius: 15px; padding: 30px; text-align: center; transition: all 0.3s ease; cursor: pointer; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" onclick="openModal('methodology-guide')">
+            <div class="resource-card" style="background: #ffffff; border: 1px solid #e9ecef; border-radius: 15px; padding: 30px; text-align: center; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
                 <h3 style="color: #4b0c7f; margin-bottom: 15px;">
                     <i class="fa-solid fa-file-lines"></i> Methodology Guide
                 </h3>
@@ -808,12 +1156,12 @@
                 </div>
             </div>
             
-            <div class="resource-card" style="background: #ffffff; border: 1px solid #e9ecef; border-radius: 15px; padding: 30px; text-align: center; transition: all 0.3s ease; cursor: pointer; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" onclick="openModal('testing-tools')">
+            <div class="resource-card" style="background: #ffffff; border: 1px solid #e9ecef; border-radius: 15px; padding: 30px; text-align: center; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
                 <h3 style="color: #4b0c7f; margin-bottom: 15px;">
-                    <i class="fa-solid fa-wrench"></i> Testing Tools
+                    <i class="fa-solid fa-wrench"></i> Testing Tools & AI Red Teaming
                 </h3>
                 <p style="color: #555555; opacity: 0.9; margin-bottom: 20px;">
-                    Automated tools and scripts for AI security testing and validation
+                    Automated tools and scripts for AI security testing with collaborative red team platform
                 </p>
                 <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
                     <a href="https://github.com/Regine12/AISec-pentester.git" target="_blank" class="resource-btn primary-btn">
@@ -822,11 +1170,11 @@
                     <button class="resource-btn secondary-btn" onclick="event.stopPropagation(); openModal('testing-tools');">
                         <i class="fa-solid fa-eye"></i> View Tools
                     </button>
-                    <button class="resource-btn secondary-btn" onclick="event.stopPropagation(); showToolsDemo();">
-                        <i class="fa-solid fa-play"></i> Demo
+                    <button class="resource-btn secondary-btn" onclick="event.stopPropagation(); launchAIRedTeaming('demo');" style="background: linear-gradient(45deg, #dc3545, #ff6b6b); color: white; border: none;">
+                        <i class="fa-solid fa-crosshairs"></i> AI Red Teaming
                     </button>
-                    <button class="resource-btn secondary-btn" onclick="event.stopPropagation(); launchLiveDemo();" style="background: linear-gradient(45deg, #4b0c7f, #8936de); color: white; border: none;">
-                        <i class="fa-solid fa-play-circle"></i> Live Demo
+                    <button class="resource-btn secondary-btn" onclick="event.stopPropagation(); showTeamCaseStudies();" style="background: linear-gradient(45deg, #4b0c7f, #8936de); color: white; border: none;">
+                        <i class="fa-solid fa-chart-line"></i> Case Studies
                     </button>
                 </div>
             </div>
@@ -853,31 +1201,50 @@
         </div>
     </div>    
 
-    <script src="main.js?v=4.0"></script>
+    <script src="main.js?v=1754912000"></script>
+    <script src="llm_modals_clean.js?v=2"></script>
+    <script src="llm_modals_part2.js?v=3"></script>
 
    <!-- Modal content for 'methodology-guide' -->
 <div id="methodology-guide-content" style="display:none;">
     <h2><i class="fa-solid fa-file-lines"></i> AI Security Methodology Guide</h2>
+    
+    <!-- Enhanced Content Grid -->
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 30px 0;">
         <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
             <h4 style="color: #4b0c7f; margin-bottom: 10px;">
-                <i class="fa-solid fa-map"></i> Framework Overview
+                <i class="fa-solid fa-shield-alt"></i> Framework Overview
             </h4>
             <p style="font-size: 0.9rem; opacity: 0.9;">Industry-leading AI security assessment methodology integrating MITRE ATLAS, OWASP LLM Top 10, and industry best practices.</p>
         </div>
         <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
             <h4 style="color: #4b0c7f; margin-bottom: 10px;">
-                <i class="fa-solid fa-list-check"></i> Assessment Checklists
+                <i class="fa-solid fa-clipboard-check"></i> Assessment Checklists
             </h4>
             <p style="font-size: 0.9rem; opacity: 0.9;">Detailed checklists for each assessment phase with MITRE ATLAS technique mapping and validation criteria.</p>
         </div>
         <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
             <h4 style="color: #4b0c7f; margin-bottom: 10px;">
-                <i class="fa-solid fa-chart-line"></i> Risk Assessment
+                <i class="fa-solid fa-calculator"></i> Risk Assessment
             </h4>
             <p style="font-size: 0.9rem; opacity: 0.9;">Risk scoring algorithms and matrices aligned with ATLAS threat landscape and business impact analysis.</p>
         </div>
     </div>
+
+    <!-- What's Included Section -->
+    <div style="background: rgba(75, 12, 127, 0.1); padding: 20px; border-radius: 15px; margin: 20px 0; border-left: 4px solid #4b0c7f;">
+        <h3 style="color: #4b0c7f; margin-bottom: 15px;">What's Included:</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+            <div>• Complete Assessment Framework</div>
+            <div>• Threat Modeling Templates</div>
+            <div>• Security Checklists</div>
+            <div>• Risk Assessment Matrix</div>
+            <div>• Testing Procedures</div>
+            <div>• Reporting Templates</div>
+        </div>
+    </div>
+
+    <!-- Document Sections -->
     <h3 style="margin: 30px 0 20px 0;">Document Sections:</h3>
     <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
         <div style="display: flex; align-items: center; padding: 10px; background: rgba(255,255,255,0.03); border-radius: 8px;">
@@ -905,28 +1272,46 @@
             <span>Phase 6: Reporting & Remediation</span>
         </div>
     </div>
+
+    <!-- Framework Integration -->
     <h3 style="margin: 30px 0 20px 0;">Framework Integration:</h3>
     <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 30px;">
-        <div style="background: linear-gradient(45deg, #ff6b6b, #ff8e8e); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem;">
+        <div style="background: linear-gradient(45deg, #ff6b6b, #ff8e8e); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; color: white;">
             <i class="fa-solid fa-shield"></i> MITRE ATLAS
         </div>
-        <div style="background: linear-gradient(45deg, #4b0c7f, #00f2fe); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem;">
+        <div style="background: linear-gradient(45deg, #4b0c7f, #68abfe); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; color: white;">
             <i class="fa-solid fa-bug"></i> OWASP LLM Top 10
         </div>
-        <div style="background: linear-gradient(45deg, #ffeb3b, #ffc107); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem;">
+        <div style="background: linear-gradient(45deg, #ffeb3b, #ffc107); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; color: #333;">
             <i class="fa-solid fa-cog"></i> NIST AI RMF
         </div>
-        <div style="background: linear-gradient(45deg, #4caf50, #8bc34a); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem;">
+        <div style="background: linear-gradient(45deg, #4caf50, #8bc34a); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; color: white;">
             <i class="fa-solid fa-cloud"></i> CSA AI Controls
         </div>
     </div>
+
+    <!-- Perfect For Section -->
+    <div style="background: rgba(104, 171, 254, 0.1); padding: 20px; border-radius: 15px; margin: 20px 0; border-left: 4px solid #68abfe;">
+        <h4 style="color: #68abfe; margin-bottom: 10px;">Perfect For:</h4>
+        <div>• Security professionals conducting AI assessments</div>
+        <div>• AI/ML engineers implementing security best practices</div>
+        <div>• Compliance teams ensuring regulatory adherence</div>
+        <div>• Organizations building secure AI systems</div>
+    </div>
+
+    <!-- Pro Tip -->
+    <div style="background: rgba(255, 193, 7, 0.1); padding: 15px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #ffc107;">
+        <strong style="color: #ffc107;">Pro Tip:</strong> This comprehensive guide provides everything you need to establish a robust AI security assessment program in your organization.
+    </div>
+
+    <!-- Download Buttons -->
     <div style="text-align: center; margin-top: 30px;">
         <a href="AI Security Methodology Document.pdf" target="_blank" 
            style="background: linear-gradient(45deg, #4b0c7f, #68abfe); color: white; padding: 12px 30px; border-radius: 25px; text-decoration: none; display: inline-block; margin: 10px;">
             <i class="fa-solid fa-download"></i> Download Full Guide (PDF)
         </a>
         <button onclick="window.open('AI Security Framework - Comprehensive Resource Documentation.pdf', '_blank')" 
-                style="background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); padding: 12px 30px; border-radius: 25px; cursor: pointer; margin: 10px;">
+                style="background: linear-gradient(45deg, #68abfe, #4b0c7f); color: white; border: none; padding: 12px 30px; border-radius: 25px; cursor: pointer; margin: 10px;">
             <i class="fa-solid fa-book-open"></i> View Online Documentation
         </button>
     </div>
@@ -1093,18 +1478,18 @@
         <div style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
             <div style="display: flex; align-items: center; margin-bottom: 15px;">
                 <i class="fa-solid fa-comments" style="color: #4b0c7f; font-size: 1.5rem; margin-right: 15px;"></i>
-                <h4 style="color: #4b0c7f; margin: 0;">LLM Security Tester</h4>
+                <h4 style="color: #4b0c7f; margin: 0;">LLM Security Tester (2025)</h4>
             </div>
-            <p style="opacity: 0.9; margin-bottom: 15px;">Specialized testing for Large Language Models including prompt injection, jailbreaking, and output manipulation detection.</p>
+            <p style="opacity: 0.9; margin-bottom: 15px;">Specialized testing for Large Language Models with OWASP LLM Top 10 2025 vulnerabilities including prompt injection, system prompt leakage, and misinformation detection.</p>
             <div style="display: flex; gap: 10px; flex-wrap: wrap;">
                 <span style="background: rgba(233, 30, 99, 0.2); padding: 4px 12px; border-radius: 15px; font-size: 0.8rem;">
                     <i class="fa-solid fa-terminal"></i> Prompt Injection
                 </span>
                 <span style="background: rgba(255, 152, 0, 0.2); padding: 4px 12px; border-radius: 15px; font-size: 0.8rem;">
-                    <i class="fa-solid fa-unlock"></i> Jailbreaking
+                    <i class="fa-solid fa-unlock"></i> System Prompt Leakage
                 </span>
                 <span style="background: rgba(121, 85, 72, 0.2); padding: 4px 12px; border-radius: 15px; font-size: 0.8rem;">
-                    <i class="fa-solid fa-edit"></i> Output Manipulation
+                    <i class="fa-solid fa-exclamation-triangle"></i> Misinformation
                 </span>
             </div>
         </div>
@@ -1127,6 +1512,37 @@
             </div>
         </div>
     </div>
+    
+    <h3 style="margin: 30px 0 20px 0;">AI Red Teaming Platform:</h3>
+    <div style="background: rgba(220, 53, 69, 0.1); padding: 25px; border-radius: 15px; border: 2px solid rgba(220, 53, 69, 0.3); margin-bottom: 20px;">
+        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+            <i class="fa-solid fa-crosshairs" style="color: #dc3545; font-size: 2rem; margin-right: 15px;"></i>
+            <div>
+                <h4 style="color: #dc3545; margin: 0;">Team Red Teaming Operations</h4>
+                <p style="margin: 5px 0 0 0; opacity: 0.9;">Collaborative red team exercises with real-time assessment and case study generation</p>
+            </div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px;">
+            <button onclick="launchAIRedTeaming('offensive')" style="background: rgba(220, 53, 69, 0.2); border: 1px solid #dc3545; padding: 12px; border-radius: 8px; cursor: pointer; color: white;">
+                <i class="fa-solid fa-sword"></i> Offensive Testing
+            </button>
+            <button onclick="launchAIRedTeaming('supply-chain')" style="background: rgba(255, 193, 7, 0.2); border: 1px solid #ffc107; padding: 12px; border-radius: 8px; cursor: pointer; color: white;">
+                <i class="fa-solid fa-link"></i> Supply Chain Analysis
+            </button>
+            <button onclick="launchAIRedTeaming('integrated')" style="background: rgba(104, 171, 254, 0.2); border: 1px solid #68abfe; padding: 12px; border-radius: 8px; cursor: pointer; color: white;">
+                <i class="fa-solid fa-users"></i> Comprehensive Assessment
+            </button>
+        </div>
+        <div style="text-align: center; margin-top: 20px;">
+            <button onclick="showTeamCaseStudies()" style="background: linear-gradient(45deg, #4b0c7f, #8936de); border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; color: white; margin: 0 10px;">
+                <i class="fa-solid fa-chart-line"></i> Team Case Studies
+            </button>
+            <button onclick="launchAIRedTeaming('demo')" style="background: rgba(40, 167, 69, 0.2); border: 1px solid #28a745; padding: 12px 20px; border-radius: 8px; cursor: pointer; color: white; margin: 0 10px;">
+                <i class="fa-solid fa-play-circle"></i> AI Red Teaming Demo
+            </button>
+        </div>
+    </div>
+    
     <h3 style="margin: 30px 0 20px 0;">MITRE ATLAS Technique Coverage:</h3>
     <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 15px;">
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
