@@ -5966,7 +5966,7 @@ function showTeamCaseStudies() {
                 </div>
             </div>
             
-            <button onclick="window.open('../report_intern2.html', '_blank')" 
+            <button onclick="openModal('complete-assessment-report')" 
                     style="background: #dc3545; color: white; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer;">
                 <i class="fa-solid fa-file-alt"></i> View Complete Assessment
             </button>
@@ -5998,7 +5998,7 @@ function showTeamCaseStudies() {
                 </div>
             </div>
             
-            <button onclick="window.open('../scan_results_intern3.html', '_blank')" 
+            <button onclick="openModal('security-analysis-report')" 
                     style="background: #ffc107; color: #212529; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer;">
                 <i class="fa-solid fa-chart-bar"></i> View Security Analysis
             </button>
