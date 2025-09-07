@@ -1701,6 +1701,163 @@ window.toggleMobileNav = toggleMobileNav;
                             </a>
                         </div>
                     </div>
+                `,
+                'complete-assessment-report': `
+                    <h2><i class="fa-solid fa-file-alt"></i> Complete Assessment Report - Advanced LLM Penetration Testing</h2>
+                    
+                    <div style="background: rgba(220, 53, 69, 0.1); padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #dc3545;">
+                        <h3>Executive Summary</h3>
+                        <p><strong>Assessment Scope:</strong> Production LLM API with 50,000+ daily users</p>
+                        <p><strong>Assessment Duration:</strong> 14 days</p>
+                        <p><strong>Critical Findings:</strong> 4 high-severity vulnerabilities identified</p>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 30px 0;">
+                        <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px;">
+                            <h4 style="color: #dc3545;">🔴 Critical Vulnerabilities</h4>
+                            <ul style="text-align: left;">
+                                <li><strong>CVE-2024-LLM-001:</strong> Prompt injection bypass (CVSS 9.2)</li>
+                                <li><strong>CVE-2024-LLM-002:</strong> System prompt leakage (CVSS 8.8)</li>
+                                <li><strong>CVE-2024-LLM-003:</strong> Training data extraction (CVSS 8.5)</li>
+                                <li><strong>CVE-2024-LLM-004:</strong> Rate limiting bypass (CVSS 7.9)</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px;">
+                            <h4 style="color: #ffc107;">🟡 Medium Risk Issues</h4>
+                            <ul style="text-align: left;">
+                                <li>Insufficient input validation</li>
+                                <li>Weak API authentication</li>
+                                <li>Missing security headers</li>
+                                <li>Inadequate logging mechanisms</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div style="background: rgba(40, 167, 69, 0.1); padding: 20px; border-radius: 10px; margin: 20px 0;">
+                        <h4 style="color: #28a745;">✅ Security Improvements Implemented</h4>
+                        <ul style="text-align: left;">
+                            <li><strong>Advanced Input Sanitization:</strong> Multi-layer filtering system deployed</li>
+                            <li><strong>Context Isolation:</strong> Secure prompt engineering framework</li>
+                            <li><strong>Differential Privacy:</strong> Training data protection mechanisms</li>
+                            <li><strong>Enhanced Rate Limiting:</strong> AI-aware throttling algorithms</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: rgba(104, 171, 254, 0.1); padding: 20px; border-radius: 10px; margin: 20px 0;">
+                        <h4>📊 Risk Assessment Matrix</h4>
+                        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 15px 0;">
+                            <div style="background: #dc3545; color: white; padding: 10px; text-align: center; border-radius: 5px;">
+                                <strong>Critical: 4</strong>
+                            </div>
+                            <div style="background: #fd7e14; color: white; padding: 10px; text-align: center; border-radius: 5px;">
+                                <strong>High: 8</strong>
+                            </div>
+                            <div style="background: #ffc107; color: #212529; padding: 10px; text-align: center; border-radius: 5px;">
+                                <strong>Medium: 12</strong>
+                            </div>
+                            <div style="background: #28a745; color: white; padding: 10px; text-align: center; border-radius: 5px;">
+                                <strong>Low: 6</strong>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin: 30px 0;">
+                        <button onclick="alert('Full PDF report download functionality would be implemented here')" 
+                                style="background: #dc3545; color: white; border: none; padding: 12px 24px; border-radius: 5px; cursor: pointer; margin: 10px;">
+                            <i class="fa-solid fa-download"></i> Download Full Report (PDF)
+                        </button>
+                        <button onclick="alert('Technical appendix download functionality would be implemented here')" 
+                                style="background: #6c757d; color: white; border: none; padding: 12px 24px; border-radius: 5px; cursor: pointer; margin: 10px;">
+                            <i class="fa-solid fa-file-code"></i> Technical Appendix
+                        </button>
+                    </div>
+                `,
+                'security-analysis-report': `
+                    <h2><i class="fa-solid fa-chart-bar"></i> Security Analysis Report - AI Supply Chain Assessment</h2>
+                    
+                    <div style="background: rgba(255, 193, 7, 0.1); padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #ffc107;">
+                        <h3>Executive Summary</h3>
+                        <p><strong>Assessment Scope:</strong> Enterprise AI platform with 200+ dependencies</p>
+                        <p><strong>Assessment Focus:</strong> Infrastructure & Dependency Security</p>
+                        <p><strong>Risk Level:</strong> Medium to High</p>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 30px 0;">
+                        <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px;">
+                            <h4 style="color: #ffc107;">🟡 Security Risks Identified</h4>
+                            <ul style="text-align: left;">
+                                <li><strong>Vulnerable ML Frameworks:</strong> 12 outdated packages</li>
+                                <li><strong>Insecure Model Repositories:</strong> 3 unverified sources</li>
+                                <li><strong>Unverified Training Datasets:</strong> 8 datasets without provenance</li>
+                                <li><strong>Third-party API Dependencies:</strong> 15 external services</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px;">
+                            <h4 style="color: #17a2b8;">🔵 Security Enhancements</h4>
+                            <ul style="text-align: left;">
+                                <li><strong>Automated Dependency Scanning:</strong> CI/CD integration</li>
+                                <li><strong>Model Integrity Verification:</strong> Cryptographic signatures</li>
+                                <li><strong>Data Provenance Tracking:</strong> Blockchain-based ledger</li>
+                                <li><strong>Vendor Security Assessments:</strong> Third-party evaluations</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div style="background: rgba(23, 162, 184, 0.1); padding: 20px; border-radius: 10px; margin: 20px 0;">
+                        <h4>🔍 Supply Chain Analysis Results</h4>
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 15px 0;">
+                            <div style="text-align: center; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                                <h5 style="color: #17a2b8; margin: 0;">Dependencies Scanned</h5>
+                                <div style="font-size: 2em; font-weight: bold; margin: 10px 0;">247</div>
+                                <div style="font-size: 0.9em; opacity: 0.8;">Total packages analyzed</div>
+                            </div>
+                            <div style="text-align: center; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                                <h5 style="color: #ffc107; margin: 0;">Vulnerabilities Found</h5>
+                                <div style="font-size: 2em; font-weight: bold; margin: 10px 0;">34</div>
+                                <div style="font-size: 0.9em; opacity: 0.8;">Security issues identified</div>
+                            </div>
+                            <div style="text-align: center; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                                <h5 style="color: #28a745; margin: 0;">Remediation Rate</h5>
+                                <div style="font-size: 2em; font-weight: bold; margin: 10px 0;">89%</div>
+                                <div style="font-size: 0.9em; opacity: 0.8;">Issues successfully resolved</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="background: rgba(40, 167, 69, 0.1); padding: 20px; border-radius: 10px; margin: 20px 0;">
+                        <h4 style="color: #28a745;">✅ Compliance Status</h4>
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
+                            <div>
+                                <h5>Security Frameworks</h5>
+                                <ul style="text-align: left;">
+                                    <li>✅ NIST AI Risk Management Framework</li>
+                                    <li>✅ ISO/IEC 27001:2022</li>
+                                    <li>✅ SOC 2 Type II</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5>Regulatory Compliance</h5>
+                                <ul style="text-align: left;">
+                                    <li>✅ GDPR Article 22 (AI Systems)</li>
+                                    <li>⚠️ EU AI Act (In Progress)</li>
+                                    <li>✅ CCPA Privacy Requirements</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin: 30px 0;">
+                        <button onclick="alert('Supply chain security report download functionality would be implemented here')" 
+                                style="background: #ffc107; color: #212529; border: none; padding: 12px 24px; border-radius: 5px; cursor: pointer; margin: 10px;">
+                            <i class="fa-solid fa-download"></i> Download Analysis Report
+                        </button>
+                        <button onclick="alert('Compliance matrix download functionality would be implemented here')" 
+                                style="background: #17a2b8; color: white; border: none; padding: 12px 24px; border-radius: 5px; cursor: pointer; margin: 10px;">
+                            <i class="fa-solid fa-shield-alt"></i> Compliance Matrix
+                        </button>
+                    </div>
                 `
             };
             
